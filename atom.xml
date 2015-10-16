@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
+  <link href="http://geek-is-stupid.github.io/"/>
+  <updated>2015-10-16T17:20:13+07:00</updated>
+  <id>http://geek-is-stupid.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Calculate the Height of the Text Depend on Width and Font Using Swift2.0?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2015/10/16/how-to-calculate-the-height-of-the-text-depend-on-width-and-font-using-swift2-dot-0/"/>
+    <updated>2015-10-16T17:19:50+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2015/10/16/how-to-calculate-the-height-of-the-text-depend-on-width-and-font-using-swift2-dot-0</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>
