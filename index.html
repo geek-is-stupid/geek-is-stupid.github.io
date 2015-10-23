@@ -9,7 +9,7 @@
   <meta name="author" content="Le Tai">
 
   
-  <meta name="description" content="
+  <meta name="description" content="...
 ">
   
 
@@ -85,6 +85,36 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-press-on-links-to-open-app-using-swift-universal-links-in-ios9/">How to Press on Links to Open App Using Swift? Universal Links in iOS9</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-23T23:51:20+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>11:51 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>...</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/10/23/xcode-7-error-include-of-non-modular-header-inside-framework-module-with-a-lib/">Xcode 7.1 Error: Include of Non-modular Header Inside Framework Module...</a></h1>
     
     
@@ -102,7 +132,7 @@
   </header>
 
 
-  <div class="entry-content">
+  <div class="entry-content"><p><code>...</code></p>
 </div>
   
   
@@ -498,194 +528,6 @@
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-add-ios-ui-test-in-xcode-7/">How to Add iOS UI Test in Xcode 7?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-23T14:52:13+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>2:52 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>1. Create simple project: Click on a button and then get the text in textfield for the label</h3></h3>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/1.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/1.png" /></a></p>
-
-<h5>1.1 Add a text field, a button, and a label:</h5>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-58-26-pm.png"><img class="alignnone size-medium wp-image-229" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-58-26-pm.png" alt="Screen Shot 2015-10-06 at 4.58.26 PM" /></a></p>
-
-<h5>1.2 Process the behavior when user tap on the button</h5>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">import</span> <span class="n">UIKit</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nl">ViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">weak</span> <span class="n">var</span> <span class="nl">textField</span><span class="p">:</span> <span class="bp">UITextField</span><span class="o">!</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">weak</span> <span class="n">var</span> <span class="nl">label</span><span class="p">:</span> <span class="bp">UILabel</span><span class="o">!</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">weak</span> <span class="n">var</span> <span class="nl">button</span><span class="p">:</span> <span class="bp">UIButton</span><span class="o">!</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">override</span> <span class="n">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nb">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
-</span><span class='line'>        <span class="c1">// Do any additional setup after loading the view, typically from a nib.</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="p">@</span><span class="kt">IBAction</span> <span class="n">func</span> <span class="n">buttonTapped</span><span class="p">(</span><span class="nl">sender</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">textField</span><span class="p">.</span><span class="n">text</span>
-</span><span class='line'>        <span class="n">textField</span><span class="p">.</span><span class="n">resignFirstResponder</span><span class="p">()</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>2. Create new iOS UI Testing Bundle</h3>
-
-<h5>2.1: Click on your project</h5>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-16-38-pm.png"><img class="alignnone size-medium wp-image-232" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-16-38-pm.png" alt="Screen Shot 2015-10-06 at 5.16.38 PM" /></a></p>
-
-<h5>2.2: Click + button to add new iOS UI Testing Bundle</h5>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-56-03-pm.png"><img class="alignnone size-medium wp-image-231" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-56-03-pm.png" alt="Screen Shot 2015-10-06 at 4.56.03 PM" /></a></p>
-
-<h5>2.3: Select the iOS UI Testing Bundle</h5>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-07-pm.png"><img class="alignnone size-medium wp-image-233" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-07-pm.png" alt="Screen Shot 2015-10-06 at 5.18.07 PM" /></a></p>
-
-<h5>2.4 New bundle will be here:</h5>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-50-pm.png"><img class="alignnone size-medium wp-image-234" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-50-pm.png" alt="Screen Shot 2015-10-06 at 5.18.50 PM" /></a></p>
-
-<h3>3. Recording your behaviors in simulator</h3>
-
-<h5>3.1 Open the file: <code>"UITestExampleUITests.swift"</code></h5>
-
-
-
-
-<h5>3.2 Let your cursor within <code>testExample()</code> method, you will see the circle red button at the bottom of Xcode, press on it</h5>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-22-07-pm.png"><img class="alignnone size-medium wp-image-236" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-22-07-pm.png" alt="Screen Shot 2015-10-06 at 5.22.07 PM" /></a></p>
-
-<h5>3.3 The simulator will be show and fill the text "testing" into the textfield and then click button:</h5>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-26-38-pm.png"><img class="alignnone size-medium wp-image-237" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-26-38-pm.png" alt="Screen Shot 2015-10-06 at 5.26.38 PM" /></a></p>
-
-<h5>3.4 The <strong><code>testExample()</code></strong> method in <strong>UITestExampleUITests.swift</strong> will be filled as something like this:</h5>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">testExample</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>     <span class="k">let</span> <span class="n">app</span> <span class="o">=</span> <span class="n">XCUIApplication</span><span class="p">()</span>
-</span><span class='line'>     <span class="n">app</span><span class="p">.</span><span class="n">otherElements</span><span class="p">.</span><span class="n">containingType</span><span class="p">(.</span><span class="n">Button</span><span class="p">,</span> <span class="nl">identifier</span><span class="p">:</span><span class="s">&quot;Button&quot;</span><span class="p">).</span><span class="n">childrenMatchingType</span><span class="p">(.</span><span class="n">TextField</span><span class="p">).</span><span class="n">element</span><span class="p">.</span><span class="n">typeText</span><span class="p">(</span><span class="s">&quot;testing&quot;</span><span class="p">)</span>
-</span><span class='line'>     <span class="n">app</span><span class="p">.</span><span class="n">buttons</span><span class="p">[</span><span class="s">&quot;Button&quot;</span><span class="p">].</span><span class="n">tap</span><span class="p">()</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<h5>3.5 Turn of recording: Pressed on the circle has the red square inside</h5>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-32-00-pm1.png"><img class="alignnone size-full wp-image-252" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-32-00-pm1.png" alt="Screen Shot 2015-10-06 at 5.32.00 PM" /></a></p>
-
-<h3>4. Add specific assert - [Test Here]</h3>
-
-<h5>4.1 Add this statement above of <code>testExample()</code> method</h5>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">XCTAssert</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">staticTexts</span><span class="p">[</span><span class="s">&quot;testing&quot;</span><span class="p">].</span><span class="n">exists</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<h4>This line mean:<strong> With the behavior we recorded (Item 3), the UI must be contain the text <code>"testing"</code></strong></h4>
-
-
-<h5>4.2 The<strong> <code>testExample()</code></strong> method will be:</h5>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">testExample</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>     <span class="k">let</span> <span class="n">app</span> <span class="o">=</span> <span class="n">XCUIApplication</span><span class="p">()</span>
-</span><span class='line'>     <span class="n">app</span><span class="p">.</span><span class="n">otherElements</span><span class="p">.</span><span class="n">containingType</span><span class="p">(.</span><span class="n">Button</span><span class="p">,</span> <span class="nl">identifier</span><span class="p">:</span><span class="s">&quot;Button&quot;</span><span class="p">).</span><span class="n">childrenMatchingType</span><span class="p">(.</span><span class="n">TextField</span><span class="p">).</span><span class="n">element</span><span class="p">.</span><span class="n">typeText</span><span class="p">(</span><span class="s">&quot;testing&quot;</span><span class="p">)</span>
-</span><span class='line'>     <span class="n">app</span><span class="p">.</span><span class="n">buttons</span><span class="p">[</span><span class="s">&quot;Button&quot;</span><span class="p">].</span><span class="n">tap</span><span class="p">()</span>
-</span><span class='line'>     <span class="n">XCTAssert</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">staticTexts</span><span class="p">[</span><span class="s">&quot;testing&quot;</span><span class="p">].</span><span class="n">exists</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>5. Run test: <code> Command + U </code></h3>
 </div>
   
   
