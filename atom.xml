@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-23T20:47:17+07:00</updated>
+  <updated>2015-10-23T21:27:30+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -14,7 +14,30 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Common Error When Building in Xcode]]></title>
+    <title type="html"><![CDATA[Pod Install Rase Warning "This Can Be the Result of a Merge and the Unknown UUID Is Being Discarded."]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2015/10/23/pod-install-rase-warning-this-can-be-the-result-of-a-merge-and-the-unknown-uuid-is-being-discarded-dot/"/>
+    <updated>2015-10-23T20:58:21+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2015/10/23/pod-install-rase-warning-this-can-be-the-result-of-a-merge-and-the-unknown-uuid-is-being-discarded-dot</id>
+    <content type="html"><![CDATA[<p><span style="color:orange; font-family:Menlo;">
+[!] &lsquo;\<PBXGroup name='Filter' UUID='99CE81391BA80D2D00CA7B29'\>&rsquo; attempted to initialize an object with an unknown UUID. &lsquo;995E161E1BAAA6C2002153EC&rsquo; for attribute: &lsquo;children&rsquo;. This can be the result of a merge and  the unknown UUID is being discarded.
+</span></p>
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png" /></a></p>
+
+<p>Resolve:</p>
+
+<ol>
+<li>Open any file in Xcode</li>
+<li>On left side bar, choose <code>Show the File inspector</code> > <code>Target Membership</code></li>
+<li>Try to uncheck and check the file on any <code>target</code>:
+<a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png"><img class="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png" /></a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Common Errors When Building in Xcode]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2015/10/23/common-error-when-building-in-xcode/"/>
     <updated>2015-10-23T20:33:38+07:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2015/10/23/common-error-when-building-in-xcode</id>
@@ -175,12 +198,12 @@
     <id>http://geek-is-stupid.github.io/blog/2015/10/23/how-to-add-ios-ui-test-in-xcode-7</id>
     <content type="html"><![CDATA[<h3>1. Create simple project: Click on a button and then get the text in textfield for the label</h3></h3>
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/1.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/1.png?w=300" alt="1" width="300" height="213" /></a></p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/1.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/1.png" /></a></p>
 
 <h5>1.1 Add a text field, a button, and a label:</h5>
 
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-58-26-pm.png"><img class="alignnone size-medium wp-image-229" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-58-26-pm.png?w=193" alt="Screen Shot 2015-10-06 at 4.58.26 PM" width="193" height="300" /></a></p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-58-26-pm.png"><img class="alignnone size-medium wp-image-229" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-58-26-pm.png" alt="Screen Shot 2015-10-06 at 4.58.26 PM" /></a></p>
 
 <h5>1.2 Process the behavior when user tap on the button</h5>
 
@@ -235,22 +258,22 @@
 <h5>2.1: Click on your project</h5>
 
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-16-38-pm.png"><img class="alignnone size-medium wp-image-232" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-16-38-pm.png?w=300" alt="Screen Shot 2015-10-06 at 5.16.38 PM" width="300" height="131" /></a></p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-16-38-pm.png"><img class="alignnone size-medium wp-image-232" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-16-38-pm.png" alt="Screen Shot 2015-10-06 at 5.16.38 PM" /></a></p>
 
 <h5>2.2: Click + button to add new iOS UI Testing Bundle</h5>
 
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-56-03-pm.png"><img class="alignnone size-medium wp-image-231" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-56-03-pm.png?w=174" alt="Screen Shot 2015-10-06 at 4.56.03 PM" width="174" height="300" /></a></p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-56-03-pm.png"><img class="alignnone size-medium wp-image-231" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-56-03-pm.png" alt="Screen Shot 2015-10-06 at 4.56.03 PM" /></a></p>
 
 <h5>2.3: Select the iOS UI Testing Bundle</h5>
 
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-07-pm.png"><img class="alignnone size-medium wp-image-233" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-07-pm.png?w=300" alt="Screen Shot 2015-10-06 at 5.18.07 PM" width="300" height="212" /></a></p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-07-pm.png"><img class="alignnone size-medium wp-image-233" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-07-pm.png" alt="Screen Shot 2015-10-06 at 5.18.07 PM" /></a></p>
 
 <h5>2.4 New bundle will be here:</h5>
 
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-50-pm.png"><img class="alignnone size-medium wp-image-234" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-50-pm.png?w=300" alt="Screen Shot 2015-10-06 at 5.18.50 PM" width="300" height="230" /></a></p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-50-pm.png"><img class="alignnone size-medium wp-image-234" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-50-pm.png" alt="Screen Shot 2015-10-06 at 5.18.50 PM" /></a></p>
 
 <h3>3. Recording your behaviors in simulator</h3>
 
@@ -262,12 +285,12 @@
 <h5>3.2 Let your cursor within <code>testExample()</code> method, you will see the circle red button at the bottom of Xcode, press on it</h5>
 
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-22-07-pm.png"><img class="alignnone size-medium wp-image-236" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-22-07-pm.png?w=300" alt="Screen Shot 2015-10-06 at 5.22.07 PM" width="300" height="73" /></a></p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-22-07-pm.png"><img class="alignnone size-medium wp-image-236" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-22-07-pm.png" alt="Screen Shot 2015-10-06 at 5.22.07 PM" /></a></p>
 
 <h5>3.3 The simulator will be show and fill the text "testing" into the textfield and then click button:</h5>
 
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-26-38-pm.png"><img class="alignnone size-medium wp-image-237" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-26-38-pm.png?w=182" alt="Screen Shot 2015-10-06 at 5.26.38 PM" width="182" height="300" /></a></p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-26-38-pm.png"><img class="alignnone size-medium wp-image-237" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-26-38-pm.png" alt="Screen Shot 2015-10-06 at 5.26.38 PM" /></a></p>
 
 <h5>3.4 The <strong><code>testExample()</code></strong> method in <strong>UITestExampleUITests.swift</strong> will be filled as something like this:</h5>
 
@@ -292,7 +315,7 @@
 <h5>3.5 Turn of recording: Pressed on the circle has the red square inside</h5>
 
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-32-00-pm1.png"><img class="alignnone size-full wp-image-252" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-32-00-pm1.png" alt="Screen Shot 2015-10-06 at 5.32.00 PM" width="220" height="284" /></a></p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-32-00-pm1.png"><img class="alignnone size-full wp-image-252" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-32-00-pm1.png" alt="Screen Shot 2015-10-06 at 5.32.00 PM" /></a></p>
 
 <h3>4. Add specific assert - [Test Here]</h3>
 
