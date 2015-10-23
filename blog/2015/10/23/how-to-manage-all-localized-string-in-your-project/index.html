@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Pod Install Rase Warning "This Can Be the Result of a Merge and the Unknown UUID Is Being Discarded." - Geek Is Stupid</title>
+  <title>How to Manage All Localized String in Your Project? - Geek Is Stupid</title>
   <meta name="author" content="Le Tai">
 
   
-  <meta name="description" content="[!] &lt;&lsquo;PBXGroup name='Filter&rsquo; UUID=&lsquo;99CE81391BA80D2D00CA7B29&rsquo;>&lsquo; attempted to initialize an object with an unknown &hellip;">
+  <meta name="description" content="Using genstring from Apple which had included into Xcode Step 1. Run: cd YourProject
+Step 2. Run: find . -name '*.swift' -print | xargs -n1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2015/10/23/pod-install-rase-warning-this-can-be-the-result-of-a-merge-and-the-unknown-uuid-is-being-discarded-dot">
+  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Geek Is Stupid" type="application/atom+xml">
@@ -82,7 +83,7 @@
   <header>
     
       
-        <h1 class="entry-title">Pod Install Rase Warning "This Can Be the Result of a Merge and the Unknown UUID Is Being Discarded."</h1>
+        <h1 class="entry-title">How to Manage All Localized String in Your Project?</h1>
       
     
     
@@ -92,7 +93,7 @@
 
 
 
-<time class='entry-date' datetime='2015-10-23T20:58:21+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:58 pm</span></time>
+<time class='entry-date' datetime='2015-10-23T21:46:19+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:46 pm</span></time>
         
         
       </p>
@@ -100,22 +101,35 @@
   </header>
 
 
-<div class="entry-content"><p><span style="color:orange; font-family:Menlo;">
-[!] &lt;&lsquo;PBXGroup name='Filter&rsquo; UUID=&lsquo;99CE81391BA80D2D00CA7B29&rsquo;>&lsquo; attempted to initialize an object with an unknown UUID. '995E161E1BAAA6C2002153EC&rsquo; for attribute: &lsquo;children&rsquo;. This can be the result of a merge and  the unknown UUID is being discarded.
-</span></p>
+<div class="entry-content"><h3>Using <code>genstring</code> from Apple which had included into Xcode</h3>
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png" /></a></p>
+<p>Step 1. Run: <code>cd YourProject</code>
+Step 2. Run: <code>find . -name '*.swift' -print | xargs -n1 genstrings -a</code></p>
 
-<h2>Resolve:</h2>
+<p>After this you will see the files:</p>
 
-<ol>
-<li>Open any file by Xcode</li>
-<li>On left side bar, choose <code>Show the File inspector</code> > <code>Target Membership</code></li>
-<li>Try to uncheck and check the file on any <code>target</code>:</li>
-</ol>
+<ul>
+<li><code>Localizable.strings</code></li>
+<li><code>Base.lproj</code></li>
+</ul>
 
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png"><img class="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png" /></a></p>
+<p>Step 3. Add only file: <code>Localizable.strings</code> in your project</p>
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png" /></a></p>
+
+<p>Step 4: On left side bar, choose <code>Show the File inspector</code> > <code>Localization</code> > Press button: <code>Localize...</code>
+<a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png" /></a></p>
+
+<p>Step 5: Setup your build:</p>
+
+<ul>
+<li><p>Edit your sheme
+<a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-00-40-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-00-40-pm.png" /></a></p></li>
+<li><p>Change your region + language that you want
+<a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png" /></a></p></li>
+</ul>
+
 </div>
 
 
@@ -138,7 +152,7 @@
 
 
 
-<time class='entry-date' datetime='2015-10-23T20:58:21+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:58 pm</span></time>
+<time class='entry-date' datetime='2015-10-23T21:46:19+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:46 pm</span></time>
       
       
 
@@ -147,7 +161,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2015/10/23/pod-install-rase-warning-this-can-be-the-result-of-a-merge-and-the-unknown-uuid-is-being-discarded-dot/" data-via="" data-counturl="http://geek-is-stupid.github.io/blog/2015/10/23/pod-install-rase-warning-this-can-be-the-result-of-a-merge-and-the-unknown-uuid-is-being-discarded-dot/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/" data-via="" data-counturl="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/" >Tweet</a>
   
   
   
@@ -156,10 +170,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/10/23/common-error-when-building-in-xcode/" title="Previous Post: Common errors when building in Xcode">&laquo; Common errors when building in Xcode</a>
+        <a class="basic-alignment left" href="/blog/2015/10/23/pod-install-rase-warning-this-can-be-the-result-of-a-merge-and-the-unknown-uuid-is-being-discarded-dot/" title="Previous Post: Pod install rase warning "This can be the result of a merge and  the unknown UUID is being discarded."">&laquo; Pod install rase warning "This can be the result of a merge and  the unknown UUID is being discarded."</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/" title="Next Post: How to manage all localized string in your project?">How to manage all localized string in your project? &raquo;</a>
       
     </p>
   </footer>
