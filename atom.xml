@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-23T22:10:45+07:00</updated>
+  <updated>2015-10-23T22:21:05+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -20,15 +20,21 @@
     <id>http://geek-is-stupid.github.io/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project</id>
     <content type="html"><![CDATA[<h3>Using <code>genstring</code> from Apple which had included into Xcode</h3>
 
-<p>Step 1. Run: <code>cd YourProject</code></p>
+<p>Step 1. Add languages which you want to localize.</p>
 
-<p>Step 2. Run: <code>find . -name '*.swift' -print | xargs -n1 genstrings -a</code></p>
+<p>On the left side of Xcode, choose <code>Show the project navigator</code> > Choose your project:</p>
 
-<p>After this you will see the files:</p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png" /></a></p>
+
+<p>Step 2. Run: <code>cd YourProject</code></p>
+
+<p>Step 3. Run: <code>find . -name '*.swift' -print | xargs -n1 genstrings -a</code>
+After this step, you will see the files:</p>
 
 <ul>
 <li><code>Localizable.strings</code></li>
 <li><code>Base.lproj</code></li>
+<li><code>...</code></li>
 </ul>
 
 
@@ -36,7 +42,7 @@
 
 <p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png" /></a></p>
 
-<p>Step 4: On left side bar, choose <code>Show the File inspector</code> > <code>Localization</code> > Press button: <code>Localize...</code>
+<p>Step 4: On right side of Xcode, choose <code>Show the File inspector</code> > <code>Localization</code> > Press button: <code>Localize...</code>
 <a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png" /></a></p>
 
 <p>Step 5: Setup your build:</p>
@@ -66,7 +72,7 @@
 
 <ol>
 <li>Open any file by Xcode</li>
-<li>On left side bar, choose <code>Show the File inspector</code> > <code>Target Membership</code></li>
+<li>On right side of Xcode, choose <code>Show the File inspector</code> > <code>Target Membership</code></li>
 <li>Try to uncheck and check the file on any <code>target</code>:</li>
 </ol>
 
