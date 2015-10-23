@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-23T15:48:34+07:00</updated>
+  <updated>2015-10-23T15:58:11+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -160,8 +160,7 @@
     <link href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-add-ios-ui-test-in-xcode-7/"/>
     <updated>2015-10-23T14:52:13+07:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2015/10/23/how-to-add-ios-ui-test-in-xcode-7</id>
-    <content type="html"><![CDATA[<h3>1. Create simple project: Click on a button and then get the text in textfield for the label</h3>
-
+    <content type="html"><![CDATA[<h3>1. Create simple project: Click on a button and then get the text in textfield for the label</h3></h3>
 
 <p><a href="https://stackoverzone.files.wordpress.com/2015/10/1.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/1.png?w=300" alt="1" width="300" height="213" /></a></p>
 
@@ -218,10 +217,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
-
 <h3>2. Create new iOS UI Testing Bundle</h3>
-
 
 <h5>2.1: Click on your project</h5>
 
@@ -244,9 +240,6 @@
 <p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-50-pm.png"><img class="alignnone size-medium wp-image-234" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-50-pm.png?w=300" alt="Screen Shot 2015-10-06 at 5.18.50 PM" width="300" height="230" /></a></p>
 
 <h3>3. Recording your behaviors in simulator</h3>
-
-
-
 
 <h5>3.1 Open the file: <code>"UITestExampleUITests.swift"</code></h5>
 
@@ -290,7 +283,6 @@
 
 <h3>4. Add specific assert - [Test Here]</h3>
 
-
 <h5>4.1 Add this statement above of <code>testExample()</code> method</h5>
 
 
@@ -326,10 +318,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
-
 <h3>5. Run test: <code> Command + U </code></h3>
-
 ]]></content>
   </entry>
   
