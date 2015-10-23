@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How Did You Manage Constants in Your iOS App? - Geek Is Stupid</title>
+  <title>How to Adding Localized Strings in Swift? - Geek Is Stupid</title>
   <meta name="author" content="Le Tai">
 
   
-  <meta name="description" content="The reason to manages the Constants in app is: We have a lot of static values and which makes easier to know where they are when you wanna reuse them &hellip;">
+  <meta name="description" content="This heard like easy? Yes, but language very complex, with each language we have different way to order of word in a sentence
+So if I have a name of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2015/10/23/how-did-you-manage-constants-in-your-ios-app">
+  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-adding-localized-strings-in-swift">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Geek Is Stupid" type="application/atom+xml">
@@ -82,7 +83,7 @@
   <header>
     
       
-        <h1 class="entry-title">How Did You Manage Constants in Your iOS App?</h1>
+        <h1 class="entry-title">How to Adding Localized Strings in Swift?</h1>
       
     
     
@@ -92,7 +93,7 @@
 
 
 
-<time class='entry-date' datetime='2015-10-23T14:37:59+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>2:37 pm</span></time>
+<time class='entry-date' datetime='2015-10-23T14:45:31+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>2:45 pm</span></time>
         
         
       </p>
@@ -100,46 +101,31 @@
   </header>
 
 
-<div class="entry-content"><p>The reason to manages the <code>Constants</code> in app is: We have a lot of static values and which makes easier to know where they are when you wanna reuse them.</p>
+<div class="entry-content"><p>This heard like easy?</p>
 
-<p>Step 1. Create a file with the name: <code>Constants.swift</code></p>
+<ul>
+<li>Yes, but language very complex, with each language we have different way to order of word in a sentence</li>
+<li>So if I have a name of user: <strong><code>"Andrew McKay"</code></strong>, and he has <strong><code>"commented"</code></strong> in a page:
+The text on app will be:</li>
+</ul>
 
-<p>Step 2. Add this struct inside your created file:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">import</span> <span class="n">Foundation</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">struct</span> <span class="n">Constants</span> <span class="p">{}</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="s">&quot;Andrew McKay also commented&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Step 3. In the class which you want to add new constant:</p>
+<p>The simple way:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="n">Staff</span> <span class="p">{</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">extension</span> <span class="n">Constants</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">struct</span> <span class="n">Staff</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">static</span> <span class="k">let</span> <span class="n">DefaultHeight</span> <span class="o">=</span> <span class="mf">1.70</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">text</span> <span class="o">=</span> <span class="s">&quot;\(user.name) &quot;</span> <span class="o">+</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;also commented&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Step 4. Just use this wherever you want:</p>
+<p><strong>The right way (I think):</strong></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">height</span> <span class="o">=</span> <span class="n">Constants</span><span class="p">.</span><span class="n">Staff</span><span class="p">.</span><span class="n">DefaultHeight</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">text</span> <span class="o">=</span> <span class="bp">NSString</span><span class="p">.</span><span class="n">localizedStringWithFormat</span><span class="p">(</span><span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;%@ also commented&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="kt">as</span> <span class="bp">NSString</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">)</span> <span class="kt">as</span> <span class="n">String</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -164,7 +150,7 @@
 
 
 
-<time class='entry-date' datetime='2015-10-23T14:37:59+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>2:37 pm</span></time>
+<time class='entry-date' datetime='2015-10-23T14:45:31+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>2:45 pm</span></time>
       
       
 
@@ -173,7 +159,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2015/10/23/how-did-you-manage-constants-in-your-ios-app/" data-via="" data-counturl="http://geek-is-stupid.github.io/blog/2015/10/23/how-did-you-manage-constants-in-your-ios-app/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-adding-localized-strings-in-swift/" data-via="" data-counturl="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-adding-localized-strings-in-swift/" >Tweet</a>
   
   
   
@@ -182,10 +168,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/10/16/how-to-calculate-the-height-of-the-text-depend-on-width-and-font-using-swift2-dot-0/" title="Previous Post: How to calculate the height of the text depend on width and font using Swift2.0?">&laquo; How to calculate the height of the text depend on width and font using Swift2.0?</a>
+        <a class="basic-alignment left" href="/blog/2015/10/23/how-did-you-manage-constants-in-your-ios-app/" title="Previous Post: How did you manage Constants in your iOS app?">&laquo; How did you manage Constants in your iOS app?</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/10/23/how-to-adding-localized-strings-in-swift/" title="Next Post: How to adding localized strings in Swift?">How to adding localized strings in Swift? &raquo;</a>
       
     </p>
   </footer>
