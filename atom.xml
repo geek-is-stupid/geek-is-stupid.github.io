@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-23T14:36:04+07:00</updated>
+  <updated>2015-10-23T14:41:24+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How Did You Manage Constants in Your iOS App?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2015/10/23/how-did-you-manage-constants-in-your-ios-app/"/>
+    <updated>2015-10-23T14:37:59+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2015/10/23/how-did-you-manage-constants-in-your-ios-app</id>
+    <content type="html"><![CDATA[<p>The reason to manages the <code>Constants</code> in app is We have a lot of static values and which makes easier to know where they are when you wanna re-use them.</p>
+
+<ol>
+<li><p>Create a file with the name: <code>Constants.swift</code></p></li>
+<li><p>Add this struct inside your created file:</p></li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">import</span> <span class="n">Foundation</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">struct</span> <span class="n">Constants</span> <span class="p">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>In the class which you want to add new constant:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="n">Staff</span> <span class="p">{</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">extension</span> <span class="n">Constants</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">struct</span> <span class="n">Staff</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">static</span> <span class="k">let</span> <span class="n">DefaultHeight</span> <span class="o">=</span> <span class="mf">1.70</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Just use this wherever you want:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">height</span> <span class="o">=</span> <span class="n">Constants</span><span class="p">.</span><span class="n">Staff</span><span class="p">.</span><span class="n">DefaultHeight</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Calculate the Height of the Text Depend on Width and Font Using Swift2.0?]]></title>
