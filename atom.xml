@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-23T20:36:35+07:00</updated>
+  <updated>2015-10-23T20:43:31+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -18,11 +18,21 @@
     <link href="http://geek-is-stupid.github.io/blog/2015/10/23/common-error-when-building-in-xcode/"/>
     <updated>2015-10-23T20:33:38+07:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2015/10/23/common-error-when-building-in-xcode</id>
-    <content type="html"><![CDATA[<h3>App installation failed</h3>
+    <content type="html"><![CDATA[<table>
+<thead>
+<tr>
+<th style="text-align:left;"> Message                   </th>
+<th style="text-align:left;"> Resolve                 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> <b>App installation failed.</b> </br>This application&rsquo;s application-identifier entitlement does not match that of the installed application. These values must match for an upgrade to be allowed. </td>
+<td style="text-align:left;"> Delete your old app on device and try again!</td>
+</tr>
+</tbody>
+</table>
 
-<p>This application&rsquo;s application-identifier entitlement does not match that of the installed application. These values must match for an upgrade to be allowed.</p>
-
-<p>Resolve: <b>Delete your old app on device and try again!</b></p>
 ]]></content>
   </entry>
   
