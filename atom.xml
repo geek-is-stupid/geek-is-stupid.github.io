@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-23T21:36:37+07:00</updated>
+  <updated>2015-10-23T21:39:10+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -24,10 +24,10 @@
 
 <p><a href="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png" /></a></p>
 
-<p>Resolve:</p>
+<h2>Resolve:</h2>
 
 <ol>
-<li>Open any file in Xcode</li>
+<li>Open any file by Xcode</li>
 <li>On left side bar, choose <code>Show the File inspector</code> > <code>Target Membership</code></li>
 <li>Try to uncheck and check the file on any <code>target</code>:</li>
 </ol>
@@ -46,7 +46,9 @@
 
 <p>This application&rsquo;s application-identifier entitlement does not match that of the installed application. These values must match for an upgrade to be allowed.</p>
 
-<p>Resolve: <strong>Delete your old app on device and try again!</strong></p>
+<h4>Resolve:</h4>
+
+<p>Delete your old app on device and try again!</p>
 ]]></content>
   </entry>
   
