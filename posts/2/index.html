@@ -9,7 +9,11 @@
   <meta name="author" content="Le Tai">
 
   
-  <meta name="description" content="1. Create simple project: Click on a button and then get the text in textfield for the label 1.1 Add a text field, a button, and a label: 1.2 Process &hellip;">
+  <meta name="description" content="Add gesture: 1
+2
+3
+UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+UILongPressGestureRecognizer *longPress = [[ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +82,162 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-detected-long-press-button-using-objective-c/">How to Detected Long Press on a Button Using Objective C?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-23T15:43:02+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>3:43 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Add gesture:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="bp">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIButton</span> <span class="nl">buttonWithType</span><span class="p">:</span><span class="n">UIButtonTypeRoundedRect</span><span class="p">];</span>
+</span><span class='line'><span class="bp">UILongPressGestureRecognizer</span> <span class="o">*</span><span class="n">longPress</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UILongPressGestureRecognizer</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTarget</span><span class="p">:</span><span class="nb">self</span> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">longPress</span><span class="p">:)];</span>
+</span><span class='line'><span class="p">[</span><span class="n">button</span> <span class="nl">addGestureRecognizer</span><span class="p">:</span><span class="n">longPress</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And implement to handle long event:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">longPress:</span><span class="p">(</span><span class="bp">UILongPressGestureRecognizer</span><span class="o">*</span><span class="p">)</span><span class="nv">gesture</span> <span class="p">{</span>
+</span><span class='line'>    <span class="bp">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">(</span><span class="bp">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="n">gesture</span><span class="p">.</span><span class="n">view</span><span class="p">;</span>
+</span><span class='line'><span class="c1">//    if (gesture.state == UIGestureRecognizerStateEnded) {</span>
+</span><span class='line'><span class="c1">//        Do something…</span>
+</span><span class='line'><span class="c1">//    }</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-capture-an-image-from-mkmapview-and-mkpolyline-using-objective-c/">How to Capture an Image From MKMapView and MKPolyline Using Objective C?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-23T15:25:25+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>3:25 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="bp">MKMapSnapshotter</span> <span class="nl">takeSnapShotOfTargetSize</span><span class="p">:</span><span class="n">CGSizeMake</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span> <span class="nl">withPolyline</span><span class="p">:(</span><span class="bp">MKGeodesicPolyline</span> <span class="o">*</span><span class="p">)</span><span class="n">polyline</span> <span class="nl">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">UIImage</span> <span class="o">*</span> <span class="n">image</span><span class="p">,</span> <span class="n">CGFloat</span> <span class="n">height</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">self</span><span class="p">.</span><span class="n">polylineImageView</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">;</span>
+</span><span class='line'><span class="p">}];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-localized-string-with-enum-in-swift/">How to Localized String With Enum in Swift?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-23T15:04:27+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>3:04 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ol>
+<li>Fist thing, please don&rsquo;t use localized string with dynamic text, it doesn&rsquo;t work</li>
+<li>How it works:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="nl">Status</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">case</span> <span class="n">Verified</span> <span class="o">=</span> <span class="s">&quot;Verified&quot;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="n">Unverified</span> <span class="o">=</span> <span class="s">&quot;Unverified&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">func</span> <span class="n">localizedString</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">switch</span> <span class="nb">self</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">case</span> <span class="p">.</span><span class="nl">Verified</span><span class="p">:</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Verified&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">case</span> <span class="p">.</span><span class="nl">Unverified</span><span class="p">:</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Unverified&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
