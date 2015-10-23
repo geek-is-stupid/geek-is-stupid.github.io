@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-23T15:29:34+07:00</updated>
+  <updated>2015-10-23T15:30:15+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -18,12 +18,13 @@
     <link href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-capture-an-image-from-mkmapview-and-mkpolyline-using-objective-c/"/>
     <updated>2015-10-23T15:25:25+07:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2015/10/23/how-to-capture-an-image-from-mkmapview-and-mkpolyline-using-objective-c</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[MKMapSnapshotter takeSnapShotOfTargetSize:CGSizeMake(320, 150) withPolyline:(MKGeodesicPolyline *)polyline completion:^(UIImage * image, CGFloat height) {
-</span><span class='line'>    self.polylineImageView.image = image;
-</span><span class='line'>}];</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="bp">MKMapSnapshotter</span> <span class="nl">takeSnapShotOfTargetSize</span><span class="p">:</span><span class="n">CGSizeMake</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span> <span class="nl">withPolyline</span><span class="p">:(</span><span class="bp">MKGeodesicPolyline</span> <span class="o">*</span><span class="p">)</span><span class="n">polyline</span> <span class="nl">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">UIImage</span> <span class="o">*</span> <span class="n">image</span><span class="p">,</span> <span class="n">CGFloat</span> <span class="n">height</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">self</span><span class="p">.</span><span class="n">polylineImageView</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">;</span>
+</span><span class='line'><span class="p">}];</span>
+</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
