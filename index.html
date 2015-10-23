@@ -9,21 +9,10 @@
   <meta name="author" content="Le Tai">
 
   
-  <meta name="description" content="Fist thing, please don&rsquo;t use localized string with dynamic text, it doesn&rsquo;t work
-How it works: 1
+  <meta name="description" content="1
 2
 3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-enum Status &hellip;">
+[MKMapSnapshotter takeSnapShotOfTargetSize:CGSizeMake(320, 150) withPolyline:(MKGeodesicPolyline *)polyline completion:^(UIImage * image, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +81,42 @@ enum Status &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-capture-an-image-from-mkmapview-and-mkpolyline-using-objective-c/">How to Capture an Image From MKMapView and MKPolyline Using Objective C?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-23T15:25:25+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>3:25 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[MKMapSnapshotter takeSnapShotOfTargetSize:CGSizeMake(320, 150) withPolyline:(MKGeodesicPolyline *)polyline completion:^(UIImage * image, CGFloat height) {
+</span><span class='line'>    self.polylineImageView.image = image;
+</span><span class='line'>}];</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
