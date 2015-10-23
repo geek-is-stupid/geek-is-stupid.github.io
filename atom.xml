@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-23T15:01:44+07:00</updated>
+  <updated>2015-10-23T15:20:56+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Localized String With Enum in Swift?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-localized-string-with-enum-in-swift/"/>
+    <updated>2015-10-23T15:04:27+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2015/10/23/how-to-localized-string-with-enum-in-swift</id>
+    <content type="html"><![CDATA[<ol>
+<li>Fist thing, please don&rsquo;t use localized string with dynamic text, it doesn&rsquo;t work</li>
+<li>How it works:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="nl">Status</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">case</span> <span class="n">Verified</span> <span class="o">=</span> <span class="s">&quot;Verified&quot;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="n">Unverified</span> <span class="o">=</span> <span class="s">&quot;Unverified&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">func</span> <span class="n">localizedString</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">switch</span> <span class="nb">self</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">case</span> <span class="p">.</span><span class="nl">Verified</span><span class="p">:</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Verified&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">case</span> <span class="p">.</span><span class="nl">Unverified</span><span class="p">:</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Unverified&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Add iOS UI Test in Xcode 7?]]></title>
