@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-26T16:43:45+07:00</updated>
+  <updated>2015-10-26T16:45:19+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -250,8 +250,9 @@
     <link href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-press-on-links-to-open-app-using-swift-universal-links-in-ios9/"/>
     <updated>2015-10-23T23:51:20+07:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2015/10/23/how-to-press-on-links-to-open-app-using-swift-universal-links-in-ios9</id>
-    <content type="html"><![CDATA[<p>In iOS 9, your app can register to open web links (using https or http) directly, bypassing Safari. Here is the process to add Universal Links:
-<a href="https://stackoverzone.files.wordpress.com/2015/10/universal_links.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/universal_links.png" alt="universal_links" /></a></p>
+    <content type="html"><![CDATA[<p>In iOS 9, your app can register to open web links (using https or http) directly, bypassing Safari. Here is the process to add Universal Links:</p>
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/universal_links.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/universal_links.png" alt="universal_links" /></a></p>
 
 <h1>A. Generate apple-site-app-association file</h1>
 
