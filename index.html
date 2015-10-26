@@ -466,7 +466,10 @@
 <h1>A. Generate apple-site-app-association file</h1>
 
 
-<h5>1. Create Server-side web credentials file: <code>handoff.json</code></h5>
+<ol>
+<li>Create Server-side web credentials file: <code>handoff.json</code></li>
+</ol>
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -491,19 +494,20 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h5>2. Download your certificate at <a href="https://developer.apple.com/account/ios/certificate/certificateList.action" target="_blank">here</a>, and when it is downloaded, double click on it to add into KeyChain app</h5>
+<ol>
+<li><p>Download your certificate at <a href="https://developer.apple.com/account/ios/certificate/certificateList.action" target="_blank">here</a>, and when it is downloaded, double click on it to add into KeyChain app</p></li>
+<li><p>Right click on your certificate in KeyChain to export your <code>Certificates.p12</code></p></li>
+</ol>
 
-<h5>3. Right click on your certificate in KeyChain to export your <code>Certificates.p12</code></h5>
 
 <p><a href="https://stackoverzone.files.wordpress.com/2015/10/11.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/11.png" alt="1" /></a></p>
 
 <p><a href="https://stackoverzone.files.wordpress.com/2015/10/2.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/2.png" alt="2" /></a></p>
 
-<h5>4. Open terminal to create certificates with <code>openssl</code> commands:</h5>
-
-<ul>
-<li>Create the certificate:</li>
-</ul>
+<ol>
+<li><p>Open terminal to create certificates with <code>openssl</code> commands:</p></li>
+<li><p>Create the certificate:</p></li>
+</ol>
 
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -531,14 +535,20 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h5>5. Sign the <code>handoff.json</code> file with the following command:</h5>
+<ol>
+<li>Sign the <code>handoff.json</code> file with the following command:</li>
+</ol>
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">cat</span> <span class="n">handoff</span><span class="p">.</span><span class="n">json</span> <span class="o">|</span> <span class="n">openssl</span> <span class="n">smime</span> <span class="o">-</span><span class="n">sign</span> <span class="o">-</span><span class="n">inkey</span> <span class="n">output_key</span><span class="p">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">signer</span> <span class="n">output_crt</span><span class="p">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">certfile</span> <span class="n">sample</span><span class="p">.</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span> <span class="o">-</span><span class="n">noattr</span> <span class="o">-</span><span class="n">nodetach</span> <span class="o">-</span><span class="n">outform</span> <span class="n">DER</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">association</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h5>6. Upload your <code>apple-site-app-association</code> file to the root of your web-site</h5>
+<ol>
+<li>Upload your <code>apple-site-app-association</code> file to the root of your web-site</li>
+</ol>
+
 
 <p>e.g. <a href="https://example.com/apple-app-site-association" target="_blank"><a href="https://example.com/apple-app-site-association">https://example.com/apple-app-site-association</a></a>.</p>
 
@@ -609,14 +619,20 @@
 
 <p>The Universal link never works with links as: <a href="http://localhost:8080"><a href="http://localhost:8080">http://localhost:8080</a></a></p>
 
-<h4>1. Launch the plugin at Root:</h4>
+<ol>
+<li>Launch the plugin at Root:</li>
+</ol>
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">atlas</span><span class="o">-</span><span class="n">run</span> <span class="o">--</span><span class="n">context</span><span class="o">-</span><span class="n">path</span> <span class="n">ROOT</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4>2. Change the local host link to pure link by using <a href="https://ngrok.com/" target="_blank">ngrok</a>:</h4>
+<ol>
+<li>Change the local host link to pure link by using <a href="https://ngrok.com/" target="_blank">ngrok</a>:</li>
+</ol>
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">ngrok</span> <span class="o">&lt;</span><span class="n">port_number</span><span class="o">&gt;</span>
@@ -630,9 +646,11 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4>3. Your local host link will become: <a href="http://xxxxxxxx.ngrok.com"><a href="http://xxxxxxxx.ngrok.com">http://xxxxxxxx.ngrok.com</a></a></h4>
+<ol>
+<li><p>Your local host link will become: <a href="http://xxxxxxxx.ngrok.com"><a href="http://xxxxxxxx.ngrok.com">http://xxxxxxxx.ngrok.com</a></a></p></li>
+<li><p>Re-configuring Associated Domains in Xcode to start testing</p></li>
+</ol>
 
-<h4>4. Re-configuring Associated Domains in Xcode to start testing</h4>
 
 <h1>Drawbacks of Universal Links</h1>
 
