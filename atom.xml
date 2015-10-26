@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-26T16:45:19+07:00</updated>
+  <updated>2015-10-26T16:51:20+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -257,7 +257,7 @@
 <h1>A. Generate apple-site-app-association file</h1>
 
 
-<h3>1. Create Server-side web credentials file: <code>handoff.json</code></h3>
+<h5>1. Create Server-side web credentials file: <code>handoff.json</code></h5>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -282,45 +282,54 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>2. Download your certificate at <a href="https://developer.apple.com/account/ios/certificate/certificateList.action" target="_blank">here</a>, and when it is downloaded, double click on it to add into KeyChain app</h3>
+<h5>2. Download your certificate at <a href="https://developer.apple.com/account/ios/certificate/certificateList.action" target="_blank">here</a>, and when it is downloaded, double click on it to add into KeyChain app</h5>
 
-<h3>3. Right click on your certificate in KeyChain to export your Certificates.p12</h3>
+<h5>3. Right click on your certificate in KeyChain to export your <code>Certificates.p12</code></h5>
 
 <p><a href="https://stackoverzone.files.wordpress.com/2015/10/11.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/11.png" alt="1" /></a></p>
 
 <p><a href="https://stackoverzone.files.wordpress.com/2015/10/2.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/2.png" alt="2" /></a></p>
 
-<h3>4. Open terminal to create certificates with openssl commands:</h3>
+<h5>4. Open terminal to create certificates with <code>openssl</code> commands:</h5>
 
-<h4>4.1. Create the certificate:</h4>
+<ul>
+<li>Create the certificate:</li>
+</ul>
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">openssl</span> <span class="n">pkcs12</span> <span class="o">-</span><span class="k">in</span> <span class="n">Certificates</span><span class="p">.</span><span class="n">p12</span> <span class="o">-</span><span class="n">clcerts</span> <span class="o">-</span><span class="n">nokeys</span> <span class="o">-</span><span class="k">out</span> <span class="n">output_crt</span><span class="p">.</span><span class="n">pem</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4>4.2. Create the secret key:</h4>
+<ul>
+<li>Create the secret key:</li>
+</ul>
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">openssl</span> <span class="n">pkcs12</span> <span class="o">-</span><span class="k">in</span> <span class="n">Certificates</span><span class="p">.</span><span class="n">p12</span> <span class="o">-</span><span class="n">nocerts</span> <span class="o">-</span><span class="n">nodes</span> <span class="o">-</span><span class="k">out</span> <span class="n">output_key</span><span class="p">.</span><span class="n">pem</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4>4.3. Create the intermediate certificate:</h4>
+<ul>
+<li>Create the intermediate certificate:</li>
+</ul>
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">openssl</span> <span class="n">pkcs12</span> <span class="o">-</span><span class="k">in</span> <span class="n">Certificates</span><span class="p">.</span><span class="n">p12</span> <span class="o">-</span><span class="n">cacerts</span> <span class="o">-</span><span class="n">nokeys</span> <span class="o">-</span><span class="k">out</span> <span class="n">sample</span><span class="p">.</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>5. Sign the <code>handoff.json</code> file with the following command:</h3>
+<h5>5. Sign the <code>handoff.json</code> file with the following command:</h5>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">cat</span> <span class="n">handoff</span><span class="p">.</span><span class="n">json</span> <span class="o">|</span> <span class="n">openssl</span> <span class="n">smime</span> <span class="o">-</span><span class="n">sign</span> <span class="o">-</span><span class="n">inkey</span> <span class="n">output_key</span><span class="p">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">signer</span> <span class="n">output_crt</span><span class="p">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">certfile</span> <span class="n">sample</span><span class="p">.</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span> <span class="o">-</span><span class="n">noattr</span> <span class="o">-</span><span class="n">nodetach</span> <span class="o">-</span><span class="n">outform</span> <span class="n">DER</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">association</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>6. Upload your <code>apple-site-app-association</code> file to the root of your web-site</h3>
+<h5>6. Upload your <code>apple-site-app-association</code> file to the root of your web-site</h5>
 
 <p>e.g. <a href="https://example.com/apple-app-site-association" target="_blank"><a href="https://example.com/apple-app-site-association">https://example.com/apple-app-site-association</a></a>.</p>
 
