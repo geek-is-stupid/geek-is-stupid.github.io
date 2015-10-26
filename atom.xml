@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-26T15:04:41+07:00</updated>
+  <updated>2015-10-26T15:05:48+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -23,7 +23,7 @@
 <h4>Project:</h4>
 
 <ul>
-<li><strong>Engine</strong>: Shared class, enum, structure, or logic, business on backend, network, parser, helper, cache, data store, etc&hellip;
+<li><strong>Engine</strong>: Shared classes, enums, structures, or logic, business on backend, networks, parsers, helpers, caches, data store, etc&hellip;
 
 <ul>
 <li><strong>Manager</strong>: Contains Singleton class to handle Application product
