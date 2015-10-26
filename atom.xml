@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-26T17:03:58+07:00</updated>
+  <updated>2015-10-26T17:08:57+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -286,9 +286,9 @@
 
 <p><strong>3. Right click on your certificate in KeyChain to export your <code>Certificates.p12</code></strong></p>
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/11.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/11.png" alt="1" /></a></p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/111.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/111.png" alt="1" /></a></p>
 
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/2.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/2.png" alt="2" /></a></p>
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/21.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/21.png" alt="2" /></a></p>
 
 <p><strong>4. Open terminal to create certificates with <code>openssl</code> commands:</strong></p>
 
