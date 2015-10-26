@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-10-26T17:03:07+07:00</updated>
+  <updated>2015-10-26T17:03:58+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -246,7 +246,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Press on Links to Open App Using Swift? Universal Links in iOS9]]></title>
+    <title type="html"><![CDATA[How to Press on Links to Open App Using Swift? Universal Links in iOS 9]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-press-on-links-to-open-app-using-swift-universal-links-in-ios9/"/>
     <updated>2015-10-23T23:51:20+07:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2015/10/23/how-to-press-on-links-to-open-app-using-swift-universal-links-in-ios9</id>
