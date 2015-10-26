@@ -9,7 +9,7 @@
   <meta name="author" content="Le Tai">
 
   
-  <meta name="description" content="App installation failed. This application&rsquo;s application-identifier entitlement does not match that of the installed application. These values &hellip;">
+  <meta name="description" content="[!] &lt;&lsquo;PBXGroup name='Filter&rsquo; UUID=&lsquo;99CE81391BA80D2D00CA7B29&rsquo;>&lsquo; attempted to initialize an object with an unknown &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/23/pod-install-rase-warning-this-can-be-the-result-of-a-merge-and-the-unknown-uuid-is-being-discarded-dot/">Pod Install Rase Warning "This Can Be the Result of a Merge and the Unknown UUID Is Being Discarded."</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-23T20:58:21+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:58 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span style="color:orange; font-family:Menlo;">
+[!] &lt;&lsquo;PBXGroup name='Filter&rsquo; UUID=&lsquo;99CE81391BA80D2D00CA7B29&rsquo;>&lsquo; attempted to initialize an object with an unknown UUID. '995E161E1BAAA6C2002153EC&rsquo; for attribute: &lsquo;children&rsquo;. This can be the result of a merge and  the unknown UUID is being discarded.
+</span></p>
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png" /></a></p>
+
+<h2>Resolve:</h2>
+
+<ol>
+<li>Open any file by Xcode</li>
+<li>On right side of Xcode, choose <code>Show the File inspector</code> > <code>Target Membership</code></li>
+<li>Try to uncheck and check the file on any <code>target</code>:</li>
+</ol>
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png"><img class="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png" /></a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -677,74 +722,9 @@ The text on app will be:</li>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/16/how-to-calculate-the-height-of-the-text-depend-on-width-and-font-using-swift2-dot-0/">How to Calculate the Height of the Text Depend on Width and Font Using Swift2.0?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-16T17:19:50+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:19 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The height of the text depend on the font, width and especially it has multiple line.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">String</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">func</span> <span class="n">sizeWithFont</span><span class="p">(</span><span class="nl">font</span><span class="p">:</span> <span class="bp">UIFont</span><span class="p">,</span> <span class="n">forWidth</span> <span class="nl">width</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">CGSize</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">fString</span> <span class="o">=</span> <span class="nb">self</span> <span class="kt">as</span> <span class="bp">NSString</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">paragraphStyle</span> <span class="o">=</span> <span class="bp">NSMutableParagraphStyle</span><span class="p">()</span>
-</span><span class='line'>        <span class="n">paragraphStyle</span><span class="p">.</span><span class="n">lineBreakMode</span> <span class="o">=</span> <span class="n">NSLineBreakMode</span><span class="p">.</span><span class="n">ByWordWrapping</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">attrDict</span> <span class="o">=</span> <span class="p">[</span>
-</span><span class='line'>            <span class="nl">NSFontAttributeName</span><span class="p">:</span> <span class="n">font</span><span class="p">,</span>
-</span><span class='line'>            <span class="nl">NSParagraphStyleAttributeName</span><span class="p">:</span> <span class="n">paragraphStyle</span>
-</span><span class='line'>        <span class="p">]</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">maximumSize</span> <span class="o">=</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">MAXFLOAT</span><span class="p">))</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">rect</span> <span class="o">=</span> <span class="n">fString</span><span class="p">.</span><span class="n">boundingRectWithSize</span><span class="p">(</span><span class="n">maximumSize</span><span class="p">,</span>
-</span><span class='line'>            <span class="nl">options</span><span class="p">:</span> <span class="p">[.</span><span class="n">TruncatesLastVisibleLine</span><span class="p">,</span> <span class="p">.</span><span class="n">UsesLineFragmentOrigin</span><span class="p">],</span>
-</span><span class='line'>            <span class="nl">attributes</span><span class="p">:</span> <span class="n">attrDict</span><span class="p">,</span>
-</span><span class='line'>            <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">rect</span><span class="p">.</span><span class="n">size</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/3">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
