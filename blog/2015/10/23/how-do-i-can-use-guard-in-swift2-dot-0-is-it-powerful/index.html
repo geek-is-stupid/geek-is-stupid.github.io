@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How Do I Can Use 'Guard' in Swift2.0? Is It Powerful? - Geek Is Stupid</title>
+  <title>How Can I Use 'Guard', 'Where' Statement in Swift2.0? Is It Powerful? - Geek Is Stupid</title>
   <meta name="author" content="Le Tai">
 
   
-  <meta name="description" content="...
-">
+  <meta name="description" content="I think guard is useful for make a precondition in your method when you will do some stuffs, it&rsquo;s great to unwrapping optional values Getting &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,7 +82,7 @@
   <header>
     
       
-        <h1 class="entry-title">How Do I Can Use 'Guard' in Swift2.0? Is It Powerful?</h1>
+        <h1 class="entry-title">How Can I Use 'Guard', 'Where' Statement in Swift2.0? Is It Powerful?</h1>
       
     
     
@@ -101,7 +100,90 @@
   </header>
 
 
-<div class="entry-content"><p><code>...</code></p>
+<div class="entry-content"><p>I think <code>guard</code> is useful for make a precondition in your method when you will do some stuffs, it&rsquo;s great to unwrapping optional values</p>
+
+<p>Getting started with a simple example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">doSomething</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">32</span> <span class="p">{</span>
+</span><span class='line'>          <span class="c1">// Do a lots of things here</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Update with <code>where</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">doSomething</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span> <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">32</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// Do a lots of things here</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But if you have to implement a lot of things and you need use a lots of nested conditioned statements, it makes your code not flat anymore and very hard to debugging, so the way that I use for this case is <code>guard</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">doSomething</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">guard</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span> <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">32</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="c1">// Do a lots of things here</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Bonus</strong>: What happen if you have a lots of conditions, something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span><span class="p">,</span> <span class="n">job</span> <span class="o">=</span> <span class="n">job</span><span class="p">,</span> <span class="n">company</span> <span class="o">=</span> <span class="n">company</span> <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">32</span> <span class="o">&amp;&amp;</span> <span class="n">job</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">iOS</span><span class="err">&#39;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Do a lots of things here</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But when you debugging your app and it doesn&rsquo;t run into the condition, how do you know which part made the condition failed???</p>
+
+<p>Tips here: <strong>Make one line with one condition</strong> and then you will easy to detect which condition is wrong.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">job</span> <span class="o">=</span> <span class="n">job</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">company</span> <span class="o">=</span> <span class="n">company</span>
+</span><span class='line'>  <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">32</span>
+</span><span class='line'>  <span class="o">&amp;&amp;</span> <span class="n">job</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">iOS</span><span class="err">&#39;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Do a lots of things here</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
