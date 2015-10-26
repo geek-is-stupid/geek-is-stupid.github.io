@@ -9,8 +9,7 @@
   <meta name="author" content="Le Tai">
 
   
-  <meta name="description" content="...
-">
+  <meta name="description" content="Description: Project: Engine: Shared class, enum, structure, or logic, business on backend, network, parser, helper, cache, data store, etc&hellip; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,7 +101,93 @@
   </header>
 
 
-  <div class="entry-content"><p><code>...</code></p>
+  <div class="entry-content"><h2>Description:</h2>
+
+<h4>Project:</h4>
+
+<ul>
+<li><strong>Engine</strong>: Shared class, enum, structure, or logic, business on backend, network, parser, helper, cache, data store, etc&hellip;
+
+<ul>
+<li><strong>Manager</strong>: Contains Singleton class to handle Application product
+
+<ul>
+<li>Authentication manager</li>
+<li>Push notifications manager</li>
+<li>REST manager files</li>
+</ul>
+</li>
+<li><strong>Constant</strong>:
+
+<ul>
+<li>AppConstants file</li>
+<li>RESTConstants file</li>
+<li>Constants file</li>
+<li>&hellip;</li>
+</ul>
+</li>
+<li><strong>Utility</strong>:
+
+<ul>
+<li>AppUtils file</li>
+<li>RESTUtils file</li>
+<li>&hellip;</li>
+</ul>
+</li>
+<li><strong>Config</strong>: Contains everything contribute for configuration app
+
+<ul>
+<li>AppConfig file: Configure all setting in app: Feedback, geting started with third party libraries, configure server&rsquo;s hosts, configure logger, &hellip;</li>
+</ul>
+</li>
+<li><strong>Extension</strong>: Extend class / struct / enum</li>
+<li><strong>Service</strong>:
+
+<ul>
+<li><strong>ApiService</strong>: Call API</li>
+<li><strong>SystemService</strong>: Handle system service (Push Notification, &hellip;)</li>
+</ul>
+</li>
+<li><strong>Persistence</strong>: Store entities here</li>
+</ul>
+</li>
+<li><strong>ViewModule</strong>: Every module contains View, ViewModel &amp; anything related to front end.
+
+<ul>
+<li><strong>Component</strong>: The views that they will be share between multiple screens. With each screen should be has a folder for itself</li>
+<li><strong>View</strong>: Represent for the screens. With each screen should be has a folder for itself
+
+<ul>
+<li>E.g. Feed:
+
+<ul>
+<li><code>FeedViewController.swift</code> file</li>
+<li><code>FeedViewModel.swift</code> file</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Resource</strong>: Can be contains Images, Sounds, Layout config file, etc.
+
+<ul>
+<li><code>Assets.xcassets</code></li>
+<li><code>Localizable.strings</code></li>
+<li>&hellip;</li>
+</ul>
+</li>
+<li><strong>Storyboard</strong>: Put all storyboards at here. With each screen should be has a storyboard file for itself => Reduce conflicts when merge <strong>Pull Request</strong></li>
+<li><strong><code>AppDelegate.swift</code></strong></li>
+<li><strong><code>Info.plist</code></strong></li>
+</ul>
+
+
+<h4>ExternalLibraries:</h4>
+
+<h2>Naming Style</h2>
+
+<p>The name of folder follows <strong>CamelCase</strong> style, and be <strong>Singular</strong>.</p>
 </div>
   
   
