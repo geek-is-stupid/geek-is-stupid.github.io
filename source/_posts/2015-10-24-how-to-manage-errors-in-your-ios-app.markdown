@@ -40,9 +40,7 @@ enum APIError: Int, ErrorType, CustomStringConvertible {
     }
     
     func foundationError() -> NSError {
-        return NSError(domain: errorDomain, code: self.rawValue, userInfo: [
-            NSLocalizedDescriptionKey: description
-            ])
+        return NSError(domain: errorDomain, code: self.rawValue, userInfo: [NSLocalizedDescriptionKey: description])
     }
 }
 ```
@@ -56,7 +54,7 @@ class PersonAPIService {
 	// Success
 		success(person)
 	// Failure with 'headerResponse: NSHTTPURLResponse'
-		failure(APIError(rawValue: headerResponse.statusCode))
+		failure(APIError(rawValue: headerResponse.statusCode).foundationError())
 	}
 }
 ```
