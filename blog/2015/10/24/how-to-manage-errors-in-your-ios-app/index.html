@@ -137,8 +137,6 @@
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="nl">APIError</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">ErrorType</span><span class="p">,</span> <span class="n">CustomStringConvertible</span> <span class="p">{</span>
 </span><span class='line'>    <span class="k">case</span> <span class="n">Unauthorized</span> <span class="o">=</span> <span class="mi">401</span>
 </span><span class='line'>    <span class="k">case</span> <span class="n">Forbidden</span> <span class="o">=</span> <span class="mi">403</span>
@@ -163,9 +161,7 @@
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="k">func</span> <span class="n">foundationError</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">NSError</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="bp">NSError</span><span class="p">(</span><span class="nl">domain</span><span class="p">:</span> <span class="n">errorDomain</span><span class="p">,</span> <span class="nl">code</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">rawValue</span><span class="p">,</span> <span class="nl">userInfo</span><span class="p">:</span> <span class="p">[</span>
-</span><span class='line'>            <span class="nl">NSLocalizedDescriptionKey</span><span class="p">:</span> <span class="n">description</span>
-</span><span class='line'>            <span class="p">])</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">NSError</span><span class="p">(</span><span class="nl">domain</span><span class="p">:</span> <span class="n">errorDomain</span><span class="p">,</span> <span class="nl">code</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">rawValue</span><span class="p">,</span> <span class="nl">userInfo</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSLocalizedDescriptionKey</span><span class="p">:</span> <span class="n">description</span><span class="p">])</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -188,7 +184,7 @@
 </span><span class='line'>  <span class="c1">// Success</span>
 </span><span class='line'>      <span class="n">success</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
 </span><span class='line'>  <span class="c1">// Failure with &#39;headerResponse: NSHTTPURLResponse&#39;</span>
-</span><span class='line'>      <span class="n">failure</span><span class="p">(</span><span class="n">APIError</span><span class="p">(</span><span class="nl">rawValue</span><span class="p">:</span> <span class="n">headerResponse</span><span class="p">.</span><span class="n">statusCode</span><span class="p">))</span>
+</span><span class='line'>      <span class="n">failure</span><span class="p">(</span><span class="n">APIError</span><span class="p">(</span><span class="nl">rawValue</span><span class="p">:</span> <span class="n">headerResponse</span><span class="p">.</span><span class="n">statusCode</span><span class="p">).</span><span class="n">foundationError</span><span class="p">())</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
