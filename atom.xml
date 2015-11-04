@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-11-04T14:26:36+07:00</updated>
+  <updated>2015-11-04T15:27:44+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -27,7 +27,163 @@
     <link href="http://geek-is-stupid.github.io/blog/2015/11/02/map-flatmap-its-so-magic/"/>
     <updated>2015-11-02T10:29:45+07:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2015/11/02/map-flatmap-its-so-magic</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<h1>Array</h1>
+
+<p>I have a class:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="n">Person</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
+</span><span class='line'>    <span class="k">var</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span class='line'>        <span class="nb">self</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and I have a lot of people and all of them I stored in an array as well:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">A</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">B</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">C</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">D</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;D&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">E</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;E&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">F</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;F&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">people</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Question: How to join all names of people in the array?</h3>
+
+<p>Simple way:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">var</span> <span class="n">names</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+</span><span class='line'><span class="k">for</span> <span class="n">person</span> <span class="k">in</span> <span class="n">people</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">names</span> <span class="o">+=</span> <span class="n">person</span><span class="p">.</span><span class="n">name</span><span class="o">!</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Shorter way:</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">arrayNames</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">name</span> <span class="p">}</span>
+</span><span class='line'><span class="n">print</span><span class="p">(</span><span class="n">arrayNames</span><span class="p">.</span><span class="n">joinWithSeparator</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">arrayNames</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">person</span> <span class="k">in</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">person</span><span class="p">.</span><span class="n">name</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">print</span><span class="p">(</span><span class="n">arrayNames</span><span class="p">.</span><span class="n">joinWithSeparator</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>So how about <code>.flatMap</code>???</h4>
+
+<p>Now I need to change a little bit here:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">A</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">nil</span>
+</span><span class='line'><span class="n">C</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">nil</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Using <code>.map</code>:</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">arrayNames</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">person</span> <span class="k">in</span>
+</span><span class='line'>    <span class="n">guard</span> <span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="n">person</span><span class="p">.</span><span class="n">name</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">person</span><span class="p">.</span><span class="n">name</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Output:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">[</span><span class="nb">nil</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Using <code>.flatMap</code>:</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">arrayNames</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="n">person</span> <span class="k">in</span>
+</span><span class='line'>    <span class="n">guard</span> <span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="n">person</span><span class="p">.</span><span class="n">name</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">name</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Output:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>-> The <code>nil</code> values won&rsquo;t be added into returned array</h4>
+
+<h4><u>Difference</u>:</h4>
+
+<table>
+<thead>
+<tr>
+<th> <code>.map</code> </th>
+<th> <code>.flatMap</code> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Add <code>nil</code> values into returned array </td>
+<td> Doesn&rsquo;t add <code>nil</code> values into returned array </td>
+</tr>
+</tbody>
+</table>
+
+
+<h1>Optional</h1>
+
+<p><code>...</code></p>
 ]]></content>
   </entry>
   
