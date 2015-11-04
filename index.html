@@ -164,15 +164,11 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">A</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
-</span><span class='line'><span class="k">let</span> <span class="n">B</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
-</span><span class='line'><span class="k">let</span> <span class="n">C</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
-</span><span class='line'><span class="k">let</span> <span class="n">D</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;D&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
-</span><span class='line'><span class="k">let</span> <span class="n">E</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;E&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
-</span><span class='line'><span class="k">let</span> <span class="n">F</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;F&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
-</span><span class='line'><span class="k">let</span> <span class="n">people</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">]</span>
+</span><span class='line'><span class="k">let</span> <span class="n">B</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">C</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">27</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">D</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;D&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">32</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">people</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -215,7 +211,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4>So how about <code>.flatMap</code>???</h4>
+<h3>So how about if I using <code>.flatMap</code>???</h3>
 
 <p>Now I need to change a little bit here:</p>
 
@@ -242,7 +238,7 @@
 <p>Output:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">[</span><span class="nb">nil</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">]</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">[</span><span class="nb">nil</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">&quot;D&quot;</span><span class="p">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -262,7 +258,7 @@
 <p>Output:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">F</span><span class="p">]</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">[</span><span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="s">&quot;D&quot;</span><span class="p">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -285,10 +281,6 @@
 </tbody>
 </table>
 
-
-<h1>Optional</h1>
-
-<p><code>...</code></p>
 </div>
   
   
