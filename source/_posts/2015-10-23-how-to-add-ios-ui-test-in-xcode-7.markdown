@@ -94,3 +94,20 @@ func testExample() {
 ```
 
 ###5. Run test: <code> Command + U </code>
+
+###6. Basic statements:
+- Waiting: Sometime you must to waiting for the animation done, or the results from network
+
+```
+func waitForElement(elementType: XCUIElement, timeout: NSTimeInterval ) {
+        let elementExist = NSPredicate(format: "exists == 1")
+        expectationForPredicate(elementExist, evaluatedWithObject: elementType, handler: nil)
+        waitForExpectationsWithTimeout(timeout, handler: nil)
+    }
+```
+- Get UITableViewCell
+
+```
+let app = XCUIApplication()
+let cell = app.tables.staticTexts["About"] // This is a cell has content text: `About`
+```
