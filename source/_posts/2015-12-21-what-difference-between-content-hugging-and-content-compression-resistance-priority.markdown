@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What difference between Content Hugging and Content Compression Resistance priority?"
+title: "What difference between Content Hugging and Content Compression Resistance priority - Cocoa Autolayout?"
 date: 2015-12-21 11:04:00 +0700
 comments: true
 categories: 
