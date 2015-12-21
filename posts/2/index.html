@@ -9,8 +9,7 @@
   <meta name="author" content="Le Tai">
 
   
-  <meta name="description" content="...
-">
+  <meta name="description" content="Good way to optimize your code :P I think guard is useful for make a precondition in your method when you will do some stuffs, it&rsquo;s great to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +78,123 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/23/how-do-i-can-use-guard-in-swift2-dot-0-is-it-powerful/">How Can I Use 'Guard', 'Where' Statement in Swift2.0? Is It Powerful?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-23T23:57:42+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>11:57 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Good way to optimize your code :P</h3>
+
+<p>I think <code>guard</code> is useful for make a precondition in your method when you will do some stuffs, it&rsquo;s great to unwrapping optional values</p>
+
+<p>Getting started with a simple example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">doSomething</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">32</span> <span class="p">{</span>
+</span><span class='line'>          <span class="c1">// Do a lots of things here</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Update with <code>where</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">doSomething</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span> <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">32</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// Do a lots of things here</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But if you have to implement a lot of things and you need use a lots of nested conditioned statements, it makes your code not flat anymore and very hard to debugging, so the way that I use for this case is <code>guard</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">doSomething</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">guard</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span> <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">32</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="c1">// Do a lots of things here</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Bonus:</h2>
+
+<p>What happen if you have a lots of conditions, something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span><span class="p">,</span> <span class="n">job</span> <span class="o">=</span> <span class="n">job</span><span class="p">,</span> <span class="n">company</span> <span class="o">=</span> <span class="n">company</span> <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">32</span> <span class="o">&amp;&amp;</span> <span class="n">job</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">iOS</span><span class="err">&#39;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Do a lots of things here</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But when you debugging your app and it doesn&rsquo;t run into the condition, how do you know which part made the condition failed???</p>
+
+<p>Tips here: <strong>Make one line with one condition</strong> and then you will easy to detect which condition is wrong.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">job</span> <span class="o">=</span> <span class="n">job</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">company</span> <span class="o">=</span> <span class="n">company</span>
+</span><span class='line'>  <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">32</span>
+</span><span class='line'>  <span class="o">&amp;&amp;</span> <span class="n">job</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">iOS</span><span class="err">&#39;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Do a lots of things here</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -623,62 +739,6 @@
 </span><span class='line'>             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;New Address Is:%@&quot;</span><span class="p">,</span> <span class="n">address</span><span class="p">);</span>
 </span><span class='line'>         <span class="p">}</span>
 </span><span class='line'>     <span class="p">}];</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-detected-long-press-button-using-objective-c/">How to Detected Long Press on a Button Using Objective C?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-23T15:43:02+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>3:43 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Add gesture:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="bp">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIButton</span> <span class="nl">buttonWithType</span><span class="p">:</span><span class="n">UIButtonTypeRoundedRect</span><span class="p">];</span>
-</span><span class='line'><span class="bp">UILongPressGestureRecognizer</span> <span class="o">*</span><span class="n">longPress</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UILongPressGestureRecognizer</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTarget</span><span class="p">:</span><span class="nb">self</span> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">longPress</span><span class="p">:)];</span>
-</span><span class='line'><span class="p">[</span><span class="n">button</span> <span class="nl">addGestureRecognizer</span><span class="p">:</span><span class="n">longPress</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And implement to handle long event:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">longPress:</span><span class="p">(</span><span class="bp">UILongPressGestureRecognizer</span><span class="o">*</span><span class="p">)</span><span class="nv">gesture</span> <span class="p">{</span>
-</span><span class='line'>    <span class="bp">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">(</span><span class="bp">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="n">gesture</span><span class="p">.</span><span class="n">view</span><span class="p">;</span>
-</span><span class='line'><span class="c1">//    if (gesture.state == UIGestureRecognizerStateEnded) {</span>
-</span><span class='line'><span class="c1">//        Do something…</span>
-</span><span class='line'><span class="c1">//    }</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 

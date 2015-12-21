@@ -4,7 +4,7 @@
   <title><![CDATA[Geek Is Stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2015-12-10T15:43:12+07:00</updated>
+  <updated>2015-12-21T11:19:24+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[Le Tai]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What Difference Between Content Hugging and Content Compression Resistance Priority?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority/"/>
+    <updated>2015-12-21T11:04:00+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority</id>
+    <content type="html"><![CDATA[<h3>Summary:</h3>
+
+<ul>
+<li>Hugging: Content does not want to grow</li>
+<li>Compression Resistance: Content does not want to shrink</li>
+</ul>
+
+
+<h3>Example:</h3>
+
+<p>I have a button here: [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click Me&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</p>
+
+<table>
+<thead>
+<tr>
+<th> # </th>
+<th style="text-align:center;"> &lt;500 </th>
+<th style="text-align:center;"> >500 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Hugging </td>
+<td style="text-align:center;"> [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click Me&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;] </td>
+<td style="text-align:center;"> [Click Me] </td>
+</tr>
+<tr>
+<td> Compression Resistance </td>
+<td style="text-align:center;"> [Cli…] </td>
+<td style="text-align:center;"> [Click Me] </td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Quick Way to Add New Auto Layout Constraints in Swift]]></title>
@@ -1038,41 +1080,6 @@
 </span><span class='line'>             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;New Address Is:%@&quot;</span><span class="p">,</span> <span class="n">address</span><span class="p">);</span>
 </span><span class='line'>         <span class="p">}</span>
 </span><span class='line'>     <span class="p">}];</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Detected Long Press on a Button Using Objective C?]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-detected-long-press-button-using-objective-c/"/>
-    <updated>2015-10-23T15:43:02+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2015/10/23/how-to-detected-long-press-button-using-objective-c</id>
-    <content type="html"><![CDATA[<p>Add gesture:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="bp">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIButton</span> <span class="nl">buttonWithType</span><span class="p">:</span><span class="n">UIButtonTypeRoundedRect</span><span class="p">];</span>
-</span><span class='line'><span class="bp">UILongPressGestureRecognizer</span> <span class="o">*</span><span class="n">longPress</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UILongPressGestureRecognizer</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTarget</span><span class="p">:</span><span class="nb">self</span> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">longPress</span><span class="p">:)];</span>
-</span><span class='line'><span class="p">[</span><span class="n">button</span> <span class="nl">addGestureRecognizer</span><span class="p">:</span><span class="n">longPress</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And implement to handle long event:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">longPress:</span><span class="p">(</span><span class="bp">UILongPressGestureRecognizer</span><span class="o">*</span><span class="p">)</span><span class="nv">gesture</span> <span class="p">{</span>
-</span><span class='line'>    <span class="bp">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">(</span><span class="bp">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="n">gesture</span><span class="p">.</span><span class="n">view</span><span class="p">;</span>
-</span><span class='line'><span class="c1">//    if (gesture.state == UIGestureRecognizerStateEnded) {</span>
-</span><span class='line'><span class="c1">//        Do something…</span>
-</span><span class='line'><span class="c1">//    }</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 

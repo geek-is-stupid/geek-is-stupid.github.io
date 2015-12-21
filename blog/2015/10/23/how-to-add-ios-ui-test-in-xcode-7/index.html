@@ -259,6 +259,38 @@
 
 
 <h3>5. Run test: <code> Command + U </code></h3>
+
+<h3>6. Basic statements:</h3>
+
+<ul>
+<li>Waiting: Sometime you must to waiting for the animation done, or the results from network</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">waitForElement</span><span class="p">(</span><span class="nl">elementType</span><span class="p">:</span> <span class="n">XCUIElement</span><span class="p">,</span> <span class="nl">timeout</span><span class="p">:</span> <span class="n">NSTimeInterval</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">elementExist</span> <span class="o">=</span> <span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;exists == 1&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">expectationForPredicate</span><span class="p">(</span><span class="n">elementExist</span><span class="p">,</span> <span class="nl">evaluatedWithObject</span><span class="p">:</span> <span class="n">elementType</span><span class="p">,</span> <span class="nl">handler</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">waitForExpectationsWithTimeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="nl">handler</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Get UITableViewCell</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">app</span> <span class="o">=</span> <span class="n">XCUIApplication</span><span class="p">()</span>
+</span><span class='line'><span class="k">let</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="n">tables</span><span class="p">.</span><span class="n">staticTexts</span><span class="p">[</span><span class="s">&quot;About&quot;</span><span class="p">]</span> <span class="c1">// This is a cell has content text: `About`</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 

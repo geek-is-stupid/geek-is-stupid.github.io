@@ -9,10 +9,11 @@
   <meta name="author" content="Le Tai">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="Add gesture: 1
 2
 3
-[MKMapSnapshotter takeSnapShotOfTargetSize:CGSizeMake(320, 150) withPolyline:(MKGeodesicPolyline *)polyline completion:^(UIImage * image, &hellip;">
+UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+UILongPressGestureRecognizer *longPress = [[ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-detected-long-press-button-using-objective-c/">How to Detected Long Press on a Button Using Objective C?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-23T15:43:02+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>3:43 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Add gesture:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="bp">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIButton</span> <span class="nl">buttonWithType</span><span class="p">:</span><span class="n">UIButtonTypeRoundedRect</span><span class="p">];</span>
+</span><span class='line'><span class="bp">UILongPressGestureRecognizer</span> <span class="o">*</span><span class="n">longPress</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UILongPressGestureRecognizer</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTarget</span><span class="p">:</span><span class="nb">self</span> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">longPress</span><span class="p">:)];</span>
+</span><span class='line'><span class="p">[</span><span class="n">button</span> <span class="nl">addGestureRecognizer</span><span class="p">:</span><span class="n">longPress</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And implement to handle long event:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">longPress:</span><span class="p">(</span><span class="bp">UILongPressGestureRecognizer</span><span class="o">*</span><span class="p">)</span><span class="nv">gesture</span> <span class="p">{</span>
+</span><span class='line'>    <span class="bp">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">(</span><span class="bp">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="n">gesture</span><span class="p">.</span><span class="n">view</span><span class="p">;</span>
+</span><span class='line'><span class="c1">//    if (gesture.state == UIGestureRecognizerStateEnded) {</span>
+</span><span class='line'><span class="c1">//        Do something…</span>
+</span><span class='line'><span class="c1">//    }</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -363,6 +420,38 @@
 
 
 <h3>5. Run test: <code> Command + U </code></h3>
+
+<h3>6. Basic statements:</h3>
+
+<ul>
+<li>Waiting: Sometime you must to waiting for the animation done, or the results from network</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">waitForElement</span><span class="p">(</span><span class="nl">elementType</span><span class="p">:</span> <span class="n">XCUIElement</span><span class="p">,</span> <span class="nl">timeout</span><span class="p">:</span> <span class="n">NSTimeInterval</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">elementExist</span> <span class="o">=</span> <span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;exists == 1&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">expectationForPredicate</span><span class="p">(</span><span class="n">elementExist</span><span class="p">,</span> <span class="nl">evaluatedWithObject</span><span class="p">:</span> <span class="n">elementType</span><span class="p">,</span> <span class="nl">handler</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">waitForExpectationsWithTimeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="nl">handler</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Get UITableViewCell</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">app</span> <span class="o">=</span> <span class="n">XCUIApplication</span><span class="p">()</span>
+</span><span class='line'><span class="k">let</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="n">tables</span><span class="p">.</span><span class="n">staticTexts</span><span class="p">[</span><span class="s">&quot;About&quot;</span><span class="p">]</span> <span class="c1">// This is a cell has content text: `About`</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
   
   
