@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 	}
 
 	override func prefersStatusBarHidden() -> Bool {
-   		return isHidden
+   		return hideStatusBar
 	}
 }
 ```
