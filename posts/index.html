@@ -1,0 +1,2908 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>All Posts - Geek Is Stupid</title>
+  <meta name="author" content="Le Tai">
+
+  
+  <meta name="description" content="All Posts Adjust Custom Font Verical Alignment - Xcode Some time when you custom font in your project, and the font display not correctly, so how to &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://geek-is-stupid.github.io/posts">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Geek Is Stupid" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <div class="all-posts">
+  <div class="container">
+    <div class="row">
+      <div class="list-title col-md-offset-3 col-md-6">
+        <h4>All Posts</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-list">
+    <div class="container">
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2016/08/16/adjust-custom-font-verical-alignment-xcode/">Adjust Custom Font Verical Alignment - Xcode</a></h2>
+  
+  <p>
+    <p>Some time when you custom font in your project, and the font display not correctly, so how to fix that:</p>
+
+
+
+
+<p>Step 1. Download <a href="https://developer.apple.com/fonts/">Apple Font Tool Suite</a> command line utilities.</p>
+
+
+
+
+<p>Step 2. Go to the folder which contains your font and run command:
+<code>ftxdumperfuser -t hhea -A d Bold.ttf</code></p>
+
+
+
+
+<p>Step 3. It will generate Bold.hhea.xml automatically, open it and edit <code>ascender</code> value. In my case I changed it from <code>750</code> to <code>1200</code></p>
+
+
+
+
+<p>Step 4. Run: <code>ftxdumperfuser -t hhea -A f Bold.ttf</code></p>
+
+
+
+
+<p>And now your font is updated!!!</p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2016-08-16T10:05:47+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority/">What Difference Between Content Hugging and Content Compression Resistance Priority - Cocoa Autolayout?</a></h2>
+  
+  <p>
+    <h3>Summary:</h3>
+
+
+
+
+<ul>
+<li>Hugging: Content does not want to grow</li>
+<li>Compression Resistance: Content does not want to shrink</li>
+</ul>
+
+
+
+
+<h3>Example:</h3>
+
+
+
+
+<p>I have a button look like this:&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click Me&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</p>
+
+
+
+
+<table>
+<thead>
+<tr>
+<th> # </th>
+<th style="text-align:center;"> &lt;500 </th>
+<th style="text-align:center;"> >500 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Hugging </td>
+<td style="text-align:center;"> [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click Me&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;] </td>
+<td style="text-align:center;"> [Click Me] </td>
+</tr>
+<tr>
+<td> Compression Resistance </td>
+<td style="text-align:center;"> [Cli…] </td>
+<td style="text-align:center;"> [Click Me] </td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-12-21T11:04:00+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/">Quick Way to Add New Auto Layout Constraints in Swift</a></h2>
+  
+  <p>
+    <h3>What you will do when you wanna add new space between a label and a button? Or add width for a label?</h3>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">spaceConstraint</span> <span class="o">=</span> <span class="bp">NSLayoutConstraint</span><span class="p">(</span>
+</span><span class='line'>    <span class="nl">item</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Leading</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">relatedBy</span><span class="p">:</span> <span class="p">.</span><span class="n">Equal</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">toItem</span><span class="p">:</span> <span class="n">button</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Trailing</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">multiplier</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">let</span> <span class="n">widthConstraint</span> <span class="o">=</span> <span class="bp">NSLayoutConstraint</span><span class="p">(</span>
+</span><span class='line'>    <span class="nl">item</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Width</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">relatedBy</span><span class="p">:</span> <span class="p">.</span><span class="n">LessThanOrEqual</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">toItem</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">NotAnAttribute</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">multiplier</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">spaceConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span><span class='line'><span class="n">widthConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h3>OK, Now I will show you a simple way:</h3>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">spaceConstraint</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="n">leadingAnchor</span><span class="p">.</span><span class="n">constraintEqualToAnchor</span><span class="p">(</span><span class="n">button</span><span class="p">.</span><span class="n">trailingAnchor</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">widthConstraint</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="n">widthAnchor</span><span class="p">.</span><span class="n">constraintLessThanOrEqualToConstant</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</span><span class='line'><span class="n">spaceConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span><span class='line'><span class="n">widthConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h5>Cheers!!!</h5>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-12-10T15:22:53+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/11/09/how-to-debug-uiwebview-in-ios/">How to Debug UIWebView in iOS?</a></h2>
+  
+  <p>
+    <p>If you&rsquo;re using iOS >= 6 and you have mountain lion (10.8) or Safari >= 6, you can just:</p>
+
+
+
+
+<ol>
+<li>Open the application in the simulator (or your device in XCode >= 4.5.x).</li>
+<li>Open Safari on your Mac: Go to <code>Preferences</code> -> <code>Advanced</code> and make sure &ldquo;<code>Show Develop Menu in Menubar</code>&rdquo; is on.</li>
+<li>From the Menu bar (of Safari) select <code>Develop -&gt; iPhone Simulator -&gt; [your webview page]</code>.</li>
+</ol>
+
+
+
+
+<p>That&rsquo;s it!</p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-11-09T18:10:56+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/11/02/how-to-close-modal-screens-in-uistoryboard-ios9-unwind-segue/">How to Close Modal Screens in UIStoryboard - iOS9? - Unwind Segue</a></h2>
+  
+  <p>
+    
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-11-02T11:14:41+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/11/02/map-flatmap-its-so-magic/">Map(), flatMap() Its So Magic</a></h2>
+  
+  <p>
+    <h1>Array</h1>
+
+
+
+
+<p>I have a class:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="n">Person</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
+</span><span class='line'>    <span class="k">var</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span class='line'>        <span class="nb">self</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>and I have a lot of people and all of them I stored in an array as well:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">A</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">B</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">C</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">27</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">D</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;D&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">32</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">people</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h3>Question: How to join all names of people in the array?</h3>
+
+
+
+
+<p>Simple way:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">var</span> <span class="n">names</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+</span><span class='line'><span class="k">for</span> <span class="n">person</span> <span class="k">in</span> <span class="n">people</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">names</span> <span class="o">+=</span> <span class="n">person</span><span class="p">.</span><span class="n">name</span><span class="o">!</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h4>Shorter way:</h4>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">arrayNames</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">name</span> <span class="p">}</span>
+</span><span class='line'><span class="n">print</span><span class="p">(</span><span class="n">arrayNames</span><span class="p">.</span><span class="n">joinWithSeparator</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>or</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">arrayNames</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">person</span> <span class="k">in</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">person</span><span class="p">.</span><span class="n">name</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">print</span><span class="p">(</span><span class="n">arrayNames</span><span class="p">.</span><span class="n">joinWithSeparator</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h3>So how about if I using <code>.flatMap</code>???</h3>
+
+
+
+
+<p>Now I need to change a little bit here:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">A</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">nil</span>
+</span><span class='line'><span class="n">C</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">nil</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h5>Using <code>.map</code>:</h5>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">arrayNames</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">person</span> <span class="k">in</span>
+</span><span class='line'>    <span class="n">guard</span> <span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="n">person</span><span class="p">.</span><span class="n">name</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">person</span><span class="p">.</span><span class="n">name</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Output:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">[</span><span class="nb">nil</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">&quot;D&quot;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h5>Using <code>.flatMap</code>:</h5>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">arrayNames</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="n">person</span> <span class="k">in</span>
+</span><span class='line'>    <span class="n">guard</span> <span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="n">person</span><span class="p">.</span><span class="n">name</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">name</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Output:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">[</span><span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="s">&quot;D&quot;</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h4>-> The <code>nil</code> values won&rsquo;t be added into returned array</h4>
+
+
+
+
+<h4><u>Difference</u>:</h4>
+
+
+
+
+<table>
+<thead>
+<tr>
+<th> <code>.map</code> </th>
+<th> <code>.flatMap</code> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Add <code>nil</code> values into returned array </td>
+<td> Doesn&rsquo;t add <code>nil</code> values into returned array </td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-11-02T10:29:45+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/27/how-to-hide-status-bar-in-ios-9/">How to Hide Status Bar by Press a Button in iOS 9?</a></h2>
+  
+  <p>
+    <h2>With animations:</h2>
+
+
+
+
+<ul>
+<li>Solution 1:</li>
+</ul>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/hide-status-bar.gif"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/hide-status-bar.gif" /></a></p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="nl">ViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">var</span> <span class="n">hideStatusBar</span> <span class="o">=</span> <span class="nb">false</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">@</span><span class="kt">IBAction</span> <span class="k">func</span> <span class="n">buttonTapped</span><span class="p">(</span><span class="nl">button</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">hideStatusBar</span> <span class="o">=</span> <span class="o">!</span><span class="n">hideStatusBar</span>
+</span><span class='line'>          <span class="bp">UIView</span><span class="p">.</span><span class="n">animateWithDuration</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span> <span class="p">{</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="k">in</span>
+</span><span class='line'>              <span class="nb">self</span><span class="p">.</span><span class="n">setNeedsStatusBarAppearanceUpdate</span><span class="p">()</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kr">override</span> <span class="k">func</span> <span class="n">preferredStatusBarUpdateAnimation</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UIStatusBarAnimation</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="p">.</span><span class="n">Fade</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kr">override</span> <span class="k">func</span> <span class="n">prefersStatusBarHidden</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">hideStatusBar</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Ref: <a href="http://stackoverflow.com/questions/32808593/setstatusbarhidden-withanimation-deprecated-in-ios-9#answer-32808743"><a href="http://stackoverflow.com/questions/32808593/setstatusbarhidden-withanimation-deprecated-in-ios-9#answer-32808743">http://stackoverflow.com/questions/32808593/setstatusbarhidden-withanimation-deprecated-in-ios-9#answer-32808743</a></a></p>
+
+
+
+
+<ul>
+<li>Solution 2:</li>
+</ul>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">@</span><span class="kt">IBAction</span> <span class="n">fun</span> <span class="n">buttonTapped</span><span class="p">(</span><span class="nl">button</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">setStatusBarHidden</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span> <span class="nl">withAnimation</span><span class="p">:</span> <span class="p">.</span><span class="n">Fade</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>But this was deprecated on iOS 9 and later</p>
+
+
+
+
+<h2>What should I do if: <code>"View controller-based status bar appearance" = NO</code></h2>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">statusBarHidden</span> <span class="o">=</span> <span class="nb">false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>This solution without animation :(</p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-27T16:12:23+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/26/what-difference-between-carthage-and-cocoapods/">What Difference Between Carthage and CocoaPods?</a></h2>
+  
+  <p>
+    
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-26T17:37:12+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/24/how-to-organize-folders-in-your-ios-app/">How to Organize Folders in Your iOS App?</a></h2>
+  
+  <p>
+    <h2>Application Structure:</h2>
+
+
+
+
+<h4>Project:</h4>
+
+
+
+
+<ul>
+<li><strong><u>Engine</u></strong>: Shared classes, enums, structures, or logic, business on backend, networks, parsers, helpers, caches, data store, etc&hellip;
+
+<ul>
+<li><strong>Manager</strong>: Contains Singleton class to handle Application product
+
+<ul>
+<li>Authentication manager</li>
+<li>Push notifications manager</li>
+<li>REST manager files</li>
+</ul>
+</li>
+<li><strong>Constant</strong>:
+
+<ul>
+<li>AppConstants file</li>
+<li>RESTConstants file</li>
+<li>Constants file</li>
+<li>&hellip;</li>
+</ul>
+</li>
+<li><strong>Utility</strong>:
+
+<ul>
+<li>AppUtils file</li>
+<li>RESTUtils file</li>
+<li>&hellip;</li>
+</ul>
+</li>
+<li><strong>Config</strong>: Contains everything contribute for configuration app
+
+<ul>
+<li>AppConfig file: Configure all setting in app: Feedback, geting started with third party libraries, configure server&rsquo;s hosts, configure logger, &hellip;</li>
+</ul>
+</li>
+<li><strong>Extension</strong>: Extend class / struct / enum</li>
+<li><strong>Service</strong>:
+
+<ul>
+<li><strong>ApiService</strong>: Call API</li>
+<li><strong>SystemService</strong>: Handle system service (Push Notification, &hellip;)</li>
+</ul>
+</li>
+<li><strong>Persistence</strong>: Store entities here</li>
+</ul>
+</li>
+<li><strong><u>ViewModule</u></strong>: Every module contains View, ViewModel &amp; anything related to front end.
+
+<ul>
+<li><strong>Component</strong>: The views that they will be share between multiple screens. With each screen should be has a folder for itself</li>
+<li><strong>View</strong>: Represent for the screens. With each screen should be has a folder for itself
+
+<ul>
+<li>E.g. Feed:
+
+<ul>
+<li><code>FeedViewController.swift</code> file</li>
+<li><code>FeedViewModel.swift</code> file</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><u>Resource</u></strong>: Can be contains Images, Sounds, Layout config file, etc.
+
+<ul>
+<li><code>Assets.xcassets</code></li>
+<li><code>Localizable.strings</code></li>
+<li>&hellip;</li>
+</ul>
+</li>
+<li><strong><u>Storyboard</u></strong>: Put all storyboards at here. With each screen should be has a storyboard file for itself => Reduce conflicts when merge <strong>Pull Request</strong></li>
+<li><strong><code>AppDelegate.swift</code></strong></li>
+<li><strong><code>Info.plist</code></strong></li>
+</ul>
+
+
+
+
+<h4>ExternalLibraries:</h4>
+
+
+
+
+<ul>
+<li>All of your external libraries which could not include into your Podfile from some reasons</li>
+</ul>
+
+
+
+
+<h2>Naming Style</h2>
+
+
+
+
+<p>The name of folder follows <strong>CamelCase</strong> style, and be <strong>Singular</strong>.</p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-24T11:47:46+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/24/how-to-manage-errors-in-your-ios-app/">How to Manage the Errors in Your iOS App?</a></h2>
+  
+  <p>
+    <p>I used to got huge mistaken with handle a lot of errors, and almost the errors from after you call REST API or networks, I just <code>print(error)</code></p>
+
+
+
+
+<h3>What should I do now?</h3>
+
+
+
+
+<p>Keep calm and create <code>Error</code> class to handle all of them.</p>
+
+
+
+
+<h2>I will show you guys the simple way to handle API errors, something like this:</h2>
+
+
+
+
+<p>Step 1. Create enum <code>APIError</code>:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="nl">APIError</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">ErrorType</span><span class="p">,</span> <span class="n">CustomStringConvertible</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">Unauthorized</span> <span class="o">=</span> <span class="mi">401</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">Forbidden</span> <span class="o">=</span> <span class="mi">403</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">PageNotFound</span> <span class="o">=</span> <span class="mi">404</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">TimeOut</span> <span class="o">=</span> <span class="mi">408</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">InternalServerError</span> <span class="o">=</span> <span class="mi">500</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">Unknown</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">var</span> <span class="nl">description</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">switch</span> <span class="nb">self</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">PageNotFound</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Page Not Found&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">Unauthorized</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Authorization Required&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">Forbidden</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Forbidden&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">TimeOut</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Time Out&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">InternalServerError</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Internal Server Error&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">func</span> <span class="n">foundationError</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">NSError</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">NSError</span><span class="p">(</span><span class="nl">domain</span><span class="p">:</span> <span class="n">errorDomain</span><span class="p">,</span> <span class="nl">code</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">rawValue</span><span class="p">,</span> <span class="nl">userInfo</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSLocalizedDescriptionKey</span><span class="p">:</span> <span class="n">description</span><span class="p">])</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Step 2. Handle when send a request to REST API</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="n">PersonAPIService</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">class</span> <span class="k">func</span> <span class="n">retrieveInformation</span><span class="p">(</span><span class="nl">success</span><span class="p">:</span> <span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">,</span> <span class="nl">failure</span><span class="p">:</span> <span class="p">(</span><span class="bp">NSError</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Your request here</span>
+</span><span class='line'>  <span class="c1">// Success</span>
+</span><span class='line'>      <span class="n">success</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1">// Failure with &#39;headerResponse: NSHTTPURLResponse&#39;</span>
+</span><span class='line'>      <span class="n">failure</span><span class="p">(</span><span class="n">APIError</span><span class="p">(</span><span class="nl">rawValue</span><span class="p">:</span> <span class="n">headerResponse</span><span class="p">.</span><span class="n">statusCode</span><span class="p">).</span><span class="n">foundationError</span><span class="p">())</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Step 3. Now handle in your view controller:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="nl">ViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kr">override</span> <span class="k">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nb">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+</span><span class='line'>      <span class="n">PersonAPIService</span><span class="p">.</span><span class="n">retrieveInformation</span><span class="p">(</span><span class="nl">success</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">person</span><span class="p">)</span> <span class="k">in</span>
+</span><span class='line'>          <span class="c1">// Fetch data</span>
+</span><span class='line'>      <span class="p">},</span> <span class="nl">failure</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+</span><span class='line'>          <span class="n">print</span><span class="p">(</span><span class="n">error</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">})</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-24T00:06:32+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/24/what-difference-between-cgd-grand-central-dispatch-and-nsoperation/">What Difference Between GCD (Grand Central Dispatch) and NSOperation?</a></h2>
+  
+  <p>
+    <p><code>...</code></p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-24T00:01:44+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/how-do-i-can-use-guard-in-swift2-dot-0-is-it-powerful/">How Can I Use 'Guard', 'Where' Statement in Swift2.0? Is It Powerful?</a></h2>
+  
+  <p>
+    <h3>Good way to optimize your code :P</h3>
+
+
+
+
+<p>I think <code>guard</code> is useful for make a precondition in your method when you will do some stuffs, it&rsquo;s great to unwrapping optional values</p>
+
+
+
+
+<p>Getting started with a simple example:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">doSomething</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">32</span> <span class="p">{</span>
+</span><span class='line'>          <span class="c1">// Do a lots of things here</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Update with <code>where</code>:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">doSomething</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span> <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">32</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// Do a lots of things here</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>But if you have to implement a lot of things and you need use a lots of nested conditioned statements, it makes your code not flat anymore and very hard to debugging, so the way that I use for this case is <code>guard</code></p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">doSomething</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">guard</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span> <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">32</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="c1">// Do a lots of things here</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h2>Bonus:</h2>
+
+
+
+
+<p>What happen if you have a lots of conditions, something like this:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span><span class="p">,</span> <span class="n">job</span> <span class="o">=</span> <span class="n">job</span><span class="p">,</span> <span class="n">company</span> <span class="o">=</span> <span class="n">company</span> <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">32</span> <span class="o">&amp;&amp;</span> <span class="n">job</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">iOS</span><span class="err">&#39;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Do a lots of things here</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>But when you debugging your app and it doesn&rsquo;t run into the condition, how do you know which part made the condition failed???</p>
+
+
+
+
+<p>Tips here: <strong>Make one line with one condition</strong> and then you will easy to detect which condition is wrong.</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">if</span> <span class="k">let</span> <span class="n">person</span> <span class="o">=</span> <span class="n">person</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">job</span> <span class="o">=</span> <span class="n">job</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">company</span> <span class="o">=</span> <span class="n">company</span>
+</span><span class='line'>  <span class="k">where</span> <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">32</span>
+</span><span class='line'>  <span class="o">&amp;&amp;</span> <span class="n">job</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">iOS</span><span class="err">&#39;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Do a lots of things here</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T23:57:42+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/what-difference-between-unowned-self-and-weak-self/">What Difference Between '[Unowned Self] and '[Weak Self']?</a></h2>
+  
+  <p>
+    <p><code>...</code></p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T23:56:22+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/what-difference-between-frame-and-bounds/">What Difference Between 'Frame' and 'Bounds'?</a></h2>
+  
+  <p>
+    <p><code>...</code></p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T23:54:24+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/how-to-press-on-links-to-open-app-using-swift-universal-links-in-ios9/">How to Press on Links to Open App Using Swift? Universal Links in iOS 9</a></h2>
+  
+  <p>
+    <p>In iOS 9, your app can register to open web links (using https or http) directly, bypassing Safari. Here is the process to add Universal Links:</p>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/universal_links.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/universal_links.png" alt="universal_links" /></a></p>
+
+
+
+
+<h1>A. Generate apple-site-app-association file</h1>
+
+
+
+
+<p><strong>1. Create Server-side web credentials file: <code>handoff.json</code></strong></p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;applinks&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nt">&quot;apps&quot;</span><span class="p">:</span> <span class="p">[],</span>
+</span><span class='line'>        <span class="nt">&quot;details&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">&quot;TEAM_ID.App-Bundle-ID&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p><strong>2. Download your certificate at <a href="https://developer.apple.com/account/ios/certificate/certificateList.action" target="_blank">here</a>, and when it is downloaded, double click on it to add into <code>KeyChain app</code></strong></p>
+
+
+
+
+<p><strong>3. Right click on your certificate in KeyChain to export your <code>Certificates.p12</code></strong></p>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/111.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/111.png" alt="1" /></a></p>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/21.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/21.png" alt="2" /></a></p>
+
+
+
+
+<p><strong>4. Open terminal to create certificates with <code>openssl</code> commands:</strong></p>
+
+
+
+
+<ul>
+<li>Create the certificate:</li>
+</ul>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">openssl</span> <span class="n">pkcs12</span> <span class="o">-</span><span class="k">in</span> <span class="n">Certificates</span><span class="p">.</span><span class="n">p12</span> <span class="o">-</span><span class="n">clcerts</span> <span class="o">-</span><span class="n">nokeys</span> <span class="o">-</span><span class="k">out</span> <span class="n">output_crt</span><span class="p">.</span><span class="n">pem</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<ul>
+<li>Create the secret key:</li>
+</ul>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">openssl</span> <span class="n">pkcs12</span> <span class="o">-</span><span class="k">in</span> <span class="n">Certificates</span><span class="p">.</span><span class="n">p12</span> <span class="o">-</span><span class="n">nocerts</span> <span class="o">-</span><span class="n">nodes</span> <span class="o">-</span><span class="k">out</span> <span class="n">output_key</span><span class="p">.</span><span class="n">pem</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<ul>
+<li>Create the intermediate certificate:</li>
+</ul>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">openssl</span> <span class="n">pkcs12</span> <span class="o">-</span><span class="k">in</span> <span class="n">Certificates</span><span class="p">.</span><span class="n">p12</span> <span class="o">-</span><span class="n">cacerts</span> <span class="o">-</span><span class="n">nokeys</span> <span class="o">-</span><span class="k">out</span> <span class="n">sample</span><span class="p">.</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p><strong>5. Sign the <code>handoff.json</code> file with the following command:</strong></p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">cat</span> <span class="n">handoff</span><span class="p">.</span><span class="n">json</span> <span class="o">|</span> <span class="n">openssl</span> <span class="n">smime</span> <span class="o">-</span><span class="n">sign</span> <span class="o">-</span><span class="n">inkey</span> <span class="n">output_key</span><span class="p">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">signer</span> <span class="n">output_crt</span><span class="p">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">certfile</span> <span class="n">sample</span><span class="p">.</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span> <span class="o">-</span><span class="n">noattr</span> <span class="o">-</span><span class="n">nodetach</span> <span class="o">-</span><span class="n">outform</span> <span class="n">DER</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">association</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p><strong>6. Upload your <code>apple-site-app-association</code> file to the root of your web-site</strong></p>
+
+
+
+
+<p>e.g. <a href="https://example.com/apple-app-site-association" target="_blank"><a href="https://example.com/apple-app-site-association">https://example.com/apple-app-site-association</a></a>.</p>
+
+
+
+
+<p><strong>Make sure Content-Type of this file is:</strong></p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">application</span><span class="o">/</span><span class="n">pkcs7</span><span class="o">-</span><span class="n">mime</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h1>B. Xcode setting</h1>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/31.png"><img src="https://stackoverzone.files.wordpress.com/2015/10/31.png" alt="3" /></a></p>
+
+
+
+
+<p><strong>1. Select your project in the Navigator area</strong></p>
+
+
+
+
+<p><strong>2. Select your Target in the Editor area</strong></p>
+
+
+
+
+<p><strong>3. In the Editor area select the Capabilities option from the menu bar</strong></p>
+
+
+
+
+<p><strong>4. Open the disclosure button to the left of the Associated Domains</strong></p>
+
+
+
+
+<p><strong>5. Under Associated Domains select the <code>"+"</code> button</strong></p>
+
+
+
+
+<p><strong>6. Type the entitlement in the input area:</strong></p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="nl">applinks</span><span class="p">:</span><span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">domain</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Example:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="nl">applinks</span><span class="p">:</span><span class="n">geek</span><span class="o">-</span><span class="kt">is</span><span class="o">-</span><span class="n">stupid</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h1>C. App implement</h1>
+
+
+
+
+<p>In <code>AppDelegate.swift</code></p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="n">application</span><span class="p">(</span><span class="nl">application</span><span class="p">:</span> <span class="bp">UIApplication</span><span class="p">,</span> <span class="n">continueUserActivity</span> <span class="nl">userActivity</span><span class="p">:</span> <span class="n">NSUserActivity</span><span class="p">,</span> <span class="nl">restorationHandler</span><span class="p">:</span> <span class="p">([</span><span class="n">AnyObject</span><span class="p">]</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="k">let</span> <span class="n">webpageURL</span> <span class="o">=</span> <span class="n">userActivity</span><span class="p">.</span><span class="n">webpageURL</span> <span class="k">where</span> <span class="n">userActivity</span><span class="p">.</span><span class="n">activityType</span> <span class="o">==</span> <span class="n">NSUserActivityTypeBrowsingWeb</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Your handle links code here :D</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nb">true</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">false</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h1>D. Test on localhost</h1>
+
+
+
+
+<p>The Universal link never works with links as: <a href="http://localhost:8080"><a href="http://localhost:8080">http://localhost:8080</a></a></p>
+
+
+
+
+<p><strong>1. Launch the plugin at Root:</strong></p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">atlas</span><span class="o">-</span><span class="n">run</span> <span class="o">--</span><span class="n">context</span><span class="o">-</span><span class="n">path</span> <span class="n">ROOT</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p><strong>2. Change the local host link to pure link by using <a href="https://ngrok.com/" target="_blank">ngrok</a>:</strong></p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">ngrok</span> <span class="o">&lt;</span><span class="n">port_number</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Example for [<a href="http://localhost:8080">http://localhost:8080</a>]</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">ngrok</span> <span class="mi">8080</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p><strong>3. Your local host link will become: <a href="http://xxxxxxxx.ngrok.com"><a href="http://xxxxxxxx.ngrok.com">http://xxxxxxxx.ngrok.com</a></a></strong></p>
+
+
+
+
+<p><strong>4. Re-configuring Associated Domains in Xcode to start testing</strong></p>
+
+
+
+
+<h1>Drawbacks of Universal Links</h1>
+
+
+
+
+<ol>
+<li>Work only for iOS9+</li>
+<li>We need to upload the file apple-app-site-association located at: <a href="https://domain.com/apple-app-site-association"><a href="https://domain.com/apple-app-site-association">https://domain.com/apple-app-site-association</a></a></li>
+<li>Just support static domains, not dynamic domains, not sub-domains</li>
+<li>To make a trust relationship between the app and the website, we need add the domains of the websites into  Associated Domains entitlement first, and then we can specific which paths from our websites should be handled as universal links, BUT we have a lot of customer&rsquo;s domains and they are different, so we can not register all of them into Associated Domains entitlement</li>
+<li>Uptil Beta 4, you need to sign the <code>app-site-association</code> json file before upload, Apple is planning to do away with this in next Beta/GM.</li>
+</ol>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T23:51:20+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/xcode-7-error-include-of-non-modular-header-inside-framework-module-with-a-lib/">Xcode 7.1 Error: Include of Non-modular Header Inside Framework Module...</a></h2>
+  
+  <p>
+    <p><code>...</code></p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T22:45:53+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/">How to Manage All Localized Strings in Your Project?</a></h2>
+  
+  <p>
+    <h3>Using <code>'genstrings'</code> tool from Apple which included into Xcode</h3>
+
+
+
+
+<p>Step 1. Add languages which you want to localize.</p>
+
+
+
+
+<p>On the left side of Xcode, choose <code>Show the project navigator</code> > Choose your project:</p>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png" /></a></p>
+
+
+
+
+<p>Step 2. Open terminal and go to your project&rsquo;s folder: <code>cd YourProject</code></p>
+
+
+
+
+<p>Step 3. Run: <code>find . -name '*.swift' -print | xargs -n1 genstrings -a</code></p>
+
+
+
+
+<p>After this step, you will see the files:</p>
+
+
+
+
+<ul>
+<li><code>Localizable.strings</code></li>
+<li><code>Base.lproj</code></li>
+<li><code>vi.lproj</code></li>
+<li><code>en.lproj</code></li>
+</ul>
+
+
+
+
+<p>Step 3. Add only file: <code>Localizable.strings</code> in your project</p>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png" /></a></p>
+
+
+
+
+<p>Step 4: On right side of Xcode, choose <code>Show the File inspector</code> > <code>Localization</code> > Press button: <code>Localize...</code></p>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png" /></a></p>
+
+
+
+
+<p>Step 5: Setup your build:</p>
+
+
+
+
+<ul>
+<li>Edit your sheme</li>
+</ul>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-00-40-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-00-40-pm.png" /></a></p>
+
+
+
+
+<ul>
+<li>Change your region + language that you want</li>
+</ul>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png" /></a></p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T21:46:19+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/pod-install-rase-warning-this-can-be-the-result-of-a-merge-and-the-unknown-uuid-is-being-discarded-dot/">Pod Install Rase Warning "This Can Be the Result of a Merge and the Unknown UUID Is Being Discarded."</a></h2>
+  
+  <p>
+    <p><span style="color:orange; font-family:Menlo;">
+[!] &lt;&lsquo;PBXGroup name='Filter&rsquo; UUID=&lsquo;99CE81391BA80D2D00CA7B29&rsquo;>&lsquo; attempted to initialize an object with an unknown UUID. '995E161E1BAAA6C2002153EC&rsquo; for attribute: &lsquo;children&rsquo;. This can be the result of a merge and  the unknown UUID is being discarded.
+</span></p>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png" /></a></p>
+
+
+
+
+<h2>Resolve:</h2>
+
+
+
+
+<ol>
+<li>Open any file by Xcode</li>
+<li>On right side of Xcode, choose <code>Show the File inspector</code> > <code>Target Membership</code></li>
+<li>Try to uncheck and check the file on any <code>target</code>:</li>
+</ol>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png"><img class="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png" /></a></p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T20:58:21+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/common-error-when-building-in-xcode/">Common Errors When Building in Xcode</a></h2>
+  
+  <p>
+    <h3>App installation failed.</h3>
+
+
+
+
+<p>This application&rsquo;s application-identifier entitlement does not match that of the installed application. These values must match for an upgrade to be allowed.</p>
+
+
+
+
+<h4>Resolve:</h4>
+
+
+
+
+<p>Delete your old app on device and try again!</p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T20:33:38+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/how-to-swap-two-any-type-of-variables-without-using-a-temporary-variable/">How to Swap Two Any Type of Variables Without Using a Temporary Variable?</a></h2>
+  
+  <p>
+    <p>This method using for any numeric type of variables:</p>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = a + b;
+</span><span class='line'>b = a - b;
+</span><span class='line'>a = a - b;</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T15:48:03+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/how-to-get-address-from-latitude-and-longitude-using-objective-c/">How to Get Address From Latitude and Longitude Using Objective C?</a></h2>
+  
+  <p>
+    <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getAddressFromLatLon:</span><span class="p">(</span><span class="bp">CLLocation</span><span class="o">*</span><span class="p">)</span> <span class="nv">location</span> <span class="nf">theAnnotation:</span><span class="p">(</span><span class="n">TrafficAnnotation</span><span class="o">*</span><span class="p">)</span> <span class="nv">annotation</span><span class="p">{</span>
+</span><span class='line'>    <span class="bp">CLGeocoder</span> <span class="o">*</span><span class="n">geocoder</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">CLGeocoder</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">[</span><span class="n">geocoder</span> <span class="nl">reverseGeocodeLocation</span><span class="p">:</span><span class="n">location</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="n">placemarks</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">){</span>
+</span><span class='line'>         <span class="k">if</span><span class="p">(</span><span class="n">placemarks</span> <span class="o">&amp;&amp;</span> <span class="n">placemarks</span><span class="p">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>             <span class="bp">CLPlacemark</span> <span class="o">*</span><span class="n">placemark</span><span class="o">=</span> <span class="p">[</span><span class="n">placemarks</span> <span class="nl">objectAtIndex</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>             <span class="c1">// address defined in .h file</span>
+</span><span class='line'>             <span class="n">address</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%@ , %@ , %@, %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">placemark</span> <span class="n">thoroughfare</span><span class="p">],</span> <span class="p">[</span><span class="n">placemark</span> <span class="n">locality</span><span class="p">],</span> <span class="p">[</span><span class="n">placemark</span> <span class="n">administrativeArea</span><span class="p">],</span> <span class="p">[</span><span class="n">placemark</span> <span class="n">country</span><span class="p">]];</span>
+</span><span class='line'>             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;New Address Is:%@&quot;</span><span class="p">,</span> <span class="n">address</span><span class="p">);</span>
+</span><span class='line'>         <span class="p">}</span>
+</span><span class='line'>     <span class="p">}];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T15:45:49+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/how-to-detected-long-press-button-using-objective-c/">How to Detected Long Press on a Button Using Objective C?</a></h2>
+  
+  <p>
+    <p>Add gesture:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="bp">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIButton</span> <span class="nl">buttonWithType</span><span class="p">:</span><span class="n">UIButtonTypeRoundedRect</span><span class="p">];</span>
+</span><span class='line'><span class="bp">UILongPressGestureRecognizer</span> <span class="o">*</span><span class="n">longPress</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UILongPressGestureRecognizer</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTarget</span><span class="p">:</span><span class="nb">self</span> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">longPress</span><span class="p">:)];</span>
+</span><span class='line'><span class="p">[</span><span class="n">button</span> <span class="nl">addGestureRecognizer</span><span class="p">:</span><span class="n">longPress</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>And implement to handle long event:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">longPress:</span><span class="p">(</span><span class="bp">UILongPressGestureRecognizer</span><span class="o">*</span><span class="p">)</span><span class="nv">gesture</span> <span class="p">{</span>
+</span><span class='line'>    <span class="bp">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">(</span><span class="bp">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="n">gesture</span><span class="p">.</span><span class="n">view</span><span class="p">;</span>
+</span><span class='line'><span class="c1">//    if (gesture.state == UIGestureRecognizerStateEnded) {</span>
+</span><span class='line'><span class="c1">//        Do something…</span>
+</span><span class='line'><span class="c1">//    }</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T15:43:02+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/how-to-capture-an-image-from-mkmapview-and-mkpolyline-using-objective-c/">How to Capture an Image From MKMapView and MKPolyline Using Objective C?</a></h2>
+  
+  <p>
+    <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="bp">MKMapSnapshotter</span> <span class="nl">takeSnapShotOfTargetSize</span><span class="p">:</span><span class="n">CGSizeMake</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span> <span class="nl">withPolyline</span><span class="p">:(</span><span class="bp">MKGeodesicPolyline</span> <span class="o">*</span><span class="p">)</span><span class="n">polyline</span> <span class="nl">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">UIImage</span> <span class="o">*</span> <span class="n">image</span><span class="p">,</span> <span class="n">CGFloat</span> <span class="n">height</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">self</span><span class="p">.</span><span class="n">polylineImageView</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">;</span>
+</span><span class='line'><span class="p">}];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T15:25:25+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/how-to-localized-string-with-enum-in-swift/">How to Localized String With Enum in Swift?</a></h2>
+  
+  <p>
+    <ol>
+<li>Fist thing, please don&rsquo;t use localized string with dynamic text, it doesn&rsquo;t work</li>
+<li>How it works:</li>
+</ol>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="nl">Status</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">case</span> <span class="n">Verified</span> <span class="o">=</span> <span class="s">&quot;Verified&quot;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="n">Unverified</span> <span class="o">=</span> <span class="s">&quot;Unverified&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">func</span> <span class="n">localizedString</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">switch</span> <span class="nb">self</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">case</span> <span class="p">.</span><span class="nl">Verified</span><span class="p">:</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Verified&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">case</span> <span class="p">.</span><span class="nl">Unverified</span><span class="p">:</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Unverified&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T15:04:27+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/how-to-add-ios-ui-test-in-xcode-7/">How to Add iOS UI Test in Xcode 7?</a></h2>
+  
+  <p>
+    <h3>1. Create simple project: Click on a button and then get the text in textfield for the label</h3>
+
+
+<p></h3></p>
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/1.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/1.png" /></a></p>
+
+
+
+
+<h5>1.1 Add a text field, a button, and a label:</h5>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-58-26-pm.png"><img class="alignnone size-medium wp-image-229" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-58-26-pm.png" alt="Screen Shot 2015-10-06 at 4.58.26 PM" /></a></p>
+
+
+
+
+<h5>1.2 Process the behavior when user tap on the button</h5>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">import</span> <span class="n">UIKit</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nl">ViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">weak</span> <span class="n">var</span> <span class="nl">textField</span><span class="p">:</span> <span class="bp">UITextField</span><span class="o">!</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">weak</span> <span class="n">var</span> <span class="nl">label</span><span class="p">:</span> <span class="bp">UILabel</span><span class="o">!</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">weak</span> <span class="n">var</span> <span class="nl">button</span><span class="p">:</span> <span class="bp">UIButton</span><span class="o">!</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">override</span> <span class="n">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nb">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+</span><span class='line'>        <span class="c1">// Do any additional setup after loading the view, typically from a nib.</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">@</span><span class="kt">IBAction</span> <span class="n">func</span> <span class="n">buttonTapped</span><span class="p">(</span><span class="nl">sender</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">textField</span><span class="p">.</span><span class="n">text</span>
+</span><span class='line'>        <span class="n">textField</span><span class="p">.</span><span class="n">resignFirstResponder</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h3>2. Create new iOS UI Testing Bundle</h3>
+
+
+
+
+<h5>2.1: Click on your project</h5>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-16-38-pm.png"><img class="alignnone size-medium wp-image-232" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-16-38-pm.png" alt="Screen Shot 2015-10-06 at 5.16.38 PM" /></a></p>
+
+
+
+
+<h5>2.2: Click + button to add new iOS UI Testing Bundle</h5>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-56-03-pm.png"><img class="alignnone size-medium wp-image-231" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-4-56-03-pm.png" alt="Screen Shot 2015-10-06 at 4.56.03 PM" /></a></p>
+
+
+
+
+<h5>2.3: Select the iOS UI Testing Bundle</h5>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-07-pm.png"><img class="alignnone size-medium wp-image-233" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-07-pm.png" alt="Screen Shot 2015-10-06 at 5.18.07 PM" /></a></p>
+
+
+
+
+<h5>2.4 New bundle will be here:</h5>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-50-pm.png"><img class="alignnone size-medium wp-image-234" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-18-50-pm.png" alt="Screen Shot 2015-10-06 at 5.18.50 PM" /></a></p>
+
+
+
+
+<h3>3. Recording your behaviors in simulator</h3>
+
+
+
+
+<h5>3.1 Open the file: <code>"UITestExampleUITests.swift"</code></h5>
+
+
+
+
+<h5>3.2 Let your cursor within <code>testExample()</code> method, you will see the circle red button at the bottom of Xcode, press on it</h5>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-22-07-pm.png"><img class="alignnone size-medium wp-image-236" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-22-07-pm.png" alt="Screen Shot 2015-10-06 at 5.22.07 PM" /></a></p>
+
+
+
+
+<h5>3.3 The simulator will be show and fill the text "testing" into the textfield and then click button:</h5>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-26-38-pm.png"><img class="alignnone size-medium wp-image-237" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-26-38-pm.png" alt="Screen Shot 2015-10-06 at 5.26.38 PM" /></a></p>
+
+
+
+
+<h5>3.4 The <strong><code>testExample()</code></strong> method in <strong>UITestExampleUITests.swift</strong> will be filled as something like this:</h5>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">testExample</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>     <span class="k">let</span> <span class="n">app</span> <span class="o">=</span> <span class="n">XCUIApplication</span><span class="p">()</span>
+</span><span class='line'>     <span class="n">app</span><span class="p">.</span><span class="n">otherElements</span><span class="p">.</span><span class="n">containingType</span><span class="p">(.</span><span class="n">Button</span><span class="p">,</span> <span class="nl">identifier</span><span class="p">:</span><span class="s">&quot;Button&quot;</span><span class="p">).</span><span class="n">childrenMatchingType</span><span class="p">(.</span><span class="n">TextField</span><span class="p">).</span><span class="n">element</span><span class="p">.</span><span class="n">typeText</span><span class="p">(</span><span class="s">&quot;testing&quot;</span><span class="p">)</span>
+</span><span class='line'>     <span class="n">app</span><span class="p">.</span><span class="n">buttons</span><span class="p">[</span><span class="s">&quot;Button&quot;</span><span class="p">].</span><span class="n">tap</span><span class="p">()</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h5>3.5 Turn of recording: Pressed on the circle has the red square inside</h5>
+
+
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-32-00-pm1.png"><img class="alignnone size-full wp-image-252" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-06-at-5-32-00-pm1.png" alt="Screen Shot 2015-10-06 at 5.32.00 PM" /></a></p>
+
+
+
+
+<h3>4. Add specific assert - [Test Here]</h3>
+
+
+
+
+<h5>4.1 Add this statement above of <code>testExample()</code> method</h5>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">XCTAssert</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">staticTexts</span><span class="p">[</span><span class="s">&quot;testing&quot;</span><span class="p">].</span><span class="n">exists</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h4>This line mean:<strong> With the behavior we recorded (Item 3), the UI must be contain the text <code>"testing"</code></strong></h4>
+
+
+
+
+<h5>4.2 The<strong> <code>testExample()</code></strong> method will be:</h5>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">testExample</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>     <span class="k">let</span> <span class="n">app</span> <span class="o">=</span> <span class="n">XCUIApplication</span><span class="p">()</span>
+</span><span class='line'>     <span class="n">app</span><span class="p">.</span><span class="n">otherElements</span><span class="p">.</span><span class="n">containingType</span><span class="p">(.</span><span class="n">Button</span><span class="p">,</span> <span class="nl">identifier</span><span class="p">:</span><span class="s">&quot;Button&quot;</span><span class="p">).</span><span class="n">childrenMatchingType</span><span class="p">(.</span><span class="n">TextField</span><span class="p">).</span><span class="n">element</span><span class="p">.</span><span class="n">typeText</span><span class="p">(</span><span class="s">&quot;testing&quot;</span><span class="p">)</span>
+</span><span class='line'>     <span class="n">app</span><span class="p">.</span><span class="n">buttons</span><span class="p">[</span><span class="s">&quot;Button&quot;</span><span class="p">].</span><span class="n">tap</span><span class="p">()</span>
+</span><span class='line'>     <span class="n">XCTAssert</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">staticTexts</span><span class="p">[</span><span class="s">&quot;testing&quot;</span><span class="p">].</span><span class="n">exists</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h3>5. Run test: <code> Command + U </code></h3>
+
+
+
+
+<h3>6. Basic statements:</h3>
+
+
+
+
+<ul>
+<li>Waiting: Sometime you must to waiting for the animation done, or the results from network</li>
+</ul>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">waitForElement</span><span class="p">(</span><span class="nl">elementType</span><span class="p">:</span> <span class="n">XCUIElement</span><span class="p">,</span> <span class="nl">timeout</span><span class="p">:</span> <span class="n">NSTimeInterval</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">elementExist</span> <span class="o">=</span> <span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;exists == 1&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">expectationForPredicate</span><span class="p">(</span><span class="n">elementExist</span><span class="p">,</span> <span class="nl">evaluatedWithObject</span><span class="p">:</span> <span class="n">elementType</span><span class="p">,</span> <span class="nl">handler</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">waitForExpectationsWithTimeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="nl">handler</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<ul>
+<li>Get UITableViewCell</li>
+</ul>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">app</span> <span class="o">=</span> <span class="n">XCUIApplication</span><span class="p">()</span>
+</span><span class='line'><span class="k">let</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="n">tables</span><span class="p">.</span><span class="n">staticTexts</span><span class="p">[</span><span class="s">&quot;About&quot;</span><span class="p">]</span> <span class="c1">// This is a cell has content text: `About`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T14:52:13+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/how-to-adding-localized-strings-in-swift/">How to Adding Localized Strings in Swift?</a></h2>
+  
+  <p>
+    <p>This heard like easy?</p>
+
+
+
+
+<ul>
+<li>Yes, but language very complex, with each language we have different way to order of word in a sentence</li>
+<li>So if I have a name of user: <strong><code>"Andrew McKay"</code></strong>, and he has <strong><code>"commented"</code></strong> in a page:
+The text on app will be:</li>
+</ul>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="s">&quot;Andrew McKay also commented&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>The simple way:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">text</span> <span class="o">=</span> <span class="s">&quot;\(user.name) &quot;</span> <span class="o">+</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;also commented&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p><strong>The right way (I think):</strong></p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">text</span> <span class="o">=</span> <span class="bp">NSString</span><span class="p">.</span><span class="n">localizedStringWithFormat</span><span class="p">(</span><span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;%@ also commented&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="kt">as</span> <span class="bp">NSString</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">)</span> <span class="kt">as</span> <span class="n">String</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T14:45:31+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/23/how-did-you-manage-constants-in-your-ios-app/">How Did You Manage Constants in Your iOS App?</a></h2>
+  
+  <p>
+    <p>The reason to manages the <strong><code>Constants</code></strong> in app is: We have a lot of static values and which makes easier to know where they are when you wanna reuse them.</p>
+
+
+
+
+<p>Step 1. Create a file with the name: <strong><code>Constants.swift</code></strong></p>
+
+
+
+
+<p>Step 2. Add this struct inside your created file:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">import</span> <span class="n">Foundation</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">struct</span> <span class="n">Constants</span> <span class="p">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Step 3. In the class which you want to add new constant:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="n">Staff</span> <span class="p">{</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">extension</span> <span class="n">Constants</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">struct</span> <span class="n">Staff</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">static</span> <span class="k">let</span> <span class="n">DefaultHeight</span> <span class="o">=</span> <span class="mf">1.70</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p>Step 4. Just use this wherever you want:</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">height</span> <span class="o">=</span> <span class="n">Constants</span><span class="p">.</span><span class="n">Staff</span><span class="p">.</span><span class="n">DefaultHeight</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-23T14:37:59+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/blog/2015/10/16/how-to-calculate-the-height-of-the-text-depend-on-width-and-font-using-swift2-dot-0/">How to Calculate the Height of the Text Depend on Width and Font Using Swift2.0?</a></h2>
+  
+  <p>
+    <p>The height of the text depend on the font, width and especially it has multiple line.</p>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">func</span> <span class="n">sizeWithFont</span><span class="p">(</span><span class="nl">font</span><span class="p">:</span> <span class="bp">UIFont</span><span class="p">,</span> <span class="n">forWidth</span> <span class="nl">width</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">CGSize</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">fString</span> <span class="o">=</span> <span class="nb">self</span> <span class="kt">as</span> <span class="bp">NSString</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">paragraphStyle</span> <span class="o">=</span> <span class="bp">NSMutableParagraphStyle</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">paragraphStyle</span><span class="p">.</span><span class="n">lineBreakMode</span> <span class="o">=</span> <span class="n">NSLineBreakMode</span><span class="p">.</span><span class="n">ByWordWrapping</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">attrDict</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>            <span class="nl">NSFontAttributeName</span><span class="p">:</span> <span class="n">font</span><span class="p">,</span>
+</span><span class='line'>            <span class="nl">NSParagraphStyleAttributeName</span><span class="p">:</span> <span class="n">paragraphStyle</span>
+</span><span class='line'>        <span class="p">]</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">maximumSize</span> <span class="o">=</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">MAXFLOAT</span><span class="p">))</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">rect</span> <span class="o">=</span> <span class="n">fString</span><span class="p">.</span><span class="n">boundingRectWithSize</span><span class="p">(</span><span class="n">maximumSize</span><span class="p">,</span>
+</span><span class='line'>            <span class="nl">options</span><span class="p">:</span> <span class="p">[.</span><span class="n">TruncatesLastVisibleLine</span><span class="p">,</span> <span class="p">.</span><span class="n">UsesLineFragmentOrigin</span><span class="p">],</span>
+</span><span class='line'>            <span class="nl">attributes</span><span class="p">:</span> <span class="n">attrDict</span><span class="p">,</span>
+</span><span class='line'>            <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">rect</span><span class="p">.</span><span class="n">size</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-16T17:19:50+07:00" pubdate data-updated="true"></time>
+    
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+
+    
+
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+  </body>
+</html>

@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Adjust Custom Font Verical Alignment - Xcode - Geek Is Stupid</title>
+  <meta name="author" content="Le Tai">
+
+  
+  <meta name="description" content="Adjust Custom Font Verical Alignment - Xcode written Some time when you custom font in your project, and the font display not correctly, so how to &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2016/08/16/adjust-custom-font-verical-alignment-xcode">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Geek Is Stupid" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Adjust Custom Font Verical Alignment - Xcode</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2016-08-16T10:05:47+07:00" pubdate data-updated="true"></time>
+          
+
+
+        </div>
+        <p>Some time when you custom font in your project, and the font display not correctly, so how to fix that:</p>
+
+<p>Step 1. Download <a href="https://developer.apple.com/fonts/">Apple Font Tool Suite</a> command line utilities.</p>
+
+<p>Step 2. Go to the folder which contains your font and run command:
+<code>ftxdumperfuser -t hhea -A d Bold.ttf</code></p>
+
+<p>Step 3. It will generate Bold.hhea.xml automatically, open it and edit <code>ascender</code> value. In my case I changed it from <code>750</code> to <code>1200</code></p>
+
+<p>Step 4. Run: <code>ftxdumperfuser -t hhea -A f Bold.ttf</code></p>
+
+<p>And now your font is updated!!!</p>
+
+
+        <hr class="divider-short"/>
+
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority/" title="Previous Post: What difference between Content Hugging and Content Compression Resistance priority - Cocoa Autolayout?">&laquo; Previous: What difference between Content Hugging and Content Compression Resistance priority - Cocoa Autolayout?</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+
+    
+
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+  </body>
+</html>
