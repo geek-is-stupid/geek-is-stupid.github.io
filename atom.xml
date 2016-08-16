@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2016-08-16T15:09:18+07:00</updated>
+  <updated>2016-08-16T15:15:36+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Show Version in iOS App?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-show-version-in-ios-app/"/>
+    <updated>2016-08-16T15:11:29+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2016/08/16/how-to-show-version-in-ios-app</id>
+    <content type="html"><![CDATA[<h3>Let make your code be complicated…</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">struct</span> <span class="n">Version</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">let</span> <span class="kt">short</span><span class="o">:</span> <span class="n">String</span>
+</span><span class='line'>    <span class="k">let</span> <span class="nl">full</span><span class="p">:</span> <span class="n">String</span>
+</span><span class='line'>    <span class="k">let</span> <span class="nl">display</span><span class="p">:</span> <span class="n">String</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And make an extension for UIApplication</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">static</span> <span class="k">var</span> <span class="nl">version</span><span class="p">:</span> <span class="n">Version</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="kt">short</span> <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">objectForInfoDictionaryKey</span><span class="p">(</span><span class="s">&quot;CFBundleShortVersionString&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">String</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">full</span> <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">objectForInfoDictionaryKey</span><span class="p">(</span><span class="n">kCFBundleVersionKey</span> <span class="kt">as</span> <span class="n">String</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">String</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">display</span> <span class="o">=</span> <span class="n">full</span><span class="p">.</span><span class="n">containsString</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="nl">full</span> <span class="p">:</span> <span class="s">&quot;\(short).\(full)&quot;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">Version</span><span class="p">(</span><span class="kt">short</span><span class="o">:</span> <span class="kt">short</span><span class="p">,</span> <span class="nl">full</span><span class="p">:</span> <span class="n">full</span><span class="p">,</span> <span class="nl">display</span><span class="p">:</span> <span class="n">display</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Your time:</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="kt">short</span><span class="p">)</span>
+</span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">full</span><span class="p">)</span>
+</span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">display</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Handle Response With Success: And Error: In One Closure?]]></title>
@@ -1188,30 +1242,6 @@
 
 
 <p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png" /></a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Pod Install Rase Warning "This Can Be the Result of a Merge and the Unknown UUID Is Being Discarded."]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2015/10/23/pod-install-rase-warning-this-can-be-the-result-of-a-merge-and-the-unknown-uuid-is-being-discarded-dot/"/>
-    <updated>2015-10-23T20:58:21+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2015/10/23/pod-install-rase-warning-this-can-be-the-result-of-a-merge-and-the-unknown-uuid-is-being-discarded-dot</id>
-    <content type="html"><![CDATA[<p><span style="color:orange; font-family:Menlo;">
-[!] &lt;&lsquo;PBXGroup name='Filter&rsquo; UUID=&lsquo;99CE81391BA80D2D00CA7B29&rsquo;>&lsquo; attempted to initialize an object with an unknown UUID. '995E161E1BAAA6C2002153EC&rsquo; for attribute: &lsquo;children&rsquo;. This can be the result of a merge and  the unknown UUID is being discarded.
-</span></p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/pod-warning.png" /></a></p>
-
-<h2>Resolve:</h2>
-
-<ol>
-<li>Open any file by Xcode</li>
-<li>On right side of Xcode, choose <code>Show the File inspector</code> > <code>Target Membership</code></li>
-<li>Try to uncheck and check the file on any <code>target</code>:</li>
-</ol>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png"><img class="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-10-03-pm.png" /></a></p>
 ]]></content>
   </entry>
   
