@@ -5,17 +5,17 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to Set Background Color for Status Bar? - geek-is-stupid</title>
+  <title>How to Go to iOS Settings From Your App? - geek-is-stupid</title>
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="There are many way to do, I show a trick, don&rsquo;t follow me :D 1
+  <meta name="description" content="OK let&rsquo;s do 1
 2
 3
 4
 5
 6
-extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;">
+extension UIApplication { class func openSettings() { let url = NSURL(string: UIApplicationOpenSettingsURLString) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +24,7 @@ extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;"
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar">
+  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="geek-is-stupid" type="application/atom+xml">
@@ -123,7 +123,7 @@ extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;"
   <header>
     
       
-        <h1 class="entry-title">How to Set Background Color for Status Bar?</h1>
+        <h1 class="entry-title">How to Go to iOS Settings From Your App?</h1>
       
     
     
@@ -133,7 +133,7 @@ extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;"
 
 
 
-<time class='entry-date' datetime='2016-08-16T15:16:54+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:16 pm</span></time>
+<time class='entry-date' datetime='2016-08-16T15:26:31+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:26 pm</span></time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -143,7 +143,7 @@ extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;"
   </header>
 
 
-<div class="entry-content"><h4>There are many way to do, I show a trick, don&rsquo;t follow me :D</h4>
+<div class="entry-content"><h3>OK let&rsquo;s do</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -152,20 +152,22 @@ extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;"
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">class</span> <span class="k">func</span> <span class="n">setStatusBarBackgroundColor</span><span class="p">(</span><span class="nl">color</span><span class="p">:</span> <span class="bp">UIColor</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="n">guard</span> <span class="k">let</span> <span class="n">statusBar</span> <span class="o">=</span> <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">valueForKey</span><span class="p">(</span><span class="s">&quot;statusBarWindow&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">valueForKey</span><span class="p">(</span><span class="s">&quot;statusBar&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">UIView</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-</span><span class='line'>        <span class="n">statusBar</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">color</span>
+</span><span class='line'>  <span class="k">class</span> <span class="k">func</span> <span class="n">openSettings</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">UIApplicationOpenSettingsURLString</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">openURL</span><span class="p">(</span><span class="n">url</span><span class="o">!</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4>Do and see the change:</h4>
+<h3>Show time:</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">setStatusBarBackgroundColor</span><span class="p">(.</span><span class="n">grayColor</span><span class="p">())</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">openSettings</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>Hope you like it!</p>
 </div>
 
 
@@ -188,7 +190,7 @@ extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;"
 
 
 
-<time class='entry-date' datetime='2016-08-16T15:16:54+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:16 pm</span></time>
+<time class='entry-date' datetime='2016-08-16T15:26:31+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:26 pm</span></time>
       
       
 
@@ -197,7 +199,7 @@ extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;"
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/" >Tweet</a>
   
   
   
@@ -206,10 +208,8 @@ extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;"
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2016/08/16/how-to-show-version-in-ios-app/" title="Previous Post: How to show Version in iOS app?">&laquo; How to show Version in iOS app?</a>
+        <a class="basic-alignment left" href="/blog/2016/08/16/how-to-set-background-color-for-status-bar/" title="Previous Post: How to set background color for status bar?">&laquo; How to set background color for status bar?</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/" title="Next Post: How to go to iOS Settings from your app?">How to go to iOS Settings from your app? &raquo;</a>
       
     </p>
   </footer>
@@ -239,8 +239,8 @@ extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;"
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar/';
-        var disqus_url = 'http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar/';
+        var disqus_identifier = 'http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/';
+        var disqus_url = 'http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/';
         var disqus_script = 'embed.js';
       
     (function () {

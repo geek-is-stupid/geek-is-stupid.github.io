@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2016-08-16T15:25:30+07:00</updated>
+  <updated>2016-08-16T15:28:08+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Go to iOS Settings From Your App?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/"/>
+    <updated>2016-08-16T15:26:31+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app</id>
+    <content type="html"><![CDATA[<h3>OK let&rsquo;s do</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">class</span> <span class="k">func</span> <span class="n">openSettings</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">UIApplicationOpenSettingsURLString</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">openURL</span><span class="p">(</span><span class="n">url</span><span class="o">!</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Show time:</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">openSettings</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hope you like it!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Set Background Color for Status Bar?]]></title>
@@ -1211,15 +1244,6 @@
 <li>Uptil Beta 4, you need to sign the <code>app-site-association</code> json file before upload, Apple is planning to do away with this in next Beta/GM.</li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Xcode 7.1 Error: Include of Non-modular Header Inside Framework Module...]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2015/10/23/xcode-7-error-include-of-non-modular-header-inside-framework-module-with-a-lib/"/>
-    <updated>2015-10-23T22:45:53+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2015/10/23/xcode-7-error-include-of-non-modular-header-inside-framework-module-with-a-lib</id>
-    <content type="html"><![CDATA[<p><code>...</code></p>
 ]]></content>
   </entry>
   
