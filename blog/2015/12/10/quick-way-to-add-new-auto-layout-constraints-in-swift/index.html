@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Quick Way to Add New Auto Layout Constraints in Swift - Geek Is Stupid</title>
+  <meta name="author" content="Le Tai">
+
+  
+  <meta name="description" content="What you will do when you wanna add new space between a label and a button? Or add width for a label? 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Geek Is Stupid" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Geek Is Stupid</a></h1>
+  
+    <h2>Do crazy things...</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="geek-is-stupid.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Quick Way to Add New Auto Layout Constraints in Swift</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-10T15:22:53+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:22 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3>What you will do when you wanna add new space between a label and a button? Or add width for a label?</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">spaceConstraint</span> <span class="o">=</span> <span class="bp">NSLayoutConstraint</span><span class="p">(</span>
+</span><span class='line'>    <span class="nl">item</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Leading</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">relatedBy</span><span class="p">:</span> <span class="p">.</span><span class="n">Equal</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">toItem</span><span class="p">:</span> <span class="n">button</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Trailing</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">multiplier</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">let</span> <span class="n">widthConstraint</span> <span class="o">=</span> <span class="bp">NSLayoutConstraint</span><span class="p">(</span>
+</span><span class='line'>    <span class="nl">item</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Width</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">relatedBy</span><span class="p">:</span> <span class="p">.</span><span class="n">LessThanOrEqual</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">toItem</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">NotAnAttribute</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">multiplier</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">spaceConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span><span class='line'><span class="n">widthConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>OK, Now I will show you a simple way:</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">spaceConstraint</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="n">leadingAnchor</span><span class="p">.</span><span class="n">constraintEqualToAnchor</span><span class="p">(</span><span class="n">button</span><span class="p">.</span><span class="n">trailingAnchor</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">widthConstraint</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="n">widthAnchor</span><span class="p">.</span><span class="n">constraintLessThanOrEqualToConstant</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</span><span class='line'><span class="n">spaceConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span><span class='line'><span class="n">widthConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Cheers!!!</h5>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Le Tai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-12-10T15:22:53+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:22 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/" data-via="" data-counturl="http://geek-is-stupid.github.io/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/11/09/how-to-debug-uiwebview-in-ios/" title="Previous Post: How to debug UIWebView in iOS?">&laquo; How to debug UIWebView in iOS?</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority/" title="Next Post: What difference between Content Hugging and Content Compression Resistance priority - Cocoa Autolayout?">What difference between Content Hugging and Content Compression Resistance priority - Cocoa Autolayout? &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/08/16/adjust-custom-font-verical-alignment-xcode/">Adjust Custom Font Verical Alignment - Xcode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority/">What Difference Between Content Hugging and Content Compression Resistance Priority - Cocoa Autolayout?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/">Quick Way to Add New Auto Layout Constraints in Swift</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/09/how-to-debug-uiwebview-in-ios/">How to Debug UIWebView in iOS?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/02/how-to-close-modal-screens-in-uistoryboard-ios9-unwind-segue/">How to Close Modal Screens in UIStoryboard - iOS9? - Unwind Segue</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Le Tai -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
