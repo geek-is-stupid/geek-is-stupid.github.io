@@ -27,10 +27,9 @@ body > header h2 {
 }
 
 body {
-  line-height: 1.8em;
+  line-height: 1.5em;
   color: $text-color;
   @extend .serif;
-  font-size: 1.1em;
 }
 h1 {
   font-size: 2.2em;
@@ -38,7 +37,7 @@ h1 {
 }
 
 @media only screen and (min-width: 992px) {
-  body { font-size: 1.3em; }
+  body { font-size: 1.15em; }
   h1 { font-size: 2.6em; line-height: 1.2em; }
 }
 
@@ -81,11 +80,9 @@ strong { font-weight: bold; }
 
 em { font-style: italic; }
 
-sup, sub { font-size: 0.75em; position: relative;  display: inline-block; padding: 0 .2em; line-height: .8em;}
+sup, sub { font-size: 0.8em; position: relative;  display: inline-block; }
 sup { top: -.5em; }
 sub { bottom: -.5em; }
-
-a[rev='footnote']{ font-size: .75em; padding: 0 .3em; line-height: 1; }
 
 q { font-style: italic;
   &:before { content: "\201C"; }
@@ -101,6 +98,8 @@ del, s { text-decoration: line-through; }
 abbr, acronym { border-bottom: 1px dotted; cursor: help; }
 
 pre, code, tt { @extend .mono; }
+
+sub, sup { line-height: 0; }
 
 hr { margin-bottom: 0.2em; }
 
@@ -162,4 +161,3 @@ article blockquote {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-

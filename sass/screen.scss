@@ -1,5 +1,6 @@
 @import "compass";
 @include global-reset;
+@include reset-html5;
 
 @import "custom/colors";
 @import "custom/fonts";
@@ -8,7 +9,3 @@
 @import "partials";
 @import "plugins/**/*";
 @import "custom/styles";
-
-@import "custom/coderay-github";
-$fontAwesomePath: 'fontawesome-webfont';
-@import "font-awesome/font-awesome";
