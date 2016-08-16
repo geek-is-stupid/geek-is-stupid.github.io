@@ -1,76 +1,53 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html lang="zh-cn">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <title>How can I use 'guard', 'where' statement in Swift2.0? Is it powerful? - Geek Is Stupid</title>
+
   <meta name="author" content="Le Tai">
-
   
-  <meta name="description" content="Good way to optimize your code :P I think guard is useful for make a precondition in your method when you will do some stuffs, it&rsquo;s great to &hellip;">
+  <meta name="description" content="How Can I Use 'Guard', 'Where' Statement in Swift2.0? Is It Powerful? Good way to optimize your code :P I think guard is useful for make a &hellip;">
+  
   
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
   <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2015/10/23/how-do-i-can-use-guard-in-swift2-dot-0-is-it-powerful">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Geek Is Stupid" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
-  
-
 </head>
-
-<body   class="collapse-sidebar sidebar-footer" >
-  <header role="banner">
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+<body class="default">
+  <div id="wrapper">
+    <div id="header">
+  <h1><a href="/">Geek Is Stupid</a></h1>
+  
+    <p>Do crazy things...</p>
+  
+</div>
+<ul id="social-links">
+  
+    <li><a class="feed" href="/atom.xml" title="RSS">RSS</a></li>
+  
+  
   
 </ul>
+<div class="clear"></div>
+<ul id="nav">
   
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:geek-is-stupid.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
+    <li> <a href="/">blog</a> </li>
   
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/about">About</a></li>
+
+  
+    <li><a href="/blog/archives">archives</a></li>
+  
 </ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
+    <div id="main"> <div class="post-header">
   
-  <header>
+    <h1 class="post-title">How Can I Use 'Guard', 'Where' Statement in Swift2.0? Is It Powerful?</h1>
   
-    
-      <h1 class="entry-title">How Can I Use 'Guard', 'Where' Statement in Swift2.0? Is It Powerful?</h1>
-    
   
-    
-      <p class="meta">
-        
 
 
 
@@ -83,13 +60,10 @@
 
 
 <time datetime="2015-10-23T23:57:42+07:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
+</div>
 
 
-<div class="entry-content"><h3>Good way to optimize your code :P</h3>
+<div class="post-content"><h3>Good way to optimize your code :P</h3>
 
 <p>I think <code>guard</code> is useful for make a precondition in your method when you will do some stuffs, it&rsquo;s great to unwrapping optional values</p>
 
@@ -180,30 +154,12 @@
 </div>
 
 
-  <footer>
-    <p class="meta">
-      
-  
 
-<span class="byline author vcard">Posted by <span class="fn">Le Tai</span></span>
-
-      
+<div class="post-single">
+  <div class="post-meta">
+    
 
 
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-10-23T23:57:42+07:00" pubdate data-updated="true"></time>
-      
-
-
-    </p>
     
       <div class="sharing">
   
@@ -214,72 +170,71 @@
 </div>
 
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2015/10/23/what-difference-between-unowned-self-and-weak-self/" title="Previous Post: What difference between '[unowned self] and '[weak self']?">&laquo; What difference between '[unowned self] and '[weak self']?</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2015/10/24/what-difference-between-cgd-grand-central-dispatch-and-nsoperation/" title="Next Post: What difference between GCD (Grand Central Dispatch) and NSOperation?">What difference between GCD (Grand Central Dispatch) and NSOperation? &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
+  </div>
+  <div class="clear"></div>
 
+  
 </div>
+ </div>
+    <div id="footer">
+  <div class="panels">
+    <div class="license">
+      <h2>License</h2>
+      <p>如非特别声明，本 Blog 的文章由 Le Tai 创作，采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 Unported 许可协议</a>进行许可。</p>
+    </div>
 
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2016/08/16/adjust-custom-font-verical-alignment-xcode/">Adjust custom font verical alignment - xcode</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority/">What difference between Content Hugging and Content Compression Resistance priority - Cocoa Autolayout?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/">Quick way to add new auto layout constraints in Swift</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/11/09/how-to-debug-uiwebview-in-ios/">How to debug UIWebView in iOS?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/11/02/how-to-close-modal-screens-in-uistoryboard-ios9-unwind-segue/">How to close Modal screens in UIStoryboard - iOS9? - Unwind Segue</a>
-      </li>
-    
-  </ul>
-</section>
+    <div class="posts">
+      <h2>Recent Posts</h2>
+      <ul>
+        
+          <li>
+            <a href="/blog/2016/08/16/adjust-custom-font-verical-alignment-xcode/">Adjust custom font verical alignment - xcode</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority/">What difference between Content Hugging and Content Compression Resistance priority - Cocoa Autolayout?</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/">Quick way to add new auto layout constraints in Swift</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2015/11/09/how-to-debug-uiwebview-in-ios/">How to debug UIWebView in iOS?</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2015/11/02/how-to-close-modal-screens-in-uistoryboard-ios9-unwind-segue/">How to close Modal screens in UIStoryboard - iOS9? - Unwind Segue</a>
+          </li>
+        
+      </ul>
+    </div>
 
-
-
-
-
-  
-</aside>
-
-
+    <div class="douban">
+      <h2>Reading</h2>
+      
+        <p>Please set your Douban ID in _config.yml</p>
+      
     </div>
   </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2016 - Le Tai <br/>
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, customized with <a href="https://github.com/mjhea0/whiterspace">whiterspace</a>.</span>
-</p>
 
-</footer>
+  <p class="powered">
+    Powered by <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/iwinux/compbits">Compbits</a>
+  </p>
+</div>
+
+  </div> <!-- #wrapper end -->
+
+  
+
   
 
 
+  
 
+  
 
-
-
-
+  
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -289,9 +244,6 @@
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
-
-
-
 
 
 </body>
