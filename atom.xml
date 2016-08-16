@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2016-08-16T15:15:36+07:00</updated>
+  <updated>2016-08-16T15:19:42+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Set Background Color for Status Bar?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar/"/>
+    <updated>2016-08-16T15:16:54+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar</id>
+    <content type="html"><![CDATA[<h4>There are many way to do, I show a trick, don&rsquo;t follow me :D</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">class</span> <span class="k">func</span> <span class="n">setStatusBarBackgroundColor</span><span class="p">(</span><span class="nl">color</span><span class="p">:</span> <span class="bp">UIColor</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">guard</span> <span class="k">let</span> <span class="n">statusBar</span> <span class="o">=</span> <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">valueForKey</span><span class="p">(</span><span class="s">&quot;statusBarWindow&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">valueForKey</span><span class="p">(</span><span class="s">&quot;statusBar&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">UIView</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</span><span class='line'>        <span class="n">statusBar</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">color</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Do and see the change:</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">setStatusBarBackgroundColor</span><span class="p">(.</span><span class="n">grayColor</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Show Version in iOS App?]]></title>
@@ -1189,59 +1220,6 @@
     <updated>2015-10-23T22:45:53+07:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2015/10/23/xcode-7-error-include-of-non-modular-header-inside-framework-module-with-a-lib</id>
     <content type="html"><![CDATA[<p><code>...</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Manage All Localized Strings in Your Project?]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/"/>
-    <updated>2015-10-23T21:46:19+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project</id>
-    <content type="html"><![CDATA[<h3>Using <code>'genstrings'</code> tool from Apple which included into Xcode</h3>
-
-<p>Step 1. Add languages which you want to localize.</p>
-
-<p>On the left side of Xcode, choose <code>Show the project navigator</code> > Choose your project:</p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png" /></a></p>
-
-<p>Step 2. Open terminal and go to your project&rsquo;s folder: <code>cd YourProject</code></p>
-
-<p>Step 3. Run: <code>find . -name '*.swift' -print | xargs -n1 genstrings -a</code></p>
-
-<p>After this step, you will see the files:</p>
-
-<ul>
-<li><code>Localizable.strings</code></li>
-<li><code>Base.lproj</code></li>
-<li><code>vi.lproj</code></li>
-<li><code>en.lproj</code></li>
-</ul>
-
-
-<p>Step 3. Add only file: <code>Localizable.strings</code> in your project</p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png" /></a></p>
-
-<p>Step 4: On right side of Xcode, choose <code>Show the File inspector</code> > <code>Localization</code> > Press button: <code>Localize...</code></p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png" /></a></p>
-
-<p>Step 5: Setup your build:</p>
-
-<ul>
-<li>Edit your sheme</li>
-</ul>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-00-40-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-00-40-pm.png" /></a></p>
-
-<ul>
-<li>Change your region + language that you want</li>
-</ul>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png" /></a></p>
 ]]></content>
   </entry>
   

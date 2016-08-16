@@ -9,13 +9,13 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Let make your code be complicated… 1
+  <meta name="description" content="There are many way to do, I show a trick, don&rsquo;t follow me :D 1
 2
 3
 4
 5
-struct Version { let short: String let full: String let display: String
-} And make an extension for &hellip;">
+6
+extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -105,6 +105,58 @@ struct Version { let short: String let full: String let display: String
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/16/how-to-set-background-color-for-status-bar/">How to Set Background Color for Status Bar?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-16T15:16:54+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:16 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>There are many way to do, I show a trick, don&rsquo;t follow me :D</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">class</span> <span class="k">func</span> <span class="n">setStatusBarBackgroundColor</span><span class="p">(</span><span class="nl">color</span><span class="p">:</span> <span class="bp">UIColor</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">guard</span> <span class="k">let</span> <span class="n">statusBar</span> <span class="o">=</span> <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">valueForKey</span><span class="p">(</span><span class="s">&quot;statusBarWindow&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">valueForKey</span><span class="p">(</span><span class="s">&quot;statusBar&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">UIView</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</span><span class='line'>        <span class="n">statusBar</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">color</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Do and see the change:</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">setStatusBarBackgroundColor</span><span class="p">(.</span><span class="n">grayColor</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -824,109 +876,6 @@ struct Version { let short: String let full: String let display: String
 </tbody>
 </table>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/27/how-to-hide-status-bar-in-ios-9/">How to Hide Status Bar by Press a Button in iOS 9?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-27T16:12:23+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:12 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>With animations:</h2>
-
-<ul>
-<li>Solution 1:</li>
-</ul>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/hide-status-bar.gif"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/hide-status-bar.gif" /></a></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="nl">ViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">var</span> <span class="n">hideStatusBar</span> <span class="o">=</span> <span class="nb">false</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="p">@</span><span class="kt">IBAction</span> <span class="k">func</span> <span class="n">buttonTapped</span><span class="p">(</span><span class="nl">button</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="n">hideStatusBar</span> <span class="o">=</span> <span class="o">!</span><span class="n">hideStatusBar</span>
-</span><span class='line'>          <span class="bp">UIView</span><span class="p">.</span><span class="n">animateWithDuration</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span> <span class="p">{</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="k">in</span>
-</span><span class='line'>              <span class="nb">self</span><span class="p">.</span><span class="n">setNeedsStatusBarAppearanceUpdate</span><span class="p">()</span>
-</span><span class='line'>          <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kr">override</span> <span class="k">func</span> <span class="n">preferredStatusBarUpdateAnimation</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UIStatusBarAnimation</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">return</span> <span class="p">.</span><span class="n">Fade</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kr">override</span> <span class="k">func</span> <span class="n">prefersStatusBarHidden</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
-</span><span class='line'>          <span class="k">return</span> <span class="n">hideStatusBar</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ref: <a href="http://stackoverflow.com/questions/32808593/setstatusbarhidden-withanimation-deprecated-in-ios-9#answer-32808743"><a href="http://stackoverflow.com/questions/32808593/setstatusbarhidden-withanimation-deprecated-in-ios-9#answer-32808743">http://stackoverflow.com/questions/32808593/setstatusbarhidden-withanimation-deprecated-in-ios-9#answer-32808743</a></a></p>
-
-<ul>
-<li>Solution 2:</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">@</span><span class="kt">IBAction</span> <span class="n">fun</span> <span class="n">buttonTapped</span><span class="p">(</span><span class="nl">button</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">setStatusBarHidden</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span> <span class="nl">withAnimation</span><span class="p">:</span> <span class="p">.</span><span class="n">Fade</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>But this was deprecated on iOS 9 and later</p>
-
-<h2>What should I do if: <code>"View controller-based status bar appearance" = NO</code></h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">statusBarHidden</span> <span class="o">=</span> <span class="nb">false</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This solution without animation :(</p>
 </div>
   
   

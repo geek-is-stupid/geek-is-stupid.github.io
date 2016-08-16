@@ -5,17 +5,17 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to Show Version in iOS App? - geek-is-stupid</title>
+  <title>How to Set Background Color for Status Bar? - geek-is-stupid</title>
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Let make your code be complicated… 1
+  <meta name="description" content="There are many way to do, I show a trick, don&rsquo;t follow me :D 1
 2
 3
 4
 5
-struct Version { let short: String let full: String let display: String
-} And make an extension for &hellip;">
+6
+extension UIApplication { class func setStatusBarBackgroundColor(color &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +24,7 @@ struct Version { let short: String let full: String let display: String
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-show-version-in-ios-app">
+  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="geek-is-stupid" type="application/atom+xml">
@@ -109,7 +109,7 @@ struct Version { let short: String let full: String let display: String
   <header>
     
       
-        <h1 class="entry-title">How to Show Version in iOS App?</h1>
+        <h1 class="entry-title">How to Set Background Color for Status Bar?</h1>
       
     
     
@@ -119,7 +119,7 @@ struct Version { let short: String let full: String let display: String
 
 
 
-<time class='entry-date' datetime='2016-08-16T15:11:29+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:11 pm</span></time>
+<time class='entry-date' datetime='2016-08-16T15:16:54+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:16 pm</span></time>
         
         
       </p>
@@ -127,22 +127,7 @@ struct Version { let short: String let full: String let display: String
   </header>
 
 
-<div class="entry-content"><h3>Let make your code be complicated…</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">struct</span> <span class="n">Version</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">let</span> <span class="kt">short</span><span class="o">:</span> <span class="n">String</span>
-</span><span class='line'>    <span class="k">let</span> <span class="nl">full</span><span class="p">:</span> <span class="n">String</span>
-</span><span class='line'>    <span class="k">let</span> <span class="nl">display</span><span class="p">:</span> <span class="n">String</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And make an extension for UIApplication</p>
+<div class="entry-content"><h4>There are many way to do, I show a trick, don&rsquo;t follow me :D</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -150,27 +135,19 @@ struct Version { let short: String let full: String let display: String
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">static</span> <span class="k">var</span> <span class="nl">version</span><span class="p">:</span> <span class="n">Version</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">let</span> <span class="kt">short</span> <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">objectForInfoDictionaryKey</span><span class="p">(</span><span class="s">&quot;CFBundleShortVersionString&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">String</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">full</span> <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">objectForInfoDictionaryKey</span><span class="p">(</span><span class="n">kCFBundleVersionKey</span> <span class="kt">as</span> <span class="n">String</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">String</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">display</span> <span class="o">=</span> <span class="n">full</span><span class="p">.</span><span class="n">containsString</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="nl">full</span> <span class="p">:</span> <span class="s">&quot;\(short).\(full)&quot;</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">Version</span><span class="p">(</span><span class="kt">short</span><span class="o">:</span> <span class="kt">short</span><span class="p">,</span> <span class="nl">full</span><span class="p">:</span> <span class="n">full</span><span class="p">,</span> <span class="nl">display</span><span class="p">:</span> <span class="n">display</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">class</span> <span class="k">func</span> <span class="n">setStatusBarBackgroundColor</span><span class="p">(</span><span class="nl">color</span><span class="p">:</span> <span class="bp">UIColor</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">guard</span> <span class="k">let</span> <span class="n">statusBar</span> <span class="o">=</span> <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">valueForKey</span><span class="p">(</span><span class="s">&quot;statusBarWindow&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">valueForKey</span><span class="p">(</span><span class="s">&quot;statusBar&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">UIView</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</span><span class='line'>        <span class="n">statusBar</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">color</span>
+</span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>Your time:</h3>
+<h4>Do and see the change:</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="kt">short</span><span class="p">)</span>
-</span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">full</span><span class="p">)</span>
-</span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">display</span><span class="p">)</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">setStatusBarBackgroundColor</span><span class="p">(.</span><span class="n">grayColor</span><span class="p">())</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -195,7 +172,7 @@ struct Version { let short: String let full: String let display: String
 
 
 
-<time class='entry-date' datetime='2016-08-16T15:11:29+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:11 pm</span></time>
+<time class='entry-date' datetime='2016-08-16T15:16:54+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:16 pm</span></time>
       
       
 
@@ -204,7 +181,7 @@ struct Version { let short: String let full: String let display: String
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-show-version-in-ios-app/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-show-version-in-ios-app/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar/" >Tweet</a>
   
   
   
@@ -213,10 +190,8 @@ struct Version { let short: String let full: String let display: String
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2016/08/16/how-to-handle-response-with-success-and-error-in-one-closure/" title="Previous Post: How to handle response with success: and error: in one closure?">&laquo; How to handle response with success: and error: in one closure?</a>
+        <a class="basic-alignment left" href="/blog/2016/08/16/how-to-show-version-in-ios-app/" title="Previous Post: How to show Version in iOS app?">&laquo; How to show Version in iOS app?</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2016/08/16/how-to-set-background-color-for-status-bar/" title="Next Post: How to set background color for status bar?">How to set background color for status bar? &raquo;</a>
       
     </p>
   </footer>

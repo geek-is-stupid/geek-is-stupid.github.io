@@ -9,8 +9,25 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="With animations: Solution 1: 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+class ViewController: UIViewController { var hideStatusBar = false @ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,6 +117,109 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/27/how-to-hide-status-bar-in-ios-9/">How to Hide Status Bar by Press a Button in iOS 9?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-27T16:12:23+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:12 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>With animations:</h2>
+
+<ul>
+<li>Solution 1:</li>
+</ul>
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/hide-status-bar.gif"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/hide-status-bar.gif" /></a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="nl">ViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">var</span> <span class="n">hideStatusBar</span> <span class="o">=</span> <span class="nb">false</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">@</span><span class="kt">IBAction</span> <span class="k">func</span> <span class="n">buttonTapped</span><span class="p">(</span><span class="nl">button</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">hideStatusBar</span> <span class="o">=</span> <span class="o">!</span><span class="n">hideStatusBar</span>
+</span><span class='line'>          <span class="bp">UIView</span><span class="p">.</span><span class="n">animateWithDuration</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span> <span class="p">{</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="k">in</span>
+</span><span class='line'>              <span class="nb">self</span><span class="p">.</span><span class="n">setNeedsStatusBarAppearanceUpdate</span><span class="p">()</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kr">override</span> <span class="k">func</span> <span class="n">preferredStatusBarUpdateAnimation</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">UIStatusBarAnimation</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="p">.</span><span class="n">Fade</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kr">override</span> <span class="k">func</span> <span class="n">prefersStatusBarHidden</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">hideStatusBar</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ref: <a href="http://stackoverflow.com/questions/32808593/setstatusbarhidden-withanimation-deprecated-in-ios-9#answer-32808743"><a href="http://stackoverflow.com/questions/32808593/setstatusbarhidden-withanimation-deprecated-in-ios-9#answer-32808743">http://stackoverflow.com/questions/32808593/setstatusbarhidden-withanimation-deprecated-in-ios-9#answer-32808743</a></a></p>
+
+<ul>
+<li>Solution 2:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">@</span><span class="kt">IBAction</span> <span class="n">fun</span> <span class="n">buttonTapped</span><span class="p">(</span><span class="nl">button</span><span class="p">:</span> <span class="bp">UIButton</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">setStatusBarHidden</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span> <span class="nl">withAnimation</span><span class="p">:</span> <span class="p">.</span><span class="n">Fade</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But this was deprecated on iOS 9 and later</p>
+
+<h2>What should I do if: <code>"View controller-based status bar appearance" = NO</code></h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">statusBarHidden</span> <span class="o">=</span> <span class="nb">false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This solution without animation :(</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -844,80 +964,6 @@
 
 
   <div class="entry-content"><p><code>...</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/">How to Manage All Localized Strings in Your Project?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-23T21:46:19+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:46 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Using <code>'genstrings'</code> tool from Apple which included into Xcode</h3>
-
-<p>Step 1. Add languages which you want to localize.</p>
-
-<p>On the left side of Xcode, choose <code>Show the project navigator</code> > Choose your project:</p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png" /></a></p>
-
-<p>Step 2. Open terminal and go to your project&rsquo;s folder: <code>cd YourProject</code></p>
-
-<p>Step 3. Run: <code>find . -name '*.swift' -print | xargs -n1 genstrings -a</code></p>
-
-<p>After this step, you will see the files:</p>
-
-<ul>
-<li><code>Localizable.strings</code></li>
-<li><code>Base.lproj</code></li>
-<li><code>vi.lproj</code></li>
-<li><code>en.lproj</code></li>
-</ul>
-
-
-<p>Step 3. Add only file: <code>Localizable.strings</code> in your project</p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png" /></a></p>
-
-<p>Step 4: On right side of Xcode, choose <code>Show the File inspector</code> > <code>Localization</code> > Press button: <code>Localize...</code></p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png" /></a></p>
-
-<p>Step 5: Setup your build:</p>
-
-<ul>
-<li>Edit your sheme</li>
-</ul>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-00-40-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-00-40-pm.png" /></a></p>
-
-<ul>
-<li>Change your region + language that you want</li>
-</ul>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png" /></a></p>
 </div>
   
   
