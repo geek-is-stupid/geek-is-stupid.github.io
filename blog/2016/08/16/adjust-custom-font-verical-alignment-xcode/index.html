@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Adjust Custom Font Verical Alignment - Xcode - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="Some time when you custom font in your project, and the font display not correctly, so how to fix that: Step 1. Download Apple Font Tool Suite &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2016/08/16/adjust-custom-font-verical-alignment-xcode/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="geek-is-stupid.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Adjust Custom Font Verical Alignment - Xcode</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-16T10:05:47+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:05 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Some time when you custom font in your project, and the font display not correctly, so how to fix that:</p>
+
+<p>Step 1. Download <a href="https://developer.apple.com/fonts/">Apple Font Tool Suite</a> command line utilities.</p>
+
+<p>Step 2. Go to the folder which contains your font and run command:
+<code>ftxdumperfuser -t hhea -A d Bold.ttf</code></p>
+
+<p>Step 3. It will generate Bold.hhea.xml automatically, open it and edit <code>ascender</code> value. In my case I changed it from <code>750</code> to <code>1200</code></p>
+
+<p>Step 4. Run: <code>ftxdumperfuser -t hhea -A f Bold.ttf</code></p>
+
+<p>And now your font is updated!!!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-08-16T10:05:47+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:05 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2016/08/16/adjust-custom-font-verical-alignment-xcode/" data-via="" data-counturl="http://geek-is-stupid.github.io/blog/2016/08/16/adjust-custom-font-verical-alignment-xcode/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority/" title="Previous Post: What difference between Content Hugging and Content Compression Resistance priority - Cocoa Autolayout?">&laquo; What difference between Content Hugging and Content Compression Resistance priority - Cocoa Autolayout?</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/08/16/adjust-custom-font-verical-alignment-xcode/">Adjust Custom Font Verical Alignment - Xcode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority/">What Difference Between Content Hugging and Content Compression Resistance Priority - Cocoa Autolayout?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/">Quick Way to Add New Auto Layout Constraints in Swift</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/09/how-to-debug-uiwebview-in-ios/">How to Debug UIWebView in iOS?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/02/how-to-close-modal-screens-in-uistoryboard-ios9-unwind-segue/">How to Close Modal Screens in UIStoryboard - iOS9? - Unwind Segue</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

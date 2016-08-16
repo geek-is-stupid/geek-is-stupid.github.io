@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://geek-is-stupid.github.io/sitemap.xml 
