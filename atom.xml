@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2016-08-16T14:20:09+07:00</updated>
+  <updated>2016-08-16T14:21:38+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[levantAJ]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
