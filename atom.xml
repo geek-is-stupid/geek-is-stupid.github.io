@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2016-08-16T14:29:15+07:00</updated>
+  <updated>2016-08-16T14:42:40+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Make Animation for UIImageView From List of Images]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-make-animation-for-uiimageview-from-list-of-images/"/>
+    <updated>2016-08-16T14:38:00+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2016/08/16/how-to-make-animation-for-uiimageview-from-list-of-images</id>
+    <content type="html"><![CDATA[<p>If you have some images like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let firstImage = UIImage(named: "first")
+</span><span class='line'>let secondImage = UIImage(named: "first")
+</span><span class='line'>let thirdImage = UIImage(named: "first")</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>How to display these images on UIImageView and it change image automatically?</h2>
+
+<h3>Easy, try this:</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let imageView = UIImageView()
+</span><span class='line'>imageView.animationImages = [firstImage, secondImage, thirdImage]
+</span><span class='line'>imageView.startAnimating()</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>So how to set number of loops?</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>imageView.animationRepeatCount = 0 // 0 means infinite (default is 0)</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Hummm, ok so how to change velocity?</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>imageView.animationDuration = 0.5 // 0.5 seconds  for one cycle of images</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Now stop it!</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>imageView.stopAnimating()</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Fun right!!!, cheers</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Adjust Custom Font Verical Alignment - Xcode]]></title>
@@ -1054,23 +1103,6 @@
 <h4>Resolve:</h4>
 
 <p>Delete your old app on device and try again!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Swap Two Any Type of Variables Without Using a Temporary Variable?]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-swap-two-any-type-of-variables-without-using-a-temporary-variable/"/>
-    <updated>2015-10-23T15:48:03+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2015/10/23/how-to-swap-two-any-type-of-variables-without-using-a-temporary-variable</id>
-    <content type="html"><![CDATA[<p>This method using for any numeric type of variables:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = a + b;
-</span><span class='line'>b = a - b;
-</span><span class='line'>a = a - b;</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
