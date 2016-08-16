@@ -5,17 +5,18 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to Go to iOS Settings From Your App? - geek-is-stupid</title>
+  <title>How to Set Placeholder Text Color for UITextField? - geek-is-stupid</title>
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="OK let&rsquo;s do 1
+  <meta name="description" content="Worked on UI is interesting part of iOS development 1
 2
 3
 4
 5
 6
-extension UIApplication { class func openSettings() { let url = NSURL(string: UIApplicationOpenSettingsURLString) &hellip;">
+7
+extension UITextField { func setPlaceholderColor(color: UIColor) { if let &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +25,7 @@ extension UIApplication { class func openSettings() { let url = NSURL(string: UI
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app">
+  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-placeholder-text-color-for-uitextfield">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="geek-is-stupid" type="application/atom+xml">
@@ -123,7 +124,7 @@ extension UIApplication { class func openSettings() { let url = NSURL(string: UI
   <header>
     
       
-        <h1 class="entry-title">How to Go to iOS Settings From Your App?</h1>
+        <h1 class="entry-title">How to Set Placeholder Text Color for UITextField?</h1>
       
     
     
@@ -133,7 +134,7 @@ extension UIApplication { class func openSettings() { let url = NSURL(string: UI
 
 
 
-<time class='entry-date' datetime='2016-08-16T15:26:31+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:26 pm</span></time>
+<time class='entry-date' datetime='2016-08-16T15:39:21+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:39 pm</span></time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -143,7 +144,7 @@ extension UIApplication { class func openSettings() { let url = NSURL(string: UI
   </header>
 
 
-<div class="entry-content"><h3>OK let&rsquo;s do</h3>
+<div class="entry-content"><h4>Worked on UI is interesting part of iOS development</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -151,23 +152,27 @@ extension UIApplication { class func openSettings() { let url = NSURL(string: UI
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">class</span> <span class="k">func</span> <span class="n">openSettings</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">UIApplicationOpenSettingsURLString</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">openURL</span><span class="p">(</span><span class="n">url</span><span class="o">!</span><span class="p">)</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UITextField</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">func</span> <span class="n">setPlaceholderColor</span><span class="p">(</span><span class="nl">color</span><span class="p">:</span> <span class="bp">UIColor</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="k">let</span> <span class="n">placeholder</span> <span class="o">=</span> <span class="n">placeholder</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">attributedPlaceholder</span> <span class="o">=</span> <span class="bp">NSAttributedString</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">placeholder</span><span class="p">,</span> <span class="nl">attributes</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSForegroundColorAttributeName</span><span class="p">:</span> <span class="n">color</span><span class="p">])</span>
+</span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>Show time:</h3>
+<h5>Way to use:</h5>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">openSettings</span><span class="p">()</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">textField</span> <span class="o">=</span> <span class="bp">UITextField</span><span class="p">()</span>
+</span><span class='line'><span class="n">textField</span><span class="p">.</span><span class="n">setPlaceholderColor</span><span class="p">(.</span><span class="n">redColor</span><span class="p">())</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Hope you like it!</p>
+<h5>Let&rsquo;s try, it&rsquo;s delicious</h5>
 </div>
 
 
@@ -190,7 +195,7 @@ extension UIApplication { class func openSettings() { let url = NSURL(string: UI
 
 
 
-<time class='entry-date' datetime='2016-08-16T15:26:31+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:26 pm</span></time>
+<time class='entry-date' datetime='2016-08-16T15:39:21+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:39 pm</span></time>
       
       
 
@@ -199,7 +204,7 @@ extension UIApplication { class func openSettings() { let url = NSURL(string: UI
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-placeholder-text-color-for-uitextfield/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-placeholder-text-color-for-uitextfield/" >Tweet</a>
   
   
   
@@ -208,10 +213,8 @@ extension UIApplication { class func openSettings() { let url = NSURL(string: UI
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2016/08/16/how-to-set-background-color-for-status-bar/" title="Previous Post: How to set background color for status bar?">&laquo; How to set background color for status bar?</a>
+        <a class="basic-alignment left" href="/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/" title="Previous Post: How to go to iOS Settings from your app?">&laquo; How to go to iOS Settings from your app?</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2016/08/16/how-to-set-placeholder-text-color-for-uitextfield/" title="Next Post: How to set placeholder text color for UITextField?">How to set placeholder text color for UITextField? &raquo;</a>
       
     </p>
   </footer>
@@ -241,8 +244,8 @@ extension UIApplication { class func openSettings() { let url = NSURL(string: UI
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/';
-        var disqus_url = 'http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/';
+        var disqus_identifier = 'http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-placeholder-text-color-for-uitextfield/';
+        var disqus_url = 'http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-placeholder-text-color-for-uitextfield/';
         var disqus_script = 'embed.js';
       
     (function () {
