@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2016-08-17T15:31:42+07:00</updated>
+  <updated>2016-08-17T15:48:00+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Show Warning When Add //TODO: And //FIXME: In Xcode?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2016/08/17/how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/"/>
+    <updated>2016-08-17T15:36:02+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2016/08/17/how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode</id>
+    <content type="html"><![CDATA[<p>If you make a note in xcode, and you dont want to miss that, there are some solution for that, I will show you one:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="c1">//TODO: Let read this blog in 15 mins</span>
+</span><span class='line'><span class="c1">//FIX: I need you fix me man :)</span>
+</span><span class='line'><span class="c1">//ERROR: Noooooooooo, get out of here the error</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>OK now how to make xcode understand to show your wanrning and error:</p>
+
+<p>Go to <code>Build Phases</code> and create new Run script:</p>
+
+<p><img src="../images/post/2016-08-17-how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/1.png" title="A brick" alt="a brick" /></p>
+
+<p>Add this script:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">TAGS</span><span class="o">=</span><span class="s">&quot;TODO:|FIXME:&quot;</span>
+</span><span class='line'><span class="n">ERRORTAG</span><span class="o">=</span><span class="s">&quot;ERROR:&quot;</span>
+</span><span class='line'><span class="n">find</span> <span class="s">&quot;${SRCROOT}&quot;</span> <span class="err">\</span><span class="p">(</span> <span class="o">-</span><span class="n">name</span> <span class="s">&quot;*.h&quot;</span> <span class="o">-</span><span class="n">or</span> <span class="o">-</span><span class="n">name</span> <span class="s">&quot;*.m&quot;</span> <span class="o">-</span><span class="n">or</span> <span class="o">-</span><span class="n">name</span> <span class="s">&quot;*.swift&quot;</span> <span class="err">\</span><span class="p">)</span> <span class="o">-</span><span class="n">print0</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="mi">0</span> <span class="n">egrep</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">filename</span> <span class="o">--</span><span class="n">line</span><span class="o">-</span><span class="n">number</span> <span class="o">--</span><span class="n">only</span><span class="o">-</span><span class="n">matching</span> <span class="s">&quot;($TAGS).*\$|($ERRORTAG).*\$&quot;</span> <span class="o">|</span> <span class="n">perl</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;s/($TAGS)/ warning: \$1/&quot;</span> <span class="o">|</span> <span class="n">perl</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;s/($ERRORTAG)/ error: \$1/&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setting Swift Compiler Flags in CocoaPods]]></title>
@@ -1124,15 +1159,6 @@
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What Difference Between '[Unowned Self] and '[Weak Self']?]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2015/10/23/what-difference-between-unowned-self-and-weak-self/"/>
-    <updated>2015-10-23T23:56:22+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2015/10/23/what-difference-between-unowned-self-and-weak-self</id>
-    <content type="html"><![CDATA[<p><code>...</code></p>
 ]]></content>
   </entry>
   
