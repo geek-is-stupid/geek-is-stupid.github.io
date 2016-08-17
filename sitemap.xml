@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://geek-is-stupid.github.io/blog/2016/08/17/setting-swift-compiler-flags-in-cocoapods/</loc>
+<lastmod>2016-08-17T15:15:53+07:00</lastmod>
+</url>
+<url>
 <loc>http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-placeholder-text-color-for-uitextfield/</loc>
 <lastmod>2016-08-16T15:39:21+07:00</lastmod>
 </url>
