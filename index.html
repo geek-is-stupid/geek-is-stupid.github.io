@@ -9,10 +9,8 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="If you make a note in xcode, and you dont want to miss that, there are some solution for that, I will show you one: 1
-2
-3
-//TODO: Let read this blog &hellip;">
+  <meta name="description" content="If you have question like this title of this post, so you are my audience OK now if I have 2 .plist files: SERVICE-ACCOUNT-DEBUG.plist
+SERVICE- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -122,7 +120,76 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/08/17/how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/">How to Show Warning When Add //TODO: And //FIXME: In Xcode?</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode/">Different .plist File for Different Environment in Xcode?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-17T15:53:42+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:53 pm</span></time>
+        
+         | <a href="/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you have question like this title of this post, so you are my audience</p>
+
+<p>OK now if I have 2 <code>.plist</code> files:</p>
+
+<ol>
+<li>SERVICE-ACCOUNT-DEBUG.plist</li>
+<li>SERVICE-ACCOUNT-RELEASE.plist</li>
+</ol>
+
+
+<p>When app runs, depend on current environment we will rename one of them to <code>SERVICE-ACCOUNT.plist</code>:</p>
+
+<p>If app in DEBUG mode we will rename <code>SERVICE-ACCOUNT-DEBUG.plist</code> to <code>SERVICE-ACCOUNT.plist</code></p>
+
+<p>If app in RELEASE mode we will rename <code>SERVICE-ACCOUNT-RELEASE.plist</code> to <code>SERVICE-ACCOUNT.plist</code></p>
+
+<p>Let go to your <code>Build Phares</code> and create new Run script:</p>
+
+<p><img src="../images/post/2016-08-17-different-plist-file-for-different-environment-in-xcode/1.png" title="New script" alt="a brick" /></p>
+
+<p>Add this script:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">if</span> <span class="p">[</span> <span class="s">&quot;${CONFIGURATION}&quot;</span> <span class="o">==</span> <span class="s">&quot;Release&quot;</span> <span class="p">];</span> <span class="n">then</span>
+</span><span class='line'><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="s">&quot;${PROJECT_DIR}/PATH-TO-FILE/SERVICE-ACCOUNT-RELEASE.plist&quot;</span> <span class="s">&quot;${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/SERVICE-ACCOUNT.plist&quot;</span>
+</span><span class='line'><span class="n">echo</span> <span class="s">&quot;Production plist copied&quot;</span>
+</span><span class='line'><span class="n">elif</span> <span class="p">[</span> <span class="s">&quot;${CONFIGURATION}&quot;</span> <span class="o">==</span> <span class="s">&quot;Debug&quot;</span> <span class="p">];</span> <span class="n">then</span>
+</span><span class='line'><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="s">&quot;${PROJECT_DIR}/PATH-TO-FILE/SERVICE-ACCOUNT-DEBUG.plist&quot;</span> <span class="s">&quot;${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/SERVICE-ACCOUNT.plist&quot;</span>
+</span><span class='line'><span class="n">echo</span> <span class="s">&quot;Debug plist copied&quot;</span>
+</span><span class='line'><span class="n">fi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/17/how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/">How to Show Warning When Add //TODO: //FIXME: //ERRO: In Xcode?</a></h1>
     
     
       <p class="meta">
@@ -156,7 +223,7 @@
 
 <p>Go to <code>Build Phases</code> and create new Run script:</p>
 
-<p><img src="../images/post/2016-08-17-how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/1.png" title="A brick" alt="a brick" /></p>
+<p><img src="../images/post/2016-08-17-how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/1.png" title="New script" alt="a brick" /></p>
 
 <p>Add this script:</p>
 
@@ -757,71 +824,6 @@
 <p>Step 4. Run: <code>ftxdumperfuser -t hhea -A f Bold.ttf</code></p>
 
 <p>And now your font is updated!!!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority/">What Difference Between Content Hugging and Content Compression Resistance Priority - Cocoa Autolayout?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-12-21T11:04:00+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>11:04 am</span></time>
-        
-         | <a href="/blog/2015/12/21/what-difference-between-content-hugging-and-content-compression-resistance-priority/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Summary:</h3>
-
-<ul>
-<li>Hugging: Content does not want to grow</li>
-<li>Compression Resistance: Content does not want to shrink</li>
-</ul>
-
-
-<h3>Example:</h3>
-
-<p>I have a button look like this:&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click Me&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</p>
-
-<table>
-<thead>
-<tr>
-<th> # </th>
-<th style="text-align:center;"> &lt;500 </th>
-<th style="text-align:center;"> >500 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> Hugging </td>
-<td style="text-align:center;"> [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click Me&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;] </td>
-<td style="text-align:center;"> [Click Me] </td>
-</tr>
-<tr>
-<td> Compression Resistance </td>
-<td style="text-align:center;"> [Cli…] </td>
-<td style="text-align:center;"> [Click Me] </td>
-</tr>
-</tbody>
-</table>
-
 </div>
   
   

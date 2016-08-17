@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://geek-is-stupid.github.io/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode/</loc>
+<lastmod>2016-08-17T15:53:42+07:00</lastmod>
+</url>
+<url>
 <loc>http://geek-is-stupid.github.io/blog/2016/08/17/how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/</loc>
 <lastmod>2016-08-17T15:36:02+07:00</lastmod>
 </url>
@@ -149,5 +153,14 @@
 </url>
 <url>
 <loc>http://geek-is-stupid.github.io/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/2/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/3/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/4/</loc>
 </url>
 </urlset>

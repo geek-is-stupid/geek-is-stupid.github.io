@@ -5,16 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Setting Swift Compiler Flags in CocoaPods - geek-is-stupid</title>
+  <title>Different .plist File for Different Environment in Xcode? - geek-is-stupid</title>
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Someday your boss ask you to have staging server and production server to make data be pure, so you will find out this code for your api: 1
-2
-3
-4
-5
-6 &hellip;">
+  <meta name="description" content="If you have question like this title of this post, so you are my audience OK now if I have 2 .plist files: SERVICE-ACCOUNT-DEBUG.plist
+SERVICE- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2016/08/17/setting-swift-compiler-flags-in-cocoapods">
+  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="geek-is-stupid" type="application/atom+xml">
@@ -122,7 +118,7 @@
   <header>
     
       
-        <h1 class="entry-title">Setting Swift Compiler Flags in CocoaPods</h1>
+        <h1 class="entry-title">Different .plist File for Different Environment in Xcode?</h1>
       
     
     
@@ -132,7 +128,7 @@
 
 
 
-<time class='entry-date' datetime='2016-08-17T15:15:53+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:15 pm</span></time>
+<time class='entry-date' datetime='2016-08-17T15:53:42+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:53 pm</span></time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -142,7 +138,27 @@
   </header>
 
 
-<div class="entry-content"><p>Someday your boss ask you to have staging server and production server to make data be pure, so you will find out this code for your api:</p>
+<div class="entry-content"><p>If you have question like this title of this post, so you are my audience</p>
+
+<p>OK now if I have 2 <code>.plist</code> files:</p>
+
+<ol>
+<li>SERVICE-ACCOUNT-DEBUG.plist</li>
+<li>SERVICE-ACCOUNT-RELEASE.plist</li>
+</ol>
+
+
+<p>When app runs, depend on current environment we will rename one of them to <code>SERVICE-ACCOUNT.plist</code>:</p>
+
+<p>If app in DEBUG mode we will rename <code>SERVICE-ACCOUNT-DEBUG.plist</code> to <code>SERVICE-ACCOUNT.plist</code></p>
+
+<p>If app in RELEASE mode we will rename <code>SERVICE-ACCOUNT-RELEASE.plist</code> to <code>SERVICE-ACCOUNT.plist</code></p>
+
+<p>Let go to your <code>Build Phares</code> and create new Run script:</p>
+
+<p><img src="../images/post/2016-08-17-different-plist-file-for-different-environment-in-xcode/1.png" title="New script" alt="a brick" /></p>
+
+<p>Add this script:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -151,44 +167,13 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">public</span> <span class="k">var</span> <span class="nl">host</span><span class="p">:</span> <span class="bp">NSURL</span> <span class="p">{</span>
-</span><span class='line'>    <span class="cp">#if DEBUG</span>
-</span><span class='line'>        <span class="k">return</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;https://www.google.com.vn&quot;</span><span class="p">)</span><span class="o">!</span>
-</span><span class='line'>    <span class="cp">#else</span>
-</span><span class='line'>        <span class="k">return</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://geek-is-stupid.github.io&quot;</span><span class="p">)</span><span class="o">!</span>
-</span><span class='line'>    <span class="cp">#endif</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And you go to <code>Build Settings</code> and set the <code>DEBUG</code> symbol in <code>Swift Compiler - Custom Flags</code> section for the <code>Other Swift Flags</code> key via a <code>-D DEBUG</code> entry. See the following screenshot for an example:</p>
-
-<p><img src="../images/post/2016-08-17-setting-swift-compiler-flags-in-cocoapods/1.png" title="A brick" alt="a brick" /></p>
-
-<p>That works, hummm but what happen if I move the <code>host</code> to a library and I use CocoaPods to manages dependencies, it won&rsquo;t work any more.</p>
-
-<p>So the way to let it jump :)</p>
-
-<p>Open your Podfile and add this script to the bottom:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">post_install</span> <span class="k">do</span> <span class="o">|</span><span class="n">installer</span><span class="o">|</span>
-</span><span class='line'>    <span class="n">installer</span><span class="p">.</span><span class="n">pods_project</span><span class="p">.</span><span class="n">build_configurations</span><span class="p">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">config</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">Debug</span><span class="err">&#39;</span>
-</span><span class='line'>            <span class="n">config</span><span class="p">.</span><span class="n">build_settings</span><span class="p">[</span><span class="err">&#39;</span><span class="n">OTHER_SWIFT_FLAGS</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[</span><span class="err">&#39;$</span><span class="p">(</span><span class="n">inherited</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="o">-</span><span class="n">D</span> <span class="n">DEBUG</span><span class="err">&#39;</span><span class="p">]</span>
-</span><span class='line'>        <span class="n">elsif</span> <span class="n">config</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">Release</span><span class="err">&#39;</span>
-</span><span class='line'>            <span class="n">config</span><span class="p">.</span><span class="n">build_settings</span><span class="p">[</span><span class="err">&#39;</span><span class="n">OTHER_SWIFT_FLAGS</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[</span><span class="err">&#39;$</span><span class="p">(</span><span class="n">inherited</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="o">-</span><span class="n">D</span> <span class="n">RELEASE</span><span class="err">&#39;</span><span class="p">]</span>
-</span><span class='line'>        <span class="n">end</span>
-</span><span class='line'>    <span class="n">end</span>
-</span><span class='line'><span class="n">end</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">if</span> <span class="p">[</span> <span class="s">&quot;${CONFIGURATION}&quot;</span> <span class="o">==</span> <span class="s">&quot;Release&quot;</span> <span class="p">];</span> <span class="n">then</span>
+</span><span class='line'><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="s">&quot;${PROJECT_DIR}/PATH-TO-FILE/SERVICE-ACCOUNT-RELEASE.plist&quot;</span> <span class="s">&quot;${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/SERVICE-ACCOUNT.plist&quot;</span>
+</span><span class='line'><span class="n">echo</span> <span class="s">&quot;Production plist copied&quot;</span>
+</span><span class='line'><span class="n">elif</span> <span class="p">[</span> <span class="s">&quot;${CONFIGURATION}&quot;</span> <span class="o">==</span> <span class="s">&quot;Debug&quot;</span> <span class="p">];</span> <span class="n">then</span>
+</span><span class='line'><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="s">&quot;${PROJECT_DIR}/PATH-TO-FILE/SERVICE-ACCOUNT-DEBUG.plist&quot;</span> <span class="s">&quot;${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/SERVICE-ACCOUNT.plist&quot;</span>
+</span><span class='line'><span class="n">echo</span> <span class="s">&quot;Debug plist copied&quot;</span>
+</span><span class='line'><span class="n">fi</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -213,7 +198,7 @@
 
 
 
-<time class='entry-date' datetime='2016-08-17T15:15:53+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:15 pm</span></time>
+<time class='entry-date' datetime='2016-08-17T15:53:42+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:53 pm</span></time>
       
       
 
@@ -222,7 +207,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2016/08/17/setting-swift-compiler-flags-in-cocoapods/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2016/08/17/setting-swift-compiler-flags-in-cocoapods/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode/" >Tweet</a>
   
   
   
@@ -231,10 +216,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2016/08/16/how-to-set-placeholder-text-color-for-uitextfield/" title="Previous Post: How to set placeholder text color for UITextField?">&laquo; How to set placeholder text color for UITextField?</a>
+        <a class="basic-alignment left" href="/blog/2016/08/17/how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/" title="Previous Post: How to show warning when add //TODO: //FIXME: //ERRO: in xcode?">&laquo; How to show warning when add //TODO: //FIXME: //ERRO: in xcode?</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2016/08/17/how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/" title="Next Post: How to show warning when add //TODO: //FIXME: //ERRO: in xcode?">How to show warning when add //TODO: //FIXME: //ERRO: in xcode? &raquo;</a>
       
     </p>
   </footer>
@@ -264,8 +247,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://geek-is-stupid.github.io/blog/2016/08/17/setting-swift-compiler-flags-in-cocoapods/';
-        var disqus_url = 'http://geek-is-stupid.github.io/blog/2016/08/17/setting-swift-compiler-flags-in-cocoapods/';
+        var disqus_identifier = 'http://geek-is-stupid.github.io/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode/';
+        var disqus_url = 'http://geek-is-stupid.github.io/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode/';
         var disqus_script = 'embed.js';
       
     (function () {
