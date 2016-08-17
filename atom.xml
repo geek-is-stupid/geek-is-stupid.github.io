@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2016-08-17T15:30:23+07:00</updated>
+  <updated>2016-08-17T15:31:42+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -43,8 +43,9 @@
 
 <p>That works, hummm but what happen if I move the <code>host</code> to a library and I use CocoaPods to manages dependencies, it won&rsquo;t work any more.</p>
 
-<p>So the way to let it jump :)
-Open your Podfile and add this script to the bottom:</p>
+<p>So the way to let it jump :)</p>
+
+<p>Open your Podfile and add this script to the bottom:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
