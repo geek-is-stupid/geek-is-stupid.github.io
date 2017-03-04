@@ -9,14 +9,12 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Worked on UI is interesting part of iOS development 1
+  <meta name="description" content="Someday your boss ask you to have staging server and production server to make data be pure, so you will find out this code for your api: 1
 2
 3
 4
 5
-6
-7
-extension UITextField { func setPlaceholderColor(color: UIColor) { if let &hellip;">
+6 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -120,6 +118,86 @@ extension UITextField { func setPlaceholderColor(color: UIColor) { if let &helli
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/17/setting-swift-compiler-flags-in-cocoapods/">Setting Swift Compiler Flags in CocoaPods</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-17T15:15:53+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:15 pm</span></time>
+        
+         | <a href="/blog/2016/08/17/setting-swift-compiler-flags-in-cocoapods/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Someday your boss ask you to have staging server and production server to make data be pure, so you will find out this code for your api:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">public</span> <span class="k">var</span> <span class="nl">host</span><span class="p">:</span> <span class="bp">NSURL</span> <span class="p">{</span>
+</span><span class='line'>    <span class="cp">#if DEBUG</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;https://www.google.com.vn&quot;</span><span class="p">)</span><span class="o">!</span>
+</span><span class='line'>    <span class="cp">#else</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://geek-is-stupid.github.io&quot;</span><span class="p">)</span><span class="o">!</span>
+</span><span class='line'>    <span class="cp">#endif</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And you go to <code>Build Settings</code> and set the <code>DEBUG</code> symbol in <code>Swift Compiler - Custom Flags</code> section for the <code>Other Swift Flags</code> key via a <code>-D DEBUG</code> entry. See the following screenshot for an example:</p>
+
+<p><img src="https://raw.githubusercontent.com/geek-is-stupid/geek-is-stupid.github.io/master/images/post/2016-08-17-setting-swift-compiler-flags-in-cocoapods/1.png" title="Setup -D DEBUG for Other Swift Flags" alt="a brick" /></p>
+
+<p>That works, hummm but what happen if I move the <code>host</code> to a library and I use CocoaPods to manages dependencies, it won&rsquo;t work any more.</p>
+
+<p>So the way to let it jump :)</p>
+
+<p>Open your Podfile and add this script to the bottom:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">post_install</span> <span class="k">do</span> <span class="o">|</span><span class="n">installer</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">installer</span><span class="p">.</span><span class="n">pods_project</span><span class="p">.</span><span class="n">build_configurations</span><span class="p">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">config</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">Debug</span><span class="err">&#39;</span>
+</span><span class='line'>            <span class="n">config</span><span class="p">.</span><span class="n">build_settings</span><span class="p">[</span><span class="err">&#39;</span><span class="n">OTHER_SWIFT_FLAGS</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[</span><span class="err">&#39;$</span><span class="p">(</span><span class="n">inherited</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="o">-</span><span class="n">D</span> <span class="n">DEBUG</span><span class="err">&#39;</span><span class="p">]</span>
+</span><span class='line'>        <span class="n">elsif</span> <span class="n">config</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">Release</span><span class="err">&#39;</span>
+</span><span class='line'>            <span class="n">config</span><span class="p">.</span><span class="n">build_settings</span><span class="p">[</span><span class="err">&#39;</span><span class="n">OTHER_SWIFT_FLAGS</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[</span><span class="err">&#39;$</span><span class="p">(</span><span class="n">inherited</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="o">-</span><span class="n">D</span> <span class="n">RELEASE</span><span class="err">&#39;</span><span class="p">]</span>
+</span><span class='line'>        <span class="n">end</span>
+</span><span class='line'>    <span class="n">end</span>
+</span><span class='line'><span class="n">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -774,47 +852,6 @@ extension UITextField { func setPlaceholderColor(color: UIColor) { if let &helli
 
 
 <h5>Cheers!!!</h5>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/11/09/how-to-debug-uiwebview-in-ios/">How to Debug UIWebView in iOS?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-11-09T18:10:56+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:10 pm</span></time>
-        
-         | <a href="/blog/2015/11/09/how-to-debug-uiwebview-in-ios/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you&rsquo;re using iOS >= 6 and you have mountain lion (10.8) or Safari >= 6, you can just:</p>
-
-<ol>
-<li>Open the application in the simulator (or your device in XCode >= 4.5.x).</li>
-<li>Open Safari on your Mac: Go to <code>Preferences</code> -> <code>Advanced</code> and make sure &ldquo;<code>Show Develop Menu in Menubar</code>&rdquo; is on.</li>
-<li>From the Menu bar (of Safari) select <code>Develop -&gt; iPhone Simulator -&gt; [your webview page]</code>.</li>
-</ol>
-
-
-<p>That&rsquo;s it!</p>
 </div>
   
   

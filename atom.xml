@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-03-04T10:55:51+07:00</updated>
+  <updated>2017-03-04T11:00:43+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -14,7 +14,50 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How to Compress UIImage Using Swift?]]></title>
+    <title type="html"><![CDATA[How to Detect an UIImage Contains Face Using Swift3?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-detect-an-uiimage-contains-face-using-swift3/"/>
+    <updated>2017-03-04T10:58:56+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-detect-an-uiimage-contains-face-using-swift3</id>
+    <content type="html"><![CDATA[<h5>Face Detection</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">import</span> <span class="n">ImageIO</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">extension</span> <span class="bp">UIImage</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">var</span> <span class="nl">hasFaces</span><span class="p">:</span> <span class="n">Bool</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">ciImage</span><span class="p">:</span> <span class="bp">CIImage</span> <span class="o">=</span> <span class="bp">CIImage</span><span class="p">(</span><span class="nl">cgImage</span><span class="p">:</span> <span class="n">cgImage</span><span class="o">!</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">options</span><span class="p">:</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nl">CIDetectorAccuracy</span><span class="p">:</span> <span class="n">CIDetectorAccuracyHigh</span><span class="p">]</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">faceDetector</span><span class="p">:</span> <span class="bp">CIDetector</span> <span class="o">=</span> <span class="bp">CIDetector</span><span class="p">(</span><span class="nl">ofType</span><span class="p">:</span> <span class="n">CIDetectorTypeFace</span><span class="p">,</span> <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="n">options</span><span class="p">)</span><span class="o">!</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">faces</span><span class="p">:</span> <span class="p">[</span><span class="bp">CIFaceFeature</span><span class="p">]</span> <span class="o">=</span> <span class="n">faceDetector</span><span class="p">.</span><span class="n">features</span><span class="p">(</span><span class="k">in</span><span class="o">:</span> <span class="n">ciImage</span><span class="p">).</span><span class="n">flatMap</span><span class="p">({</span> <span class="err">$</span><span class="mi">0</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">CIFaceFeature</span> <span class="p">})</span>
+</span><span class='line'>        <span class="k">return</span> <span class="o">!</span><span class="n">faces</span><span class="p">.</span><span class="n">isEmpty</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>Show time:</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="n">yourImage</span><span class="p">.</span> <span class="n">hasFaces</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Nice coffee</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Compress UIImage Using Swift3?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-compress-uiimage-using-swift/"/>
     <updated>2017-03-04T10:54:43+07:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-compress-uiimage-using-swift</id>
@@ -40,6 +83,13 @@
 
 
 <h6>Time is your!!!</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">yourImage</span><span class="p">.</span><span class="n">data</span>
+</span><span class='line'><span class="n">yourImage</span><span class="p">.</span><span class="n">highestQualityJPEGData</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
@@ -1110,24 +1160,6 @@
 
 
 <h5>Cheers!!!</h5>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Debug UIWebView in iOS?]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2015/11/09/how-to-debug-uiwebview-in-ios/"/>
-    <updated>2015-11-09T18:10:56+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2015/11/09/how-to-debug-uiwebview-in-ios</id>
-    <content type="html"><![CDATA[<p>If you&rsquo;re using iOS >= 6 and you have mountain lion (10.8) or Safari >= 6, you can just:</p>
-
-<ol>
-<li>Open the application in the simulator (or your device in XCode >= 4.5.x).</li>
-<li>Open Safari on your Mac: Go to <code>Preferences</code> -> <code>Advanced</code> and make sure &ldquo;<code>Show Develop Menu in Menubar</code>&rdquo; is on.</li>
-<li>From the Menu bar (of Safari) select <code>Develop -&gt; iPhone Simulator -&gt; [your webview page]</code>.</li>
-</ol>
-
-
-<p>That&rsquo;s it!</p>
 ]]></content>
   </entry>
   

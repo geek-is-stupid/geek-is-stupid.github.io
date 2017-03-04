@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-detect-an-uiimage-contains-face-using-swift3/</loc>
+<lastmod>2017-03-04T10:58:56+07:00</lastmod>
+</url>
+<url>
 <loc>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-compress-uiimage-using-swift/</loc>
 <lastmod>2017-03-04T10:54:43+07:00</lastmod>
 </url>
@@ -181,5 +185,17 @@
 </url>
 <url>
 <loc>http://geek-is-stupid.github.io/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/2/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/3/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/4/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/5/</loc>
 </url>
 </urlset>
