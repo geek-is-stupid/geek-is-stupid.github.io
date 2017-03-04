@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-03-04T10:27:11+07:00</updated>
+  <updated>2017-03-04T10:34:49+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -14,11 +14,144 @@
 
   
   <entry>
+    <title type="html"><![CDATA[How to Make a UIColor From HEX?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-make-a-uicolor-from-hex/"/>
+    <updated>2017-03-04T10:28:55+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-make-a-uicolor-from-hex</id>
+    <content type="html"><![CDATA[<h5>We create a new construction method for UIColor:</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIColor</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">convenience</span> <span class="k">init</span><span class="o">?</span><span class="p">(</span><span class="nl">hex</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">alpha</span><span class="p">:</span> <span class="n">Float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">var</span> <span class="n">hex</span> <span class="o">=</span> <span class="n">hex</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="n">hex</span><span class="p">.</span><span class="n">hasPrefix</span><span class="p">(</span><span class="s">&quot;#&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">hex</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">from</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">1</span><span class="p">))</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="k">let</span> <span class="n">_</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="nl">of</span><span class="p">:</span> <span class="s">&quot;(^[0-9A-Fa-f]{6}$)|(^[0-9A-Fa-f]{3}$)&quot;</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">regularExpression</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">if</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">3</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">let</span> <span class="n">redHex</span>   <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">1</span><span class="p">))</span>
+</span><span class='line'>                <span class="k">let</span> <span class="n">greenHex</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">with</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">1</span><span class="p">)..</span><span class="o">&lt;</span><span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">2</span><span class="p">))</span>
+</span><span class='line'>                <span class="k">let</span> <span class="n">blueHex</span>  <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">from</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">2</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="n">hex</span> <span class="o">=</span> <span class="n">redHex</span> <span class="o">+</span> <span class="n">redHex</span> <span class="o">+</span> <span class="n">greenHex</span> <span class="o">+</span> <span class="n">greenHex</span> <span class="o">+</span> <span class="n">blueHex</span> <span class="o">+</span> <span class="n">blueHex</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">let</span> <span class="n">redHex</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">2</span><span class="p">))</span>
+</span><span class='line'>            <span class="k">let</span> <span class="n">greenHex</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">with</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">2</span><span class="p">)..</span><span class="o">&lt;</span><span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">4</span><span class="p">))</span>
+</span><span class='line'>            <span class="k">let</span> <span class="n">blueHex</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">with</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">4</span><span class="p">)..</span><span class="o">&lt;</span><span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">6</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">var</span> <span class="nl">redInt</span><span class="p">:</span>   <span class="n">CUnsignedInt</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>            <span class="k">var</span> <span class="nl">greenInt</span><span class="p">:</span> <span class="n">CUnsignedInt</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>            <span class="k">var</span> <span class="nl">blueInt</span><span class="p">:</span>  <span class="n">CUnsignedInt</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">Scanner</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">redHex</span><span class="p">).</span><span class="n">scanHexInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="n">redInt</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">Scanner</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">greenHex</span><span class="p">).</span><span class="n">scanHexInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="n">greenInt</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">Scanner</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">blueHex</span><span class="p">).</span><span class="n">scanHexInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="n">blueInt</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nb">self</span><span class="p">.</span><span class="k">init</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">redInt</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">greenInt</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">blueInt</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="nl">alpha</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+</span><span class='line'>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nb">self</span><span class="p">.</span><span class="k">init</span><span class="p">()</span>
+</span><span class='line'>            <span class="k">return</span> <span class="nb">nil</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>OK:</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="nl">color</span><span class="p">:</span> <span class="bp">UIColor</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">(</span><span class="nl">hex</span><span class="p">:</span> <span class="s">&quot;#4286f4&quot;</span><span class="p">)</span><span class="o">!</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Question how to get hex string from an UIColor?</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIColor</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">var</span> <span class="nl">hex</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">var</span> <span class="nl">r</span><span class="p">:</span><span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="k">var</span> <span class="nl">g</span><span class="p">:</span><span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="k">var</span> <span class="nl">b</span><span class="p">:</span><span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="k">var</span> <span class="nl">a</span><span class="p">:</span><span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">getRed</span><span class="p">(</span><span class="o">&amp;</span><span class="n">r</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">g</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="nl">alpha</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">rgb</span><span class="p">:</span><span class="n">Int</span> <span class="o">=</span> <span class="p">(</span><span class="n">Int</span><span class="p">)(</span><span class="n">r</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="mi">16</span> <span class="o">|</span> <span class="p">(</span><span class="n">Int</span><span class="p">)(</span><span class="n">g</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="mi">8</span> <span class="o">|</span> <span class="p">(</span><span class="n">Int</span><span class="p">)(</span><span class="n">b</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">NSString</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span><span class="s">&quot;%06x&quot;</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span> <span class="kt">as</span> <span class="n">String</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>Show time:</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="n">yourColor</span><span class="p">.</span><span class="n">hex</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[How to Align Vertical Image and Title in UIButton?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-vertical-image-and-title-in-uibutton/"/>
     <updated>2017-03-04T10:22:06+07:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-vertical-image-and-title-in-uibutton</id>
-    <content type="html"><![CDATA[<p>Following code below:</p>
+    <content type="html"><![CDATA[<h5>Following code below:</h5>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -65,7 +198,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Show time:</p>
+<h6>Show time:</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">button</span><span class="p">.</span><span class="n">alignImageAndTitleVertically</span><span class="p">()</span>
@@ -81,7 +214,7 @@
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-right-an-image-in-uibutton/"/>
     <updated>2017-03-04T10:17:56+07:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-right-an-image-in-uibutton</id>
-    <content type="html"><![CDATA[<p>Everything you need is:</p>
+    <content type="html"><![CDATA[<h5>Everything you need is:</h5>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -100,7 +233,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Show time:</p>
+<h6>Show time:</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">button</span><span class="p">.</span><span class="n">imageToRight</span><span class="p">()</span>
@@ -1069,15 +1202,6 @@
 
 
 <p>This solution without animation :(</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What Difference Between Carthage and CocoaPods?]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2015/10/26/what-difference-between-carthage-and-cocoapods/"/>
-    <updated>2015-10-26T17:37:12+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2015/10/26/what-difference-between-carthage-and-cocoapods</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   

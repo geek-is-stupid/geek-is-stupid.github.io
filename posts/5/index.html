@@ -5,18 +5,28 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to Align Right an Image in UIButton? - geek-is-stupid</title>
+  <title>geek-is-stupid</title>
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Everything you need is: 1
+  <meta name="description" content="The height of the text depend on the font, width and especially it has multiple line. 1
 2
 3
 4
 5
 6
 7
-extension UIButton { func imageToRight() { transform = CGAffineTransform(scaleX: -1.0, y: 1.0) titleLabel?. &hellip;">
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+extension String { &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -25,7 +35,7 @@ extension UIButton { func imageToRight() { transform = CGAffineTransform(scaleX:
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-right-an-image-in-uibutton">
+  <link rel="canonical" href="http://geek-is-stupid.github.io/posts/5">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="geek-is-stupid" type="application/atom+xml">
@@ -118,14 +128,15 @@ extension UIButton { func imageToRight() { transform = CGAffineTransform(scaleX:
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
     
-      
-        <h1 class="entry-title">How to Align Right an Image in UIButton?</h1>
-      
+      <h1 class="entry-title"><a href="/blog/2015/10/16/how-to-calculate-the-height-of-the-text-depend-on-width-and-font-using-swift2-dot-0/">How to Calculate the Height of the Text Depend on Width and Font Using Swift2.0?</a></h1>
     
     
       <p class="meta">
@@ -134,9 +145,9 @@ extension UIButton { func imageToRight() { transform = CGAffineTransform(scaleX:
 
 
 
-<time class='entry-date' datetime='2017-03-04T10:17:56+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:17 am</span></time>
+<time class='entry-date' datetime='2015-10-16T17:19:50+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:19 pm</span></time>
         
-         | <a href="#disqus_thread">Comments</a>
+         | <a href="/blog/2015/10/16/how-to-calculate-the-height-of-the-text-depend-on-width-and-font-using-swift2-dot-0/#disqus_thread">Comments</a>
         
         
       </p>
@@ -144,7 +155,7 @@ extension UIButton { func imageToRight() { transform = CGAffineTransform(scaleX:
   </header>
 
 
-<div class="entry-content"><h5>Everything you need is:</h5>
+  <div class="entry-content"><p>The height of the text depend on the font, width and especially it has multiple line.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -153,81 +164,55 @@ extension UIButton { func imageToRight() { transform = CGAffineTransform(scaleX:
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIButton</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">func</span> <span class="n">imageToRight</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>      <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">scaleX</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">titleLabel</span><span class="o">?</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">scaleX</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">imageView</span><span class="o">?</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">scaleX</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">func</span> <span class="n">sizeWithFont</span><span class="p">(</span><span class="nl">font</span><span class="p">:</span> <span class="bp">UIFont</span><span class="p">,</span> <span class="n">forWidth</span> <span class="nl">width</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">CGSize</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">fString</span> <span class="o">=</span> <span class="nb">self</span> <span class="kt">as</span> <span class="bp">NSString</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">paragraphStyle</span> <span class="o">=</span> <span class="bp">NSMutableParagraphStyle</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">paragraphStyle</span><span class="p">.</span><span class="n">lineBreakMode</span> <span class="o">=</span> <span class="n">NSLineBreakMode</span><span class="p">.</span><span class="n">ByWordWrapping</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">attrDict</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>            <span class="nl">NSFontAttributeName</span><span class="p">:</span> <span class="n">font</span><span class="p">,</span>
+</span><span class='line'>            <span class="nl">NSParagraphStyleAttributeName</span><span class="p">:</span> <span class="n">paragraphStyle</span>
+</span><span class='line'>        <span class="p">]</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">maximumSize</span> <span class="o">=</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">MAXFLOAT</span><span class="p">))</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">rect</span> <span class="o">=</span> <span class="n">fString</span><span class="p">.</span><span class="n">boundingRectWithSize</span><span class="p">(</span><span class="n">maximumSize</span><span class="p">,</span>
+</span><span class='line'>            <span class="nl">options</span><span class="p">:</span> <span class="p">[.</span><span class="n">TruncatesLastVisibleLine</span><span class="p">,</span> <span class="p">.</span><span class="n">UsesLineFragmentOrigin</span><span class="p">],</span>
+</span><span class='line'>            <span class="nl">attributes</span><span class="p">:</span> <span class="n">attrDict</span><span class="p">,</span>
+</span><span class='line'>            <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">rect</span><span class="p">.</span><span class="n">size</span>
+</span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-<h6>Show time:</h6>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">button</span><span class="p">.</span><span class="n">imageToRight</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Cheers 👌💪🤘</p>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
+  
   
 
 
-
-  <span class="byline author vcard">Authored by <span class="fn">
+    </article>
   
-    levantAJ
-  
-  </span></span>
-
-
-      
-
-
-
-
-<time class='entry-date' datetime='2017-03-04T10:17:56+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:17 am</span></time>
-      
-      
-
-
-    </p>
+  <div class="pagination">
     
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-right-an-image-in-uibutton/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-right-an-image-in-uibutton/" >Tweet</a>
-  
-  
-  
-</div>
-
+    <a href="/blog/archives">Blog Archives</a>
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2017/02/20/how-to-paging-uicollectionview/" title="Previous Post: How to paging UICollectionView">&laquo; How to paging UICollectionView</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2017/03/04/how-to-align-vertical-image-and-title-in-uibutton/" title="Next Post: How to align vertical image and title in UIButton?">How to align vertical image and title in UIButton? &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a class="next" href="/posts/4">Newer &rarr;</a>
+    
+  </div>
 </div>
-  </section>
-
-
-</div>
+<aside class="sidebar">
+  
+    
+  
+</aside>
 
     </div>
   </div>
@@ -243,10 +228,7 @@ extension UIButton { func imageToRight() { transform = CGAffineTransform(scaleX:
       var disqus_shortname = 'geek-is-stupid';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-right-an-image-in-uibutton/';
-        var disqus_url = 'http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-right-an-image-in-uibutton/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
