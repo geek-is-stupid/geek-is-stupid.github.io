@@ -9,7 +9,7 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Basically we are using CIFilter for everything Who want a BLUR image: 1
+  <meta name="description" content="Some time UImage show wrong orientation, and it make you annoyed!!! Don&rsquo;t worry, I&rsquo;m here: 1
 2
 3
 4
@@ -23,7 +23,10 @@
 12
 13
 14
-extension UIImage { var blur: UIImage { let &hellip;">
+15
+16
+17
+18 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -127,6 +130,210 @@ extension UIImage { var blur: UIImage { let &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/03/04/uiimage-display-wrong-orientation-what-is-solution/">UIImage Display Wrong Orientation, What Is Solution?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-03-04T11:08:44+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:08 am</span></time>
+        
+         | <a href="/blog/2017/03/04/uiimage-display-wrong-orientation-what-is-solution/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h5>Some time UImage show wrong orientation, and it make you annoyed!!!</h5>
+
+<p>Don&rsquo;t worry, I&rsquo;m here:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIImage</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">rotateCameraImageToProperOrientation</span><span class="p">(</span><span class="nl">maxResolution</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">UIImage</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">imgRef</span><span class="p">:</span> <span class="bp">CGImage</span> <span class="o">=</span> <span class="n">cgImage</span><span class="o">!</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">width</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">imgRef</span><span class="p">.</span><span class="n">width</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">height</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">imgRef</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">var</span> <span class="nl">bounds</span><span class="p">:</span> <span class="bp">CGRect</span> <span class="o">=</span> <span class="bp">CGRect</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">height</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">var</span> <span class="nl">scaleRatio</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">width</span> <span class="o">&gt;</span> <span class="n">maxResolution</span> <span class="o">||</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="n">maxResolution</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">scaleRatio</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">maxResolution</span> <span class="o">/</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">maxResolution</span> <span class="o">/</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">scaleRatio</span>
+</span><span class='line'>            <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">scaleRatio</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">var</span> <span class="nl">transform</span><span class="p">:</span> <span class="bp">CGAffineTransform</span> <span class="o">=</span> <span class="p">.</span><span class="n">identity</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">orient</span><span class="p">:</span> <span class="n">UIImageOrientation</span> <span class="o">=</span> <span class="n">imageOrientation</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">imageSize</span><span class="p">:</span> <span class="bp">CGSize</span> <span class="o">=</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">imgRef</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">imgRef</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">switch</span> <span class="n">imageOrientation</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">up</span> <span class="p">:</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="p">.</span><span class="n">identity</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">upMirrored</span> <span class="p">:</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">translationX</span><span class="p">:</span> <span class="n">imageSize</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">scaledBy</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">down</span> <span class="p">:</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">translationX</span><span class="p">:</span> <span class="n">imageSize</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">imageSize</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">rotated</span><span class="p">(</span><span class="nl">by</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">.</span><span class="n">pi</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">downMirrored</span> <span class="p">:</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">translationX</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">imageSize</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">scaledBy</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">left</span> <span class="p">:</span>
+</span><span class='line'>            <span class="k">let</span> <span class="n">storedHeight</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span>
+</span><span class='line'>            <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span>
+</span><span class='line'>            <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">storedHeight</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">translationX</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">imageSize</span><span class="p">.</span><span class="n">width</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">rotated</span><span class="p">(</span><span class="nl">by</span><span class="p">:</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">CGFloat</span><span class="p">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">leftMirrored</span> <span class="p">:</span>
+</span><span class='line'>            <span class="k">let</span> <span class="n">storedHeight</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span>
+</span><span class='line'>            <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span>
+</span><span class='line'>            <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">storedHeight</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">translationX</span><span class="p">:</span> <span class="n">imageSize</span><span class="p">.</span><span class="n">height</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">imageSize</span><span class="p">.</span><span class="n">width</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">scaledBy</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">rotated</span><span class="p">(</span><span class="nl">by</span><span class="p">:</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">CGFloat</span><span class="p">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">right</span> <span class="p">:</span>
+</span><span class='line'>            <span class="k">let</span> <span class="n">storedHeight</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span>
+</span><span class='line'>            <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span>
+</span><span class='line'>            <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">storedHeight</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">translationX</span><span class="p">:</span> <span class="n">imageSize</span><span class="p">.</span><span class="n">height</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">rotated</span><span class="p">(</span><span class="nl">by</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">rightMirrored</span> <span class="p">:</span>
+</span><span class='line'>            <span class="k">let</span> <span class="nl">storedHeight</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span>
+</span><span class='line'>            <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span>
+</span><span class='line'>            <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">storedHeight</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">scaleX</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="p">.</span><span class="n">rotated</span><span class="p">(</span><span class="nl">by</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">UIGraphicsBeginImageContext</span><span class="p">(</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">context</span> <span class="o">=</span> <span class="n">UIGraphicsGetCurrentContext</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="n">orient</span> <span class="o">==</span> <span class="p">.</span><span class="kr">right</span> <span class="o">||</span> <span class="n">orient</span> <span class="o">==</span> <span class="p">.</span><span class="kr">left</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">context</span><span class="o">!</span><span class="p">.</span><span class="n">scaleBy</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="o">-</span><span class="n">scaleRatio</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">scaleRatio</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">context</span><span class="o">!</span><span class="p">.</span><span class="n">translateBy</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="o">-</span><span class="n">height</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">context</span><span class="o">!</span><span class="p">.</span><span class="n">scaleBy</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">scaleRatio</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="o">-</span><span class="n">scaleRatio</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">context</span><span class="o">!</span><span class="p">.</span><span class="n">translateBy</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="o">-</span><span class="n">height</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">context</span><span class="o">!</span><span class="p">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">context</span><span class="o">!</span><span class="p">.</span><span class="n">draw</span><span class="p">(</span><span class="n">imgRef</span><span class="p">,</span> <span class="k">in</span><span class="o">:</span> <span class="bp">CGRect</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">height</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">let</span> <span class="n">imageCopy</span> <span class="o">=</span> <span class="n">UIGraphicsGetImageFromCurrentImageContext</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">UIGraphicsEndImageContext</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="n">imageCopy</span><span class="o">!</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>Now just update your image:</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="nl">maxResolution</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">yourImage</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">yourImage</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="nl">updatedImage</span><span class="p">:</span> <span class="bp">UIImage</span> <span class="o">=</span> <span class="n">yourImage</span><span class="p">.</span><span class="n">rotateCameraImageToProperOrientation</span><span class="p">(</span><span class="nl">maxResolution</span><span class="p">:</span> <span class="n">maxResolution</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>See you!!!!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -991,75 +1198,6 @@ extension UIImage { var blur: UIImage { let &hellip;">
 <p><img src="https://raw.githubusercontent.com/geek-is-stupid/geek-is-stupid.github.io/master/images/post/2017-02-20-how-to-paging-uicollectionview/ChangeClassForFlowLayout.png" title="Change Class For Flow Layout" alt="a brick" /></p>
 
 <p>Now show time!!!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode/">Different .plist File for Different Environment in Xcode?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-08-17T15:53:42+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:53 pm</span></time>
-        
-         | <a href="/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you have question like this title of this post, so you are my audience</p>
-
-<p>OK now if I have 2 <code>.plist</code> files:</p>
-
-<ol>
-<li>SERVICE-ACCOUNT-DEBUG.plist</li>
-<li>SERVICE-ACCOUNT-RELEASE.plist</li>
-</ol>
-
-
-<p>When app runs, depend on current environment we will rename one of them to <code>SERVICE-ACCOUNT.plist</code>:</p>
-
-<p>If app in DEBUG mode we will rename <code>SERVICE-ACCOUNT-DEBUG.plist</code> to <code>SERVICE-ACCOUNT.plist</code></p>
-
-<p>If app in RELEASE mode we will rename <code>SERVICE-ACCOUNT-RELEASE.plist</code> to <code>SERVICE-ACCOUNT.plist</code></p>
-
-<p>Let go to your <code>Build Phares</code> and create new Run script:</p>
-
-<p><img src="https://raw.githubusercontent.com/geek-is-stupid/geek-is-stupid.github.io/master/images/post/2016-08-17-different-plist-file-for-different-environment-in-xcode/1.png" title="New script" alt="a brick" /></p>
-
-<p>Add this script:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">if</span> <span class="p">[</span> <span class="s">&quot;${CONFIGURATION}&quot;</span> <span class="o">==</span> <span class="s">&quot;Release&quot;</span> <span class="p">];</span> <span class="n">then</span>
-</span><span class='line'><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="s">&quot;${PROJECT_DIR}/PATH-TO-FILE/SERVICE-ACCOUNT-RELEASE.plist&quot;</span> <span class="s">&quot;${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/SERVICE-ACCOUNT.plist&quot;</span>
-</span><span class='line'><span class="n">echo</span> <span class="s">&quot;Production plist copied&quot;</span>
-</span><span class='line'><span class="n">elif</span> <span class="p">[</span> <span class="s">&quot;${CONFIGURATION}&quot;</span> <span class="o">==</span> <span class="s">&quot;Debug&quot;</span> <span class="p">];</span> <span class="n">then</span>
-</span><span class='line'><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="s">&quot;${PROJECT_DIR}/PATH-TO-FILE/SERVICE-ACCOUNT-DEBUG.plist&quot;</span> <span class="s">&quot;${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/SERVICE-ACCOUNT.plist&quot;</span>
-</span><span class='line'><span class="n">echo</span> <span class="s">&quot;Debug plist copied&quot;</span>
-</span><span class='line'><span class="n">fi</span>
-</span></code></pre></td></tr></table></div></figure>
-
 </div>
   
   
