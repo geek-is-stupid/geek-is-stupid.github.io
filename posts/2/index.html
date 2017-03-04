@@ -9,12 +9,8 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="If you have some images like this: 1
-2
-3
-let firstImage = UIImage(named: &quot;first&quot;)
-let secondImage = UIImage(named: &quot;first&quot;)
-let &hellip;">
+  <meta name="description" content="Nowaday, there are a lot of solution to handle response which has multiple states. 1
+func getUserDetail(completion: (User?, NSError?) -&gt; Void &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -118,6 +114,148 @@ let &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/16/how-to-handle-response-with-success-and-error-in-one-closure/">How to Handle Response With Success: And Error: In One Closure?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-16T14:49:39+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:49 pm</span></time>
+        
+         | <a href="/blog/2016/08/16/how-to-handle-response-with-success-and-error-in-one-closure/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h5>Nowaday, there are a lot of solution to handle response which has multiple states.</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">getUserDetail</span><span class="p">(</span><span class="nl">completion</span><span class="p">:</span> <span class="p">(</span><span class="n">User</span><span class="o">?</span><span class="p">,</span> <span class="bp">NSError</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{...}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">getUserDetail</span><span class="p">(</span><span class="nl">success</span><span class="p">:</span> <span class="n">User</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">,</span> <span class="nl">failure</span><span class="p">:</span> <span class="bp">NSError</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{...}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>I hate this, when ever I call that method I have to check <code>error != nil</code></h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">getUserDetail</span><span class="p">({</span> <span class="n">user</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">let</span> <span class="n">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">//Do when failed</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="n">user</span> <span class="o">=</span> <span class="n">user</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">//Do when success</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">//What should I do here</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>or kind of prolix :) but simple right</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">getUserDetail</span><span class="p">({</span> <span class="n">user</span> <span class="k">in</span>
+</span><span class='line'>  <span class="c1">//Do when success</span>
+</span><span class='line'><span class="p">},</span> <span class="nl">failure</span><span class="p">:</span> <span class="p">{</span> <span class="n">error</span> <span class="k">in</span>
+</span><span class='line'>  <span class="c1">//Do when failed</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><br/>
+<br/></p>
+
+<h2>OK now I will do some think more complicated, but I think good for me (not recomended for everybody)</h2>
+
+<p>First, create an enum <code>Response</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="n">Response</span><span class="o">&lt;</span><span class="n">Value</span><span class="o">&gt;</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">Success</span><span class="p">(</span><span class="n">Value</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">Failure</span><span class="p">(</span><span class="bp">NSError</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Time to use your enum:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">getUserDetail</span><span class="p">(</span><span class="nl">completion</span><span class="p">:</span> <span class="n">Response</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// if success</span>
+</span><span class='line'>  <span class="n">completion</span><span class="p">(</span><span class="n">Response</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="n">user</span><span class="p">))</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="c1">// if failed</span>
+</span><span class='line'>  <span class="n">completion</span><span class="p">(</span><span class="n">Response</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Failure</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Call your method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">getUserDetail</span><span class="p">({</span> <span class="n">response</span> <span class="k">in</span>
+</span><span class='line'>  <span class="k">switch</span> <span class="n">response</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">case</span> <span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="k">let</span> <span class="n">user</span><span class="p">)</span><span class="o">:</span>
+</span><span class='line'>      <span class="c1">//Do when success</span>
+</span><span class='line'>  <span class="k">case</span> <span class="p">.</span><span class="n">Failure</span><span class="p">(</span><span class="k">let</span> <span class="n">error</span><span class="p">)</span><span class="o">:</span>
+</span><span class='line'>      <span class="c1">//Do when failed</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Thank for your attention!!!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -773,129 +911,6 @@ let &hellip;">
 
 
   <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/24/how-to-organize-folders-in-your-ios-app/">How to Organize Folders in Your iOS App?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-24T11:47:46+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:47 am</span></time>
-        
-         | <a href="/blog/2015/10/24/how-to-organize-folders-in-your-ios-app/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Application Structure:</h2>
-
-<h4>Project:</h4>
-
-<ul>
-<li><strong><u>Engine</u></strong>: Shared classes, enums, structures, or logic, business on backend, networks, parsers, helpers, caches, data store, etc&hellip;
-
-<ul>
-<li><strong>Manager</strong>: Contains Singleton class to handle Application product
-
-<ul>
-<li>Authentication manager</li>
-<li>Push notifications manager</li>
-<li>REST manager files</li>
-</ul>
-</li>
-<li><strong>Constant</strong>:
-
-<ul>
-<li>AppConstants file</li>
-<li>RESTConstants file</li>
-<li>Constants file</li>
-<li>&hellip;</li>
-</ul>
-</li>
-<li><strong>Utility</strong>:
-
-<ul>
-<li>AppUtils file</li>
-<li>RESTUtils file</li>
-<li>&hellip;</li>
-</ul>
-</li>
-<li><strong>Config</strong>: Contains everything contribute for configuration app
-
-<ul>
-<li>AppConfig file: Configure all setting in app: Feedback, geting started with third party libraries, configure server&rsquo;s hosts, configure logger, &hellip;</li>
-</ul>
-</li>
-<li><strong>Extension</strong>: Extend class / struct / enum</li>
-<li><strong>Service</strong>:
-
-<ul>
-<li><strong>ApiService</strong>: Call API</li>
-<li><strong>SystemService</strong>: Handle system service (Push Notification, &hellip;)</li>
-</ul>
-</li>
-<li><strong>Persistence</strong>: Store entities here</li>
-</ul>
-</li>
-<li><strong><u>ViewModule</u></strong>: Every module contains View, ViewModel &amp; anything related to front end.
-
-<ul>
-<li><strong>Component</strong>: The views that they will be share between multiple screens. With each screen should be has a folder for itself</li>
-<li><strong>View</strong>: Represent for the screens. With each screen should be has a folder for itself
-
-<ul>
-<li>E.g. Feed:
-
-<ul>
-<li><code>FeedViewController.swift</code> file</li>
-<li><code>FeedViewModel.swift</code> file</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong><u>Resource</u></strong>: Can be contains Images, Sounds, Layout config file, etc.
-
-<ul>
-<li><code>Assets.xcassets</code></li>
-<li><code>Localizable.strings</code></li>
-<li>&hellip;</li>
-</ul>
-</li>
-<li><strong><u>Storyboard</u></strong>: Put all storyboards at here. With each screen should be has a storyboard file for itself => Reduce conflicts when merge <strong>Pull Request</strong></li>
-<li><strong><code>AppDelegate.swift</code></strong></li>
-<li><strong><code>Info.plist</code></strong></li>
-</ul>
-
-
-<h4>ExternalLibraries:</h4>
-
-<ul>
-<li>All of your external libraries which could not include into your Podfile from some reasons</li>
-</ul>
-
-
-<h2>Naming Style</h2>
-
-<p>The name of folder follows <strong>CamelCase</strong> style, and be <strong>Singular</strong>.</p>
 </div>
   
   

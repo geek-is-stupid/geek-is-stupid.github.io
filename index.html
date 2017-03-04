@@ -9,14 +9,28 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Everything you need is: 1
+  <meta name="description" content="Following code below: 1
 2
 3
 4
 5
 6
 7
-extension UIButton { func imageToRight() { transform = CGAffineTransform(scaleX: -1.0, y: 1.0) titleLabel?. &hellip;">
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+extension UIButton { func alignImageAndTitleVertically(padding: CGFloat &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -120,6 +134,85 @@ extension UIButton { func imageToRight() { transform = CGAffineTransform(scaleX:
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/03/04/how-to-align-vertical-image-and-title-in-uibutton/">How to Align Vertical Image and Title in UIButton?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-03-04T10:22:06+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:22 am</span></time>
+        
+         | <a href="/blog/2017/03/04/how-to-align-vertical-image-and-title-in-uibutton/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Following code below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIButton</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">alignImageAndTitleVertically</span><span class="p">(</span><span class="nl">padding</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="mf">4.0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">imageSize</span> <span class="o">=</span> <span class="n">imageView</span><span class="o">!</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">size</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">titleSize</span> <span class="o">=</span> <span class="n">titleLabel</span><span class="o">!</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">size</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">totalHeight</span> <span class="o">=</span> <span class="n">imageSize</span><span class="p">.</span><span class="n">height</span> <span class="o">+</span> <span class="n">titleSize</span><span class="p">.</span><span class="n">height</span> <span class="o">+</span> <span class="n">padding</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">imageEdgeInsets</span> <span class="o">=</span> <span class="bp">UIEdgeInsets</span><span class="p">(</span>
+</span><span class='line'>            <span class="nl">top</span><span class="p">:</span> <span class="o">-</span><span class="p">(</span><span class="n">totalHeight</span> <span class="o">-</span> <span class="n">imageSize</span><span class="p">.</span><span class="n">height</span><span class="p">),</span>
+</span><span class='line'>            <span class="nl">left</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>            <span class="nl">bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>            <span class="nl">right</span><span class="p">:</span> <span class="o">-</span><span class="n">titleSize</span><span class="p">.</span><span class="n">width</span>
+</span><span class='line'>        <span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">titleEdgeInsets</span> <span class="o">=</span> <span class="bp">UIEdgeInsets</span><span class="p">(</span>
+</span><span class='line'>            <span class="nl">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>            <span class="nl">left</span><span class="p">:</span> <span class="o">-</span><span class="n">imageSize</span><span class="p">.</span><span class="n">width</span><span class="p">,</span>
+</span><span class='line'>            <span class="nl">bottom</span><span class="p">:</span> <span class="o">-</span><span class="p">(</span><span class="n">totalHeight</span> <span class="o">-</span> <span class="n">titleSize</span><span class="p">.</span><span class="n">height</span><span class="p">),</span>
+</span><span class='line'>            <span class="nl">right</span><span class="p">:</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Good luck!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -746,148 +839,6 @@ extension UIButton { func imageToRight() { transform = CGAffineTransform(scaleX:
 </span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">display</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/08/16/how-to-handle-response-with-success-and-error-in-one-closure/">How to Handle Response With Success: And Error: In One Closure?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-08-16T14:49:39+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:49 pm</span></time>
-        
-         | <a href="/blog/2016/08/16/how-to-handle-response-with-success-and-error-in-one-closure/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h5>Nowaday, there are a lot of solution to handle response which has multiple states.</h5>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">getUserDetail</span><span class="p">(</span><span class="nl">completion</span><span class="p">:</span> <span class="p">(</span><span class="n">User</span><span class="o">?</span><span class="p">,</span> <span class="bp">NSError</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{...}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>or</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">getUserDetail</span><span class="p">(</span><span class="nl">success</span><span class="p">:</span> <span class="n">User</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">,</span> <span class="nl">failure</span><span class="p">:</span> <span class="bp">NSError</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{...}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h6>I hate this, when ever I call that method I have to check <code>error != nil</code></h6>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">getUserDetail</span><span class="p">({</span> <span class="n">user</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
-</span><span class='line'>  <span class="k">if</span> <span class="k">let</span> <span class="n">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
-</span><span class='line'>      <span class="c1">//Do when failed</span>
-</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="n">user</span> <span class="o">=</span> <span class="n">user</span> <span class="p">{</span>
-</span><span class='line'>      <span class="c1">//Do when success</span>
-</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>      <span class="c1">//What should I do here</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h6>or kind of prolix :) but simple right</h6>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">getUserDetail</span><span class="p">({</span> <span class="n">user</span> <span class="k">in</span>
-</span><span class='line'>  <span class="c1">//Do when success</span>
-</span><span class='line'><span class="p">},</span> <span class="nl">failure</span><span class="p">:</span> <span class="p">{</span> <span class="n">error</span> <span class="k">in</span>
-</span><span class='line'>  <span class="c1">//Do when failed</span>
-</span><span class='line'><span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><br/>
-<br/></p>
-
-<h2>OK now I will do some think more complicated, but I think good for me (not recomended for everybody)</h2>
-
-<p>First, create an enum <code>Response</code>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="n">Response</span><span class="o">&lt;</span><span class="n">Value</span><span class="o">&gt;</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">Success</span><span class="p">(</span><span class="n">Value</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">Failure</span><span class="p">(</span><span class="bp">NSError</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Time to use your enum:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">getUserDetail</span><span class="p">(</span><span class="nl">completion</span><span class="p">:</span> <span class="n">Response</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// if success</span>
-</span><span class='line'>  <span class="n">completion</span><span class="p">(</span><span class="n">Response</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="n">user</span><span class="p">))</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="c1">// if failed</span>
-</span><span class='line'>  <span class="n">completion</span><span class="p">(</span><span class="n">Response</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Failure</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Call your method:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">getUserDetail</span><span class="p">({</span> <span class="n">response</span> <span class="k">in</span>
-</span><span class='line'>  <span class="k">switch</span> <span class="n">response</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">case</span> <span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="k">let</span> <span class="n">user</span><span class="p">)</span><span class="o">:</span>
-</span><span class='line'>      <span class="c1">//Do when success</span>
-</span><span class='line'>  <span class="k">case</span> <span class="p">.</span><span class="n">Failure</span><span class="p">(</span><span class="k">let</span> <span class="n">error</span><span class="p">)</span><span class="o">:</span>
-</span><span class='line'>      <span class="c1">//Do when failed</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Thank for your attention!!!</p>
 </div>
   
   
