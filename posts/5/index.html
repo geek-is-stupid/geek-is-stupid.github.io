@@ -9,7 +9,8 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="The reason to manages the Constants in app is: We have a lot of static values and which makes easier to know where they are when you wanna reuse them &hellip;">
+  <meta name="description" content="This heard like easy? Yes, but language very complex, with each language we have different way to order of word in a sentence
+So if I have a name of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -113,6 +114,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-adding-localized-strings-in-swift/">How to Adding Localized Strings in Swift?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-23T14:45:31+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>2:45 pm</span></time>
+        
+         | <a href="/blog/2015/10/23/how-to-adding-localized-strings-in-swift/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This heard like easy?</p>
+
+<ul>
+<li>Yes, but language very complex, with each language we have different way to order of word in a sentence</li>
+<li>So if I have a name of user: <strong><code>"Andrew McKay"</code></strong>, and he has <strong><code>"commented"</code></strong> in a page:
+The text on app will be:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="s">&quot;Andrew McKay also commented&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The simple way:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">text</span> <span class="o">=</span> <span class="s">&quot;\(user.name) &quot;</span> <span class="o">+</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;also commented&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>The right way (I think):</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">text</span> <span class="o">=</span> <span class="bp">NSString</span><span class="p">.</span><span class="n">localizedStringWithFormat</span><span class="p">(</span><span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;%@ also commented&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="kt">as</span> <span class="bp">NSString</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">)</span> <span class="kt">as</span> <span class="n">String</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
