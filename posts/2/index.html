@@ -9,12 +9,10 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Someday your boss ask you to have staging server and production server to make data be pure, so you will find out this code for your api: 1
+  <meta name="description" content="If you make a note in xcode, and you dont want to miss that, there are some solution for that, I will show you one: 1
 2
 3
-4
-5
-6 &hellip;">
+//TODO: Let read this blog &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -118,6 +116,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/17/how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/">How to Show Warning When Add //TODO: //FIXME: //ERRO: In Xcode?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-17T15:36:02+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:36 pm</span></time>
+        
+         | <a href="/blog/2016/08/17/how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you make a note in xcode, and you dont want to miss that, there are some solution for that, I will show you one:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="c1">//TODO: Let read this blog in 15 mins</span>
+</span><span class='line'><span class="c1">//FIX: I need you fix me man :)</span>
+</span><span class='line'><span class="c1">//ERROR: Noooooooooo, get out of here the error</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>OK now how to make xcode understand to show your wanrning and error:</p>
+
+<p>Go to <code>Build Phases</code> and create new Run script:</p>
+
+<p><img src="https://raw.githubusercontent.com/geek-is-stupid/geek-is-stupid.github.io/master/images/post/2016-08-17-how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/1.png" title="New script" alt="a brick" /></p>
+
+<p>Add this script:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">TAGS</span><span class="o">=</span><span class="s">&quot;TODO:|FIXME:&quot;</span>
+</span><span class='line'><span class="n">ERRORTAG</span><span class="o">=</span><span class="s">&quot;ERROR:&quot;</span>
+</span><span class='line'><span class="n">find</span> <span class="s">&quot;${SRCROOT}&quot;</span> <span class="err">\</span><span class="p">(</span> <span class="o">-</span><span class="n">name</span> <span class="s">&quot;*.h&quot;</span> <span class="o">-</span><span class="n">or</span> <span class="o">-</span><span class="n">name</span> <span class="s">&quot;*.m&quot;</span> <span class="o">-</span><span class="n">or</span> <span class="o">-</span><span class="n">name</span> <span class="s">&quot;*.swift&quot;</span> <span class="err">\</span><span class="p">)</span> <span class="o">-</span><span class="n">print0</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="mi">0</span> <span class="n">egrep</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">filename</span> <span class="o">--</span><span class="n">line</span><span class="o">-</span><span class="n">number</span> <span class="o">--</span><span class="n">only</span><span class="o">-</span><span class="n">matching</span> <span class="s">&quot;($TAGS).*\$|($ERRORTAG).*\$&quot;</span> <span class="o">|</span> <span class="n">perl</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;s/($TAGS)/ warning: \$1/&quot;</span> <span class="o">|</span> <span class="n">perl</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;s/($ERRORTAG)/ error: \$1/&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -766,92 +822,6 @@
 </tbody>
 </table>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/">Quick Way to Add New Auto Layout Constraints in Swift</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-12-10T15:22:53+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:22 pm</span></time>
-        
-         | <a href="/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>What you will do when you wanna add new space between a label and a button? Or add width for a label?</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">spaceConstraint</span> <span class="o">=</span> <span class="bp">NSLayoutConstraint</span><span class="p">(</span>
-</span><span class='line'>    <span class="nl">item</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
-</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Leading</span><span class="p">,</span>
-</span><span class='line'>    <span class="nl">relatedBy</span><span class="p">:</span> <span class="p">.</span><span class="n">Equal</span><span class="p">,</span>
-</span><span class='line'>    <span class="nl">toItem</span><span class="p">:</span> <span class="n">button</span><span class="p">,</span>
-</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Trailing</span><span class="p">,</span>
-</span><span class='line'>    <span class="nl">multiplier</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">let</span> <span class="n">widthConstraint</span> <span class="o">=</span> <span class="bp">NSLayoutConstraint</span><span class="p">(</span>
-</span><span class='line'>    <span class="nl">item</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
-</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Width</span><span class="p">,</span>
-</span><span class='line'>    <span class="nl">relatedBy</span><span class="p">:</span> <span class="p">.</span><span class="n">LessThanOrEqual</span><span class="p">,</span>
-</span><span class='line'>    <span class="nl">toItem</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span>
-</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">NotAnAttribute</span><span class="p">,</span>
-</span><span class='line'>    <span class="nl">multiplier</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">spaceConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
-</span><span class='line'><span class="n">widthConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>OK, Now I will show you a simple way:</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">spaceConstraint</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="n">leadingAnchor</span><span class="p">.</span><span class="n">constraintEqualToAnchor</span><span class="p">(</span><span class="n">button</span><span class="p">.</span><span class="n">trailingAnchor</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
-</span><span class='line'><span class="k">let</span> <span class="n">widthConstraint</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="n">widthAnchor</span><span class="p">.</span><span class="n">constraintLessThanOrEqualToConstant</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-</span><span class='line'><span class="n">spaceConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
-</span><span class='line'><span class="n">widthConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h5>Cheers!!!</h5>
 </div>
   
   

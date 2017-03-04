@@ -9,7 +9,24 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="If you&rsquo;re using iOS >= 6 and you have mountain lion (10.8) or Safari >= 6, you can just: Open the application in the simulator (or your device &hellip;">
+  <meta name="description" content="What you will do when you wanna add new space between a label and a button? Or add width for a label? 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -113,6 +130,92 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/">Quick Way to Add New Auto Layout Constraints in Swift</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-10T15:22:53+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:22 pm</span></time>
+        
+         | <a href="/blog/2015/12/10/quick-way-to-add-new-auto-layout-constraints-in-swift/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>What you will do when you wanna add new space between a label and a button? Or add width for a label?</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">spaceConstraint</span> <span class="o">=</span> <span class="bp">NSLayoutConstraint</span><span class="p">(</span>
+</span><span class='line'>    <span class="nl">item</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Leading</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">relatedBy</span><span class="p">:</span> <span class="p">.</span><span class="n">Equal</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">toItem</span><span class="p">:</span> <span class="n">button</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Trailing</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">multiplier</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">let</span> <span class="n">widthConstraint</span> <span class="o">=</span> <span class="bp">NSLayoutConstraint</span><span class="p">(</span>
+</span><span class='line'>    <span class="nl">item</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">Width</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">relatedBy</span><span class="p">:</span> <span class="p">.</span><span class="n">LessThanOrEqual</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">toItem</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">attribute</span><span class="p">:</span> <span class="p">.</span><span class="n">NotAnAttribute</span><span class="p">,</span>
+</span><span class='line'>    <span class="nl">multiplier</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">spaceConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span><span class='line'><span class="n">widthConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>OK, Now I will show you a simple way:</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">spaceConstraint</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="n">leadingAnchor</span><span class="p">.</span><span class="n">constraintEqualToAnchor</span><span class="p">(</span><span class="n">button</span><span class="p">.</span><span class="n">trailingAnchor</span><span class="p">,</span> <span class="nl">constant</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">widthConstraint</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="n">widthAnchor</span><span class="p">.</span><span class="n">constraintLessThanOrEqualToConstant</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</span><span class='line'><span class="n">spaceConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span><span class='line'><span class="n">widthConstraint</span><span class="p">.</span><span class="n">active</span> <span class="o">=</span> <span class="nb">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Cheers!!!</h5>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -918,38 +1021,6 @@
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/23/what-difference-between-unowned-self-and-weak-self/">What Difference Between '[Unowned Self] and '[Weak Self']?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-23T23:56:22+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>11:56 pm</span></time>
-        
-         | <a href="/blog/2015/10/23/what-difference-between-unowned-self-and-weak-self/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>...</code></p>
 </div>
   
   
