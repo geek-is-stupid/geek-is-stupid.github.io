@@ -9,7 +9,12 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Some time when you custom font in your project, and the font display not correctly, so how to fix that: Step 1. Download Apple Font Tool Suite &hellip;">
+  <meta name="description" content="If you have some images like this: 1
+2
+3
+let firstImage = UIImage(named: &quot;first&quot;)
+let secondImage = UIImage(named: &quot;first&quot;)
+let &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -113,6 +118,83 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/16/how-to-make-animation-for-uiimageview-from-list-of-images/">How to Make Animation for UIImageView From List of Images</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-16T14:38:00+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:38 pm</span></time>
+        
+         | <a href="/blog/2016/08/16/how-to-make-animation-for-uiimageview-from-list-of-images/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you have some images like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">firstImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span> <span class="s">&quot;first&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">secondImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span> <span class="s">&quot;first&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">let</span> <span class="n">thirdImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span> <span class="s">&quot;first&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>How to display these images on UIImageView and it change image automatically?</h2>
+
+<h3>Easy, try this:</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">imageView</span> <span class="o">=</span> <span class="bp">UIImageView</span><span class="p">()</span>
+</span><span class='line'><span class="n">imageView</span><span class="p">.</span><span class="n">animationImages</span> <span class="o">=</span> <span class="p">[</span><span class="n">firstImage</span><span class="p">,</span> <span class="n">secondImage</span><span class="p">,</span> <span class="n">thirdImage</span><span class="p">]</span>
+</span><span class='line'><span class="n">imageView</span><span class="p">.</span><span class="n">startAnimating</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>So how to set number of loops?</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">imageView</span><span class="p">.</span><span class="n">animationRepeatCount</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">// 0 means infinite (default is 0)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Hummm, ok so how to change velocity?</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">imageView</span><span class="p">.</span><span class="n">animationDuration</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1">// 0.5 seconds  for one cycle of images</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Now stop it!</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">imageView</span><span class="p">.</span><span class="n">stopAnimating</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Fun right!!!, cheers</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -814,153 +896,6 @@
 <h2>Naming Style</h2>
 
 <p>The name of folder follows <strong>CamelCase</strong> style, and be <strong>Singular</strong>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/24/how-to-manage-errors-in-your-ios-app/">How to Manage the Errors in Your iOS App?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-24T00:06:32+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:06 am</span></time>
-        
-         | <a href="/blog/2015/10/24/how-to-manage-errors-in-your-ios-app/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I used to got huge mistaken with handle a lot of errors, and almost the errors from after you call REST API or networks, I just <code>print(error)</code></p>
-
-<h3>What should I do now?</h3>
-
-<p>Keep calm and create <code>Error</code> class to handle all of them.</p>
-
-<h2>I will show you guys the simple way to handle API errors, something like this:</h2>
-
-<p>Step 1. Create enum <code>APIError</code>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="nl">APIError</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">ErrorType</span><span class="p">,</span> <span class="n">CustomStringConvertible</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">Unauthorized</span> <span class="o">=</span> <span class="mi">401</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">Forbidden</span> <span class="o">=</span> <span class="mi">403</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">PageNotFound</span> <span class="o">=</span> <span class="mi">404</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">TimeOut</span> <span class="o">=</span> <span class="mi">408</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">InternalServerError</span> <span class="o">=</span> <span class="mi">500</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">Unknown</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">var</span> <span class="nl">description</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">switch</span> <span class="nb">self</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">PageNotFound</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Page Not Found&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">Unauthorized</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Authorization Required&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">Forbidden</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Forbidden&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">TimeOut</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Time Out&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">case</span> <span class="p">.</span><span class="nl">InternalServerError</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Internal Server Error&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">func</span> <span class="n">foundationError</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">NSError</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="bp">NSError</span><span class="p">(</span><span class="nl">domain</span><span class="p">:</span> <span class="n">errorDomain</span><span class="p">,</span> <span class="nl">code</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">rawValue</span><span class="p">,</span> <span class="nl">userInfo</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSLocalizedDescriptionKey</span><span class="p">:</span> <span class="n">description</span><span class="p">])</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Step 2. Handle when send a request to REST API</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="n">PersonAPIService</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">class</span> <span class="k">func</span> <span class="n">retrieveInformation</span><span class="p">(</span><span class="nl">success</span><span class="p">:</span> <span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">,</span> <span class="nl">failure</span><span class="p">:</span> <span class="p">(</span><span class="bp">NSError</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// Your request here</span>
-</span><span class='line'>  <span class="c1">// Success</span>
-</span><span class='line'>      <span class="n">success</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
-</span><span class='line'>  <span class="c1">// Failure with &#39;headerResponse: NSHTTPURLResponse&#39;</span>
-</span><span class='line'>      <span class="n">failure</span><span class="p">(</span><span class="n">APIError</span><span class="p">(</span><span class="nl">rawValue</span><span class="p">:</span> <span class="n">headerResponse</span><span class="p">.</span><span class="n">statusCode</span><span class="p">).</span><span class="n">foundationError</span><span class="p">())</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Step 3. Now handle in your view controller:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="nl">ViewController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kr">override</span> <span class="k">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nb">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
-</span><span class='line'>      <span class="n">PersonAPIService</span><span class="p">.</span><span class="n">retrieveInformation</span><span class="p">(</span><span class="nl">success</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">person</span><span class="p">)</span> <span class="k">in</span>
-</span><span class='line'>          <span class="c1">// Fetch data</span>
-</span><span class='line'>      <span class="p">},</span> <span class="nl">failure</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
-</span><span class='line'>          <span class="n">print</span><span class="p">(</span><span class="n">error</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">)</span>
-</span><span class='line'>      <span class="p">})</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
 </div>
   
   

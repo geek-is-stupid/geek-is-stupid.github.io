@@ -9,22 +9,14 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="The layout for our UICollectionView looks like: Create new class as subclass for: UICollectionViewFlowLayout 1
+  <meta name="description" content="Everything you need is: 1
 2
 3
 4
 5
 6
 7
-8
-9
-10
-11
-12
-13
-14
-15
-16 &hellip;">
+extension UIButton { func imageToRight() { transform = CGAffineTransform(scaleX: -1.0, y: 1.0) titleLabel?. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -128,6 +120,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/03/04/how-to-align-right-an-image-in-uibutton/">How to Align Right an Image in UIButton?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-03-04T10:17:56+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:17 am</span></time>
+        
+         | <a href="/blog/2017/03/04/how-to-align-right-an-image-in-uibutton/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Everything you need is:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIButton</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">imageToRight</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">scaleX</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">titleLabel</span><span class="o">?</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">scaleX</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">imageView</span><span class="o">?</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">scaleX</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Cheers 👌💪🤘</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -845,83 +888,6 @@
 
 
 <p>Thank for your attention!!!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/08/16/how-to-make-animation-for-uiimageview-from-list-of-images/">How to Make Animation for UIImageView From List of Images</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-08-16T14:38:00+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:38 pm</span></time>
-        
-         | <a href="/blog/2016/08/16/how-to-make-animation-for-uiimageview-from-list-of-images/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you have some images like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">firstImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span> <span class="s">&quot;first&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="k">let</span> <span class="n">secondImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span> <span class="s">&quot;first&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="k">let</span> <span class="n">thirdImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span> <span class="s">&quot;first&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>How to display these images on UIImageView and it change image automatically?</h2>
-
-<h3>Easy, try this:</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">imageView</span> <span class="o">=</span> <span class="bp">UIImageView</span><span class="p">()</span>
-</span><span class='line'><span class="n">imageView</span><span class="p">.</span><span class="n">animationImages</span> <span class="o">=</span> <span class="p">[</span><span class="n">firstImage</span><span class="p">,</span> <span class="n">secondImage</span><span class="p">,</span> <span class="n">thirdImage</span><span class="p">]</span>
-</span><span class='line'><span class="n">imageView</span><span class="p">.</span><span class="n">startAnimating</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>So how to set number of loops?</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">imageView</span><span class="p">.</span><span class="n">animationRepeatCount</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">// 0 means infinite (default is 0)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Hummm, ok so how to change velocity?</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">imageView</span><span class="p">.</span><span class="n">animationDuration</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1">// 0.5 seconds  for one cycle of images</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Now stop it!</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">imageView</span><span class="p">.</span><span class="n">stopAnimating</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Fun right!!!, cheers</p>
 </div>
   
   
