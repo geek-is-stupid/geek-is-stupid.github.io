@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-03-04T10:52:18+07:00</updated>
+  <updated>2017-03-04T10:55:51+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Compress UIImage Using Swift?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-compress-uiimage-using-swift/"/>
+    <updated>2017-03-04T10:54:43+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-compress-uiimage-using-swift</id>
+    <content type="html"><![CDATA[<h4>Following:</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIImage</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">var</span> <span class="nl">data</span><span class="p">:</span> <span class="n">Data</span><span class="o">?</span> <span class="p">{</span> <span class="k">return</span> <span class="n">UIImagePNGRepresentation</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">var</span> <span class="nl">highestQualityJPEGData</span><span class="p">:</span> <span class="n">Data</span><span class="o">?</span> <span class="p">{</span> <span class="k">return</span> <span class="n">UIImageJPEGRepresentation</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>  <span class="p">}</span>
+</span><span class='line'>    <span class="k">var</span> <span class="nl">highQualityJPEGData</span><span class="p">:</span> <span class="n">Data</span><span class="o">?</span>    <span class="p">{</span> <span class="k">return</span> <span class="n">UIImageJPEGRepresentation</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">var</span> <span class="nl">mediumQualityJPEGData</span><span class="p">:</span> <span class="n">Data</span><span class="o">?</span>  <span class="p">{</span> <span class="k">return</span> <span class="n">UIImageJPEGRepresentation</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>  <span class="p">}</span>
+</span><span class='line'>    <span class="k">var</span> <span class="nl">lowQualityJPEGData</span><span class="p">:</span> <span class="n">Data</span><span class="o">?</span>     <span class="p">{</span> <span class="k">return</span> <span class="n">UIImageJPEGRepresentation</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">var</span> <span class="nl">lowestQualityJPEGData</span><span class="p">:</span> <span class="n">Data</span><span class="o">?</span>   <span class="p">{</span> <span class="k">return</span> <span class="n">UIImageJPEGRepresentation</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>Time is your!!!</h6>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Detect That String Contains Emoji Using Swift?]]></title>
@@ -1098,15 +1128,6 @@
 
 
 <p>That&rsquo;s it!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Close Modal Screens in UIStoryboard - iOS9? - Unwind Segue]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2015/11/02/how-to-close-modal-screens-in-uistoryboard-ios9-unwind-segue/"/>
-    <updated>2015-11-02T11:14:41+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2015/11/02/how-to-close-modal-screens-in-uistoryboard-ios9-unwind-segue</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   

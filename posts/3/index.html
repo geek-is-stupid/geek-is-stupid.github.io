@@ -9,16 +9,8 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Array I have a class: 1
-2
-3
-4
-5
-6
-7
-8
-9
-class Person { var name: String? var age = 0 init(name: String?, age: Int) { self.name = name self.age = age &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -122,6 +114,38 @@ class Person { var name: String? var age = 0 init(name: String?, age: Int) { sel
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/11/02/how-to-close-modal-screens-in-uistoryboard-ios9-unwind-segue/">How to Close Modal Screens in UIStoryboard - iOS9? - Unwind Segue</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-11-02T11:14:41+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>11:14 am</span></time>
+        
+         | <a href="/blog/2015/11/02/how-to-close-modal-screens-in-uistoryboard-ios9-unwind-segue/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -918,225 +942,6 @@ class Person { var name: String? var age = 0 init(name: String?, age: Int) { sel
 
 
   <div class="entry-content"><p><code>...</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-press-on-links-to-open-app-using-swift-universal-links-in-ios9/">How to Press on Links to Open App Using Swift? Universal Links in iOS 9</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-23T23:51:20+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>11:51 pm</span></time>
-        
-         | <a href="/blog/2015/10/23/how-to-press-on-links-to-open-app-using-swift-universal-links-in-ios9/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In iOS 9, your app can register to open web links (using https or http) directly, bypassing Safari. Here is the process to add Universal Links:</p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/universal_links.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/universal_links.png" alt="universal_links" /></a></p>
-
-<h1>A. Generate apple-site-app-association file</h1>
-
-
-<p><strong>1. Create Server-side web credentials file: <code>handoff.json</code></strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="nt">&quot;applinks&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nt">&quot;apps&quot;</span><span class="p">:</span> <span class="p">[],</span>
-</span><span class='line'>        <span class="nt">&quot;details&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'>            <span class="nt">&quot;TEAM_ID.App-Bundle-ID&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'>                <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>2. Download your certificate at <a href="https://developer.apple.com/account/ios/certificate/certificateList.action" target="_blank">here</a>, and when it is downloaded, double click on it to add into <code>KeyChain app</code></strong></p>
-
-<p><strong>3. Right click on your certificate in KeyChain to export your <code>Certificates.p12</code></strong></p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/111.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/111.png" alt="1" /></a></p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/21.png"><img align='center' src="https://stackoverzone.files.wordpress.com/2015/10/21.png" alt="2" /></a></p>
-
-<p><strong>4. Open terminal to create certificates with <code>openssl</code> commands:</strong></p>
-
-<ul>
-<li>Create the certificate:</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">openssl</span> <span class="n">pkcs12</span> <span class="o">-</span><span class="k">in</span> <span class="n">Certificates</span><span class="p">.</span><span class="n">p12</span> <span class="o">-</span><span class="n">clcerts</span> <span class="o">-</span><span class="n">nokeys</span> <span class="o">-</span><span class="k">out</span> <span class="n">output_crt</span><span class="p">.</span><span class="n">pem</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>Create the secret key:</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">openssl</span> <span class="n">pkcs12</span> <span class="o">-</span><span class="k">in</span> <span class="n">Certificates</span><span class="p">.</span><span class="n">p12</span> <span class="o">-</span><span class="n">nocerts</span> <span class="o">-</span><span class="n">nodes</span> <span class="o">-</span><span class="k">out</span> <span class="n">output_key</span><span class="p">.</span><span class="n">pem</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>Create the intermediate certificate:</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">openssl</span> <span class="n">pkcs12</span> <span class="o">-</span><span class="k">in</span> <span class="n">Certificates</span><span class="p">.</span><span class="n">p12</span> <span class="o">-</span><span class="n">cacerts</span> <span class="o">-</span><span class="n">nokeys</span> <span class="o">-</span><span class="k">out</span> <span class="n">sample</span><span class="p">.</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>5. Sign the <code>handoff.json</code> file with the following command:</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">cat</span> <span class="n">handoff</span><span class="p">.</span><span class="n">json</span> <span class="o">|</span> <span class="n">openssl</span> <span class="n">smime</span> <span class="o">-</span><span class="n">sign</span> <span class="o">-</span><span class="n">inkey</span> <span class="n">output_key</span><span class="p">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">signer</span> <span class="n">output_crt</span><span class="p">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">certfile</span> <span class="n">sample</span><span class="p">.</span><span class="n">ca</span><span class="o">-</span><span class="n">bundle</span> <span class="o">-</span><span class="n">noattr</span> <span class="o">-</span><span class="n">nodetach</span> <span class="o">-</span><span class="n">outform</span> <span class="n">DER</span><span class="o">&gt;</span> <span class="n">apple</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">association</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>6. Upload your <code>apple-site-app-association</code> file to the root of your web-site</strong></p>
-
-<p>e.g. <a href="https://example.com/apple-app-site-association" target="_blank"><a href="https://example.com/apple-app-site-association">https://example.com/apple-app-site-association</a></a>.</p>
-
-<p><strong>Make sure Content-Type of this file is:</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">application</span><span class="o">/</span><span class="n">pkcs7</span><span class="o">-</span><span class="n">mime</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<h1>B. Xcode setting</h1>
-
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/31.png"><img src="https://stackoverzone.files.wordpress.com/2015/10/31.png" alt="3" /></a></p>
-
-<p><strong>1. Select your project in the Navigator area</strong></p>
-
-<p><strong>2. Select your Target in the Editor area</strong></p>
-
-<p><strong>3. In the Editor area select the Capabilities option from the menu bar</strong></p>
-
-<p><strong>4. Open the disclosure button to the left of the Associated Domains</strong></p>
-
-<p><strong>5. Under Associated Domains select the <code>"+"</code> button</strong></p>
-
-<p><strong>6. Type the entitlement in the input area:</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="nl">applinks</span><span class="p">:</span><span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">domain</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Example:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="nl">applinks</span><span class="p">:</span><span class="n">geek</span><span class="o">-</span><span class="kt">is</span><span class="o">-</span><span class="n">stupid</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<h1>C. App implement</h1>
-
-
-<p>In <code>AppDelegate.swift</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="n">application</span><span class="p">(</span><span class="nl">application</span><span class="p">:</span> <span class="bp">UIApplication</span><span class="p">,</span> <span class="n">continueUserActivity</span> <span class="nl">userActivity</span><span class="p">:</span> <span class="n">NSUserActivity</span><span class="p">,</span> <span class="nl">restorationHandler</span><span class="p">:</span> <span class="p">([</span><span class="n">AnyObject</span><span class="p">]</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="k">let</span> <span class="n">webpageURL</span> <span class="o">=</span> <span class="n">userActivity</span><span class="p">.</span><span class="n">webpageURL</span> <span class="k">where</span> <span class="n">userActivity</span><span class="p">.</span><span class="n">activityType</span> <span class="o">==</span> <span class="n">NSUserActivityTypeBrowsingWeb</span> <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// Your handle links code here :D</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nb">true</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nb">false</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<h1>D. Test on localhost</h1>
-
-
-<p>The Universal link never works with links as: <a href="http://localhost:8080"><a href="http://localhost:8080">http://localhost:8080</a></a></p>
-
-<p><strong>1. Launch the plugin at Root:</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">atlas</span><span class="o">-</span><span class="n">run</span> <span class="o">--</span><span class="n">context</span><span class="o">-</span><span class="n">path</span> <span class="n">ROOT</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>2. Change the local host link to pure link by using <a href="https://ngrok.com/" target="_blank">ngrok</a>:</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">ngrok</span> <span class="o">&lt;</span><span class="n">port_number</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Example for [<a href="http://localhost:8080">http://localhost:8080</a>]</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">ngrok</span> <span class="mi">8080</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>3. Your local host link will become: <a href="http://xxxxxxxx.ngrok.com"><a href="http://xxxxxxxx.ngrok.com">http://xxxxxxxx.ngrok.com</a></a></strong></p>
-
-<p><strong>4. Re-configuring Associated Domains in Xcode to start testing</strong></p>
-
-<h1>Drawbacks of Universal Links</h1>
-
-
-<ol>
-<li>Work only for iOS9+</li>
-<li>We need to upload the file apple-app-site-association located at: <a href="https://domain.com/apple-app-site-association"><a href="https://domain.com/apple-app-site-association">https://domain.com/apple-app-site-association</a></a></li>
-<li>Just support static domains, not dynamic domains, not sub-domains</li>
-<li>To make a trust relationship between the app and the website, we need add the domains of the websites into  Associated Domains entitlement first, and then we can specific which paths from our websites should be handled as universal links, BUT we have a lot of customer&rsquo;s domains and they are different, so we can not register all of them into Associated Domains entitlement</li>
-<li>Uptil Beta 4, you need to sign the <code>app-site-association</code> json file before upload, Apple is planning to do away with this in next Beta/GM.</li>
-</ol>
-
 </div>
   
   
