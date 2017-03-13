@@ -184,6 +184,7 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
+<span class='line-number'>20</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">cellForRowAt</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="n">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">UITableViewCell</span> <span class="p">{</span>
 </span><span class='line'>  <span class="k">let</span> <span class="nl">cell</span><span class="p">:</span> <span class="n">YourTableViewCell</span> <span class="o">=</span> <span class="n">tableView</span><span class="p">.</span><span class="n">dequeueReusableCell</span><span class="p">(</span><span class="nl">withIdentifier</span><span class="p">:</span> <span class="s">&quot;YourTableViewCell&quot;</span><span class="p">,</span> <span class="k">for</span><span class="o">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">MessageTableViewCell</span>
 </span><span class='line'>
@@ -201,6 +202,7 @@
 </span><span class='line'>          <span class="n">cell</span><span class="p">.</span><span class="n">messageLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">message</span>
 </span><span class='line'>      <span class="p">}</span>
 </span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  
 </span><span class='line'>  <span class="k">return</span> <span class="n">cell</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
