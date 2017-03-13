@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to Impove Performance for Scrolling UITableView/UICollectionView? - geek-is-stupid</title>
+  <title>How to Impove Performance When Scrolling UITableView/UICollectionView? - geek-is-stupid</title>
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="There are multiple ways to impove the scrolling for UITableView or UICollectionView, today I will give my way to solved it, hope it will help you &hellip;">
+  <meta name="description" content="There are multiple ways to impove the scrolling for UITableView/UICollectionView, today I will give my way to solved it, hope it will help you guys a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -117,7 +117,7 @@
   <header>
     
       
-        <h1 class="entry-title">How to Impove Performance for Scrolling UITableView/UICollectionView?</h1>
+        <h1 class="entry-title">How to Impove Performance When Scrolling UITableView/UICollectionView?</h1>
       
     
     
@@ -137,11 +137,11 @@
   </header>
 
 
-<div class="entry-content"><h6>There are multiple ways to impove the scrolling for <code>UITableView</code> or <code>UICollectionView</code>, today I will give my way to solved it, hope it will help you guys a little bit:</h6>
+<div class="entry-content"><h5>There are multiple ways to impove the scrolling for <code>UITableView</code>/<code>UICollectionView</code>, today I will give my way to solved it, hope it will help you guys a little bit:</h5>
 
 <h5>Now we should think about: Why we got lagging when scroll your table view or collection view?</h5>
 
-<p>As my experiences, 2 things root to lagging when scroll your table view/collection view:</p>
+<p>As my experiences, 2 important things I think those will root to lagging when scroll your table view/collection view:</p>
 
 <ul>
 <li>Configure cells too expensive</li>
@@ -149,7 +149,7 @@
 </ul>
 
 
-<p>So 2 methods need to change:</p>
+<p>So 2 methods need to change with <code>UITableView</code>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">cellForRowAt</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="n">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">UITableViewCell</span> <span class="p">{}</span>
@@ -206,7 +206,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>2. Impove calculate height for cells</h3>
+<h3>2. Impove calculating height for cells</h3>
 
 <ul>
 <li>Calculate cell&rsquo;s height:</li>
