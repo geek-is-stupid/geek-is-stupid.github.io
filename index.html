@@ -9,24 +9,7 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Some time UImage show wrong orientation, and it make you annoyed!!! Don&rsquo;t worry, I&rsquo;m here: 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18 &hellip;">
+  <meta name="description" content="There are multiple ways to impove the scrolling for UITableView or UICollectionView, today I will give my way hope it will help you guy a little bit &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -130,6 +113,188 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/03/13/how-to-impove-scrolling-uitableview/">How to Impove Scrolling UITableView?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-03-13T16:53:47+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:53 pm</span></time>
+        
+         | <a href="/blog/2017/03/13/how-to-impove-scrolling-uitableview/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h6>There are multiple ways to impove the scrolling for <code>UITableView</code> or <code>UICollectionView</code>, today I will give my way hope it will help you guy a little bit:</h6>
+
+<h5>Now we should think about: Why we got lagging when scroll your table view or collection view?</h5>
+
+<p>As my experiences, I list 2 things:
+- Configure cells too expensive
+- Time to calculate height/size for cell to long</p>
+
+<p>So we need to impove 2 methods:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">cellForRowAt</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="n">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">UITableViewCell</span> <span class="p">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">heightForRowAt</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="n">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CGFloat</span> <span class="p">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Now we go with configure cells first:</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">cellForRowAt</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="n">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">UITableViewCell</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">let</span> <span class="nl">cell</span><span class="p">:</span> <span class="n">YourTableViewCell</span> <span class="o">=</span> <span class="n">tableView</span><span class="p">.</span><span class="n">dequeueReusableCell</span><span class="p">(</span><span class="nl">withIdentifier</span><span class="p">:</span> <span class="s">&quot;YourTableViewCell&quot;</span><span class="p">,</span> <span class="k">for</span><span class="o">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">MessageTableViewCell</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">let</span> <span class="nl">model</span><span class="p">:</span> <span class="n">YourModel</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">DispatchQueue</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;com.geek-is-stupid.queue.configure-cell&quot;</span><span class="p">).</span><span class="n">async</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">let</span> <span class="nl">image</span><span class="p">:</span> <span class="n">URL</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">image</span>
+</span><span class='line'>      <span class="k">let</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">age</span>
+</span><span class='line'>      <span class="k">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">name</span>
+</span><span class='line'>      <span class="k">let</span> <span class="nl">message</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">message</span>
+</span><span class='line'>      <span class="n">DispatchQueue</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">async</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">cell</span><span class="p">.</span><span class="n">imageView</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
+</span><span class='line'>          <span class="n">cell</span><span class="p">.</span><span class="n">nameLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">name</span>
+</span><span class='line'>          <span class="n">cell</span><span class="p">.</span><span class="n">ageLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&quot;\(age)&quot;</span>
+</span><span class='line'>          <span class="n">cell</span><span class="p">.</span><span class="n">messageLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">message</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">cell</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Impove calculate height for cells</h3>
+
+<ul>
+<li>Calculate cell&rsquo;s height:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="nl">YourTableViewCell</span><span class="p">:</span> <span class="bp">UITableViewCell</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">static</span> <span class="k">let</span> <span class="nl">shared</span><span class="p">:</span> <span class="n">MessageTableViewCell</span> <span class="o">=</span> <span class="bp">UINib</span><span class="p">(</span><span class="nl">nibName</span><span class="p">:</span> <span class="s">&quot;YourTableViewCell&quot;</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="nb">nil</span><span class="p">).</span><span class="n">instantiate</span><span class="p">(</span><span class="nl">withOwner</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="kt">as</span><span class="o">!</span> <span class="n">YourTableViewCell</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">func</span> <span class="n">height</span><span class="p">(</span><span class="nl">model</span><span class="p">:</span> <span class="n">YourModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CGFloat</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">let</span> <span class="nl">messageHeight</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">message</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="nl">font</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageFont</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageWidth</span><span class="p">).</span><span class="n">height</span>
+</span><span class='line'>      <span class="k">let</span> <span class="nl">nameHeight</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="nl">font</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageFont</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageWidth</span><span class="p">).</span><span class="n">height</span>
+</span><span class='line'>      <span class="k">let</span> <span class="nl">ageHeight</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="s">&quot;\(model.age)&quot;</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="nl">font</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageFont</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageWidth</span><span class="p">).</span><span class="n">height</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">messageHeight</span> <span class="o">+</span> <span class="n">nameHeight</span> <span class="o">+</span> <span class="n">ageHeight</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Need an array to cache calcuated heights:</li>
+</ul>
+
+
+<p>Back to your view controller</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">fileprivate</span> <span class="k">var</span> <span class="nl">cachedHeights</span><span class="p">:</span> <span class="p">[</span><span class="nl">Int</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">:</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">heightForRowAt</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="n">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CGFloat</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">let</span> <span class="n">cellHeight</span> <span class="o">=</span> <span class="n">cachedHeights</span><span class="p">[</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">]</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">cellHeight</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">let</span> <span class="nl">model</span><span class="p">:</span> <span class="n">YourModel</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">]</span>
+</span><span class='line'>  <span class="k">let</span> <span class="nl">cell</span><span class="p">:</span> <span class="n">YourTableViewCell</span> <span class="o">=</span> <span class="p">.</span><span class="n">shared</span>
+</span><span class='line'>  <span class="k">let</span> <span class="nl">cellHeight</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">cell</span><span class="p">.</span><span class="n">height</span><span class="p">(</span><span class="nl">model</span><span class="p">:</span> <span class="n">model</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">cachedHeights</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">cellHeight</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">cellHeight</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>We need a method to get size for a string</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">size</span><span class="p">(</span><span class="nl">font</span><span class="p">:</span> <span class="bp">UIFont</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">CGSize</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">attrString</span><span class="p">:</span> <span class="bp">NSAttributedString</span> <span class="o">=</span> <span class="bp">NSAttributedString</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="nb">self</span><span class="p">,</span> <span class="nl">attributes</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSFontAttributeName</span><span class="p">:</span> <span class="n">font</span><span class="p">])</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">bounds</span><span class="p">:</span> <span class="bp">CGRect</span> <span class="o">=</span> <span class="n">attrString</span><span class="p">.</span><span class="n">boundingRect</span><span class="p">(</span><span class="nl">with</span><span class="p">:</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">),</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">usesLineFragmentOrigin</span><span class="p">,</span> <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">size</span><span class="p">:</span> <span class="bp">CGSize</span> <span class="o">=</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">bounds</span><span class="p">.</span><span class="n">width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">bounds</span><span class="p">.</span><span class="n">height</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">font</span><span class="p">.</span><span class="n">lineHeight</span> <span class="o">-</span> <span class="n">font</span><span class="p">.</span><span class="n">pointSize</span><span class="p">))</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">size</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>OK, hope this works for you guys!!!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1071,133 +1236,6 @@
 
 
 <p>Cheers 👌💪🤘</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/02/20/how-to-paging-uicollectionview/">How to Paging UICollectionView</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-02-20T17:41:48+07:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>5:41 pm</span></time>
-        
-         | <a href="/blog/2017/02/20/how-to-paging-uicollectionview/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The layout for our UICollectionView looks like:</p>
-
-<p><img src="https://raw.githubusercontent.com/geek-is-stupid/geek-is-stupid.github.io/master/images/post/2017-02-20-how-to-paging-uicollectionview/layout.png" title="UICollectionView Layout" alt="a brick" /></p>
-
-<p>Create new class as subclass for: <code>UICollectionViewFlowLayout</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">import</span> <span class="n">UIKit</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">public</span> <span class="k">class</span> <span class="nl">PageCollectionViewFlowLayout</span><span class="p">:</span> <span class="bp">UICollectionViewFlowLayout</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kr">override</span> <span class="n">public</span> <span class="k">func</span> <span class="n">targetContentOffset</span><span class="p">(</span><span class="n">forProposedContentOffset</span> <span class="nl">proposedContentOffset</span><span class="p">:</span> <span class="bp">CGPoint</span><span class="p">,</span> <span class="n">withScrollingVelocity</span> <span class="nl">velocity</span><span class="p">:</span> <span class="bp">CGPoint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">CGPoint</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">if</span> <span class="k">let</span> <span class="nl">collectionView</span><span class="p">:</span> <span class="bp">UICollectionView</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">collectionView</span> <span class="p">{</span>
-</span><span class='line'>            <span class="k">let</span> <span class="nl">bounds</span><span class="p">:</span> <span class="bp">CGRect</span> <span class="o">=</span> <span class="n">collectionView</span><span class="p">.</span><span class="n">bounds</span>
-</span><span class='line'>            <span class="k">let</span> <span class="n">halfWidth</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="mf">0.5</span>
-</span><span class='line'>            <span class="k">let</span> <span class="nl">proposedContentOffsetCenterX</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">proposedContentOffset</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">halfWidth</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="k">if</span> <span class="k">let</span> <span class="n">attributesForVisibleCells</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">layoutAttributesForElements</span><span class="p">(</span><span class="k">in</span><span class="o">:</span> <span class="n">bounds</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>                <span class="k">var</span> <span class="nl">candidateAttributes</span> <span class="p">:</span> <span class="bp">UICollectionViewLayoutAttributes</span><span class="o">?</span>
-</span><span class='line'>                <span class="k">for</span> <span class="n">attributes</span> <span class="k">in</span> <span class="n">attributesForVisibleCells</span> <span class="p">{</span>
-</span><span class='line'>                    <span class="k">if</span> <span class="n">attributes</span><span class="p">.</span><span class="n">representedElementCategory</span> <span class="o">!=</span> <span class="n">UICollectionElementCategory</span><span class="p">.</span><span class="n">cell</span> <span class="p">{</span> <span class="k">continue</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>                    <span class="k">if</span> <span class="p">(</span><span class="n">attributes</span><span class="p">.</span><span class="n">center</span><span class="p">.</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">attributes</span><span class="p">.</span><span class="n">center</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">collectionView</span><span class="p">.</span><span class="n">contentOffset</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">halfWidth</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">velocity</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">continue</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>                    <span class="k">if</span> <span class="k">let</span> <span class="n">candAttrs</span> <span class="o">=</span> <span class="n">candidateAttributes</span> <span class="p">{</span>
-</span><span class='line'>                        <span class="k">let</span> <span class="n">a</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">.</span><span class="n">center</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">proposedContentOffsetCenterX</span>
-</span><span class='line'>                        <span class="k">let</span> <span class="n">b</span> <span class="o">=</span> <span class="n">candAttrs</span><span class="p">.</span><span class="n">center</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">proposedContentOffsetCenterX</span>
-</span><span class='line'>
-</span><span class='line'>                        <span class="k">if</span> <span class="n">fabsf</span><span class="p">(</span><span class="n">Float</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">fabsf</span><span class="p">(</span><span class="n">Float</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="p">{</span>
-</span><span class='line'>                            <span class="n">candidateAttributes</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">;</span>
-</span><span class='line'>                        <span class="p">}</span>
-</span><span class='line'>                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>                        <span class="n">candidateAttributes</span> <span class="o">=</span> <span class="n">attributes</span>
-</span><span class='line'>                        <span class="k">continue</span>
-</span><span class='line'>                    <span class="p">}</span>
-</span><span class='line'>                <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>                <span class="k">if</span><span class="p">(</span><span class="n">proposedContentOffset</span><span class="p">.</span><span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="p">(</span><span class="n">collectionView</span><span class="p">.</span><span class="n">contentInset</span><span class="p">.</span><span class="kr">left</span><span class="p">))</span> <span class="p">{</span>
-</span><span class='line'>                    <span class="k">return</span> <span class="n">proposedContentOffset</span>
-</span><span class='line'>                <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>                <span class="k">return</span> <span class="bp">CGPoint</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">floor</span><span class="p">(</span><span class="n">candidateAttributes</span><span class="o">!</span><span class="p">.</span><span class="n">center</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">halfWidth</span><span class="p">),</span> <span class="nl">y</span><span class="p">:</span> <span class="n">proposedContentOffset</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nb">super</span><span class="p">.</span><span class="n">targetContentOffset</span><span class="p">(</span><span class="nl">forProposedContentOffset</span><span class="p">:</span> <span class="n">proposedContentOffset</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Now go to Xcode to change the class for your <code>UICollectionView</code>:</p>
-
-<p><img src="https://raw.githubusercontent.com/geek-is-stupid/geek-is-stupid.github.io/master/images/post/2017-02-20-how-to-paging-uicollectionview/FlowLayout.png" title="UICollectionView Layout" alt="a brick" /></p>
-
-<p>And change the class for your Flow layout:</p>
-
-<p><img src="https://raw.githubusercontent.com/geek-is-stupid/geek-is-stupid.github.io/master/images/post/2017-02-20-how-to-paging-uicollectionview/ChangeClassForFlowLayout.png" title="Change Class For Flow Layout" alt="a brick" /></p>
-
-<p>Now show time!!!</p>
 </div>
   
   

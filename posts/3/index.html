@@ -9,8 +9,7 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Summary: Hugging: Content does not want to grow
-Compression Resistance: Content does not want to shrink Example: I have a button look like this:&nbsp &hellip;">
+  <meta name="description" content="Some time when you custom font in your project, and the font display not correctly, so how to fix that: Step 1. Download Apple Font Tool Suite &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -114,6 +113,49 @@ Compression Resistance: Content does not want to shrink Example: I have a button
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/16/adjust-custom-font-verical-alignment-xcode/">Adjust Custom Font Verical Alignment - Xcode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-16T10:05:47+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:05 am</span></time>
+        
+         | <a href="/blog/2016/08/16/adjust-custom-font-verical-alignment-xcode/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Some time when you custom font in your project, and the font display not correctly, so how to fix that:</p>
+
+<p>Step 1. Download <a href="https://developer.apple.com/fonts/">Apple Font Tool Suite</a> command line utilities.</p>
+
+<p>Step 2. Go to the folder which contains your font and run command:
+<code>ftxdumperfuser -t hhea -A d Bold.ttf</code></p>
+
+<p>Step 3. It will generate Bold.hhea.xml automatically, open it and edit <code>ascender</code> value. In my case I changed it from <code>750</code> to <code>1200</code></p>
+
+<p>Step 4. Run: <code>ftxdumperfuser -t hhea -A f Bold.ttf</code></p>
+
+<p>And now your font is updated!!!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -919,38 +961,6 @@ Compression Resistance: Content does not want to shrink Example: I have a button
 
 
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/24/what-difference-between-cgd-grand-central-dispatch-and-nsoperation/">What Difference Between GCD (Grand Central Dispatch) and NSOperation?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-24T00:01:44+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:01 am</span></time>
-        
-         | <a href="/blog/2015/10/24/what-difference-between-cgd-grand-central-dispatch-and-nsoperation/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>...</code></p>
 </div>
   
   

@@ -9,7 +9,8 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Good way to optimize your code :P I think guard is useful for make a precondition in your method when you will do some stuffs, it&rsquo;s great to &hellip;">
+  <meta name="description" content="...
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -113,6 +114,38 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/24/what-difference-between-cgd-grand-central-dispatch-and-nsoperation/">What Difference Between GCD (Grand Central Dispatch) and NSOperation?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-24T00:01:44+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:01 am</span></time>
+        
+         | <a href="/blog/2015/10/24/what-difference-between-cgd-grand-central-dispatch-and-nsoperation/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>...</code></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -741,61 +774,6 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>a = a + b;
 </span><span class='line'>b = a - b;
 </span><span class='line'>a = a - b;</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-get-address-from-latitude-and-longitude-using-objective-c/">How to Get Address From Latitude and Longitude Using Objective C?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-23T15:45:49+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>3:45 pm</span></time>
-        
-         | <a href="/blog/2015/10/23/how-to-get-address-from-latitude-and-longitude-using-objective-c/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getAddressFromLatLon:</span><span class="p">(</span><span class="bp">CLLocation</span><span class="o">*</span><span class="p">)</span> <span class="nv">location</span> <span class="nf">theAnnotation:</span><span class="p">(</span><span class="n">TrafficAnnotation</span><span class="o">*</span><span class="p">)</span> <span class="nv">annotation</span><span class="p">{</span>
-</span><span class='line'>    <span class="bp">CLGeocoder</span> <span class="o">*</span><span class="n">geocoder</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">CLGeocoder</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-</span><span class='line'>    <span class="p">[</span><span class="n">geocoder</span> <span class="nl">reverseGeocodeLocation</span><span class="p">:</span><span class="n">location</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="n">placemarks</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">){</span>
-</span><span class='line'>         <span class="k">if</span><span class="p">(</span><span class="n">placemarks</span> <span class="o">&amp;&amp;</span> <span class="n">placemarks</span><span class="p">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
-</span><span class='line'>             <span class="bp">CLPlacemark</span> <span class="o">*</span><span class="n">placemark</span><span class="o">=</span> <span class="p">[</span><span class="n">placemarks</span> <span class="nl">objectAtIndex</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
-</span><span class='line'>             <span class="c1">// address defined in .h file</span>
-</span><span class='line'>             <span class="n">address</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%@ , %@ , %@, %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">placemark</span> <span class="n">thoroughfare</span><span class="p">],</span> <span class="p">[</span><span class="n">placemark</span> <span class="n">locality</span><span class="p">],</span> <span class="p">[</span><span class="n">placemark</span> <span class="n">administrativeArea</span><span class="p">],</span> <span class="p">[</span><span class="n">placemark</span> <span class="n">country</span><span class="p">]];</span>
-</span><span class='line'>             <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;New Address Is:%@&quot;</span><span class="p">,</span> <span class="n">address</span><span class="p">);</span>
-</span><span class='line'>         <span class="p">}</span>
-</span><span class='line'>     <span class="p">}];</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
 
 </div>
   
