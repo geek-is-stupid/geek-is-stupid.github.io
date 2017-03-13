@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-03-13T17:36:59+07:00</updated>
+  <updated>2017-03-13T17:40:26+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -111,7 +111,7 @@
 </span><span class='line'>  
 </span><span class='line'>  <span class="k">func</span> <span class="n">height</span><span class="p">(</span><span class="nl">model</span><span class="p">:</span> <span class="n">YourModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CGFloat</span> <span class="p">{</span>
 </span><span class='line'>      <span class="c1">//Depend on your cell&#39;s layout, you will have different way to get cell&#39;s height.</span>
-</span><span class='line'>      <span class="c1">// e.g There are 3 vertically lables on my cell</span>
+</span><span class='line'>      <span class="c1">// e.g There are 3 vertically labels on my cell</span>
 </span><span class='line'>      <span class="k">let</span> <span class="nl">messageHeight</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">message</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="nl">font</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageFont</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageWidth</span><span class="p">).</span><span class="n">height</span>
 </span><span class='line'>      <span class="k">let</span> <span class="nl">nameHeight</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="nl">font</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageFont</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageWidth</span><span class="p">).</span><span class="n">height</span>
 </span><span class='line'>      <span class="k">let</span> <span class="nl">ageHeight</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="s">&quot;\(model.age)&quot;</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="nl">font</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageFont</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">message</span><span class="p">.</span><span class="n">messageWidth</span><span class="p">).</span><span class="n">height</span>
@@ -126,7 +126,7 @@
 </ul>
 
 
-<p>Back to your view controller</p>
+<p><em>Back to your view controller</em></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -155,7 +155,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h6>We need a method to get size for a string</h6>
+<h6>Method to get size for a string</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
