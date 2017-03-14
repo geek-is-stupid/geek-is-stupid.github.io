@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-03-14T11:33:42+07:00</updated>
+  <updated>2017-03-14T11:56:59+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -34,7 +34,7 @@
 </span><span class='line'>        <span class="kr">didSet</span> <span class="p">{</span>
 </span><span class='line'>            <span class="k">var</span> <span class="n">topCorrection</span> <span class="o">=</span> <span class="p">(</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">contentSize</span><span class="p">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">zoomScale</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
 </span><span class='line'>            <span class="n">topCorrection</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">topCorrection</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">contentOffset</span> <span class="o">=</span> <span class="bp">CGPoint</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="o">-</span><span class="n">topCorrection</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">contentInset</span> <span class="o">=</span> <span class="bp">UIEdgeInsets</span><span class="p">(</span><span class="nl">top</span><span class="p">:</span> <span class="n">topCorrection</span><span class="p">,</span> <span class="nl">left</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
 </span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
