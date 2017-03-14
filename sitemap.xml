@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://geek-is-stupid.github.io/blog/2017/03/14/how-to-center-text-vertically-in-a-uitextview/</loc>
+<lastmod>2017-03-14T11:31:45+07:00</lastmod>
+</url>
+<url>
 <loc>http://geek-is-stupid.github.io/blog/2017/03/13/how-to-impove-scrolling-uitableview/</loc>
 <lastmod>2017-03-13T16:53:47+07:00</lastmod>
 </url>
@@ -197,5 +201,17 @@
 </url>
 <url>
 <loc>http://geek-is-stupid.github.io/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/2/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/3/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/4/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/5/</loc>
 </url>
 </urlset>

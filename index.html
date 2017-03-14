@@ -9,7 +9,16 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="There are multiple ways to impove the scrolling for UITableView/UICollectionView, today I will give my way to solved it, hope it will help you guys a &hellip;">
+  <meta name="description" content="I create a custome text view called by: VerticallyCenteredTextView 1
+2
+3
+4
+5
+6
+7
+8
+9
+class VerticallyCenteredTextView: UITextView { override var &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -115,6 +124,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/03/14/how-to-center-text-vertically-in-a-uitextview/">How to Center Text Vertically in a UITextView?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-03-14T11:31:45+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:31 am</span></time>
+        
+         | <a href="/blog/2017/03/14/how-to-center-text-vertically-in-a-uitextview/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I create a custome text view called by: <code>VerticallyCenteredTextView</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="nl">VerticallyCenteredTextView</span><span class="p">:</span> <span class="bp">UITextView</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kr">override</span> <span class="k">var</span> <span class="nl">contentSize</span><span class="p">:</span> <span class="bp">CGSize</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kr">didSet</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">var</span> <span class="n">topCorrection</span> <span class="o">=</span> <span class="p">(</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">contentSize</span><span class="p">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">zoomScale</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+</span><span class='line'>            <span class="n">topCorrection</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">topCorrection</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">contentOffset</span> <span class="o">=</span> <span class="bp">CGPoint</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="o">-</span><span class="n">topCorrection</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1190,64 +1252,6 @@
 
 
 <p>Good luck!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/03/04/how-to-align-right-an-image-in-uibutton/">How to Align Right an Image in UIButton?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-03-04T10:17:56+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:17 am</span></time>
-        
-         | <a href="/blog/2017/03/04/how-to-align-right-an-image-in-uibutton/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h5>Everything you need is:</h5>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIButton</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">func</span> <span class="n">imageToRight</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>      <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">scaleX</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">titleLabel</span><span class="o">?</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">scaleX</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">imageView</span><span class="o">?</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">scaleX</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h6>Show time:</h6>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">button</span><span class="p">.</span><span class="n">imageToRight</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Cheers 👌💪🤘</p>
 </div>
   
   
