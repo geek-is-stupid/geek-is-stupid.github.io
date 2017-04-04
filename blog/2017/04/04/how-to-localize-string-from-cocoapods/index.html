@@ -152,9 +152,9 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>This statement will using main bundle to load all <code>*.lproj</code> files, but if you load from you CocoaPods it is not main bundle anymore! 😱</p>
+<p>This statement will using main bundle to load all <strong><code>*.lproj</code></strong> files, but if you load from you CocoaPods it is not main bundle anymore! 😱</p>
 
-<p>Cool, so if I have a library with the name is: <code>YourCocoaPodsDependenceName</code>, so we might to do 3 things:</p>
+<p>Cool, so if I have a library with the name is: <strong><code>YourCocoaPodsDependenceName</code></strong>, so we might to do 3 things:</p>
 
 <h5>1. Add a global localized string method:</h5>
 
@@ -175,14 +175,14 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h5>2. Using <code>localizedStringForKey(_: comment:)</code> instead of <code>NSLocalizedString</code>:</h5>
+<h5>2. Using <strong><code>localizedStringForKey(_: comment:)</code></strong> instead of <strong><code>NSLocalizedString</code></strong>:</h5>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">localizedStringForKey</span><span class="p">(</span><span class="s">&quot;Geek is stupid&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h5>3. Hold on, we might to update the <code>*.podspec</code> to tell CocoaPods that we are adding a bundle:</h5>
+<h5>3. Hold on, we might to update the <strong><code>*.podspec</code></strong> to tell CocoaPods that we are adding a bundle:</h5>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
