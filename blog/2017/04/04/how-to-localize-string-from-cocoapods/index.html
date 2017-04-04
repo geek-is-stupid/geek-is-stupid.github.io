@@ -5,20 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to Center Text Vertically in a UITextView? - geek-is-stupid</title>
+  <title>How to Localize String From CocoaPods? - geek-is-stupid</title>
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="I create a custome text view called by: VerticallyCenteredTextView 1
-2
-3
-4
-5
-6
-7
-8
-9
-class VerticallyCenteredTextView: UITextView { override var &hellip;">
+  <meta name="description" content="Last time I alread introduced to how to localize in simple project http://geek-is-stupid.github.io/blog/2015/10/23/how-to-manage-all-localized-string &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -27,7 +18,7 @@ class VerticallyCenteredTextView: UITextView { override var &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2017/03/14/how-to-center-text-vertically-in-a-uitextview">
+  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2017/04/04/how-to-localize-string-from-cocoapods">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="geek-is-stupid" type="application/atom+xml">
@@ -128,7 +119,7 @@ class VerticallyCenteredTextView: UITextView { override var &hellip;">
   <header>
     
       
-        <h1 class="entry-title">How to Center Text Vertically in a UITextView?</h1>
+        <h1 class="entry-title">How to Localize String From CocoaPods?</h1>
       
     
     
@@ -138,7 +129,7 @@ class VerticallyCenteredTextView: UITextView { override var &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-03-14T11:31:45+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:31 am</span></time>
+<time class='entry-date' datetime='2017-04-04T13:28:07+07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>1:28 pm</span></time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -148,7 +139,22 @@ class VerticallyCenteredTextView: UITextView { override var &hellip;">
   </header>
 
 
-<div class="entry-content"><p>I create a custome text view called by: <code>VerticallyCenteredTextView</code></p>
+<div class="entry-content"><p>Last time I alread introduced to how to localize in simple project <a href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/">http://geek-is-stupid.github.io/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/</a></p>
+
+<p>Now I will show you how to localize from your CocoaPods dependences!</p>
+
+<p>The simple way how you get the localized string:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Geek is stupid&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This statement will using main bundle to load all <code>*.lproj</code> files, but if you load from you CocoaPods it is not main bundle anymore! 😱</p>
+
+<p>Cool, so if I have a library with the name is: <code>YourCocoaPodsDependenceName</code>, so we might to do 3 things:</p>
+
+<h6>1. Add a global localized strign method:</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -157,19 +163,35 @@ class VerticallyCenteredTextView: UITextView { override var &hellip;">
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="nl">VerticallyCenteredTextView</span><span class="p">:</span> <span class="bp">UITextView</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kr">override</span> <span class="k">var</span> <span class="nl">contentSize</span><span class="p">:</span> <span class="bp">CGSize</span> <span class="p">{</span>
-</span><span class='line'>        <span class="kr">didSet</span> <span class="p">{</span>
-</span><span class='line'>            <span class="k">var</span> <span class="n">topCorrection</span> <span class="o">=</span> <span class="p">(</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">contentSize</span><span class="p">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">zoomScale</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
-</span><span class='line'>            <span class="n">topCorrection</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">topCorrection</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">contentInset</span> <span class="o">=</span> <span class="bp">UIEdgeInsets</span><span class="p">(</span><span class="nl">top</span><span class="p">:</span> <span class="n">topCorrection</span><span class="p">,</span> <span class="nl">left</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">static</span> <span class="k">func</span> <span class="n">localizedStringForKey</span><span class="p">(</span><span class="n">_</span> <span class="nl">key</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">let</span> <span class="n">bundleClass</span> <span class="o">=</span> <span class="n">Bundle</span><span class="p">(</span><span class="k">for</span><span class="o">:</span> <span class="n">YourCocoaPodsDependenceName</span><span class="p">.</span><span class="nb">self</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">let</span> <span class="n">bundlePath</span> <span class="o">=</span> <span class="n">bundleClass</span><span class="p">.</span><span class="n">path</span><span class="p">(</span><span class="nl">forResource</span><span class="p">:</span> <span class="s">&quot;YourCocoaPodsDependenceName&quot;</span><span class="p">,</span> <span class="nl">ofType</span><span class="p">:</span> <span class="s">&quot;bundle&quot;</span><span class="p">)</span><span class="o">!</span>
+</span><span class='line'>  <span class="k">let</span> <span class="n">bundle</span> <span class="o">=</span> <span class="n">Bundle</span><span class="p">(</span><span class="nl">path</span><span class="p">:</span> <span class="n">bundlePath</span><span class="p">)</span><span class="o">!</span>
+</span><span class='line'>  <span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">bundle</span><span class="p">.</span><span class="n">localizedString</span><span class="p">(</span><span class="nl">forKey</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span> <span class="nl">value</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">table</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">string</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<h6>2. Using <code>localizedStringForKey(_: comment:)</code> instead of <code>NSLocalizedString</code>:</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">localizedStringForKey</span><span class="p">(</span><span class="s">&quot;Geek is stupid&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>3. Hold on, we might to update the <code>*.podspec</code> to tell CocoaPods that we are adding a bundle:</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="n">s</span><span class="p">.</span><span class="n">resource_bundle</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&quot;YourCocoaPodsDependenceName&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s">&quot;YourCocoaPodsDependenceName/**/*.lproj&quot;</span><span class="p">]</span> <span class="p">}</span>
+</span><span class='line'><span class="p">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Time to 🚀🚀🚀!</p>
 </div>
 
 
@@ -192,7 +214,7 @@ class VerticallyCenteredTextView: UITextView { override var &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-03-14T11:31:45+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:31 am</span></time>
+<time class='entry-date' datetime='2017-04-04T13:28:07+07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>1:28 pm</span></time>
       
       
 
@@ -201,7 +223,7 @@ class VerticallyCenteredTextView: UITextView { override var &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2017/03/14/how-to-center-text-vertically-in-a-uitextview/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2017/03/14/how-to-center-text-vertically-in-a-uitextview/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2017/04/04/how-to-localize-string-from-cocoapods/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2017/04/04/how-to-localize-string-from-cocoapods/" >Tweet</a>
   
   
   
@@ -210,10 +232,8 @@ class VerticallyCenteredTextView: UITextView { override var &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2017/03/13/how-to-impove-scrolling-uitableview/" title="Previous Post: How to impove performance when scrolling UITableView/UICollectionView?">&laquo; How to impove performance when scrolling UITableView/UICollectionView?</a>
+        <a class="basic-alignment left" href="/blog/2017/03/14/how-to-center-text-vertically-in-a-uitextview/" title="Previous Post: How to center text vertically in a UITextView?">&laquo; How to center text vertically in a UITextView?</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2017/04/04/how-to-localize-string-from-cocoapods/" title="Next Post: How to localize string from CocoaPods?">How to localize string from CocoaPods? &raquo;</a>
       
     </p>
   </footer>
@@ -243,8 +263,8 @@ class VerticallyCenteredTextView: UITextView { override var &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://geek-is-stupid.github.io/blog/2017/03/14/how-to-center-text-vertically-in-a-uitextview/';
-        var disqus_url = 'http://geek-is-stupid.github.io/blog/2017/03/14/how-to-center-text-vertically-in-a-uitextview/';
+        var disqus_identifier = 'http://geek-is-stupid.github.io/blog/2017/04/04/how-to-localize-string-from-cocoapods/';
+        var disqus_url = 'http://geek-is-stupid.github.io/blog/2017/04/04/how-to-localize-string-from-cocoapods/';
         var disqus_script = 'embed.js';
       
     (function () {

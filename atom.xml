@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-03-14T12:52:51+07:00</updated>
+  <updated>2017-04-04T13:46:14+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Localize String From CocoaPods?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2017/04/04/how-to-localize-string-from-cocoapods/"/>
+    <updated>2017-04-04T13:28:07+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2017/04/04/how-to-localize-string-from-cocoapods</id>
+    <content type="html"><![CDATA[<p>Last time I alread introduced to how to localize in simple project <a href="http://geek-is-stupid.github.io/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/">http://geek-is-stupid.github.io/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/</a></p>
+
+<p>Now I will show you how to localize from your CocoaPods dependences!</p>
+
+<p>The simple way how you get the localized string:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Geek is stupid&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This statement will using main bundle to load all <code>*.lproj</code> files, but if you load from you CocoaPods it is not main bundle anymore! 😱</p>
+
+<p>Cool, so if I have a library with the name is: <code>YourCocoaPodsDependenceName</code>, so we might to do 3 things:</p>
+
+<h6>1. Add a global localized strign method:</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">static</span> <span class="k">func</span> <span class="n">localizedStringForKey</span><span class="p">(</span><span class="n">_</span> <span class="nl">key</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">let</span> <span class="n">bundleClass</span> <span class="o">=</span> <span class="n">Bundle</span><span class="p">(</span><span class="k">for</span><span class="o">:</span> <span class="n">YourCocoaPodsDependenceName</span><span class="p">.</span><span class="nb">self</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">let</span> <span class="n">bundlePath</span> <span class="o">=</span> <span class="n">bundleClass</span><span class="p">.</span><span class="n">path</span><span class="p">(</span><span class="nl">forResource</span><span class="p">:</span> <span class="s">&quot;YourCocoaPodsDependenceName&quot;</span><span class="p">,</span> <span class="nl">ofType</span><span class="p">:</span> <span class="s">&quot;bundle&quot;</span><span class="p">)</span><span class="o">!</span>
+</span><span class='line'>  <span class="k">let</span> <span class="n">bundle</span> <span class="o">=</span> <span class="n">Bundle</span><span class="p">(</span><span class="nl">path</span><span class="p">:</span> <span class="n">bundlePath</span><span class="p">)</span><span class="o">!</span>
+</span><span class='line'>  <span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">bundle</span><span class="p">.</span><span class="n">localizedString</span><span class="p">(</span><span class="nl">forKey</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span> <span class="nl">value</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">table</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">string</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>2. Using <code>localizedStringForKey(_: comment:)</code> instead of <code>NSLocalizedString</code>:</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">localizedStringForKey</span><span class="p">(</span><span class="s">&quot;Geek is stupid&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>3. Hold on, we might to update the <code>*.podspec</code> to tell CocoaPods that we are adding a bundle:</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="n">s</span><span class="p">.</span><span class="n">resource_bundle</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&quot;YourCocoaPodsDependenceName&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s">&quot;YourCocoaPodsDependenceName/**/*.lproj&quot;</span><span class="p">]</span> <span class="p">}</span>
+</span><span class='line'><span class="p">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Time to 🚀🚀🚀!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Center Text Vertically in a UITextView?]]></title>
@@ -1346,125 +1407,6 @@
 </span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">display</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Handle Response With Success: And Error: In One Closure?]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-handle-response-with-success-and-error-in-one-closure/"/>
-    <updated>2016-08-16T14:49:39+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2016/08/16/how-to-handle-response-with-success-and-error-in-one-closure</id>
-    <content type="html"><![CDATA[<h5>Nowaday, there are a lot of solution to handle response which has multiple states.</h5>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">getUserDetail</span><span class="p">(</span><span class="nl">completion</span><span class="p">:</span> <span class="p">(</span><span class="n">User</span><span class="o">?</span><span class="p">,</span> <span class="bp">NSError</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{...}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>or</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">getUserDetail</span><span class="p">(</span><span class="nl">success</span><span class="p">:</span> <span class="n">User</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">,</span> <span class="nl">failure</span><span class="p">:</span> <span class="bp">NSError</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{...}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h6>I hate this, when ever I call that method I have to check <code>error != nil</code></h6>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">getUserDetail</span><span class="p">({</span> <span class="n">user</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
-</span><span class='line'>  <span class="k">if</span> <span class="k">let</span> <span class="n">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
-</span><span class='line'>      <span class="c1">//Do when failed</span>
-</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="n">user</span> <span class="o">=</span> <span class="n">user</span> <span class="p">{</span>
-</span><span class='line'>      <span class="c1">//Do when success</span>
-</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>      <span class="c1">//What should I do here</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h6>or kind of prolix :) but simple right</h6>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">getUserDetail</span><span class="p">({</span> <span class="n">user</span> <span class="k">in</span>
-</span><span class='line'>  <span class="c1">//Do when success</span>
-</span><span class='line'><span class="p">},</span> <span class="nl">failure</span><span class="p">:</span> <span class="p">{</span> <span class="n">error</span> <span class="k">in</span>
-</span><span class='line'>  <span class="c1">//Do when failed</span>
-</span><span class='line'><span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><br/>
-<br/></p>
-
-<h2>OK now I will do some think more complicated, but I think good for me (not recomended for everybody)</h2>
-
-<p>First, create an enum <code>Response</code>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">enum</span> <span class="n">Response</span><span class="o">&lt;</span><span class="n">Value</span><span class="o">&gt;</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">Success</span><span class="p">(</span><span class="n">Value</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">Failure</span><span class="p">(</span><span class="bp">NSError</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Time to use your enum:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">getUserDetail</span><span class="p">(</span><span class="nl">completion</span><span class="p">:</span> <span class="n">Response</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// if success</span>
-</span><span class='line'>  <span class="n">completion</span><span class="p">(</span><span class="n">Response</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="n">user</span><span class="p">))</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="c1">// if failed</span>
-</span><span class='line'>  <span class="n">completion</span><span class="p">(</span><span class="n">Response</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">.</span><span class="n">Failure</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Call your method:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">getUserDetail</span><span class="p">({</span> <span class="n">response</span> <span class="k">in</span>
-</span><span class='line'>  <span class="k">switch</span> <span class="n">response</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">case</span> <span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="k">let</span> <span class="n">user</span><span class="p">)</span><span class="o">:</span>
-</span><span class='line'>      <span class="c1">//Do when success</span>
-</span><span class='line'>  <span class="k">case</span> <span class="p">.</span><span class="n">Failure</span><span class="p">(</span><span class="k">let</span> <span class="n">error</span><span class="p">)</span><span class="o">:</span>
-</span><span class='line'>      <span class="c1">//Do when failed</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Thank for your attention!!!</p>
 ]]></content>
   </entry>
   
