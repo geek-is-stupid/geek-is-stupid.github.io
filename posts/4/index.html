@@ -878,35 +878,54 @@
 
   <div class="entry-content"><h3>Using <code>'genstrings'</code> tool from Apple which included into Xcode</h3>
 
-<p>Step 1. Add languages which you want to localize.</p>
+<h5>Step 1. Generate <code>Localizable.strings</code> to get all of strings you want to localize.</h5>
+
+<ul>
+<li>Open terminal and go to your project&rsquo;s folder:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">cd</span> <span class="n">PathToYourProject</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Run:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">find</span> <span class="p">.</span> <span class="o">-</span><span class="n">name</span> <span class="err">&#39;</span><span class="o">*</span><span class="p">.</span><span class="n">swift</span><span class="err">&#39;</span> <span class="o">-</span><span class="n">print</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="n">n1</span> <span class="n">genstrings</span> <span class="o">-</span><span class="n">a</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>After this step, a <code>Localizable.strings</code> will automatically generated</li>
+</ul>
+
+
+<h5>Step 2. Add <code>Localizable.strings</code> in your project.</h5>
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png" /></a></p>
+
+<h5>Step 3: Add languages for your <code>Localizable.strings</code>:</h5>
+
+<ul>
+<li><p>Now click on the file you just added <code>Localizable.strings</code></p></li>
+<li><p>On right side of Xcode, choose <code>Show the File inspector</code> > <code>Localization</code> > Press button: <code>Localize...</code>
+<a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png" /></a></p></li>
+<li><p>One pop up will show to asks you which languages you wanna add, choose one please! 🤗</p></li>
+</ul>
+
+
+<h5>Step 4. Add languages which you want to localize to your project.</h5>
 
 <p>On the left side of Xcode, choose <code>Show the project navigator</code> > Choose your project:</p>
 
 <p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png" /></a></p>
 
-<p>Step 2. Open terminal and go to your project&rsquo;s folder: <code>cd YourProject</code></p>
-
-<p>Step 3. Run: <code>find . -name '*.swift' -print | xargs -n1 genstrings -a</code></p>
-
-<p>After this step, you will see the files:</p>
-
-<ul>
-<li><code>Localizable.strings</code></li>
-<li><code>Base.lproj</code></li>
-<li><code>vi.lproj</code></li>
-<li><code>en.lproj</code></li>
-</ul>
-
-
-<p>Step 3. Add only file: <code>Localizable.strings</code> in your project</p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png" /></a></p>
-
-<p>Step 4: On right side of Xcode, choose <code>Show the File inspector</code> > <code>Localization</code> > Press button: <code>Localize...</code></p>
-
-<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png" /></a></p>
-
-<p>Step 5: Setup your build:</p>
+<h5>Step 5: Setup your schemes:</h5>
 
 <ul>
 <li>Edit your sheme</li>
@@ -921,6 +940,8 @@
 
 
 <p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png" /></a></p>
+
+<p>🍻🍻🍻</p>
 </div>
   
   
