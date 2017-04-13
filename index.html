@@ -857,6 +857,68 @@
 <p>Don&rsquo;t be mad if the recorded video without the mask, I will show you at next step!</p>
 
 <h3>5. Add mask to recorded video</h3>
+
+<p>To apply the mask into the recorde video we need using <code>AVAssetWriterInputPixelBufferAdaptor</code> to do it!!! :]</p>
+
+<p>Declare some more global variables</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">fileprivate</span> <span class="k">var</span> <span class="nl">videoWriterInputPixelBufferAdaptor</span><span class="p">:</span> <span class="bp">AVAssetWriterInputPixelBufferAdaptor</span><span class="o">!</span>
+</span><span class='line'><span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">sDeviceRgbColorSpace</span> <span class="o">=</span> <span class="n">CGColorSpaceCreateDeviceRGB</span><span class="p">()</span>
+</span><span class='line'><span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">bitmapInfo</span> <span class="o">=</span> <span class="n">CGBitmapInfo</span><span class="p">.</span><span class="n">byteOrder32Little</span>
+</span><span class='line'>                                            <span class="p">.</span><span class="k">union</span><span class="p">(</span><span class="n">CGBitmapInfo</span><span class="p">(</span><span class="nl">rawValue</span><span class="p">:</span> <span class="n">CGImageAlphaInfo</span><span class="p">.</span><span class="n">noneSkipFirst</span><span class="p">.</span><span class="n">rawValue</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Update func <code>func setupWriter</code>:</p>
+
+<p>Again back to edit method: <code>func captureOutput(_:didOutputSampleBuffer:from:)</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">captureOutput</span><span class="p">(</span><span class="n">_</span> <span class="nl">captureOutput</span><span class="p">:</span> <span class="bp">AVCaptureOutput</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>                   <span class="n">didOutputSampleBuffer</span> <span class="nl">sampleBuffer</span><span class="p">:</span> <span class="n">CMSampleBuffer</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>                   <span class="n">from</span> <span class="nl">connection</span><span class="p">:</span> <span class="bp">AVCaptureConnection</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="n">captureOutput</span> <span class="o">==</span> <span class="n">videoDataOutput</span> <span class="p">{</span>
+</span><span class='line'>      <span class="p">...</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="k">if</span> <span class="n">videoWriterInput</span><span class="p">.</span><span class="n">isReadyForMoreMediaData</span> <span class="p">{</span>
+</span><span class='line'>          <span class="c1">//Write video buffer</span>
+</span><span class='line'>          <span class="n">videoWriterInput</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sampleBuffer</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">writable</span><span class="p">,</span>
+</span><span class='line'>      <span class="n">captureOutput</span> <span class="o">==</span> <span class="n">audioDataOutput</span><span class="p">,</span>
+</span><span class='line'>      <span class="n">audioWriterInput</span><span class="p">.</span><span class="n">isReadyForMoreMediaData</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">//Write audio buffer</span>
+</span><span class='line'>      <span class="n">audioWriterInput</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sampleBuffer</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 </div>
   
   
