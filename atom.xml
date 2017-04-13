@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-04-13T17:22:02+07:00</updated>
+  <updated>2017-04-13T17:24:14+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -468,7 +468,7 @@
 
 <p>Now please run your project and see the result, don&rsquo;t forget add your <code>RecorderView</code> into your View Controller</p>
 
-<h3>4: Record video</h3>
+<h3>4. Record video</h3>
 
 <p>At those first steps we already detect real-time faces, now we will record a video.</p>
 
@@ -730,6 +730,10 @@
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>Don&rsquo;t be mad if the recorded video without the mask, I will show you at next step!</p>
+
+<h3>5. Add mask to recorded video</h3>
 ]]></content>
   </entry>
   
