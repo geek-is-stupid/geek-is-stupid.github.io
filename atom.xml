@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-04-13T17:18:07+07:00</updated>
+  <updated>2017-04-13T17:21:22+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -703,6 +703,29 @@
 </span><span class='line'>          <span class="k">let</span> <span class="n">asset</span> <span class="o">=</span> <span class="bp">AVURLAsset</span><span class="p">(</span><span class="nl">url</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
 </span><span class='line'>          <span class="c1">//Do whatever you want with your asset here</span>
 </span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can able to pause and resume record like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">RecorderView</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">pause</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">isRecording</span> <span class="o">=</span> <span class="nb">false</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">func</span> <span class="n">resume</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">isRecording</span> <span class="o">=</span> <span class="nb">true</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
