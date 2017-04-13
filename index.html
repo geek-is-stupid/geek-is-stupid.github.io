@@ -590,6 +590,246 @@
 
 
 <p>Now please run your project and see the result, don&rsquo;t forget add your <code>RecorderView</code> into your View Controller</p>
+
+<h3>4: Record video</h3>
+
+<p>At those first steps we already detect real-time faces, now we will record a video.</p>
+
+<p>To write down some buffers as a video file we need to touch on <code>AVAssetWriter</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="n">fileprivate</span><span class="p">(</span><span class="kr">set</span><span class="p">)</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">isRecording</span> <span class="o">=</span> <span class="nb">false</span>
+</span><span class='line'><span class="n">fileprivate</span> <span class="k">var</span> <span class="nl">videoWriter</span><span class="p">:</span> <span class="bp">AVAssetWriter</span><span class="o">!</span>
+</span><span class='line'><span class="n">fileprivate</span> <span class="k">var</span> <span class="nl">videoWriterInput</span><span class="p">:</span> <span class="bp">AVAssetWriterInput</span><span class="o">!</span>
+</span><span class='line'><span class="n">fileprivate</span> <span class="k">var</span> <span class="nl">audioWriterInput</span><span class="p">:</span> <span class="bp">AVAssetWriterInput</span><span class="o">!</span>
+</span><span class='line'><span class="n">fileprivate</span> <span class="k">var</span> <span class="nl">sessionAtSourceTime</span><span class="p">:</span> <span class="n">CMTime</span><span class="o">?</span>
+</span><span class='line'><span class="p">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Setup asset writer: Whenever you want to record new video, you have to re-setup the writer again!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">fileprivate</span> <span class="k">func</span> <span class="nf">setupWriter</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="n">AssetUtils</span><span class="p">.</span><span class="n">outputAssetURL</span><span class="p">(</span><span class="nl">mediaType</span><span class="p">:</span> <span class="p">.</span><span class="n">video</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">videoWriter</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">AVAssetWriter</span><span class="p">(</span><span class="nl">url</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="nl">fileType</span><span class="p">:</span> <span class="n">AVFileTypeMPEG4</span><span class="p">)</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="c1">//Add video input</span>
+</span><span class='line'>      <span class="n">videoWriterInput</span> <span class="o">=</span> <span class="bp">AVAssetWriterInput</span><span class="p">(</span><span class="nl">mediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">,</span> <span class="nl">outputSettings</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>              <span class="nl">AVVideoCodecKey</span><span class="p">:</span> <span class="n">AVVideoCodecH264</span><span class="p">,</span>
+</span><span class='line'>              <span class="nl">AVVideoWidthKey</span><span class="p">:</span> <span class="mi">720</span><span class="p">,</span>
+</span><span class='line'>              <span class="nl">AVVideoHeightKey</span><span class="p">:</span> <span class="mi">1280</span><span class="p">,</span>
+</span><span class='line'>              <span class="nl">AVVideoCompressionPropertiesKey</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>                  <span class="nl">AVVideoAverageBitRateKey</span><span class="p">:</span> <span class="mi">2300000</span><span class="p">,</span>
+</span><span class='line'>              <span class="p">],</span>
+</span><span class='line'>          <span class="p">])</span>
+</span><span class='line'>      <span class="n">videoWriterInput</span><span class="p">.</span><span class="n">expectsMediaDataInRealTime</span> <span class="o">=</span> <span class="nb">true</span> <span class="c1">//Make sure we are exporting data at realtime</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">videoWriter</span><span class="p">.</span><span class="n">canAdd</span><span class="p">(</span><span class="n">videoWriterInput</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">videoWriter</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">videoWriterInput</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="c1">//Add audio input </span>
+</span><span class='line'>      <span class="n">audioWriterInput</span> <span class="o">=</span> <span class="bp">AVAssetWriterInput</span><span class="p">(</span><span class="nl">mediaType</span><span class="p">:</span> <span class="n">AVMediaTypeAudio</span><span class="p">,</span> <span class="nl">outputSettings</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>              <span class="nl">AVFormatIDKey</span><span class="p">:</span> <span class="n">kAudioFormatMPEG4AAC</span><span class="p">,</span>
+</span><span class='line'>              <span class="nl">AVNumberOfChannelsKey</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class='line'>              <span class="nl">AVSampleRateKey</span><span class="p">:</span> <span class="mi">44100</span><span class="p">,</span>
+</span><span class='line'>              <span class="nl">AVEncoderBitRateKey</span><span class="p">:</span> <span class="mi">64000</span><span class="p">,</span>
+</span><span class='line'>          <span class="p">])</span>
+</span><span class='line'>      <span class="n">audioWriterInput</span><span class="p">.</span><span class="n">expectsMediaDataInRealTime</span> <span class="o">=</span> <span class="nb">true</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">videoWriter</span><span class="p">.</span><span class="n">canAdd</span><span class="p">(</span><span class="n">audioWriterInput</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">videoWriter</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">audioWriterInput</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="n">videoWriter</span><span class="p">.</span><span class="n">startWriting</span><span class="p">()</span> <span class="c1">//Means ready to write down the file</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="n">catch</span> <span class="k">let</span> <span class="n">error</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">debugPrint</span><span class="p">(</span><span class="n">error</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Check the writability:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">RecorderView</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">fileprivate</span> <span class="k">func</span> <span class="n">canWrite</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">isRecording</span>
+</span><span class='line'>          <span class="o">&amp;&amp;</span> <span class="n">videoWriter</span> <span class="o">!=</span> <span class="nb">nil</span>
+</span><span class='line'>          <span class="o">&amp;&amp;</span> <span class="n">videoWriter</span><span class="p">.</span><span class="n">status</span> <span class="o">==</span> <span class="p">.</span><span class="n">writing</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Write down buffer to the writer, comes to method: <code>func captureOutput(_:didOutputSampleBuffer:from:)</code> and do some update</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">captureOutput</span><span class="p">(</span><span class="n">_</span> <span class="nl">captureOutput</span><span class="p">:</span> <span class="bp">AVCaptureOutput</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>                   <span class="n">didOutputSampleBuffer</span> <span class="nl">sampleBuffer</span><span class="p">:</span> <span class="n">CMSampleBuffer</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>                   <span class="n">from</span> <span class="nl">connection</span><span class="p">:</span> <span class="bp">AVCaptureConnection</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">guard</span> <span class="n">captureOutput</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">sampleBuffer</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">connection</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">CMSampleBufferDataIsReady</span><span class="p">(</span><span class="n">sampleBuffer</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">let</span> <span class="n">writable</span> <span class="o">=</span> <span class="n">canWrite</span><span class="p">()</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">if</span> <span class="n">writable</span><span class="p">,</span>
+</span><span class='line'>       <span class="n">sessionAtSourceTime</span> <span class="o">==</span> <span class="nb">nil</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">//Start writing</span>
+</span><span class='line'>      <span class="n">sessionAtSourceTime</span> <span class="o">=</span> <span class="n">CMSampleBufferGetPresentationTimeStamp</span><span class="p">(</span><span class="n">sampleBuffer</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">videoWriter</span><span class="p">.</span><span class="n">startSession</span><span class="p">(</span><span class="nl">atSourceTime</span><span class="p">:</span> <span class="n">sessionAtSourceTime</span><span class="o">!</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="n">captureOutput</span> <span class="o">==</span> <span class="n">videoDataOutput</span> <span class="p">{</span>
+</span><span class='line'>      <span class="p">...</span> <span class="c1">//Your old code when make the overlay here</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="k">if</span> <span class="n">videoWriterInput</span><span class="p">.</span><span class="n">isReadyForMoreMediaData</span> <span class="p">{</span>
+</span><span class='line'>          <span class="c1">//Write video buffer</span>
+</span><span class='line'>          <span class="n">videoWriterInput</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sampleBuffer</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">writable</span><span class="p">,</span>
+</span><span class='line'>      <span class="n">captureOutput</span> <span class="o">==</span> <span class="n">audioDataOutput</span><span class="p">,</span>
+</span><span class='line'>      <span class="n">audioWriterInput</span><span class="p">.</span><span class="n">isReadyForMoreMediaData</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">//Write audio buffer</span>
+</span><span class='line'>      <span class="n">audioWriterInput</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sampleBuffer</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To start recording:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">RecorderView</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">start</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">guard</span> <span class="o">!</span><span class="n">isRecording</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</span><span class='line'>      <span class="n">isRecording</span> <span class="o">=</span> <span class="nb">true</span>
+</span><span class='line'>      <span class="n">sessionAtSourceTime</span> <span class="o">=</span> <span class="nb">nil</span>
+</span><span class='line'>      <span class="n">startWriting</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Stop recording:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">RecorderView</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">stop</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">guard</span> <span class="n">isRecording</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</span><span class='line'>      <span class="n">isRecording</span> <span class="o">=</span> <span class="nb">false</span>
+</span><span class='line'>      <span class="n">videoWriter</span><span class="p">.</span><span class="n">finishWriting</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="k">in</span>
+</span><span class='line'>          <span class="nb">self</span><span class="o">?</span><span class="p">.</span><span class="n">sessionAtSourceTime</span> <span class="o">=</span> <span class="nb">nil</span>
+</span><span class='line'>          <span class="n">guard</span> <span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="nb">self</span><span class="o">?</span><span class="p">.</span><span class="n">videoWriter</span><span class="p">.</span><span class="n">outputURL</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</span><span class='line'>          <span class="k">let</span> <span class="n">asset</span> <span class="o">=</span> <span class="bp">AVURLAsset</span><span class="p">(</span><span class="nl">url</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+</span><span class='line'>          <span class="c1">//Do whatever you want with your asset here</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
   
   
