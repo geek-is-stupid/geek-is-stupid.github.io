@@ -157,8 +157,12 @@
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">import</span> <span class="n">AVFoundation</span>
 </span><span class='line'><span class="k">import</span> <span class="n">ImageIO</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">final</span> <span class="k">class</span> <span class="nl">RecorderView</span><span class="p">:</span> <span class="bp">UIView</span> <span class="p">{}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -169,9 +173,13 @@
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">cameraSession</span> <span class="o">=</span> <span class="bp">AVCaptureSession</span><span class="p">()</span>
-</span><span class='line'><span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">videoDataOutput</span> <span class="o">=</span> <span class="bp">AVCaptureVideoDataOutput</span><span class="p">()</span>
-</span><span class='line'><span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">audioDataOutput</span> <span class="o">=</span> <span class="bp">AVCaptureAudioDataOutput</span><span class="p">()</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">final</span> <span class="k">class</span> <span class="nl">RecorderView</span><span class="p">:</span> <span class="bp">UIView</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">cameraSession</span> <span class="o">=</span> <span class="bp">AVCaptureSession</span><span class="p">()</span>
+</span><span class='line'>  <span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">videoDataOutput</span> <span class="o">=</span> <span class="bp">AVCaptureVideoDataOutput</span><span class="p">()</span>
+</span><span class='line'>  <span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">audioDataOutput</span> <span class="o">=</span> <span class="bp">AVCaptureAudioDataOutput</span><span class="p">()</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -242,69 +250,77 @@
 <span class='line-number'>63</span>
 <span class='line-number'>64</span>
 <span class='line-number'>65</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">fileprivate</span> <span class="k">func</span> <span class="nf">setupCamera</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">//The size of output video will be 720x1280</span>
-</span><span class='line'>  <span class="n">cameraSession</span><span class="p">.</span><span class="n">sessionPreset</span> <span class="o">=</span> <span class="n">AVCaptureSessionPreset1280x720</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">final</span> <span class="k">class</span> <span class="nl">RecorderView</span><span class="p">:</span> <span class="bp">UIView</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">...</span>
 </span><span class='line'>  
-</span><span class='line'>  <span class="c1">//Setup your camera</span>
-</span><span class='line'>  <span class="c1">//Detect which type of camera should be used via `isUsingFrontFacingCamera`</span>
-</span><span class='line'>  <span class="k">let</span> <span class="nl">captureDevice</span><span class="p">:</span> <span class="bp">AVCaptureDevice</span>
-</span><span class='line'>  <span class="k">if</span> <span class="n">isUsingFrontFacingCamera</span> <span class="p">{</span>
-</span><span class='line'>      <span class="n">captureDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">devices</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">).</span><span class="n">flatMap</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">AVCaptureDevice</span> <span class="p">}.</span><span class="n">find</span><span class="p">(</span><span class="nl">where</span><span class="p">:</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">position</span> <span class="o">==</span> <span class="p">.</span><span class="n">front</span> <span class="p">})</span> <span class="o">??</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>      <span class="n">captureDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="c1">//Setup your microphone </span>
-</span><span class='line'>  <span class="k">let</span> <span class="n">audioDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeAudio</span><span class="p">)</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="k">do</span> <span class="p">{</span>
-</span><span class='line'>      <span class="n">cameraSession</span><span class="p">.</span><span class="n">beginConfiguration</span><span class="p">()</span>
+</span><span class='line'>  <span class="n">fileprivate</span> <span class="k">func</span> <span class="n">setupCamera</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">//The size of output video will be 720x1280</span>
+</span><span class='line'>      <span class="n">cameraSession</span><span class="p">.</span><span class="n">sessionPreset</span> <span class="o">=</span> <span class="n">AVCaptureSessionPreset1280x720</span>
 </span><span class='line'>      
-</span><span class='line'>      <span class="c1">// Add camera to your session</span>
-</span><span class='line'>     <span class="k">let</span> <span class="n">deviceInput</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">AVCaptureDeviceInput</span><span class="p">(</span><span class="nl">device</span><span class="p">:</span> <span class="n">captureDevice</span><span class="p">)</span>
-</span><span class='line'>     <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddInput</span><span class="p">(</span><span class="n">deviceInput</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">deviceInput</span><span class="p">)</span>
-</span><span class='line'>     <span class="p">}</span>
-</span><span class='line'>  
-</span><span class='line'>      <span class="c1">// Add microphone to your session</span>
-</span><span class='line'>      <span class="k">let</span> <span class="n">audioInput</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">AVCaptureDeviceInput</span><span class="p">(</span><span class="nl">device</span><span class="p">:</span> <span class="n">audioDevice</span><span class="p">)</span>
-</span><span class='line'>      <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddInput</span><span class="p">(</span><span class="n">audioInput</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">audioInput</span><span class="p">)</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>  
-</span><span class='line'>      <span class="c1">//Now we should define your output data</span>
-</span><span class='line'>      <span class="k">let</span> <span class="n">queue</span> <span class="o">=</span> <span class="n">DispatchQueue</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;com.hilaoinc.hilao.queue.record-video.data-output&quot;</span><span class="p">)</span>
-</span><span class='line'>      
-</span><span class='line'>      <span class="c1">//Define your video output</span>
-</span><span class='line'>      <span class="n">videoDataOutput</span><span class="p">.</span><span class="n">videoSettings</span> <span class="o">=</span> <span class="p">[</span>
-</span><span class='line'>          <span class="n">kCVPixelBufferPixelFormatTypeKey</span> <span class="kt">as</span> <span class="nl">String</span><span class="p">:</span> <span class="n">kCVPixelFormatType_32BGRA</span><span class="p">,</span>
-</span><span class='line'>      <span class="p">]</span>
-</span><span class='line'>      <span class="n">videoDataOutput</span><span class="p">.</span><span class="n">alwaysDiscardsLateVideoFrames</span> <span class="o">=</span> <span class="nb">true</span>
-</span><span class='line'>      <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddOutput</span><span class="p">(</span><span class="n">videoDataOutput</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="n">videoDataOutput</span><span class="p">.</span><span class="n">setSampleBufferDelegate</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="nl">queue</span><span class="p">:</span> <span class="n">queue</span><span class="p">)</span>
-</span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">addOutput</span><span class="p">(</span><span class="n">videoDataOutput</span><span class="p">)</span>
+</span><span class='line'>      <span class="c1">//Setup your camera</span>
+</span><span class='line'>      <span class="c1">//Detect which type of camera should be used via `isUsingFrontFacingCamera`</span>
+</span><span class='line'>      <span class="k">let</span> <span class="nl">captureDevice</span><span class="p">:</span> <span class="bp">AVCaptureDevice</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">isUsingFrontFacingCamera</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">captureDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">devices</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">).</span><span class="n">flatMap</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">AVCaptureDevice</span> <span class="p">}.</span><span class="n">find</span><span class="p">(</span><span class="nl">where</span><span class="p">:</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">position</span> <span class="o">==</span> <span class="p">.</span><span class="n">front</span> <span class="p">})</span> <span class="o">??</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">captureDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
 </span><span class='line'>      <span class="p">}</span>
 </span><span class='line'>      
-</span><span class='line'>      <span class="c1">//Define your audio output</span>
-</span><span class='line'>      <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddOutput</span><span class="p">(</span><span class="n">audioDataOutput</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="n">audioDataOutput</span><span class="p">.</span><span class="n">setSampleBufferDelegate</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="nl">queue</span><span class="p">:</span> <span class="n">queue</span><span class="p">)</span>
-</span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">addOutput</span><span class="p">(</span><span class="n">audioDataOutput</span><span class="p">)</span>
+</span><span class='line'>      <span class="c1">//Setup your microphone </span>
+</span><span class='line'>      <span class="k">let</span> <span class="n">audioDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeAudio</span><span class="p">)</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="k">do</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">beginConfiguration</span><span class="p">()</span>
+</span><span class='line'>          
+</span><span class='line'>          <span class="c1">// Add camera to your session</span>
+</span><span class='line'>         <span class="k">let</span> <span class="n">deviceInput</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">AVCaptureDeviceInput</span><span class="p">(</span><span class="nl">device</span><span class="p">:</span> <span class="n">captureDevice</span><span class="p">)</span>
+</span><span class='line'>         <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddInput</span><span class="p">(</span><span class="n">deviceInput</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="n">cameraSession</span><span class="p">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">deviceInput</span><span class="p">)</span>
+</span><span class='line'>         <span class="p">}</span>
+</span><span class='line'>      
+</span><span class='line'>          <span class="c1">// Add microphone to your session</span>
+</span><span class='line'>          <span class="k">let</span> <span class="n">audioInput</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">AVCaptureDeviceInput</span><span class="p">(</span><span class="nl">device</span><span class="p">:</span> <span class="n">audioDevice</span><span class="p">)</span>
+</span><span class='line'>          <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddInput</span><span class="p">(</span><span class="n">audioInput</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="n">cameraSession</span><span class="p">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">audioInput</span><span class="p">)</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      
+</span><span class='line'>          <span class="c1">//Now we should define your output data</span>
+</span><span class='line'>          <span class="k">let</span> <span class="n">queue</span> <span class="o">=</span> <span class="n">DispatchQueue</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;com.hilaoinc.hilao.queue.record-video.data-output&quot;</span><span class="p">)</span>
+</span><span class='line'>          
+</span><span class='line'>          <span class="c1">//Define your video output</span>
+</span><span class='line'>          <span class="n">videoDataOutput</span><span class="p">.</span><span class="n">videoSettings</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>              <span class="n">kCVPixelBufferPixelFormatTypeKey</span> <span class="kt">as</span> <span class="nl">String</span><span class="p">:</span> <span class="n">kCVPixelFormatType_32BGRA</span><span class="p">,</span>
+</span><span class='line'>          <span class="p">]</span>
+</span><span class='line'>          <span class="n">videoDataOutput</span><span class="p">.</span><span class="n">alwaysDiscardsLateVideoFrames</span> <span class="o">=</span> <span class="nb">true</span>
+</span><span class='line'>          <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddOutput</span><span class="p">(</span><span class="n">videoDataOutput</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="n">videoDataOutput</span><span class="p">.</span><span class="n">setSampleBufferDelegate</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="nl">queue</span><span class="p">:</span> <span class="n">queue</span><span class="p">)</span>
+</span><span class='line'>              <span class="n">cameraSession</span><span class="p">.</span><span class="n">addOutput</span><span class="p">(</span><span class="n">videoDataOutput</span><span class="p">)</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>          
+</span><span class='line'>          <span class="c1">//Define your audio output</span>
+</span><span class='line'>          <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddOutput</span><span class="p">(</span><span class="n">audioDataOutput</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              <span class="n">audioDataOutput</span><span class="p">.</span><span class="n">setSampleBufferDelegate</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="nl">queue</span><span class="p">:</span> <span class="n">queue</span><span class="p">)</span>
+</span><span class='line'>              <span class="n">cameraSession</span><span class="p">.</span><span class="n">addOutput</span><span class="p">(</span><span class="n">audioDataOutput</span><span class="p">)</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>          
+</span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">commitConfiguration</span><span class="p">()</span>
+</span><span class='line'>          
+</span><span class='line'>          <span class="c1">//Present the preview of video </span>
+</span><span class='line'>          <span class="n">previewLayer</span> <span class="o">=</span> <span class="bp">AVCaptureVideoPreviewLayer</span><span class="p">(</span><span class="nl">session</span><span class="p">:</span> <span class="n">cameraSession</span><span class="p">)</span>
+</span><span class='line'>          <span class="n">previewLayer</span><span class="p">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="n">bounds</span>
+</span><span class='line'>          <span class="n">previewLayer</span><span class="p">.</span><span class="n">videoGravity</span> <span class="o">=</span> <span class="n">AVLayerVideoGravityResizeAspectFill</span>
+</span><span class='line'>          <span class="n">layer</span><span class="p">.</span><span class="n">addSublayer</span><span class="p">(</span><span class="n">previewLayer</span><span class="p">)</span>
+</span><span class='line'>          
+</span><span class='line'>          <span class="c1">//Don&#39;t forget start running your session, this doesn&#39;t mean start record!</span>
+</span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">startRunning</span><span class="p">()</span>
 </span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>      
-</span><span class='line'>      <span class="n">cameraSession</span><span class="p">.</span><span class="n">commitConfiguration</span><span class="p">()</span>
-</span><span class='line'>      
-</span><span class='line'>      <span class="c1">//Present the preview of video </span>
-</span><span class='line'>      <span class="n">previewLayer</span> <span class="o">=</span> <span class="bp">AVCaptureVideoPreviewLayer</span><span class="p">(</span><span class="nl">session</span><span class="p">:</span> <span class="n">cameraSession</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">previewLayer</span><span class="p">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="n">bounds</span>
-</span><span class='line'>      <span class="n">previewLayer</span><span class="p">.</span><span class="n">videoGravity</span> <span class="o">=</span> <span class="n">AVLayerVideoGravityResizeAspectFill</span>
-</span><span class='line'>      <span class="n">layer</span><span class="p">.</span><span class="n">addSublayer</span><span class="p">(</span><span class="n">previewLayer</span><span class="p">)</span>
-</span><span class='line'>      
-</span><span class='line'>      <span class="c1">//Don&#39;t forget start running your session, this doesn&#39;t mean start record!</span>
-</span><span class='line'>      <span class="n">cameraSession</span><span class="p">.</span><span class="n">startRunning</span><span class="p">()</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="n">catch</span> <span class="k">let</span> <span class="n">error</span> <span class="p">{</span>
-</span><span class='line'>      <span class="n">debugPrint</span><span class="p">(</span><span class="n">error</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">catch</span> <span class="k">let</span> <span class="n">error</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">debugPrint</span><span class="p">(</span><span class="n">error</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -332,7 +348,15 @@
 <p>We&rsquo;ll using <code>CIDetector</code> to detect faces from a <code>CIImage</code>, let&rsquo;s create one global detector:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">faceDetector</span> <span class="o">=</span> <span class="bp">CIDetector</span><span class="p">(</span><span class="nl">ofType</span><span class="p">:</span> <span class="n">CIDetectorTypeFace</span><span class="p">,</span> <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">[</span><span class="nl">CIDetectorAccuracy</span><span class="p">:</span> <span class="n">CIDetectorAccuracyHigh</span><span class="p">,</span> <span class="nl">CIDetectorTracking</span><span class="p">:</span> <span class="nb">true</span><span class="p">])</span><span class="o">!</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">final</span> <span class="k">class</span> <span class="nl">RecorderView</span><span class="p">:</span> <span class="bp">UIView</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">...</span>
+</span><span class='line'>  <span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">faceDetector</span> <span class="o">=</span> <span class="bp">CIDetector</span><span class="p">(</span><span class="nl">ofType</span><span class="p">:</span> <span class="n">CIDetectorTypeFace</span><span class="p">,</span> <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">[</span><span class="nl">CIDetectorAccuracy</span><span class="p">:</span> <span class="n">CIDetectorAccuracyHigh</span><span class="p">,</span> <span class="nl">CIDetectorTracking</span><span class="p">:</span> <span class="nb">true</span><span class="p">])</span><span class="o">!</span>
+</span><span class='line'>  <span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
