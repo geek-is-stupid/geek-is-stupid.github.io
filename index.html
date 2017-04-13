@@ -281,19 +281,19 @@
 </span><span class='line'>      
 </span><span class='line'>      <span class="k">do</span> <span class="p">{</span>
 </span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">beginConfiguration</span><span class="p">()</span>
-</span><span class='line'>          
+</span><span class='line'>              
 </span><span class='line'>          <span class="c1">// Add camera to your session</span>
-</span><span class='line'>         <span class="k">let</span> <span class="n">deviceInput</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">AVCaptureDeviceInput</span><span class="p">(</span><span class="nl">device</span><span class="p">:</span> <span class="n">captureDevice</span><span class="p">)</span>
-</span><span class='line'>         <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddInput</span><span class="p">(</span><span class="n">deviceInput</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">let</span> <span class="n">deviceInput</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">AVCaptureDeviceInput</span><span class="p">(</span><span class="nl">device</span><span class="p">:</span> <span class="n">captureDevice</span><span class="p">)</span>
+</span><span class='line'>          <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddInput</span><span class="p">(</span><span class="n">deviceInput</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>              <span class="n">cameraSession</span><span class="p">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">deviceInput</span><span class="p">)</span>
-</span><span class='line'>         <span class="p">}</span>
+</span><span class='line'>          <span class="p">}</span>
 </span><span class='line'>      
 </span><span class='line'>          <span class="c1">// Add microphone to your session</span>
 </span><span class='line'>          <span class="k">let</span> <span class="n">audioInput</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">AVCaptureDeviceInput</span><span class="p">(</span><span class="nl">device</span><span class="p">:</span> <span class="n">audioDevice</span><span class="p">)</span>
 </span><span class='line'>          <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddInput</span><span class="p">(</span><span class="n">audioInput</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>              <span class="n">cameraSession</span><span class="p">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">audioInput</span><span class="p">)</span>
 </span><span class='line'>          <span class="p">}</span>
-</span><span class='line'>      
+</span><span class='line'>          
 </span><span class='line'>          <span class="c1">//Now we should define your output data</span>
 </span><span class='line'>          <span class="k">let</span> <span class="n">queue</span> <span class="o">=</span> <span class="n">DispatchQueue</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;com.hilaoinc.hilao.queue.record-video.data-output&quot;</span><span class="p">)</span>
 </span><span class='line'>          
