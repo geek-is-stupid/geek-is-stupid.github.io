@@ -254,6 +254,8 @@
 <span class='line-number'>67</span>
 <span class='line-number'>68</span>
 <span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">final</span> <span class="k">class</span> <span class="nl">RecorderView</span><span class="p">:</span> <span class="bp">UIView</span> <span class="p">{</span>
 </span><span class='line'>  <span class="p">...</span>
 </span><span class='line'>  
@@ -265,7 +267,9 @@
 </span><span class='line'>      <span class="c1">//Detect which type of camera should be used via `isUsingFrontFacingCamera`</span>
 </span><span class='line'>      <span class="k">let</span> <span class="nl">captureDevice</span><span class="p">:</span> <span class="bp">AVCaptureDevice</span>
 </span><span class='line'>      <span class="k">if</span> <span class="n">isUsingFrontFacingCamera</span> <span class="p">{</span>
-</span><span class='line'>          <span class="n">captureDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">devices</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">).</span><span class="n">flatMap</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">AVCaptureDevice</span> <span class="p">}.</span><span class="n">find</span><span class="p">(</span><span class="nl">where</span><span class="p">:</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">position</span> <span class="o">==</span> <span class="p">.</span><span class="n">front</span> <span class="p">})</span> <span class="o">??</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
+</span><span class='line'>          <span class="n">captureDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">devices</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
+</span><span class='line'>          <span class="p">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">AVCaptureDevice</span> <span class="p">}</span>
+</span><span class='line'>          <span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="nl">where</span><span class="p">:</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">position</span> <span class="o">==</span> <span class="p">.</span><span class="n">front</span> <span class="p">})</span> <span class="o">??</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
 </span><span class='line'>      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span><span class='line'>          <span class="n">captureDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
 </span><span class='line'>      <span class="p">}</span>
