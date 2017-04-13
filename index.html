@@ -343,7 +343,13 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="nl">RecorderView</span><span class="p">:</span> <span class="bp">AVCaptureVideoDataOutputSampleBufferDelegate</span><span class="p">,</span> <span class="bp">AVCaptureVideoDataOutputSampleBufferDelegate</span> <span class="p">{</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="c1">// MARK: - AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">extension</span> <span class="nl">RecorderView</span><span class="p">:</span> <span class="bp">AVCaptureVideoDataOutputSampleBufferDelegate</span><span class="p">,</span>
+</span><span class='line'>                      <span class="bp">AVCaptureVideoDataOutputSampleBufferDelegate</span> <span class="p">{</span>
 </span><span class='line'>  <span class="c1">//There is only one same method for both of these delegates</span>
 </span><span class='line'>  <span class="k">func</span> <span class="n">captureOutput</span><span class="p">(</span><span class="n">_</span> <span class="nl">captureOutput</span><span class="p">:</span> <span class="bp">AVCaptureOutput</span><span class="o">!</span><span class="p">,</span>
 </span><span class='line'>                       <span class="n">didOutputSampleBuffer</span> <span class="nl">sampleBuffer</span><span class="p">:</span> <span class="n">CMSampleBuffer</span><span class="o">!</span><span class="p">,</span>
