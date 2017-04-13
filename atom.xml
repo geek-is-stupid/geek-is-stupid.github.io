@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-04-13T16:33:14+07:00</updated>
+  <updated>2017-04-13T16:34:04+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -415,7 +415,7 @@
 </span><span class='line'>          <span class="c1">//You can add some masks for your left eye, right eye, mouth </span>
 </span><span class='line'>      <span class="p">}</span>
 </span><span class='line'>      <span class="bp">CATransaction</span><span class="p">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
