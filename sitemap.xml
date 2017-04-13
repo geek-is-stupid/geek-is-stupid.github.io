@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://geek-is-stupid.github.io/blog/2017/04/13/how-to-record-detect-face-overlay-video-at-real-time-using-swift/</loc>
+<lastmod>2017-04-13T15:30:16+07:00</lastmod>
+</url>
+<url>
 <loc>http://geek-is-stupid.github.io/blog/2017/04/04/how-to-localize-string-from-cocoapods/</loc>
 <lastmod>2017-04-04T13:28:07+07:00</lastmod>
 </url>
@@ -205,5 +209,20 @@
 </url>
 <url>
 <loc>http://geek-is-stupid.github.io/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/2/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/3/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/4/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/5/</loc>
+</url>
+<url>
+<loc>http://geek-is-stupid.github.io/posts/6/</loc>
 </url>
 </urlset>

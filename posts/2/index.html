@@ -9,7 +9,7 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Following code below: 1
+  <meta name="description" content="We create a new construction method for UIColor: 1
 2
 3
 4
@@ -30,7 +30,21 @@
 19
 20
 21
-extension UIButton { func alignImageAndTitleVertically(padding: CGFloat &hellip;">
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -136,6 +150,162 @@ extension UIButton { func alignImageAndTitleVertically(padding: CGFloat &hellip;
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/03/04/how-to-make-a-uicolor-from-hex/">How to Make a UIColor From HEX?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-03-04T10:28:55+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:28 am</span></time>
+        
+         | <a href="/blog/2017/03/04/how-to-make-a-uicolor-from-hex/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h5>We create a new construction method for UIColor:</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIColor</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">convenience</span> <span class="k">init</span><span class="o">?</span><span class="p">(</span><span class="nl">hex</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">alpha</span><span class="p">:</span> <span class="n">Float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">var</span> <span class="n">hex</span> <span class="o">=</span> <span class="n">hex</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="n">hex</span><span class="p">.</span><span class="n">hasPrefix</span><span class="p">(</span><span class="s">&quot;#&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">hex</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">from</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">1</span><span class="p">))</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="k">let</span> <span class="n">_</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="nl">of</span><span class="p">:</span> <span class="s">&quot;(^[0-9A-Fa-f]{6}$)|(^[0-9A-Fa-f]{3}$)&quot;</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">regularExpression</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">if</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">3</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">let</span> <span class="n">redHex</span>   <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">1</span><span class="p">))</span>
+</span><span class='line'>                <span class="k">let</span> <span class="n">greenHex</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">with</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">1</span><span class="p">)..</span><span class="o">&lt;</span><span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">2</span><span class="p">))</span>
+</span><span class='line'>                <span class="k">let</span> <span class="n">blueHex</span>  <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">from</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">2</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="n">hex</span> <span class="o">=</span> <span class="n">redHex</span> <span class="o">+</span> <span class="n">redHex</span> <span class="o">+</span> <span class="n">greenHex</span> <span class="o">+</span> <span class="n">greenHex</span> <span class="o">+</span> <span class="n">blueHex</span> <span class="o">+</span> <span class="n">blueHex</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">let</span> <span class="n">redHex</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">to</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">2</span><span class="p">))</span>
+</span><span class='line'>            <span class="k">let</span> <span class="n">greenHex</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">with</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">2</span><span class="p">)..</span><span class="o">&lt;</span><span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">4</span><span class="p">))</span>
+</span><span class='line'>            <span class="k">let</span> <span class="n">blueHex</span> <span class="o">=</span> <span class="n">hex</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="nl">with</span><span class="p">:</span> <span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">4</span><span class="p">)..</span><span class="o">&lt;</span><span class="n">hex</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">hex</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nl">offsetBy</span><span class="p">:</span> <span class="mi">6</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">var</span> <span class="nl">redInt</span><span class="p">:</span>   <span class="n">CUnsignedInt</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>            <span class="k">var</span> <span class="nl">greenInt</span><span class="p">:</span> <span class="n">CUnsignedInt</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>            <span class="k">var</span> <span class="nl">blueInt</span><span class="p">:</span>  <span class="n">CUnsignedInt</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">Scanner</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">redHex</span><span class="p">).</span><span class="n">scanHexInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="n">redInt</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">Scanner</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">greenHex</span><span class="p">).</span><span class="n">scanHexInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="n">greenInt</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">Scanner</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">blueHex</span><span class="p">).</span><span class="n">scanHexInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="n">blueInt</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nb">self</span><span class="p">.</span><span class="k">init</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">redInt</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">greenInt</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">blueInt</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="nl">alpha</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+</span><span class='line'>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nb">self</span><span class="p">.</span><span class="k">init</span><span class="p">()</span>
+</span><span class='line'>            <span class="k">return</span> <span class="nb">nil</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>OK:</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="nl">color</span><span class="p">:</span> <span class="bp">UIColor</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">(</span><span class="nl">hex</span><span class="p">:</span> <span class="s">&quot;#4286f4&quot;</span><span class="p">)</span><span class="o">!</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Question how to get hex string from an UIColor?</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIColor</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">var</span> <span class="nl">hex</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">var</span> <span class="nl">r</span><span class="p">:</span><span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="k">var</span> <span class="nl">g</span><span class="p">:</span><span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="k">var</span> <span class="nl">b</span><span class="p">:</span><span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="k">var</span> <span class="nl">a</span><span class="p">:</span><span class="n">CGFloat</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">getRed</span><span class="p">(</span><span class="o">&amp;</span><span class="n">r</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">g</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="nl">alpha</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">let</span> <span class="nl">rgb</span><span class="p">:</span><span class="n">Int</span> <span class="o">=</span> <span class="p">(</span><span class="n">Int</span><span class="p">)(</span><span class="n">r</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="mi">16</span> <span class="o">|</span> <span class="p">(</span><span class="n">Int</span><span class="p">)(</span><span class="n">g</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="mi">8</span> <span class="o">|</span> <span class="p">(</span><span class="n">Int</span><span class="p">)(</span><span class="n">b</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">NSString</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span><span class="s">&quot;%06x&quot;</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span> <span class="kt">as</span> <span class="n">String</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>Show time:</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="n">yourColor</span><span class="p">.</span><span class="n">hex</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -776,83 +946,6 @@ extension UIButton { func alignImageAndTitleVertically(padding: CGFloat &hellip;
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">setStatusBarBackgroundColor</span><span class="p">(.</span><span class="n">grayColor</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/08/16/how-to-show-version-in-ios-app/">How to Show Version in iOS App?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-08-16T15:11:29+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:11 pm</span></time>
-        
-         | <a href="/blog/2016/08/16/how-to-show-version-in-ios-app/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Let make your code be complicated…</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">struct</span> <span class="n">Version</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">let</span> <span class="kt">short</span><span class="o">:</span> <span class="n">String</span>
-</span><span class='line'>    <span class="k">let</span> <span class="nl">full</span><span class="p">:</span> <span class="n">String</span>
-</span><span class='line'>    <span class="k">let</span> <span class="nl">display</span><span class="p">:</span> <span class="n">String</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And make an extension for UIApplication</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">static</span> <span class="k">var</span> <span class="nl">version</span><span class="p">:</span> <span class="n">Version</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">let</span> <span class="kt">short</span> <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">objectForInfoDictionaryKey</span><span class="p">(</span><span class="s">&quot;CFBundleShortVersionString&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">String</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">full</span> <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">objectForInfoDictionaryKey</span><span class="p">(</span><span class="n">kCFBundleVersionKey</span> <span class="kt">as</span> <span class="n">String</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">String</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">display</span> <span class="o">=</span> <span class="n">full</span><span class="p">.</span><span class="n">containsString</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="nl">full</span> <span class="p">:</span> <span class="s">&quot;\(short).\(full)&quot;</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">Version</span><span class="p">(</span><span class="kt">short</span><span class="o">:</span> <span class="kt">short</span><span class="p">,</span> <span class="nl">full</span><span class="p">:</span> <span class="n">full</span><span class="p">,</span> <span class="nl">display</span><span class="p">:</span> <span class="n">display</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Your time:</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="kt">short</span><span class="p">)</span>
-</span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">full</span><span class="p">)</span>
-</span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">display</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>

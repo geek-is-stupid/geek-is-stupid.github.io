@@ -9,8 +9,13 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Nowaday, there are a lot of solution to handle response which has multiple states. 1
-func getUserDetail(completion: (User?, NSError?) -&gt; Void &hellip;">
+  <meta name="description" content="Let make your code be complicated… 1
+2
+3
+4
+5
+struct Version { let short: String let full: String let display: String
+} And make an extension for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -116,6 +121,83 @@ func getUserDetail(completion: (User?, NSError?) -&gt; Void &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/08/16/how-to-show-version-in-ios-app/">How to Show Version in iOS App?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-08-16T15:11:29+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:11 pm</span></time>
+        
+         | <a href="/blog/2016/08/16/how-to-show-version-in-ios-app/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Let make your code be complicated…</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">struct</span> <span class="n">Version</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">let</span> <span class="kt">short</span><span class="o">:</span> <span class="n">String</span>
+</span><span class='line'>    <span class="k">let</span> <span class="nl">full</span><span class="p">:</span> <span class="n">String</span>
+</span><span class='line'>    <span class="k">let</span> <span class="nl">display</span><span class="p">:</span> <span class="n">String</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And make an extension for UIApplication</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">static</span> <span class="k">var</span> <span class="nl">version</span><span class="p">:</span> <span class="n">Version</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="kt">short</span> <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">objectForInfoDictionaryKey</span><span class="p">(</span><span class="s">&quot;CFBundleShortVersionString&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">String</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">full</span> <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">objectForInfoDictionaryKey</span><span class="p">(</span><span class="n">kCFBundleVersionKey</span> <span class="kt">as</span> <span class="n">String</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">String</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">display</span> <span class="o">=</span> <span class="n">full</span><span class="p">.</span><span class="n">containsString</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="nl">full</span> <span class="p">:</span> <span class="s">&quot;\(short).\(full)&quot;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">Version</span><span class="p">(</span><span class="kt">short</span><span class="o">:</span> <span class="kt">short</span><span class="p">,</span> <span class="nl">full</span><span class="p">:</span> <span class="n">full</span><span class="p">,</span> <span class="nl">display</span><span class="p">:</span> <span class="n">display</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Your time:</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="kt">short</span><span class="p">)</span>
+</span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">full</span><span class="p">)</span>
+</span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">display</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -881,38 +963,6 @@ func getUserDetail(completion: (User?, NSError?) -&gt; Void &hellip;">
 
 
 <p>This solution without animation :(</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/26/what-difference-between-carthage-and-cocoapods/">What Difference Between Carthage and CocoaPods?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-26T17:37:12+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:37 pm</span></time>
-        
-         | <a href="/blog/2015/10/26/what-difference-between-carthage-and-cocoapods/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
 </div>
   
   

@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-04-10T13:47:15+07:00</updated>
+  <updated>2017-04-13T16:27:37+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -12,6 +12,392 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Record, Detect Faces, Overlay Video at Real-time Using Swift?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2017/04/13/how-to-record-detect-face-overlay-video-at-real-time-using-swift/"/>
+    <updated>2017-04-13T15:30:16+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2017/04/13/how-to-record-detect-face-overlay-video-at-real-time-using-swift</id>
+    <content type="html"><![CDATA[<p>This post will show the way how to record, detect faces, overlay video at real-time using <code>AVFoundation</code> via Swift3:</p>
+
+<h4>1. Create your recorder view:</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>final class RecorderView: UIView {
+</span><span class='line'>  //Your next steps will be implemented here :]
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Don&rsquo;t forget import some needed libs:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">import</span> <span class="n">AVFoundation</span>
+</span><span class='line'><span class="k">import</span> <span class="n">ImageIO</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>2. Create camera:</h4>
+
+<p>Let create some global variables for your camera inside your recorder view:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">cameraSession</span> <span class="o">=</span> <span class="bp">AVCaptureSession</span><span class="p">()</span>
+</span><span class='line'><span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">videoDataOutput</span> <span class="o">=</span> <span class="bp">AVCaptureVideoDataOutput</span><span class="p">()</span>
+</span><span class='line'><span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">audioDataOutput</span> <span class="o">=</span> <span class="bp">AVCaptureAudioDataOutput</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now let&rsquo;s setup your camera:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">fileprivate</span> <span class="k">func</span> <span class="nf">setupCamera</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">//The size of output video will be 720x1280</span>
+</span><span class='line'>  <span class="n">cameraSession</span><span class="p">.</span><span class="n">sessionPreset</span> <span class="o">=</span> <span class="n">AVCaptureSessionPreset1280x720</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="c1">//Setup your camera</span>
+</span><span class='line'>  <span class="c1">//Detect which type of camera should be used via `isUsingFrontFacingCamera`</span>
+</span><span class='line'>  <span class="k">let</span> <span class="nl">captureDevice</span><span class="p">:</span> <span class="bp">AVCaptureDevice</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">isUsingFrontFacingCamera</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">captureDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">devices</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">).</span><span class="n">flatMap</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">AVCaptureDevice</span> <span class="p">}.</span><span class="n">find</span><span class="p">(</span><span class="nl">where</span><span class="p">:</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">position</span> <span class="o">==</span> <span class="p">.</span><span class="n">front</span> <span class="p">})</span> <span class="o">??</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">captureDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="c1">//Setup your microphone </span>
+</span><span class='line'>  <span class="k">let</span> <span class="n">audioDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeAudio</span><span class="p">)</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">do</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">cameraSession</span><span class="p">.</span><span class="n">beginConfiguration</span><span class="p">()</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="c1">// Add camera to your session</span>
+</span><span class='line'>     <span class="k">let</span> <span class="n">deviceInput</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">AVCaptureDeviceInput</span><span class="p">(</span><span class="nl">device</span><span class="p">:</span> <span class="n">captureDevice</span><span class="p">)</span>
+</span><span class='line'>     <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddInput</span><span class="p">(</span><span class="n">deviceInput</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">deviceInput</span><span class="p">)</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>  
+</span><span class='line'>      <span class="c1">// Add microphone to your session</span>
+</span><span class='line'>      <span class="k">let</span> <span class="n">audioInput</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">AVCaptureDeviceInput</span><span class="p">(</span><span class="nl">device</span><span class="p">:</span> <span class="n">audioDevice</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddInput</span><span class="p">(</span><span class="n">audioInput</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">audioInput</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  
+</span><span class='line'>      <span class="c1">//Now we should define your output data</span>
+</span><span class='line'>      <span class="k">let</span> <span class="n">queue</span> <span class="o">=</span> <span class="n">DispatchQueue</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;com.hilaoinc.hilao.queue.record-video.data-output&quot;</span><span class="p">)</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="c1">//Define your video output</span>
+</span><span class='line'>      <span class="n">videoDataOutput</span><span class="p">.</span><span class="n">videoSettings</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>          <span class="n">kCVPixelBufferPixelFormatTypeKey</span> <span class="kt">as</span> <span class="nl">String</span><span class="p">:</span> <span class="n">kCVPixelFormatType_32BGRA</span><span class="p">,</span>
+</span><span class='line'>      <span class="p">]</span>
+</span><span class='line'>      <span class="n">videoDataOutput</span><span class="p">.</span><span class="n">alwaysDiscardsLateVideoFrames</span> <span class="o">=</span> <span class="nb">true</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddOutput</span><span class="p">(</span><span class="n">videoDataOutput</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">videoDataOutput</span><span class="p">.</span><span class="n">setSampleBufferDelegate</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="nl">queue</span><span class="p">:</span> <span class="n">queue</span><span class="p">)</span>
+</span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">addOutput</span><span class="p">(</span><span class="n">videoDataOutput</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="c1">//Define your audio output</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">cameraSession</span><span class="p">.</span><span class="n">canAddOutput</span><span class="p">(</span><span class="n">audioDataOutput</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">audioDataOutput</span><span class="p">.</span><span class="n">setSampleBufferDelegate</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="nl">queue</span><span class="p">:</span> <span class="n">queue</span><span class="p">)</span>
+</span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">addOutput</span><span class="p">(</span><span class="n">audioDataOutput</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="n">cameraSession</span><span class="p">.</span><span class="n">commitConfiguration</span><span class="p">()</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="c1">//Present the preview of video </span>
+</span><span class='line'>      <span class="n">previewLayer</span> <span class="o">=</span> <span class="bp">AVCaptureVideoPreviewLayer</span><span class="p">(</span><span class="nl">session</span><span class="p">:</span> <span class="n">cameraSession</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">previewLayer</span><span class="p">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="n">bounds</span>
+</span><span class='line'>      <span class="n">previewLayer</span><span class="p">.</span><span class="n">videoGravity</span> <span class="o">=</span> <span class="n">AVLayerVideoGravityResizeAspectFill</span>
+</span><span class='line'>      <span class="n">layer</span><span class="p">.</span><span class="n">addSublayer</span><span class="p">(</span><span class="n">previewLayer</span><span class="p">)</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="c1">//Don&#39;t forget start running your session, this doesn&#39;t mean start record!</span>
+</span><span class='line'>      <span class="n">cameraSession</span><span class="p">.</span><span class="n">startRunning</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="n">catch</span> <span class="k">let</span> <span class="n">error</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">debugPrint</span><span class="p">(</span><span class="n">error</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s implement <code>AVCaptureVideoDataOutputSampleBufferDelegate</code> and <code>AVCaptureAudioDataOutputSampleBufferDelegate</code> to handles your recorded video</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="nl">RecorderView</span><span class="p">:</span> <span class="bp">AVCaptureVideoDataOutputSampleBufferDelegate</span><span class="p">,</span> <span class="bp">AVCaptureVideoDataOutputSampleBufferDelegate</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">//There is only one same method for both of these delegates</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">captureOutput</span><span class="p">(</span><span class="n">_</span> <span class="nl">captureOutput</span><span class="p">:</span> <span class="bp">AVCaptureOutput</span><span class="o">!</span><span class="p">,</span> <span class="n">didOutputSampleBuffer</span> <span class="nl">sampleBuffer</span><span class="p">:</span> <span class="n">CMSampleBuffer</span><span class="o">!</span><span class="p">,</span> <span class="n">from</span> <span class="nl">connection</span><span class="p">:</span> <span class="bp">AVCaptureConnection</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">//The detect faces, overlay video will happen here, take care my man :]</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>3. Real-time detect faces:</h4>
+
+<p>We&rsquo;ll using <code>CIDetector</code> to detect faces from a <code>CIImage</code>, let&rsquo;s create one global detector:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">faceDetector</span> <span class="o">=</span> <span class="bp">CIDetector</span><span class="p">(</span><span class="nl">ofType</span><span class="p">:</span> <span class="n">CIDetectorTypeFace</span><span class="p">,</span> <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">[</span><span class="nl">CIDetectorAccuracy</span><span class="p">:</span> <span class="n">CIDetectorAccuracyHigh</span><span class="p">,</span> <span class="nl">CIDetectorTracking</span><span class="p">:</span> <span class="nb">true</span><span class="p">])</span><span class="o">!</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now back to this method <code>func captureOutput(_:didOutputSampleBuffer:from:)</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">captureOutput</span><span class="p">(</span><span class="n">_</span> <span class="nl">captureOutput</span><span class="p">:</span> <span class="bp">AVCaptureOutput</span><span class="o">!</span><span class="p">,</span> <span class="n">didOutputSampleBuffer</span> <span class="nl">sampleBuffer</span><span class="p">:</span> <span class="n">CMSampleBuffer</span><span class="o">!</span><span class="p">,</span> <span class="n">from</span> <span class="nl">connection</span><span class="p">:</span> <span class="bp">AVCaptureConnection</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">//Overlay means processing on the images, not audio</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">captureOutput</span> <span class="o">==</span> <span class="n">videoDataOutput</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">//Important: Correct your video orientation from your device orientation</span>
+</span><span class='line'>      <span class="k">switch</span> <span class="bp">UIDevice</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">orientation</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">case</span> <span class="p">.</span><span class="nl">landscapeRight</span><span class="p">:</span>
+</span><span class='line'>              <span class="n">connection</span><span class="p">.</span><span class="n">videoOrientation</span> <span class="o">=</span> <span class="p">.</span><span class="n">landscapeLeft</span>
+</span><span class='line'>          <span class="k">case</span> <span class="p">.</span><span class="nl">landscapeLeft</span><span class="p">:</span>
+</span><span class='line'>              <span class="n">connection</span><span class="p">.</span><span class="n">videoOrientation</span> <span class="o">=</span> <span class="p">.</span><span class="n">landscapeRight</span>
+</span><span class='line'>          <span class="k">case</span> <span class="p">.</span><span class="nl">portrait</span><span class="p">:</span>
+</span><span class='line'>              <span class="n">connection</span><span class="p">.</span><span class="n">videoOrientation</span> <span class="o">=</span> <span class="p">.</span><span class="n">portrait</span>
+</span><span class='line'>          <span class="k">case</span> <span class="p">.</span><span class="nl">portraitUpsideDown</span><span class="p">:</span>
+</span><span class='line'>              <span class="n">connection</span><span class="p">.</span><span class="n">videoOrientation</span> <span class="o">=</span> <span class="p">.</span><span class="n">portraitUpsideDown</span>
+</span><span class='line'>          <span class="k">default</span><span class="o">:</span>
+</span><span class='line'>              <span class="n">connection</span><span class="p">.</span><span class="n">videoOrientation</span> <span class="o">=</span> <span class="p">.</span><span class="n">portrait</span> <span class="c1">//Make `.portrait` as default (should check will `.faceUp` and `.faceDown`)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="c1">//Convert current frame to `CIImage`</span>
+</span><span class='line'>      <span class="k">let</span> <span class="n">pixelBuffer</span> <span class="o">=</span> <span class="n">CMSampleBufferGetImageBuffer</span><span class="p">(</span><span class="n">sampleBuffer</span><span class="p">)</span><span class="o">!</span>
+</span><span class='line'>      <span class="k">let</span> <span class="n">attachments</span> <span class="o">=</span> <span class="n">CMCopyDictionaryOfAttachments</span><span class="p">(</span><span class="n">kCFAllocatorDefault</span><span class="p">,</span> <span class="n">pixelBuffer</span><span class="p">,</span> <span class="n">CMAttachmentMode</span><span class="p">(</span><span class="n">kCMAttachmentMode_ShouldPropagate</span><span class="p">))</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">Any</span><span class="p">]</span>
+</span><span class='line'>      <span class="k">let</span> <span class="n">ciImage</span> <span class="o">=</span> <span class="bp">CIImage</span><span class="p">(</span><span class="nl">cvImageBuffer</span><span class="p">:</span> <span class="n">pixelBuffer</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="n">attachments</span><span class="p">)</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="c1">//Detects faces base on your `ciImage`</span>
+</span><span class='line'>      <span class="k">let</span> <span class="n">features</span> <span class="o">=</span> <span class="n">faceDetector</span><span class="p">.</span><span class="n">features</span><span class="p">(</span><span class="k">in</span><span class="o">:</span> <span class="n">ciImage</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>                <span class="nl">CIDetectorSmile</span><span class="p">:</span> <span class="nb">true</span><span class="p">,</span>
+</span><span class='line'>                <span class="nl">CIDetectorEyeBlink</span><span class="p">:</span> <span class="nb">true</span><span class="p">,</span>
+</span><span class='line'>                <span class="p">]).</span><span class="n">flatMap</span> <span class="p">({</span> <span class="err">$</span><span class="mi">0</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">CIFaceFeature</span> <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">//Retreive frame of your buffer</span>
+</span><span class='line'>      <span class="k">let</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">CMSampleBufferGetFormatDescription</span><span class="p">(</span><span class="n">sampleBuffer</span><span class="p">)</span><span class="o">!</span>
+</span><span class='line'>      <span class="k">let</span> <span class="n">bufferFrame</span> <span class="o">=</span> <span class="n">CMVideoFormatDescriptionGetCleanAperture</span><span class="p">(</span><span class="n">desc</span><span class="p">,</span> <span class="nb">false</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">//Draw faces masks</span>
+</span><span class='line'>      <span class="n">DispatchQueue</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">async</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="k">in</span>
+</span><span class='line'>          <span class="nb">self</span><span class="o">?</span><span class="p">.</span><span class="n">drawFaceMasksFor</span><span class="p">(</span><span class="nl">features</span><span class="p">:</span> <span class="n">features</span><span class="p">,</span> <span class="nl">bufferFrame</span><span class="p">:</span> <span class="n">bufferFrame</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Show your faces on the screen</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">RecorderView</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">fileprivate</span> <span class="k">func</span> <span class="n">drawFaceMasksFor</span><span class="p">(</span><span class="nl">features</span><span class="p">:</span> <span class="p">[</span><span class="bp">CIFaceFeature</span><span class="p">],</span> <span class="nl">bufferFrame</span><span class="p">:</span> <span class="bp">CGRect</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="bp">CATransaction</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span>
+</span><span class='line'>        <span class="bp">CATransaction</span><span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">kCFBooleanTrue</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="n">kCATransactionDisableActions</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">//Hide all current masks</span>
+</span><span class='line'>        <span class="n">layer</span><span class="p">.</span><span class="n">sublayers</span><span class="o">?</span><span class="p">.</span><span class="n">filter</span><span class="p">({</span> <span class="err">$</span><span class="mf">0.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;MaskFace&quot;</span> <span class="p">}).</span><span class="n">forEach</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">isHidden</span> <span class="o">=</span> <span class="nb">true</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">//Do nothing if no face is dected</span>
+</span><span class='line'>        <span class="n">guard</span> <span class="o">!</span><span class="n">features</span><span class="p">.</span><span class="n">isEmpty</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="bp">CATransaction</span><span class="p">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span class='line'>            <span class="k">return</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">//The problem is we detect the faces on video image size</span>
+</span><span class='line'>        <span class="c1">//but when we show on the screen which might smaller or bigger than your video size</span>
+</span><span class='line'>        <span class="c1">//so we need to re-calculate the faces bounds to fit to your screen</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">let</span> <span class="n">xScale</span> <span class="o">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="n">bufferFrame</span><span class="p">.</span><span class="n">width</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">yScale</span> <span class="o">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="n">bufferFrame</span><span class="p">.</span><span class="n">height</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">rotationAngle</span><span class="p">:</span> <span class="p">.</span><span class="n">pi</span><span class="p">).</span><span class="n">translatedBy</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="o">-</span><span class="n">bufferFrame</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="o">-</span><span class="n">bufferFrame</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">for</span> <span class="n">feature</span> <span class="k">in</span> <span class="n">features</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">var</span> <span class="n">faceRect</span> <span class="o">=</span> <span class="n">feature</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">applying</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
+</span><span class='line'>          <span class="n">faceRect</span> <span class="o">=</span> <span class="bp">CGRect</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">minX</span> <span class="o">*</span> <span class="n">xScale</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">minY</span> <span class="o">*</span> <span class="n">yScale</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">xScale</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">yScale</span><span class="p">)</span>
+</span><span class='line'>          
+</span><span class='line'>          <span class="c1">//Reuse the face&#39;s layer</span>
+</span><span class='line'>          <span class="k">let</span> <span class="n">faceLayer</span> <span class="o">=</span> <span class="n">layer</span><span class="p">.</span><span class="n">sublayers</span><span class="o">?</span><span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;MaskFace&quot;</span> <span class="o">&amp;&amp;</span> <span class="err">$</span><span class="mf">0.</span><span class="n">isHidden</span> <span class="o">==</span> <span class="nb">true</span> <span class="p">}.</span><span class="n">first</span>
+</span><span class='line'>          <span class="k">if</span> <span class="n">faceLayer</span> <span class="o">==</span> <span class="nb">nil</span> <span class="p">{</span>
+</span><span class='line'>              <span class="c1">//Add an image as a mask to your project with name: `face-imaged   </span>
+</span><span class='line'>              <span class="k">let</span> <span class="n">faceImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span> <span class="s">&quot;face-imaged&quot;</span><span class="p">)</span>
+</span><span class='line'>              <span class="n">faceLayer</span> <span class="o">=</span> <span class="bp">CALayer</span><span class="p">()</span>
+</span><span class='line'>              <span class="n">faceLayer</span><span class="p">.</span><span class="n">contents</span> <span class="o">=</span> <span class="n">faceImage</span><span class="p">.</span><span class="n">ciImage</span>
+</span><span class='line'>              <span class="n">faceLayer</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">faceRect</span>
+</span><span class='line'>              <span class="n">faceLayer</span><span class="p">.</span><span class="n">masksToBounds</span> <span class="o">=</span> <span class="nb">true</span>
+</span><span class='line'>              <span class="n">faceLayer</span><span class="p">.</span><span class="n">contentsGravity</span> <span class="o">=</span> <span class="n">kCAGravityResizeAspectFill</span>
+</span><span class='line'>              <span class="n">layer</span><span class="p">.</span><span class="n">addSublayer</span><span class="p">(</span><span class="n">faceLayer</span><span class="p">)</span>
+</span><span class='line'>          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>              <span class="n">faceLayer</span><span class="o">?</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">faceRect</span>
+</span><span class='line'>              <span class="n">faceLayer</span><span class="o">?</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">origin</span>
+</span><span class='line'>              <span class="n">faceLayer</span><span class="o">?</span><span class="p">.</span><span class="n">isHidden</span> <span class="o">=</span> <span class="nb">false</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>          
+</span><span class='line'>          <span class="c1">//You can add some masks for your left eye, right eye, mouth </span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>      <span class="bp">CATransaction</span><span class="p">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now please run your project and see the result, don&rsquo;t forget add your <code>RecorderView</code> into your View Controller</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Localize String From CocoaPods?]]></title>
@@ -1353,60 +1739,6 @@
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">setStatusBarBackgroundColor</span><span class="p">(.</span><span class="n">grayColor</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Show Version in iOS App?]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-show-version-in-ios-app/"/>
-    <updated>2016-08-16T15:11:29+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2016/08/16/how-to-show-version-in-ios-app</id>
-    <content type="html"><![CDATA[<h3>Let make your code be complicated…</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">struct</span> <span class="n">Version</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">let</span> <span class="kt">short</span><span class="o">:</span> <span class="n">String</span>
-</span><span class='line'>    <span class="k">let</span> <span class="nl">full</span><span class="p">:</span> <span class="n">String</span>
-</span><span class='line'>    <span class="k">let</span> <span class="nl">display</span><span class="p">:</span> <span class="n">String</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And make an extension for UIApplication</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">static</span> <span class="k">var</span> <span class="nl">version</span><span class="p">:</span> <span class="n">Version</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">let</span> <span class="kt">short</span> <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">objectForInfoDictionaryKey</span><span class="p">(</span><span class="s">&quot;CFBundleShortVersionString&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">String</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">full</span> <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">objectForInfoDictionaryKey</span><span class="p">(</span><span class="n">kCFBundleVersionKey</span> <span class="kt">as</span> <span class="n">String</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">String</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">display</span> <span class="o">=</span> <span class="n">full</span><span class="p">.</span><span class="n">containsString</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="nl">full</span> <span class="p">:</span> <span class="s">&quot;\(short).\(full)&quot;</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">Version</span><span class="p">(</span><span class="kt">short</span><span class="o">:</span> <span class="kt">short</span><span class="p">,</span> <span class="nl">full</span><span class="p">:</span> <span class="n">full</span><span class="p">,</span> <span class="nl">display</span><span class="p">:</span> <span class="n">display</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Your time:</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="kt">short</span><span class="p">)</span>
-</span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">full</span><span class="p">)</span>
-</span><span class='line'><span class="n">debugPrint</span><span class="p">(</span><span class="bp">UIApplication</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">display</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
