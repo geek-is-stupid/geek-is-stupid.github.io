@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-04-13T16:36:01+07:00</updated>
+  <updated>2017-04-13T16:43:17+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -134,6 +134,7 @@
 <span class='line-number'>69</span>
 <span class='line-number'>70</span>
 <span class='line-number'>71</span>
+<span class='line-number'>72</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">final</span> <span class="k">class</span> <span class="nl">RecorderView</span><span class="p">:</span> <span class="bp">UIView</span> <span class="p">{</span>
 </span><span class='line'>  <span class="p">...</span>
 </span><span class='line'>  
@@ -146,8 +147,8 @@
 </span><span class='line'>      <span class="k">let</span> <span class="nl">captureDevice</span><span class="p">:</span> <span class="bp">AVCaptureDevice</span>
 </span><span class='line'>      <span class="k">if</span> <span class="n">isUsingFrontFacingCamera</span> <span class="p">{</span>
 </span><span class='line'>          <span class="n">captureDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">devices</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
-</span><span class='line'>          <span class="p">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">AVCaptureDevice</span> <span class="p">}</span>
-</span><span class='line'>          <span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="nl">where</span><span class="p">:</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">position</span> <span class="o">==</span> <span class="p">.</span><span class="n">front</span> <span class="p">})</span> <span class="o">??</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
+</span><span class='line'>                                         <span class="p">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">AVCaptureDevice</span> <span class="p">}</span>
+</span><span class='line'>                                         <span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="nl">where</span><span class="p">:</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">position</span> <span class="o">==</span> <span class="p">.</span><span class="n">front</span> <span class="p">})</span> <span class="o">??</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
 </span><span class='line'>      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span><span class='line'>          <span class="n">captureDevice</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDevice</span><span class="p">(</span><span class="nl">withMediaType</span><span class="p">:</span> <span class="n">AVMediaTypeVideo</span><span class="p">)</span>
 </span><span class='line'>      <span class="p">}</span>
@@ -197,7 +198,8 @@
 </span><span class='line'>          <span class="n">previewLayer</span><span class="p">.</span><span class="n">videoGravity</span> <span class="o">=</span> <span class="n">AVLayerVideoGravityResizeAspectFill</span>
 </span><span class='line'>          <span class="n">layer</span><span class="p">.</span><span class="n">addSublayer</span><span class="p">(</span><span class="n">previewLayer</span><span class="p">)</span>
 </span><span class='line'>          
-</span><span class='line'>          <span class="c1">//Don&#39;t forget start running your session, this doesn&#39;t mean start record!</span>
+</span><span class='line'>          <span class="c1">//Don&#39;t forget start running your session</span>
+</span><span class='line'>          <span class="c1">//this doesn&#39;t mean start record!</span>
 </span><span class='line'>          <span class="n">cameraSession</span><span class="p">.</span><span class="n">startRunning</span><span class="p">()</span>
 </span><span class='line'>      <span class="p">}</span>
 </span><span class='line'>      <span class="n">catch</span> <span class="k">let</span> <span class="n">error</span> <span class="p">{</span>
@@ -216,9 +218,13 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="nl">RecorderView</span><span class="p">:</span> <span class="bp">AVCaptureVideoDataOutputSampleBufferDelegate</span><span class="p">,</span> <span class="bp">AVCaptureVideoDataOutputSampleBufferDelegate</span> <span class="p">{</span>
 </span><span class='line'>  <span class="c1">//There is only one same method for both of these delegates</span>
-</span><span class='line'>  <span class="k">func</span> <span class="n">captureOutput</span><span class="p">(</span><span class="n">_</span> <span class="nl">captureOutput</span><span class="p">:</span> <span class="bp">AVCaptureOutput</span><span class="o">!</span><span class="p">,</span> <span class="n">didOutputSampleBuffer</span> <span class="nl">sampleBuffer</span><span class="p">:</span> <span class="n">CMSampleBuffer</span><span class="o">!</span><span class="p">,</span> <span class="n">from</span> <span class="nl">connection</span><span class="p">:</span> <span class="bp">AVCaptureConnection</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">captureOutput</span><span class="p">(</span><span class="n">_</span> <span class="nl">captureOutput</span><span class="p">:</span> <span class="bp">AVCaptureOutput</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>                       <span class="n">didOutputSampleBuffer</span> <span class="nl">sampleBuffer</span><span class="p">:</span> <span class="n">CMSampleBuffer</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>                       <span class="n">from</span> <span class="nl">connection</span><span class="p">:</span> <span class="bp">AVCaptureConnection</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>      <span class="c1">//The detect faces, overlay video will happen here, take care my man :]</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
@@ -234,9 +240,19 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">final</span> <span class="k">class</span> <span class="nl">RecorderView</span><span class="p">:</span> <span class="bp">UIView</span> <span class="p">{</span>
 </span><span class='line'>  <span class="p">...</span>
-</span><span class='line'>  <span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">faceDetector</span> <span class="o">=</span> <span class="bp">CIDetector</span><span class="p">(</span><span class="nl">ofType</span><span class="p">:</span> <span class="n">CIDetectorTypeFace</span><span class="p">,</span> <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">[</span><span class="nl">CIDetectorAccuracy</span><span class="p">:</span> <span class="n">CIDetectorAccuracyHigh</span><span class="p">,</span> <span class="nl">CIDetectorTracking</span><span class="p">:</span> <span class="nb">true</span><span class="p">])</span><span class="o">!</span>
+</span><span class='line'>  <span class="n">fileprivate</span> <span class="n">lazy</span> <span class="k">var</span> <span class="n">faceDetector</span> <span class="o">=</span> <span class="bp">CIDetector</span><span class="p">(</span><span class="nl">ofType</span><span class="p">:</span> <span class="n">CIDetectorTypeFace</span><span class="p">,</span>
+</span><span class='line'>                                                 <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span>
+</span><span class='line'>                                                 <span class="nl">options</span><span class="p">:</span> <span class="p">[</span>
+</span><span class='line'>                                                      <span class="nl">CIDetectorAccuracy</span><span class="p">:</span> <span class="n">CIDetectorAccuracyHigh</span><span class="p">,</span>
+</span><span class='line'>                                                      <span class="nl">CIDetectorTracking</span><span class="p">:</span> <span class="nb">true</span>
+</span><span class='line'>                                                 <span class="p">])</span><span class="o">!</span>
 </span><span class='line'>  <span class="p">...</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -282,7 +298,13 @@
 <span class='line-number'>36</span>
 <span class='line-number'>37</span>
 <span class='line-number'>38</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">captureOutput</span><span class="p">(</span><span class="n">_</span> <span class="nl">captureOutput</span><span class="p">:</span> <span class="bp">AVCaptureOutput</span><span class="o">!</span><span class="p">,</span> <span class="n">didOutputSampleBuffer</span> <span class="nl">sampleBuffer</span><span class="p">:</span> <span class="n">CMSampleBuffer</span><span class="o">!</span><span class="p">,</span> <span class="n">from</span> <span class="nl">connection</span><span class="p">:</span> <span class="bp">AVCaptureConnection</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">captureOutput</span><span class="p">(</span><span class="n">_</span> <span class="nl">captureOutput</span><span class="p">:</span> <span class="bp">AVCaptureOutput</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>                   <span class="n">didOutputSampleBuffer</span> <span class="nl">sampleBuffer</span><span class="p">:</span> <span class="n">CMSampleBuffer</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>                   <span class="n">from</span> <span class="nl">connection</span><span class="p">:</span> <span class="bp">AVCaptureConnection</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>  <span class="c1">//Overlay means processing on the images, not audio</span>
 </span><span class='line'>  <span class="k">if</span> <span class="n">captureOutput</span> <span class="o">==</span> <span class="n">videoDataOutput</span> <span class="p">{</span>
 </span><span class='line'>      <span class="c1">//Important: Correct your video orientation from your device orientation</span>
@@ -301,7 +323,9 @@
 </span><span class='line'>      
 </span><span class='line'>      <span class="c1">//Convert current frame to `CIImage`</span>
 </span><span class='line'>      <span class="k">let</span> <span class="n">pixelBuffer</span> <span class="o">=</span> <span class="n">CMSampleBufferGetImageBuffer</span><span class="p">(</span><span class="n">sampleBuffer</span><span class="p">)</span><span class="o">!</span>
-</span><span class='line'>      <span class="k">let</span> <span class="n">attachments</span> <span class="o">=</span> <span class="n">CMCopyDictionaryOfAttachments</span><span class="p">(</span><span class="n">kCFAllocatorDefault</span><span class="p">,</span> <span class="n">pixelBuffer</span><span class="p">,</span> <span class="n">CMAttachmentMode</span><span class="p">(</span><span class="n">kCMAttachmentMode_ShouldPropagate</span><span class="p">))</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">Any</span><span class="p">]</span>
+</span><span class='line'>      <span class="k">let</span> <span class="n">attachments</span> <span class="o">=</span> <span class="n">CMCopyDictionaryOfAttachments</span><span class="p">(</span><span class="n">kCFAllocatorDefault</span><span class="p">,</span>
+</span><span class='line'>                                                      <span class="n">pixelBuffer</span><span class="p">,</span>
+</span><span class='line'>                                                      <span class="n">CMAttachmentMode</span><span class="p">(</span><span class="n">kCMAttachmentMode_ShouldPropagate</span><span class="p">))</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">Any</span><span class="p">]</span>
 </span><span class='line'>      <span class="k">let</span> <span class="n">ciImage</span> <span class="o">=</span> <span class="bp">CIImage</span><span class="p">(</span><span class="nl">cvImageBuffer</span><span class="p">:</span> <span class="n">pixelBuffer</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="n">attachments</span><span class="p">)</span>
 </span><span class='line'>      
 </span><span class='line'>      <span class="c1">//Detects faces base on your `ciImage`</span>
@@ -373,6 +397,12 @@
 <span class='line-number'>46</span>
 <span class='line-number'>47</span>
 <span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">RecorderView</span> <span class="p">{</span>
 </span><span class='line'>  <span class="n">fileprivate</span> <span class="k">func</span> <span class="n">drawFaceMasksFor</span><span class="p">(</span><span class="nl">features</span><span class="p">:</span> <span class="p">[</span><span class="bp">CIFaceFeature</span><span class="p">],</span> <span class="nl">bufferFrame</span><span class="p">:</span> <span class="bp">CGRect</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>        <span class="bp">CATransaction</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span>
@@ -393,14 +423,20 @@
 </span><span class='line'>
 </span><span class='line'>        <span class="k">let</span> <span class="n">xScale</span> <span class="o">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="n">bufferFrame</span><span class="p">.</span><span class="n">width</span>
 </span><span class='line'>        <span class="k">let</span> <span class="n">yScale</span> <span class="o">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="n">bufferFrame</span><span class="p">.</span><span class="n">height</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">rotationAngle</span><span class="p">:</span> <span class="p">.</span><span class="n">pi</span><span class="p">).</span><span class="n">translatedBy</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="o">-</span><span class="n">bufferFrame</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="o">-</span><span class="n">bufferFrame</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">transform</span> <span class="o">=</span> <span class="bp">CGAffineTransform</span><span class="p">(</span><span class="nl">rotationAngle</span><span class="p">:</span> <span class="p">.</span><span class="n">pi</span><span class="p">).</span><span class="n">translatedBy</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="o">-</span><span class="n">bufferFrame</span><span class="p">.</span><span class="n">width</span><span class="p">,</span>
+</span><span class='line'>                                                                         <span class="nl">y</span><span class="p">:</span> <span class="o">-</span><span class="n">bufferFrame</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'>      <span class="k">for</span> <span class="n">feature</span> <span class="k">in</span> <span class="n">features</span> <span class="p">{</span>
 </span><span class='line'>          <span class="k">var</span> <span class="n">faceRect</span> <span class="o">=</span> <span class="n">feature</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">applying</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
-</span><span class='line'>          <span class="n">faceRect</span> <span class="o">=</span> <span class="bp">CGRect</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">minX</span> <span class="o">*</span> <span class="n">xScale</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">minY</span> <span class="o">*</span> <span class="n">yScale</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">xScale</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">yScale</span><span class="p">)</span>
+</span><span class='line'>          <span class="n">faceRect</span> <span class="o">=</span> <span class="bp">CGRect</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">minX</span> <span class="o">*</span> <span class="n">xScale</span><span class="p">,</span>
+</span><span class='line'>                            <span class="nl">y</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">minY</span> <span class="o">*</span> <span class="n">yScale</span><span class="p">,</span>
+</span><span class='line'>                            <span class="nl">width</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">xScale</span><span class="p">,</span>
+</span><span class='line'>                            <span class="nl">height</span><span class="p">:</span> <span class="n">faceRect</span><span class="p">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">yScale</span><span class="p">)</span>
 </span><span class='line'>          
 </span><span class='line'>          <span class="c1">//Reuse the face&#39;s layer</span>
-</span><span class='line'>          <span class="k">let</span> <span class="n">faceLayer</span> <span class="o">=</span> <span class="n">layer</span><span class="p">.</span><span class="n">sublayers</span><span class="o">?</span><span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;MaskFace&quot;</span> <span class="o">&amp;&amp;</span> <span class="err">$</span><span class="mf">0.</span><span class="n">isHidden</span> <span class="o">==</span> <span class="nb">true</span> <span class="p">}.</span><span class="n">first</span>
+</span><span class='line'>          <span class="k">let</span> <span class="n">faceLayer</span> <span class="o">=</span> <span class="n">layer</span><span class="p">.</span><span class="n">sublayers</span><span class="o">?</span>
+</span><span class='line'>                               <span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;MaskFace&quot;</span> <span class="o">&amp;&amp;</span> <span class="err">$</span><span class="mf">0.</span><span class="n">isHidden</span> <span class="o">==</span> <span class="nb">true</span> <span class="p">}</span>
+</span><span class='line'>                               <span class="p">.</span><span class="n">first</span>
 </span><span class='line'>          <span class="k">if</span> <span class="n">faceLayer</span> <span class="o">==</span> <span class="nb">nil</span> <span class="p">{</span>
 </span><span class='line'>              <span class="c1">//Add an image as a mask to your project with name: `face-imaged   </span>
 </span><span class='line'>              <span class="k">let</span> <span class="n">faceImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span> <span class="s">&quot;face-imaged&quot;</span><span class="p">)</span>
