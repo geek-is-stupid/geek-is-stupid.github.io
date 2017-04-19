@@ -194,6 +194,29 @@ extension String { &hellip;">
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>Carefully if your text contains emoji:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">func</span> <span class="n">size</span><span class="p">(</span><span class="nl">font</span><span class="p">:</span> <span class="bp">UIFont</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">CGSize</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">attrString</span> <span class="o">=</span> <span class="bp">NSAttributedString</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="nb">self</span><span class="p">,</span> <span class="nl">attributes</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSFontAttributeName</span><span class="p">:</span> <span class="n">font</span><span class="p">])</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">framesetter</span> <span class="o">=</span> <span class="n">CTFramesetterCreateWithAttributedString</span><span class="p">(</span><span class="n">attrString</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">let</span> <span class="n">size</span> <span class="o">=</span> <span class="n">CTFramesetterSuggestFrameSizeWithConstraints</span><span class="p">(</span><span class="n">framesetter</span><span class="p">,</span> <span class="n">CFRange</span><span class="p">(</span><span class="nl">location</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">length</span><span class="p">:</span> <span class="n">characters</span><span class="p">.</span><span class="n">count</span><span class="p">),</span> <span class="nb">nil</span><span class="p">,</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="p">.</span><span class="n">greatestFiniteMagnitude</span><span class="p">),</span> <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">size</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Cheer 🤗🤗🤗</p>
 </div>
 
 
