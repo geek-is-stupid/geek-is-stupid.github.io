@@ -9,7 +9,7 @@
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="[!] &lt;&lsquo;PBXGroup name='Filter&rsquo; UUID=&lsquo;99CE81391BA80D2D00CA7B29&rsquo;>&lsquo; attempted to initialize an object with an unknown &hellip;">
+  <meta name="description" content="Using 'genstrings' tool from Apple which included into Xcode Step 1. Generate Localizable.strings to get all of strings you want to localize. Open &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -115,6 +115,103 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/">How to Manage All Localized Strings in Your Project?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-10-23T21:46:19+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:46 pm</span></time>
+        
+         | <a href="/blog/2015/10/23/how-to-manage-all-localized-string-in-your-project/#disqus_thread">Comments</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Using <code>'genstrings'</code> tool from Apple which included into Xcode</h3>
+
+<h5>Step 1. Generate <code>Localizable.strings</code> to get all of strings you want to localize.</h5>
+
+<ul>
+<li>Open terminal and go to your project&rsquo;s folder:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">cd</span> <span class="n">PathToYourProject</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Run:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">find</span> <span class="p">.</span> <span class="o">-</span><span class="n">name</span> <span class="err">&#39;</span><span class="o">*</span><span class="p">.</span><span class="n">swift</span><span class="err">&#39;</span> <span class="o">-</span><span class="n">print</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="n">n1</span> <span class="n">genstrings</span> <span class="o">-</span><span class="n">a</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>After this step, a <code>Localizable.strings</code> will automatically generated</li>
+</ul>
+
+
+<h5>Step 2. Add <code>Localizable.strings</code> in your project.</h5>
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-47-21-pm.png" /></a></p>
+
+<h5>Step 3: Add languages for your <code>Localizable.strings</code>:</h5>
+
+<ul>
+<li><p>Now click on the file you just added <code>Localizable.strings</code></p></li>
+<li><p>On right side of Xcode, choose <code>Show the File inspector</code> > <code>Localization</code> > Press button: <code>Localize...</code>
+<a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-9-57-32-pm.png" /></a></p></li>
+<li><p>One pop up will show to asks you which languages you wanna add, choose one please! 🤗</p></li>
+</ul>
+
+
+<h5>Step 4. Add languages which you want to localize to your project.</h5>
+
+<p>On the left side of Xcode, choose <code>Show the project navigator</code> > Choose your project:</p>
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-13-36-pm.png" /></a></p>
+
+<h5>Step 5: Setup your schemes:</h5>
+
+<ul>
+<li>Edit your sheme</li>
+</ul>
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-00-40-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-00-40-pm.png" /></a></p>
+
+<ul>
+<li>Change your region + language that you want</li>
+</ul>
+
+
+<p><a href="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png"><img class="alignnone size-medium wp-image-227" src="https://stackoverzone.files.wordpress.com/2015/10/screen-shot-2015-10-23-at-10-01-07-pm.png" /></a></p>
+
+<p>🍻🍻🍻</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -729,79 +826,6 @@ The text on app will be:</li>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">text</span> <span class="o">=</span> <span class="bp">NSString</span><span class="p">.</span><span class="n">localizedStringWithFormat</span><span class="p">(</span><span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;%@ also commented&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="kt">as</span> <span class="bp">NSString</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">)</span> <span class="kt">as</span> <span class="n">String</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/23/how-did-you-manage-constants-in-your-ios-app/">How Did You Manage Constants in Your iOS App?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-10-23T14:37:59+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>2:37 pm</span></time>
-        
-         | <a href="/blog/2015/10/23/how-did-you-manage-constants-in-your-ios-app/#disqus_thread">Comments</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The reason to manages the <strong><code>Constants</code></strong> in app is: We have a lot of static values and which makes easier to know where they are when you wanna reuse them.</p>
-
-<p>Step 1. Create a file with the name: <strong><code>Constants.swift</code></strong></p>
-
-<p>Step 2. Add this struct inside your created file:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">import</span> <span class="n">Foundation</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">struct</span> <span class="n">Constants</span> <span class="p">{}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Step 3. In the class which you want to add new constant:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="n">Staff</span> <span class="p">{</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">extension</span> <span class="n">Constants</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">struct</span> <span class="n">Staff</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">static</span> <span class="k">let</span> <span class="n">DefaultHeight</span> <span class="o">=</span> <span class="mf">1.70</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Step 4. Just use this wherever you want:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">height</span> <span class="o">=</span> <span class="n">Constants</span><span class="p">.</span><span class="n">Staff</span><span class="p">.</span><span class="n">DefaultHeight</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>

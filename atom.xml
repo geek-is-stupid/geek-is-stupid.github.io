@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-04-19T15:04:49+07:00</updated>
+  <updated>2017-05-29T11:36:26+07:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Swapping Without Temporary Variable in Swift]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2017/05/29/swapping-without%20temporary-variable-in-swift/"/>
+    <updated>2017-05-29T11:24:49+07:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2017/05/29/swapping-without temporary-variable-in-swift</id>
+    <content type="html"><![CDATA[<h3>Using <code>+</code> and <code>-</code>:</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span class='line'><span class="k">var</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Using tuple:</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span class='line'><span class="k">var</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span class='line'><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Record, Detect Faces, Overlay Video at Real-time Using Swift?]]></title>
@@ -2267,37 +2300,6 @@
 
 
 <p>Hope you like it!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Set Background Color for Status Bar?]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar/"/>
-    <updated>2016-08-16T15:16:54+07:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-background-color-for-status-bar</id>
-    <content type="html"><![CDATA[<h4>There are many way to do, I show a trick, don&rsquo;t follow me :D</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">class</span> <span class="k">func</span> <span class="n">setStatusBarBackgroundColor</span><span class="p">(</span><span class="nl">color</span><span class="p">:</span> <span class="bp">UIColor</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="n">guard</span> <span class="k">let</span> <span class="n">statusBar</span> <span class="o">=</span> <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">valueForKey</span><span class="p">(</span><span class="s">&quot;statusBarWindow&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">valueForKey</span><span class="p">(</span><span class="s">&quot;statusBar&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">UIView</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-</span><span class='line'>        <span class="n">statusBar</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">color</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>Do and see the change:</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">setStatusBarBackgroundColor</span><span class="p">(.</span><span class="n">grayColor</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

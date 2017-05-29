@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://geek-is-stupid.github.io/blog/2017/05/29/swapping-without%20temporary-variable-in-swift/</loc>
+<lastmod>2017-05-29T11:24:49+07:00</lastmod>
+</url>
+<url>
 <loc>http://geek-is-stupid.github.io/blog/2017/04/13/how-to-record-detect-face-overlay-video-at-real-time-using-swift/</loc>
 <lastmod>2017-04-13T15:30:16+07:00</lastmod>
 </url>
