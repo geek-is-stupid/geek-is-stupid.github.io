@@ -5,25 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Swapping Without Temporary Variable in Swift - geek-is-stupid</title>
+  <title>How to Find Biger Number Without Using If/else or Switch/case? - geek-is-stupid</title>
   <meta name="author" content="levantAJ">
 
   
-  <meta name="description" content="Using + and -: 1
-2
-3
-4
-5
-var a = 5
-var b = 6
-a = a + b
-b = a - b
-a = a - b Using tuple: 1
-2
-3
-var a = 5
-var b = 6
-(a, b) = (b, a) ">
+  <meta name="description" content="Suppose we have 2 positive integer numbers: a and b
+Now print out which number is the bigger? Note that without using if/else, switch/case or &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -32,7 +19,7 @@ var b = 6
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2017/05/29/swapping-without%20temporary-variable-in-swift">
+  <link rel="canonical" href="http://geek-is-stupid.github.io/blog/2017/08/12/how-to-find-biger-number-without-using-if-slash-else-or-switch-slash-case">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="geek-is-stupid" type="application/atom+xml">
@@ -133,7 +120,7 @@ var b = 6
   <header>
     
       
-        <h1 class="entry-title">Swapping Without Temporary Variable in Swift</h1>
+        <h1 class="entry-title">How to Find Biger Number Without Using If/else or Switch/case?</h1>
       
     
     
@@ -143,7 +130,7 @@ var b = 6
 
 
 
-<time class='entry-date' datetime='2017-05-29T12:24:49+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>12:24 pm</span></time>
+<time class='entry-date' datetime='2017-08-12T12:05:08+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>12:05 pm</span></time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -153,30 +140,18 @@ var b = 6
   </header>
 
 
-<div class="entry-content"><h3>Using <code>+</code> and <code>-</code>:</h3>
+<div class="entry-content"><p>Suppose we have 2 positive integer numbers: <code>a</code> and <code>b</code>
+Now print out which number is the bigger? Note that without using <code>if/else</code>, <code>switch/case</code> or comparing operations! 😎</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
-</span><span class='line'><span class="k">var</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
-</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
-</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>For example:
+<code>a = 5</code>
+<code>b = 7</code>
+The bigger is: <code>b</code></p>
 
+<h5>It&rsquo;s:</h5>
 
-<h3>Using tuple:</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
-</span><span class='line'><span class="k">var</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
-</span><span class='line'><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>((a + b) + abs(a - b)) / 2</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -200,7 +175,7 @@ var b = 6
 
 
 
-<time class='entry-date' datetime='2017-05-29T12:24:49+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>12:24 pm</span></time>
+<time class='entry-date' datetime='2017-08-12T12:05:08+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>12:05 pm</span></time>
       
       
 
@@ -209,7 +184,7 @@ var b = 6
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2017/05/29/swapping-without%20temporary-variable-in-swift/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2017/05/29/swapping-without%20temporary-variable-in-swift/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://geek-is-stupid.github.io/blog/2017/08/12/how-to-find-biger-number-without-using-if-slash-else-or-switch-slash-case/" data-via="levantAJ" data-counturl="http://geek-is-stupid.github.io/blog/2017/08/12/how-to-find-biger-number-without-using-if-slash-else-or-switch-slash-case/" >Tweet</a>
   
   
   
@@ -218,10 +193,8 @@ var b = 6
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2017/04/13/how-to-record-detect-face-overlay-video-at-real-time-using-swift/" title="Previous Post: How to record, detect faces, overlay video at real-time using Swift?">&laquo; How to record, detect faces, overlay video at real-time using Swift?</a>
+        <a class="basic-alignment left" href="/blog/2017/05/29/swapping-without%20temporary-variable-in-swift/" title="Previous Post: Swapping without temporary variable in Swift">&laquo; Swapping without temporary variable in Swift</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2017/08/12/how-to-find-biger-number-without-using-if-slash-else-or-switch-slash-case/" title="Next Post: How to find biger number without using if/else or switch/case?">How to find biger number without using if/else or switch/case? &raquo;</a>
       
     </p>
   </footer>
@@ -251,8 +224,8 @@ var b = 6
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://geek-is-stupid.github.io/blog/2017/05/29/swapping-without%20temporary-variable-in-swift/';
-        var disqus_url = 'http://geek-is-stupid.github.io/blog/2017/05/29/swapping-without%20temporary-variable-in-swift/';
+        var disqus_identifier = 'http://geek-is-stupid.github.io/blog/2017/08/12/how-to-find-biger-number-without-using-if-slash-else-or-switch-slash-case/';
+        var disqus_url = 'http://geek-is-stupid.github.io/blog/2017/08/12/how-to-find-biger-number-without-using-if-slash-else-or-switch-slash-case/';
         var disqus_script = 'embed.js';
       
     (function () {

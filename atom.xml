@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-08-12T11:59:09+08:00</updated>
+  <updated>2017-08-12T12:23:42+08:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Find Biger Number Without Using If/else or Switch/case?]]></title>
+    <link href="http://geek-is-stupid.github.io/blog/2017/08/12/how-to-find-biger-number-without-using-if-slash-else-or-switch-slash-case/"/>
+    <updated>2017-08-12T12:05:08+08:00</updated>
+    <id>http://geek-is-stupid.github.io/blog/2017/08/12/how-to-find-biger-number-without-using-if-slash-else-or-switch-slash-case</id>
+    <content type="html"><![CDATA[<p>Suppose we have 2 positive integer numbers: <code>a</code> and <code>b</code>
+Now print out which number is the bigger? Note that without using <code>if/else</code>, <code>switch/case</code> or comparing operations! 😎</p>
+
+<p>For example:
+<code>a = 5</code>
+<code>b = 7</code>
+The bigger is: <code>b</code></p>
+
+<h5>It&rsquo;s:</h5>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>((a + b) + abs(a - b)) / 2</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Swapping Without Temporary Variable in Swift]]></title>
@@ -2267,39 +2288,6 @@
 
 
 <h5>Let&rsquo;s try, it&rsquo;s delicious</h5>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Go to iOS Settings From Your App?]]></title>
-    <link href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/"/>
-    <updated>2016-08-16T16:26:31+08:00</updated>
-    <id>http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app</id>
-    <content type="html"><![CDATA[<h3>OK let&rsquo;s do</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">class</span> <span class="k">func</span> <span class="n">openSettings</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">UIApplicationOpenSettingsURLString</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">openURL</span><span class="p">(</span><span class="n">url</span><span class="o">!</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Show time:</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="bp">UIApplication</span><span class="p">.</span><span class="n">openSettings</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Hope you like it!</p>
 ]]></content>
   </entry>
   

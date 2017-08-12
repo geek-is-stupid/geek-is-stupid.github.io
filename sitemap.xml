@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://geek-is-stupid.github.io/blog/2017/08/12/how-to-find-biger-number-without-using-if-slash-else-or-switch-slash-case/</loc>
+<lastmod>2017-08-12T12:05:08+08:00</lastmod>
+</url>
+<url>
 <loc>http://geek-is-stupid.github.io/blog/2017/05/29/swapping-without%20temporary-variable-in-swift/</loc>
 <lastmod>2017-05-29T12:24:49+08:00</lastmod>
 </url>
