@@ -4,7 +4,7 @@
   <title><![CDATA[geek-is-stupid]]></title>
   <link href="http://geek-is-stupid.github.io/atom.xml" rel="self"/>
   <link href="http://geek-is-stupid.github.io/"/>
-  <updated>2017-05-29T11:37:08+07:00</updated>
+  <updated>2017-08-12T11:59:09+08:00</updated>
   <id>http://geek-is-stupid.github.io/</id>
   <author>
     <name><![CDATA[levantAJ]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Swapping Without Temporary Variable in Swift]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/05/29/swapping-without%20temporary-variable-in-swift/"/>
-    <updated>2017-05-29T11:24:49+07:00</updated>
+    <updated>2017-05-29T12:24:49+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/05/29/swapping-without temporary-variable-in-swift</id>
     <content type="html"><![CDATA[<h3>Using <code>+</code> and <code>-</code>:</h3>
 
@@ -49,7 +49,7 @@
   <entry>
     <title type="html"><![CDATA[How to Record, Detect Faces, Overlay Video at Real-time Using Swift?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/04/13/how-to-record-detect-face-overlay-video-at-real-time-using-swift/"/>
-    <updated>2017-04-13T15:30:16+07:00</updated>
+    <updated>2017-04-13T16:30:16+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/04/13/how-to-record-detect-face-overlay-video-at-real-time-using-swift</id>
     <content type="html"><![CDATA[<p>This post will show the way how to record, detect faces, overlay video at real-time using <code>AVFoundation</code> via Swift3:</p>
 
@@ -992,7 +992,7 @@
   <entry>
     <title type="html"><![CDATA[How to Localize String From CocoaPods?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/04/04/how-to-localize-string-from-cocoapods/"/>
-    <updated>2017-04-04T13:28:07+07:00</updated>
+    <updated>2017-04-04T14:28:07+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/04/04/how-to-localize-string-from-cocoapods</id>
     <content type="html"><![CDATA[<p>Last time I already introduced to how to localized in a simple project:</p>
 
@@ -1055,7 +1055,7 @@
   <entry>
     <title type="html"><![CDATA[How to Center Text Vertically in a UITextView?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/14/how-to-center-text-vertically-in-a-uitextview/"/>
-    <updated>2017-03-14T11:31:45+07:00</updated>
+    <updated>2017-03-14T12:31:45+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/14/how-to-center-text-vertically-in-a-uitextview</id>
     <content type="html"><![CDATA[<p>I create a custome text view called by: <code>VerticallyCenteredTextView</code></p>
 
@@ -1085,7 +1085,7 @@
   <entry>
     <title type="html"><![CDATA[How to Impove Performance When Scrolling UITableView/UICollectionView?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/13/how-to-impove-scrolling-uitableview/"/>
-    <updated>2017-03-13T16:53:47+07:00</updated>
+    <updated>2017-03-13T17:53:47+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/13/how-to-impove-scrolling-uitableview</id>
     <content type="html"><![CDATA[<h5>There are multiple ways to impove the scrolling for <code>UITableView</code>/<code>UICollectionView</code>, today I will give my way to solved it, hope it will help you guys a little bit:</h5>
 
@@ -1254,7 +1254,7 @@
   <entry>
     <title type="html"><![CDATA[UIImage Display Wrong Orientation, What Is Solution?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/uiimage-display-wrong-orientation-what-is-solution/"/>
-    <updated>2017-03-04T11:08:44+07:00</updated>
+    <updated>2017-03-04T12:08:44+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/uiimage-display-wrong-orientation-what-is-solution</id>
     <content type="html"><![CDATA[<h5>Some time UImage show wrong orientation, and it make you annoyed!!!</h5>
 
@@ -1435,7 +1435,7 @@
   <entry>
     <title type="html"><![CDATA[How to Create a Blur or Grayscale UIImage?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-create-a-blur-or-grayscale-uiimage/"/>
-    <updated>2017-03-04T11:02:22+07:00</updated>
+    <updated>2017-03-04T12:02:22+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-create-a-blur-or-grayscale-uiimage</id>
     <content type="html"><![CDATA[<h5>Basically we are using <code>CIFilter</code> for everything</h5>
 
@@ -1539,7 +1539,7 @@
   <entry>
     <title type="html"><![CDATA[How to Detect an UIImage Contains Face Using Swift3?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-detect-an-uiimage-contains-face-using-swift3/"/>
-    <updated>2017-03-04T10:58:56+07:00</updated>
+    <updated>2017-03-04T11:58:56+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-detect-an-uiimage-contains-face-using-swift3</id>
     <content type="html"><![CDATA[<h5>Face Detection</h5>
 
@@ -1582,7 +1582,7 @@
   <entry>
     <title type="html"><![CDATA[How to Compress UIImage Using Swift3?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-compress-uiimage-using-swift/"/>
-    <updated>2017-03-04T10:54:43+07:00</updated>
+    <updated>2017-03-04T11:54:43+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-compress-uiimage-using-swift</id>
     <content type="html"><![CDATA[<h4>Following:</h4>
 
@@ -1619,7 +1619,7 @@
   <entry>
     <title type="html"><![CDATA[How to Detect That String Contains Emoji Using Swift?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-detect-that-string-contains-emoji-using-swift/"/>
-    <updated>2017-03-04T10:47:58+07:00</updated>
+    <updated>2017-03-04T11:47:58+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-detect-that-string-contains-emoji-using-swift</id>
     <content type="html"><![CDATA[<h5>We can do like this:</h5>
 
@@ -1676,7 +1676,7 @@
   <entry>
     <title type="html"><![CDATA[How to Create an Updating Mechanism for an iOS App?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-create-an-updating-mechanism-for-an-ios-app/"/>
-    <updated>2017-03-04T10:36:35+07:00</updated>
+    <updated>2017-03-04T11:36:35+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-create-an-updating-mechanism-for-an-ios-app</id>
     <content type="html"><![CDATA[<h6>The idea is we checking the current version on AppStore and the version on your app, if they are not equal then make an updating!!!</h6>
 
@@ -1763,7 +1763,7 @@
   <entry>
     <title type="html"><![CDATA[How to Make a UIColor From HEX?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-make-a-uicolor-from-hex/"/>
-    <updated>2017-03-04T10:28:55+07:00</updated>
+    <updated>2017-03-04T11:28:55+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-make-a-uicolor-from-hex</id>
     <content type="html"><![CDATA[<h5>We create a new construction method for UIColor:</h5>
 
@@ -1896,7 +1896,7 @@
   <entry>
     <title type="html"><![CDATA[How to Align Vertical Image and Title in UIButton?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-vertical-image-and-title-in-uibutton/"/>
-    <updated>2017-03-04T10:22:06+07:00</updated>
+    <updated>2017-03-04T11:22:06+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-vertical-image-and-title-in-uibutton</id>
     <content type="html"><![CDATA[<h5>Following code below:</h5>
 
@@ -1959,7 +1959,7 @@
   <entry>
     <title type="html"><![CDATA[How to Align Right an Image in UIButton?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-right-an-image-in-uibutton/"/>
-    <updated>2017-03-04T10:17:56+07:00</updated>
+    <updated>2017-03-04T11:17:56+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/03/04/how-to-align-right-an-image-in-uibutton</id>
     <content type="html"><![CDATA[<h5>Everything you need is:</h5>
 
@@ -1994,7 +1994,7 @@
   <entry>
     <title type="html"><![CDATA[How to Paging UICollectionView]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2017/02/20/how-to-paging-uicollectionview/"/>
-    <updated>2017-02-20T17:41:48+07:00</updated>
+    <updated>2017-02-20T18:41:48+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2017/02/20/how-to-paging-uicollectionview</id>
     <content type="html"><![CDATA[<p>The layout for our UICollectionView looks like:</p>
 
@@ -2098,7 +2098,7 @@
   <entry>
     <title type="html"><![CDATA[Different .plist File for Different Environment in Xcode?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode/"/>
-    <updated>2016-08-17T15:53:42+07:00</updated>
+    <updated>2016-08-17T16:53:42+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2016/08/17/different-plist-file-for-different-environment-in-xcode</id>
     <content type="html"><![CDATA[<p>If you have question like this title of this post, so you are my audience</p>
 
@@ -2144,7 +2144,7 @@
   <entry>
     <title type="html"><![CDATA[How to Show Warning When Add //TODO: //FIXME: //ERRO: In Xcode?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2016/08/17/how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode/"/>
-    <updated>2016-08-17T15:36:02+07:00</updated>
+    <updated>2016-08-17T16:36:02+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2016/08/17/how-to-show-warning-when-add-slash-slash-todo-and-slash-slash-fixme-in-xcode</id>
     <content type="html"><![CDATA[<p>If you make a note in xcode, and you dont want to miss that, there are some solution for that, I will show you one:</p>
 
@@ -2179,7 +2179,7 @@
   <entry>
     <title type="html"><![CDATA[Setting Swift Compiler Flags in CocoaPods]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2016/08/17/setting-swift-compiler-flags-in-cocoapods/"/>
-    <updated>2016-08-17T15:15:53+07:00</updated>
+    <updated>2016-08-17T16:15:53+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2016/08/17/setting-swift-compiler-flags-in-cocoapods</id>
     <content type="html"><![CDATA[<p>Someday your boss ask you to have staging server and production server to make data be pure, so you will find out this code for your api:</p>
 
@@ -2236,7 +2236,7 @@
   <entry>
     <title type="html"><![CDATA[How to Set Placeholder Text Color for UITextField?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-placeholder-text-color-for-uitextfield/"/>
-    <updated>2016-08-16T15:39:21+07:00</updated>
+    <updated>2016-08-16T16:39:21+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2016/08/16/how-to-set-placeholder-text-color-for-uitextfield</id>
     <content type="html"><![CDATA[<h4>Worked on UI is interesting part of iOS development</h4>
 
@@ -2273,7 +2273,7 @@
   <entry>
     <title type="html"><![CDATA[How to Go to iOS Settings From Your App?]]></title>
     <link href="http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app/"/>
-    <updated>2016-08-16T15:26:31+07:00</updated>
+    <updated>2016-08-16T16:26:31+08:00</updated>
     <id>http://geek-is-stupid.github.io/blog/2016/08/16/how-to-go-to-ios-settings-from-your-app</id>
     <content type="html"><![CDATA[<h3>OK let&rsquo;s do</h3>
 
