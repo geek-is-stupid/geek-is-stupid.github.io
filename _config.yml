@@ -52,14 +52,13 @@ avatar: "/img/avatar-icon.png"
 author:
   name: levantAJ
   email: "sirlevantai@gmail.com"
-  facebook: levantai  # eg. daattali
   github: levantAJ    # eg. daattali
   twitter: levantAJ   # eg. daattali
+  stackoverflow: levantAJ
+  linkedin: levantai
   reddit: yourname    # eg. daattali
   google-plus: +yourname   # eg. +DeanAttali or 109424658772469020925
-  linkedin: levantai  # eg. daattali
-  xing: yourname      # eg. daattali
-  stackoverflow: levantAJ  # eg. "3943160/daattali"
+  xing: yourname
   snapchat: yourname  # eg. daattali
   instagram: yourname # eg. daattali
   youtube: yourlink   # eg. user/daattali or channel/daattali
@@ -219,6 +218,3 @@ prose:
 
 plugins:
   - jekyll-paginate
-
-# Beautiful Jekyll / Dean Attali
-# 2fc73a3a967e97599c9763d05e564189
