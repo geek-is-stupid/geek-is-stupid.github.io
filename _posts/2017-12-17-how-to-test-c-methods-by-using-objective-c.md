@@ -6,7 +6,7 @@ tags: [swift, xcode, ios, test, C/C++, functions, pointer]
 fullview: true
 ---
 
-### Problem
+### Problems
 I guess that you already saw some C/C++ functions like these get called in Objective-C :]
 
 ```
