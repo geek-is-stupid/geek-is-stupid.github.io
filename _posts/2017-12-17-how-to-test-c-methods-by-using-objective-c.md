@@ -117,7 +117,6 @@ We'll have something like this:
 }
 
 @end
-
 ```
 
 ### Testing:
@@ -176,7 +175,6 @@ int start_platform_service_mock(int state) {
 }
 
 @end
-
 ```
 
 Hope it will help you guys a bit in your `objc` developmemt life!
