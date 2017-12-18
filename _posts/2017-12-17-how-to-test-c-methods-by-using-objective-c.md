@@ -18,7 +18,7 @@ or even GCD:
 
 ```
 dispatch_async(queue, ^{
-	//...
+    //...
 });
 ```
 
@@ -45,15 +45,15 @@ In the `Service.m` file I have something like this:
 @implementation Service 
 
 - (void)startService {
-	int state = 1; 
-	int result = start_platform_service(state);
-	if (result == 1) {
-		NSLog("Success");
-		//...
-	} else {
-		NSLog("Failure");
-		//...
-	}
+    int state = 1; 
+    int result = start_platform_service(state);
+    if (result == 1) {
+        NSLog("Success");
+        //...
+    } else {
+        NSLog("Failure");
+        //...
+    }
 }
 
 @end
@@ -68,7 +68,7 @@ And the `ServiceTest.m` file will be:
 @implementation ServiceTest 
 
 - (void)testStartService {
-	//... how to verify this method gets trigger `start_platform_service` here?
+    //... how to verify this method gets trigger `start_platform_service` here?
 }
 
 @end
@@ -105,15 +105,15 @@ We'll have something like this:
 }
 
 - (void)startService {
-	int state = 1; 
-	int result = self.startPlatformService(state);
-	if (result == 1) {
-		NSLog("Success");
-		//...
-	} else {
-		NSLog("Failure");
-		//...
-	}
+    int state = 1; 
+    int result = self.startPlatformService(state);
+    if (result == 1) {
+        NSLog("Success");
+        //...
+    } else {
+        NSLog("Failure");
+        //...
+    }
 }
 
 @end
@@ -127,8 +127,8 @@ My aming to mock the C/C++ function, now let's create a mock method for it, and 
 @implementation ServiceTest 
 
 int start_platform_service_mock(int state) {
-	//...
-	return 0;
+    //...
+    return 0;
 }
 
 @end 
@@ -141,8 +141,8 @@ To make sure our mock method get called, we need to create static variable to ve
 
 static BOOL start_platform_service_mock_get_called = NO;
 int start_platform_service_mock(int state) {
-	start_platform_service_mock_get_called = YES;
-	return 0;
+    start_platform_service_mock_get_called = YES;
+    return 0;
 }
 
 @end
@@ -158,20 +158,20 @@ Now we're able to test our method `startService`:
 
 static int start_platform_service_result_mock = -1;
 int start_platform_service_mock(int state) {
-	return start_platform_service_result_mock;
+    return start_platform_service_result_mock;
 }
 
 - (void)testStartService {
-	//Given:
-	start_platform_service_mock_get_called = NO;
-	Service *service = [[Service alloc] init];
-	service.startPlatformService = &start_platform_service_mock;
+    //Given:
+    start_platform_service_mock_get_called = NO;
+    Service *service = [[Service alloc] init];
+    service.startPlatformService = &start_platform_service_mock;
 	
-	//When:
-	[service startService];
+    //When:
+    [service startService];
 	
-	//Then:
-	XCTAssertTrue(start_platform_service_mock_get_called);
+    //Then:
+    XCTAssertTrue(start_platform_service_mock_get_called);
 }
 
 @end
