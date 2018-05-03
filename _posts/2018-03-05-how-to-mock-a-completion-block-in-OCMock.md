@@ -2,7 +2,7 @@
 layout: post
 title: How to mock a completion block in OCMock?
 categories: [ios]
-tags: [swift, xcode, ios, test, C/C++, functions, pointer]
+tags: [swift, xcode, ios, test, OCMock, completion, block, NSInvocation, OCMStub]
 fullview: true
 ---
 
