@@ -8,7 +8,7 @@ My name is **Tai Le**. I'm Software Engineer. 👨‍💻
 
 I'm a follower of iOS, no, I was a follower of the technology, I am passionate about new technologies, I want to experience, want to know how they operate, how do I have could build such a technology.
 
-With three years of experience with iOS programming, not too much time, but with what I learned, it's not only the iOS development, UI/UX, Design Pattern, database, DRY, client - server models, clean code, etc, it's the way of programming thinking, and especially the process to produce an application.
+With four years of experience with iOS programming, not too much time, but with what I learned, it's not only the iOS development, UI/UX, Design Pattern, database, DRY, client - server models, clean code, etc, it's the way of programming thinking, and especially the process to produce an application.
 
 A executing application that is not enough, it have to easy to understands, maintains, changes, and develops new features. Applications must also focus on user experiences and listens to the feedback from customers is also very important thing.
 
