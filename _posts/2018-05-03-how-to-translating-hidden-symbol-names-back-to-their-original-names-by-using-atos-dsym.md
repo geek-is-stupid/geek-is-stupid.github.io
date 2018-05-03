@@ -2,7 +2,7 @@
 layout: post
 title: Translating 'hidden' symbol names back to their original names by using atos + dSYM?
 categories: [ios]
-tags: [swift, xcode, ios, crash, address, memory, atos, dSYM, log, stack, trace, line, number]
+tags: [swift, objective-c, xcode, ios, crash, address, memory, atos, dSYM, log, stack, trace, line, number]
 fullview: true
 ---
 
