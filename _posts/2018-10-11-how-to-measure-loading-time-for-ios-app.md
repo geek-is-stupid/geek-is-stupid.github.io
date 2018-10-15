@@ -2,7 +2,7 @@
 layout: post
 title: How to measure loading time for iOS app?
 categories: [ios]
-tags: [swift, objective-c, xcode, io, loading, time, start-up, cold-start]
+tags: [swift, objective-c, xcode, ios, loading, time, start-up, cold-start]
 fullview: true
 ---
 
