@@ -17,7 +17,9 @@ Invalid update: invalid number of rows in section 0. The number of rows containe
 ### 💡 Ideas 
 Why don't we compare current data in `tableView` and the data from `dataSource`?
 
+
 ### ✅ Solutions:
+
 
 ```swift
 extension UITableView {
@@ -50,4 +52,4 @@ if tableView.dataHasChanged {
 ⚠️ You might be check the `indexPath` should appear in `tableView.indexPathsForVisibleRows` 
 
 
-#### 👍 Like if you want => 🙏
+#### 👍 Like & Share please, thanks!!!
