@@ -218,3 +218,5 @@ prose:
 
 plugins:
   - jekyll-paginate
+
+exclude: [vendor]
