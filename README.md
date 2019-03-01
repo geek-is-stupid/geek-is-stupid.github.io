@@ -1,5 +1,8 @@
 # geek-is-stupid
 
+### ▶️ Run localy:
+bundle exec jekyll serve
+
 ### Creating Post FilesPermalink
 To create a new post, all you need to do is create a file in the `_posts` directory. How you name files in this folder is important. Jekyll requires blog post files to be named according to the following format:
 
