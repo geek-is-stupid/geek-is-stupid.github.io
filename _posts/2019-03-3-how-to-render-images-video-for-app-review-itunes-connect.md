@@ -72,7 +72,7 @@ After download the sound, you need to drag it into **iMovie** and do the **Share
 
 ```bash
 
-ffmpeg -i output.mp4 -i sound.mp3 -c:v copy -c:a aac -strict experimental output_with_sound.mp4
+ffmpeg -i output.mp4 -i sound.mp3 output_with_sound.mp4
 
 ```
 
