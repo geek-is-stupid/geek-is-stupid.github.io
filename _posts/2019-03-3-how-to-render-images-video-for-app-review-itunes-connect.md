@@ -14,7 +14,9 @@ fullview: true
 **Or** you can use **`io`** in **`simctl`**, following these commands:
 
 ```bash
+
 xcrun simctl io booted screenshot
+
 ```
 
 
@@ -27,7 +29,9 @@ Steps:
 2️⃣ Run this commandline:
 
 ```bash
+
 xcrun simctl io booted recordVideo input.mp4
+
 ```
 
 3️⃣ To stop: **`⌃`** + **`C`**
@@ -41,13 +45,17 @@ xcrun simctl io booted recordVideo input.mp4
 You need install **`ffmpeg`**:
 
 ```bash
+
 brew install ffmpeg
+
 ```
 
 And then:
 
 ```bash
+
 ffmpeg -i input.mp4 -acodec copy -crf 12 -vf scale=1080:1920,setsar=1:1 output.mp4
+
 ```
 
 **📛 One or nore of your app previews have audio that is not two-channel, no-surround stereo**
@@ -63,7 +71,9 @@ After download the sound, you need to drag it into **iMovie** and do the **Share
 **OR** you can use that file with this command:
 
 ```bash
+
 ffmpeg -i output.mp4 -i sound.mp3 -c:v copy -c:a aac -strict experimental output_with_sound.mp4
+
 ```
 
 ### Notes:
