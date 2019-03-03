@@ -1,17 +1,17 @@
 ---
 layout: post
-title: "How to render images and video for App Review in iTunes Connect"
+title: "How to render images and videos for App Review in iTunes Connect"
 categories: ios
 tags: swift iTunesConnect ios screenshot render app review
 fullview: true
 ---
 
 
-### 🏞 Render images screenshot App Review
+### 🏞 Render images screenshot App Review with simulator 📱
 
-✅ You're able to use **`⌘`** + **`S`**
+➡️ You're able to use **`⌘`** + **`S`** with Simulators.
 
-**Or** you can use **`io`** in **`simctl`**, following these commands:
+➡️ **Or** you can use **`io`** in **`simctl`**, following these commands:
 
 ```bash
 
@@ -20,13 +20,13 @@ xcrun simctl io booted screenshot
 ```
 
 
-### 🎞 Render videos 
+### 🎞 Render videos with simulator 📱
 
 Steps:
 
-1️⃣ Launch your simulators
+1️⃣ Launch your simulator
 
-2️⃣ Run this commandline:
+2️⃣ Run this
 
 ```bash
 
@@ -34,7 +34,9 @@ xcrun simctl io booted recordVideo input.mp4
 
 ```
 
-3️⃣ To stop: **`⌃`** + **`C`**
+3️⃣ It's recording what you do on the simulator
+4️⃣ To stop: **`⌃`** + **`C`**
+5️⃣ It created a video within the folder you were runing the command.
 
 ### ⚙️ Troubleshouting
 
