@@ -89,7 +89,9 @@ ffmpeg -i output.mp4 -i sound.mp3 -filter_complex " [1:0] apad " -shortest outpu
 
 ```
 
-**📛 The frame rate of one or more of your app previews is too hight.**
+- **OR** you might need to change frame rate to **`30fps`**, following the step below 👇
+
+**📛 The frame rate of one or more of your app previews is too high.**
 
 <img width="709" alt="screen shot 2019-03-04 at 10 19 14 pm" src="https://user-images.githubusercontent.com/6329656/53742871-37af5a00-3ecc-11e9-8009-11d3c6cc9945.png">
 
