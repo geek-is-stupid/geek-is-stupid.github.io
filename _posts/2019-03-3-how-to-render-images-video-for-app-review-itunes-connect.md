@@ -66,16 +66,26 @@ ffmpeg -i input.mp4 -acodec copy -crf 12 -vf scale=1080:1920,setsar=1:1 output.m
 
 It means your video is silient, we need to add a sound background for the video by using **iMovie**
 
-You might need this background sound, download the background sound here [sound.mp3](../sounds/sound.mp3)
+You might need this background sound, download the background sound here [sound.mp3](../sounds/sound.mp3) or you can download from [Bensound](https://www.bensound.com/royalty-free-music/corporate-pop)
 
 After download the sound, you need to drag it into **iMovie** and do the **Share** to a file.
 
-**OR** you can use that file with this command:
+- **OR** you can use that file with this command:
 
 ```bash
 
-ffmpeg -i output.mp4 -i sound.mp3 -c copy -map 0:0 -map 1:0 output_with_sound.mp4
+ffmpeg -i output.mp4 -i sound.mp3 -filter_complex " [1:0] apad " -shortest output_with_sound.mp4
 
+```
+
+**📛 The frame rate of one or more of your app previews is too hight.**
+
+<img width="709" alt="screen shot 2019-03-04 at 10 19 14 pm" src="https://user-images.githubusercontent.com/6329656/53742871-37af5a00-3ecc-11e9-8009-11d3c6cc9945.png">
+
+Frame rate should be: **`30`**
+
+```bash
+ffmpeg -i output.mp4 -filter:v fps=fps=30 output_with_frame_rate.mp4
 ```
 
 ### Notes:
