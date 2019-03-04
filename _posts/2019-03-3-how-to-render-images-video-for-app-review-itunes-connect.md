@@ -71,6 +71,14 @@ ffmpeg -i input.mp4 -acodec copy -crf 12 -vf scale=1080:1920,setsar=1:1 output.m
 
 ```
 
+To double check your video's resolution is right:
+
+```bash
+
+ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 output.mp4
+
+```
+
 **📛 One or nore of your app previews have audio that is not two-channel, no-surround stereo**
 
 <img width="713" alt="screen shot 2019-03-03 at 11 30 12 am" src="https://user-images.githubusercontent.com/6329656/53690989-cbd3d100-3da7-11e9-8402-a944cd3966fd.png">
