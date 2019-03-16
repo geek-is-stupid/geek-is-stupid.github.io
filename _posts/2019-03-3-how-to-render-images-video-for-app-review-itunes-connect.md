@@ -40,7 +40,7 @@ xcrun simctl io booted recordVideo input.mp4
 
 ### ⚙️ Troubleshouting
 
-**📛 App preview dimensions should be: 1920x1080, 1080x1920**
+**📛 App preview dimensions should be: 1920x1080, 1080x1920** or **App preview dimensions should be: 1920x886, 886x1920**
 
 <img width="467" alt="screen shot 2019-03-03 at 11 30 30 am" src="https://user-images.githubusercontent.com/6329656/53690988-caa2a400-3da7-11e9-95be-476051b862b5.png">
 
@@ -79,7 +79,7 @@ ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s
 
 ```
 
-**📛 One or nore of your app previews have audio that is not two-channel, no-surround stereo**
+**📛 One or nore of your app previews have audio that is not two-channel, no-surround stereo. For more information, see the Developer Help.**
 
 <img width="713" alt="screen shot 2019-03-03 at 11 30 12 am" src="https://user-images.githubusercontent.com/6329656/53690989-cbd3d100-3da7-11e9-8402-a944cd3966fd.png">
 
@@ -99,7 +99,7 @@ ffmpeg -i output.mp4 -i sound.mp3 -filter_complex " [1:0] apad " -shortest outpu
 
 - **OR** you might need to change frame rate to **`30fps`**, following the step below 👇
 
-**📛 The frame rate of one or more of your app previews is too high.**
+**📛 The frame rate of one or more of your app previews is too high. For more information, see the Developer Help.**
 
 <img width="709" alt="screen shot 2019-03-04 at 10 19 14 pm" src="https://user-images.githubusercontent.com/6329656/53742871-37af5a00-3ecc-11e9-8009-11d3c6cc9945.png">
 
@@ -108,6 +108,45 @@ Frame rate should be: **`30fps `**
 ```bash
 ffmpeg -i output.mp4 -filter:v fps=fps=30 output_with_frame_rate.mp4
 ```
+
+**📛 One or more of your app previews couldn't be saved. Try again. If the problem persists, contact us.**
+
+<img width="705" alt="screen shot 2019-03-04 at 10 52 51 pm" src="https://user-images.githubusercontent.com/6329656/53744789-4d268300-3ed0-11e9-9dce-ab9d78dc77c5.png">
+
+Basically we need to change these settings:
+
+- Video Codec (FPS): **H.264(x264)**
+
+```bash
+
+ffmpeg -i input.mp4 -vcodec libx264 -acodec aac output.mp4
+
+```
+
+<br/>
+- Video Framerate (FPS): **30**
+
+```bash
+
+ffmpeg -i output.mp4 -filter:v fps=fps=30 output_with_frame_rate.mp4
+
+```
+<br/>
+- Audio Codec: **AAC (Core Audio)**
+
+```bash
+ffmpeg -i input.mp4 -c:a copy output.mp4
+```
+
+<br/>
+- Audio Mixdown: **Stereo**
+
+
+<br/>
+- Audio Sample rate: **44.1**
+
+<br/>
+- Audio Bitrate: **256**
 
 ### Notes:
 ✅ A good is video is shorter than 30 seconds
