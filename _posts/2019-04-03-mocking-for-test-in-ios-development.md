@@ -44,7 +44,7 @@ class YourClass {
     let userDefaults: UserDefaults
     
     init(userDefaults: UserDefaults) {
-        self. userDefaults = userDefaults
+        self.userDefaults = userDefaults
     }
 }
 ```
