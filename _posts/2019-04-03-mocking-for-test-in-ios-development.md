@@ -5,7 +5,8 @@ categories: ios
 tags: swift objective-c objc ios test TDD mock protocol inheritance dependency injection di xcode
 fullview: true
 ---
-## What is Mocking 🧪?
+# 🧪
+## What is Mocking?
 
 **Mocking is creating objects that simulate the behavior of real objects!**
 
