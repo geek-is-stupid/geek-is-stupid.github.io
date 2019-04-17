@@ -198,6 +198,7 @@ class TestYourClass: XCTestCase {
 -  [Program to an interface, not an implementation
 ](https://www.artima.com/lejava/articles/designprinciples.html). We're decoupled from the implementation with a lighter-weight mock implementation.
 
+<br/>
 ### Inheritance Mocks
 
 This approach pretty similar with Protocol Mocks' ideas, except we'll not extract a dependency as a protocol and confirmation it.
@@ -255,6 +256,7 @@ class TestYourClass: XCTestCase {
 - The mock still has a real class underneath, it means this possible triggers the real implementation during the test as we won't expect 😬 
 - This mocks might leak to **Partial Mocks 🤯** which is the **`sut`** and the **dependency** are the same. Half of real, half of fake seems it's not a good idea (expect we have to deal with legacy code).
 
+<br/>
 **Where to go from here?**
 
 - [https://pragprog.com/magazines/2012-01/unit-tests-are-first](https://pragprog.com/magazines/2012-01/unit-tests-are-first)
