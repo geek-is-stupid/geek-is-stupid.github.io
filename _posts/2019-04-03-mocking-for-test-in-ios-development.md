@@ -2,7 +2,7 @@
 layout: post
 title: "Mocking for test in iOS development"
 categories: ios
-tags: swift objective-c objc ios test TDD mock stub verify Cuckoo OCMock
+tags: swift objective-c objc ios test TDD mock protocol inheritance dependency injection di xcode
 fullview: true
 ---
 ## What is Mocking 🧪?
