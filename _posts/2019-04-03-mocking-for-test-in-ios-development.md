@@ -5,10 +5,7 @@ categories: ios
 tags: swift objective-c objc ios test TDD mock stub verify Cuckoo OCMock
 fullview: true
 ---
-
-#🧪
-
-## What is Mocking?
+## What is Mocking 🧪?
 
 **Mocking is creating objects that simulate the behavior of real objects!**
 
