@@ -41,11 +41,11 @@ We can pass the dependency object through the constuctor and save that object as
 
 ```swift
 class YourClass {
-	let userDefaults: UserDefaults
-	
-	init(userDefaults: UserDefaults) {
-		self. userDefaults = userDefaults
-	}
+    let userDefaults: UserDefaults
+    
+    init(userDefaults: UserDefaults) {
+        self. userDefaults = userDefaults
+    }
 }
 ```
 
@@ -58,17 +58,17 @@ func inscreaseCounting() {
     userDefaults.set(count + 1, forKey: key)
 }
 ```
-
+<br/>
 #### Property Injection
 
 As the same idea with **Constructor Injection**, we still extract the `UserDefaults.standard` as a property with its **standard** value by default and use it in the `inscreaseCounting`, and we no longer to pass it through the contructor.
 
 ```swift
 class YourClass {
-	var userDefaults: UserDefaults = .standard
+    var userDefaults: UserDefaults = .standard
 }
 ```
-
+<br/>
 #### Method Injection
 
 We directly pass `NSUserDefault` as a parameter in the method `inscreaseCounting`. And in tests we can pass the mock object as a parameter.
@@ -80,7 +80,7 @@ func inscreaseCounting(userDefaults: UserDefaults) {
     userDefaults.set(count + 1, forKey: key)
 }
 ```
-
+<br/>
 #### Extract and Override Call
 
 In some cases you have to deal with legacy code the this is not a bad idea to test the legacy code and do minimize the changes before go with refactoring.
@@ -103,13 +103,13 @@ class TestableYourClass: YourClass {
 
 ⚠️ I'm not recommend this injection due to in the future the `YourClass` can changes, and possible lead to some unexpected behaviors during the tests!
 
+<br/>
 #### Ambient Context
-
 For some methods, we do call some **class methods** in it:
 -  We could extract that class method an a getter property.
 -  Or do **swizzle** 😅
 
-
+<br/>
 ### Protocol Mocks
 
 So we already knew how to faliciate mocking by **Dependency Injection** as above, so now we go to the details that how we mock our dependency (as `UserDefaults`) with a protocol.
@@ -119,8 +119,8 @@ Let's following the steps below:
 
 ```swift
 protocol UserDefaultsProtocol {
-	func integer(forKey defaultName: String) -> Int
-	func set(_ value: Int, forKey defaultName: String)
+    func integer(forKey defaultName: String) -> Int
+    func set(_ value: Int, forKey defaultName: String)
 }
 ```
 
@@ -136,13 +136,13 @@ We'll use **Property Injection** for this e.g.
 
 ```swift
 class YourClass {
-	var userDefaults: UserDefaultsProtocol = UserDefaults.standard
+    var userDefaults: UserDefaultsProtocol = UserDefaults.standard
 
-	func inscreaseCounting() {
-    	let key = "counting-key"
-    	let count = userDefaults.integer(forKey: key)
-   		userDefaults.set(count + 1, forKey: key)
-	}
+    func inscreaseCounting() {
+        let key = "counting-key"
+        let count = userDefaults.integer(forKey: key)
+        userDefaults.set(count + 1, forKey: key)
+    }
 }
 ```
 
@@ -150,18 +150,18 @@ class YourClass {
 
 ```swift
 class MockUserDefaultsProtocol: UserDefaultsProtocol {
-	var integerKey: String?
-	var integerValue: Int?
+    var integerKey: String?
+    var integerValue: Int?
+    
+    func integer(forKey defaultName: String) -> Int {
+        integerKey = defaultName
+        return integerValue ?? 0
+    }
 	
-	func integer(forKey defaultName: String) -> Int {
-		integerKey = defaultName
-		return integerValue ?? 0
-	}
-	
-	func set(_ value: Int, forKey defaultName: String) {
-		integerKey = defaultName
-		integerValue = value
-	}
+    func set(_ value: Int, forKey defaultName: String) {
+        integerKey = defaultName
+        integerValue = value
+    }
 }
 ```
 
@@ -172,23 +172,23 @@ import XCTest
 @testable import YourTarget
 
 class TestYourClass: XCTestCase {
-	var sut: YourClass!
-	var userDefaults: MockUserDefaultsProtocol!
+    var sut: YourClass!
+    var userDefaults: MockUserDefaultsProtocol!
 	
-	func testInscreaseCountingShouldIncreaseValueBy1() {
-		//Given:
-		sut = YourClass()
-		userDefaults = MockUserDefaultsProtocol()
-		userDefaults.integerValue = 2
-		sut.userDefaults = userDefaults
+    func testInscreaseCountingShouldIncreaseValueBy1() {
+        //Given:
+        sut = YourClass()
+        userDefaults = MockUserDefaultsProtocol()
+        userDefaults.integerValue = 2
+        sut.userDefaults = userDefaults
 		
-		//When:
-		sut.inscreaseCounting()
-		
-		//Then:
-		XCTAssertEqual(userDefaults.integerKey, "counting-key")
-		XCTAssertEqual(userDefaults.integerValue, 3)
-	}
+        //When:
+        sut.inscreaseCounting()
+        
+        //Then:
+        XCTAssertEqual(userDefaults.integerKey, "counting-key")
+        XCTAssertEqual(userDefaults.integerValue, 3)
+    }
 }
 ```
 
@@ -230,23 +230,23 @@ import XCTest
 @testable import YourTarget
 
 class TestYourClass: XCTestCase {
-	var sut: YourClass!
-	var userDefaults: MockUserDefaults!
+    var sut: YourClass!
+    var userDefaults: MockUserDefaults!
 	
-	func testInscreaseCountingShouldIncreaseValueBy1() {
-		//Given:
-		sut = YourClass()
-		userDefaults = MockUserDefaults()
-		userDefaults.integerValue = 2
-		sut.userDefaults = userDefaults
+    func testInscreaseCountingShouldIncreaseValueBy1() {
+        //Given:
+        sut = YourClass()
+        userDefaults = MockUserDefaults()
+        userDefaults.integerValue = 2
+        sut.userDefaults = userDefaults
 		
-		//When:
-		sut.inscreaseCounting()
+        //When:
+        sut.inscreaseCounting()
 		
-		//Then:
-		XCTAssertEqual(userDefaults.integerKey, "counting-key")
-		XCTAssertEqual(userDefaults.integerValue, 3)
-	}
+        //Then:
+        XCTAssertEqual(userDefaults.integerKey, "counting-key")
+        XCTAssertEqual(userDefaults.integerValue, 3)
+    }
 }
 ```
 
