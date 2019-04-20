@@ -17,7 +17,7 @@ What is **FIRST** here, it's not like TDD that do test before do implementation.
 
 ⚡️ <b><span style="font-size: 20pt">F</span>AST</b>: Tests should run quickly, saving time for CI, instantly give feedbacks and developers won't mind to running them!
 
-💔 <b><span style="font-size: 20pt">I</span>SOLATED</b> (or <b><span style="font-size: 20pt">I</span>NDEPENDENT</b>): Explicitly & separately do setup or teardown for every tests. When tests are interdependent, a change to one test can cause several others to fail in puzzling ways. 
+🧩 <b><span style="font-size: 20pt">I</span>SOLATED</b> (or <b><span style="font-size: 20pt">I</span>NDEPENDENT</b>): Explicitly & separately do setup or teardown for every tests. When tests are interdependent, a change to one test can cause several others to fail in puzzling ways. 
 
 🔁 <b><span style="font-size: 20pt">R</span>EPEATABLE</b>: No **flaky** tests, tests should give the same results after every run!
 
