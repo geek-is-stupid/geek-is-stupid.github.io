@@ -5,7 +5,7 @@ categories: ios
 tags: swift objective-c objc ios unit test TDD mock protocol inheritance dependency injection di xcode
 fullview: true
 ---
-# 🧪Mocking
+# 🧪 Mocking
 
 We might have some best practices from [Way to approach Unit Tests in iOS development](https://geek-is-stupid.github.io/2019-04-20-way-to-approach-unit-tests-in-iOS-developmemt/). Now we go to the details of mocking 🥳
 
