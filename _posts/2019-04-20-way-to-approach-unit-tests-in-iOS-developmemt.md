@@ -7,13 +7,13 @@ fullview: true
 ---
 # 🌡 Unit Tests
  
-I and you and any developers are too familiar with this level of testing, someone might know, someone is doing it everyday. But how to do it productivity? how to do it in a saving time? then it gonna need you practice a lot with Unit Tests.
+I and you and many developers are too familiar with this level of testing, someone might know, someone might doing it everyday. But how to do it productivity? How to do it in a saving time? then it gonna need you practice a lot with Unit Tests.
 
 OK I will go with you on the road to become *"master"* of Unit Tests particular in iOS 😉. So some thoughts will share more about the **frame** and **best practice** with Unit Tests.
 
 ## Unit Tests are **FIRST**
 
-What is **FIRST** here, it's not like TDD that do test before do implementation.  This is alse **Best Practices** for Testing.
+What is **FIRST** here, it's not like TDD that do test before do implementation.  This is also **Best Practices** for Testing.
 
 ⚡️ **F**AST: Tests should run quickly, saving time for CI, instantly give feedbacks and developers won't mind to running them!
 
@@ -34,7 +34,14 @@ To start a unit test, make a test has its purpose, you should determine what is 
 - Clear purpose of a tests
 - Tests are more readable
 
+```swift
+class YourClassTest: XCTestCase {
+	var sut: YourClass!
+}
+```
+
 > The "system under test". It is short for "whatever thing we are testing" and is always defined from the perspective of the test. When we are writing unit tests the system under test (SUT) is whatever class (a.k.a. CUT), object (a.k.a. OUT) or method(s) (a.k.a. MUT) we are testing; when we are writing customer tests, the SUT is probably the entire application (a.k.a. AUT) or at least a major subsystem of it. The parts of the application that we are not verifying in this particular test may still be involved as a depended-on component (DOC).
+
 
 ## Behavior Driven Development - BDD
 
@@ -45,6 +52,21 @@ A tests should separate 3 parts:
 - **given** something
 - **when** the thing happens
 - **then** getting expectations.
+
+```swift
+class YourClassTest: XCTestCase {
+	var sut: YourClass!
+	
+	func testYourMethodShouldDoSomething() {
+		//Given:
+		
+		//When:
+		sut.yourMethod()
+		
+		//Then:
+	}
+}
+```
 
 Alternative naming systems as **triple A (AAA)** are **Arrange**-**Act**-**Assert** and **Assemble**-**Activate**-**Assert**.
 
