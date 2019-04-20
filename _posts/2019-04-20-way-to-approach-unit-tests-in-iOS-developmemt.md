@@ -15,7 +15,7 @@ OK I will go with you on the road to become *"master"* of Unit Tests particular 
 
 What is **FIRST** here, it's not like TDD that do test before do implementation.  This is also **Best Practices** for Testing.
 
-⚡️ **F**AST: Tests should run quickly, saving time for CI, instantly give feedbacks and developers won't mind to running them!
+⚡️ <b><span style="font-size: 20pt">F</span>AST</b>: Tests should run quickly, saving time for CI, instantly give feedbacks and developers won't mind to running them!
 
 💔 **I**SOLATED (or **I**NDEPENDENT): Explicitly & separately do setup or teardown for every tests. When tests are interdependent, a change to one test can cause several others to fail in puzzling ways. 
 
