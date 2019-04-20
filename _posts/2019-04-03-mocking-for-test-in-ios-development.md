@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Mocking for test in iOS development"
+title: "Mocking for tests in iOS development"
 categories: ios
-tags: swift objective-c objc ios test TDD mock protocol inheritance dependency injection di xcode
+tags: swift objective-c objc ios unit test TDD mock protocol inheritance dependency injection di xcode
 fullview: true
 ---
 # 🧪
