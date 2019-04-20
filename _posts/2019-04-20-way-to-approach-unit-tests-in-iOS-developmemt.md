@@ -74,26 +74,32 @@ Alternative naming systems as **triple A (AAA)** are **Arrange**-**Act**-**Asser
 
 ### Return Value Test
 ```
-//When: Setup object
-//When: Call method that return a value
-//Then: Compare against expected value
+func testYourMethod() {
+    //When: Setup object
+    //When: Call method that return a value
+    //Then: Compare against expected value
+}
 ```
 ![return-value-test](https://user-images.githubusercontent.com/6329656/56451556-769f4f00-6356-11e9-9a57-a18198de9bca.png)
 
 ### State Test
 ```
-//When: Setup object
-//When: Call method, query object in some way
-//Then: Verify result
+func testYourMethod() {
+    //When: Setup object
+    //When: Call method, query object in some way
+    //Then: Verify result
+}
 ```
 ![state-test](https://user-images.githubusercontent.com/6329656/56451842-eeba4480-6357-11e9-9414-6203af055223.png)
 
 
 ### Interaction Test
 ```
-//When: Setup object
-//When: Call method, SUT calls dependencies
-//Then: Verify result
+func testYourMethod() {
+    //When: Setup object
+    //When: Call method, SUT calls dependencies
+    //Then: Verify result
+}
 ```
 ![interaction-test](https://user-images.githubusercontent.com/6329656/56452163-b0258980-6359-11e9-964c-18152549e6c4.png)
 
