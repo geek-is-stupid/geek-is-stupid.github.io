@@ -15,15 +15,15 @@ OK I will go with you on the road to become *"master"* of Unit Tests particular 
 
 What is **FIRST** here, it's not like TDD that do test before do implementation.  This is also **Best Practices** for Testing.
 
-⚡️ <b><span style="font-size: 20pt">F</span>AST</b>: Tests should run quickly, saving time for CI, instantly give feedbacks and developers won't mind to running them!
+⚡️ <b><span style="font-size: 15pt">F</span>AST</b>: Tests should run quickly, saving time for CI, instantly give feedbacks and developers won't mind to running them!
 
-💔 **I**SOLATED (or **I**NDEPENDENT): Explicitly & separately do setup or teardown for every tests. When tests are interdependent, a change to one test can cause several others to fail in puzzling ways. 
+💔 <b><span style="font-size: 15pt">I</span>SOLATED</b> (or <b><span style="font-size: 15pt">I</span>NDEPENDENT</b>): Explicitly & separately do setup or teardown for every tests. When tests are interdependent, a change to one test can cause several others to fail in puzzling ways. 
 
-🔁 **R**EPEATABLE: No **flaky** tests, tests should give the same results after every run!
+🔁 <b><span style="font-size: 15pt">R</span>EPEATABLE</b>: No **flaky** tests, tests should give the same results after every run!
 
-🤳 **S**ELF-VERIFYING: A good unit test should automated, and either *fails* or *passes*. And should NOT include bunch of comments to explain what the testing is doing.
+🤳 <b><span style="font-size: 15pt">S</span>ELF-VERIFYING</b>: A good unit test should automated, and either *fails* or *passes*. And should NOT include bunch of comments to explain what the testing is doing.
 
-🧪 **T**IMELY: Writing Tests before write your production code.
+🧪 <b><span style="font-size: 15pt">T</span>IMELY</b>: Writing Tests before write your production code.
 
 Working with Unit Tests, let keeps in mind this FIRST principle to your tests more effective.
 
