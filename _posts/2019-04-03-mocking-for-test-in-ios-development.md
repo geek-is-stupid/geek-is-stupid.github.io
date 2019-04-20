@@ -26,6 +26,8 @@ The question should be: *"How to write the code is testable?"*, then **Dependenc
 
 ### Dependency Injection 💉 (DI)
 
+***Dependency Injection*** is passing dependency to other objects or framework and it makes testing easier.
+
 Let's get started with normal a implementation like below:
 
 ```swift
