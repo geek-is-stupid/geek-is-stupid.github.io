@@ -36,7 +36,7 @@ To start a unit test, make a test has its purpose, you should determine what is 
 
 ```swift
 class YourClassTest: XCTestCase {
-	var sut: YourClass!
+    var sut: YourClass!
 }
 ```
 
@@ -55,16 +55,16 @@ A tests should separate 3 parts:
 
 ```swift
 class YourClassTest: XCTestCase {
-	var sut: YourClass!
+    var sut: YourClass!
 	
-	func testYourMethodShouldDoSomething() {
-		//Given:
+    func testYourMethodShouldDoSomething() {
+        //Given:
 		
-		//When:
-		sut.yourMethod()
+        //When:
+        sut.yourMethod()
 		
-		//Then:
-	}
+        //Then:
+    }
 }
 ```
 
