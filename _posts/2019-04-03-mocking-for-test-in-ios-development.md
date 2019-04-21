@@ -33,7 +33,7 @@ The question should be: *"How to write the code is testable?"*, then **Dependenc
 Let's get started with normal a implementation like below:
 
 ```swift
-func inscreaseCounting() {
+func increaseCounting() {
     let key = "counting-key"
     let count = UserDefaults.standard.integer(forKey: key)
     UserDefaults.standard.set(count + 1, forKey: key)
@@ -60,7 +60,7 @@ class YourClass {
 From now we need to update the method:
 
 ```swift
-func inscreaseCounting() {
+func increaseCounting() {
     let key = "counting-key"
     let count = userDefaults.integer(forKey: key)
     userDefaults.set(count + 1, forKey: key)
@@ -69,7 +69,7 @@ func inscreaseCounting() {
 <br/>
 #### Property Injection
 
-As the same idea with **Constructor Injection**, we still extract the `UserDefaults.standard` as a property with its **standard** value by default and use it in the `inscreaseCounting`, and we no longer to pass it through the contructor.
+As the same idea with **Constructor Injection**, we still extract the `UserDefaults.standard` as a property with its **standard** value by default and use it in the `increaseCounting`, and we no longer to pass it through the contructor.
 
 ```swift
 class YourClass {
@@ -79,10 +79,10 @@ class YourClass {
 <br/>
 #### Method Injection
 
-We directly pass `NSUserDefault` as a parameter in the method `inscreaseCounting`. And in tests we can pass the mock object as a parameter.
+We directly pass `NSUserDefault` as a parameter in the method `increaseCounting`. And in tests we can pass the mock object as a parameter.
 
 ```swift
-func inscreaseCounting(userDefaults: UserDefaults) {
+func increaseCounting(userDefaults: UserDefaults) {
     let key = "counting-key"
     let count = userDefaults.integer(forKey: key)
     userDefaults.set(count + 1, forKey: key)
@@ -146,7 +146,7 @@ We'll use **Property Injection** for this e.g.
 class YourClass {
     var userDefaults: UserDefaultsProtocol = UserDefaults.standard
 
-    func inscreaseCounting() {
+    func increaseCounting() {
         let key = "counting-key"
         let count = userDefaults.integer(forKey: key)
         userDefaults.set(count + 1, forKey: key)
@@ -183,7 +183,7 @@ class TestYourClass: XCTestCase {
     var sut: YourClass!
     var userDefaults: MockUserDefaultsProtocol!
 	
-    func testInscreaseCountingShouldIncreaseValueBy1() {
+    func testincreaseCountingShouldIncreaseValueBy1() {
         //Given:
         sut = YourClass()
         userDefaults = MockUserDefaultsProtocol()
@@ -191,7 +191,7 @@ class TestYourClass: XCTestCase {
         sut.userDefaults = userDefaults
 		
         //When:
-        sut.inscreaseCounting()
+        sut.increaseCounting()
         
         //Then:
         XCTAssertEqual(userDefaults.integerKey, "counting-key")
@@ -242,7 +242,7 @@ class TestYourClass: XCTestCase {
     var sut: YourClass!
     var userDefaults: MockUserDefaults!
 	
-    func testInscreaseCountingShouldIncreaseValueBy1() {
+    func testincreaseCountingShouldIncreaseValueBy1() {
         //Given:
         sut = YourClass()
         userDefaults = MockUserDefaults()
@@ -250,7 +250,7 @@ class TestYourClass: XCTestCase {
         sut.userDefaults = userDefaults
 		
         //When:
-        sut.inscreaseCounting()
+        sut.increaseCounting()
 		
         //Then:
         XCTAssertEqual(userDefaults.integerKey, "counting-key")
