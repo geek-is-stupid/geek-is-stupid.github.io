@@ -69,7 +69,7 @@ func increaseCounting() {
 <br/>
 #### Property Injection
 
-As the same idea with **Constructor Injection**, we still extract the `UserDefaults.standard` as a property with its **standard** value by default and use it in the `increaseCounting`, and we no longer to pass it through the contructor.
+As the same idea with **Constructor Injection**, we still extract the `UserDefaults.standard` as a property with its **standard** value by default and use it in the `increaseCounting`, and we no longer to pass it through the constructor.
 
 ```swift
 class YourClass {
