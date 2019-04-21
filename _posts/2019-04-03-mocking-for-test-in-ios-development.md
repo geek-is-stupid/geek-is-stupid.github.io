@@ -26,6 +26,8 @@ The question should be: *"How to write the code is testable?"*, then **Dependenc
 
 ### Dependency Injection 💉 (DI)
 
+![di](https://user-images.githubusercontent.com/6329656/56467821-08d64e80-644e-11e9-8260-712ff324eb1d.png)
+
 ***Dependency Injection*** is passing dependency to other objects or framework and it makes testing easier.
 
 Let's get started with normal a implementation like below:
