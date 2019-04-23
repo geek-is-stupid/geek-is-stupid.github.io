@@ -262,7 +262,7 @@ class TestYourClass: XCTestCase {
 ⚠️ **Not recommended!!!**
 
 - The mock still has a real class underneath, it means this possible triggers the real implementation during the test as we won't expect 😬 
-- This mocks might leak to **Partial Mocks 🤯** which is the **`sut`** and the **dependency** are the same. Half of real, half of fake seems it's not a good idea (expect we have to deal with legacy code).
+- This mocks might lead to **Partial Mocks 🤯** which is the **`sut`** and the **dependency** are the same. Half of real, half of fake seems it's not a good idea (expect we have to deal with legacy code).
 
 <br/>
 **Where to go from here?**
