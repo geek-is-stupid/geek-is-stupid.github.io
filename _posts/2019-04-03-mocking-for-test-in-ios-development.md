@@ -183,7 +183,7 @@ class TestYourClass: XCTestCase {
     var sut: YourClass!
     var userDefaults: MockUserDefaultsProtocol!
 	
-    func testincreaseCountingShouldIncreaseValueBy1() {
+    func testIncreaseCountingShouldIncreaseValueBy1() {
         //Given:
         sut = YourClass()
         userDefaults = MockUserDefaultsProtocol()
@@ -242,7 +242,7 @@ class TestYourClass: XCTestCase {
     var sut: YourClass!
     var userDefaults: MockUserDefaults!
 	
-    func testincreaseCountingShouldIncreaseValueBy1() {
+    func testIncreaseCountingShouldIncreaseValueBy1() {
         //Given:
         sut = YourClass()
         userDefaults = MockUserDefaults()
