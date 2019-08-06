@@ -11,7 +11,7 @@ Many and many articles were written to gave you some tricks & tips to improve it
 
 Someday I go through this WWDC video [Optimizing App Startup Time](https://developer.apple.com/videos/play/wwdc2016/406/) and I try to apply to use `MACH-O` with `staticlib` instead of dynamic frameworks for all my 3rd-party.
 
-My project is using CocoaPods to manages all of libraries. And luckily it supports us to use `staticlib` for any frameworks 👍
+My project is using CocoaPods to manages all of libraries. And luckily it supports us to use `staticlib` for any frameworks 👍 [http://blog.cocoapods.org/CocoaPods-1.5.0](http://blog.cocoapods.org/CocoaPods-1.5.0/)
 
 
 # Pre-main Time - `DYLD_PRINT_STATISTICS`
