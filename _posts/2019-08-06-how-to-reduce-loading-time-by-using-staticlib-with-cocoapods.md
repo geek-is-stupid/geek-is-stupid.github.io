@@ -109,7 +109,7 @@ It will trigger `install_framework` for every targets when you do build your pro
 So my idea is to prevent this install for all converted libraries from `Podfile`.
 
 
-# Podfile
+# Integrate with Podfile
 
 I wrote this [gist](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658), it automatically convert your sepecific libbraries to `staticlib` and prevent `install_framework` that library from `Pods-YouAppName-frameworks.sh` 
 
