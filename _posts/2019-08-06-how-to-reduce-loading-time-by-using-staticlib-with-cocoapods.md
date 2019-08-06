@@ -78,7 +78,7 @@ To here you are almost done the improvements, but there is a problem when you do
 
 # Found an unexpected Mach-O header code: 0x72613c21
 
-When **Archived** and you'll get this message `Found an unexpected Mach-O header code: 0x72613c21` when try to **Validate** the build from **Organizer**
+When **Archived** and you'll get this message `Found an unexpected Mach-O header code: 0x72613c21` when try to **Validate App** the build from **Organizer**
 
 <img width="734" alt="Screen Shot 2019-08-06 at 2 02 48 PM" src="https://user-images.githubusercontent.com/6329656/62518077-e4627e80-b852-11e9-9d69-3861d22e8cc0.png">
 
