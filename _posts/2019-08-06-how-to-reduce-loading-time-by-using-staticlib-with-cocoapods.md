@@ -111,9 +111,9 @@ So my idea is to prevent this install for all converted libraries from `Podfile`
 
 # Integrate with Podfile
 
-I wrote this [gist](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658), it automatically convert your sepecific libbraries to `staticlib` and prevent `install_framework` that library from `Pods-YouAppName-frameworks.sh` 
+I wrote this script [improve_pre_main_time_loading.rb](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658), it automatically convert your sepecific libbraries to `staticlib` and prevent `install_framework` that library from `Pods-YouAppName-frameworks.sh` 
 
-You can [download](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658) that gist and add it in `post_install` from your **Podfile**:
+You can [download](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658) that [improve_pre_main_time_loading.rb](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658) and add it in `post_install` from your **Podfile**:
 
 ```
 post_install do |installer|  
