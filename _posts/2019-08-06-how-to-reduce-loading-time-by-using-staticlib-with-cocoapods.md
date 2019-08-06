@@ -5,20 +5,25 @@ categories: ios
 tags: swift objective-c objc ios dynamic loading time staticlib cocoapods DYLD_PRINT_STATISTICS 
 fullview: true
 ---
-In many of us, we're iOS developers who are to desire reduce your loading time.
+In many of us, we're iOS developers who are desire to reduce your app's loading time.
+
 Many and many articles were written to gave you some tricks & tips to improve it, you can check it here [Slow App Startup Times](https://useyourloaf.com/blog/slow-app-startup-times/), 
 
-Someday I go throught this WWDC video [Optimizing App Startup Time](https://developer.apple.com/videos/play/wwdc2016/406/) and I try to apply to use `MACH-O` with `staticlib` instead of dynamic frameworks.
+Someday I go through this WWDC video [Optimizing App Startup Time](https://developer.apple.com/videos/play/wwdc2016/406/) and I try to apply to use `MACH-O` with `staticlib` instead of dynamic frameworks for all my 3rd-party.
 
-My project is using CocoaPods to manages all of libraries. And luckily it supports us to use `staticlib` for every frameworks 👍
+My project is using CocoaPods to manages all of libraries. And luckily it supports us to use `staticlib` for any frameworks 👍
+
 
 # Pre-main Time - `DYLD_PRINT_STATISTICS`
 
-To start improve the app, we might to have some metrics to compare before and after the improvement.
+To start improve your app, we might to have some metrics to compare before and after the improvements.
 
-Apple has added some logs [Logging Dynamic Loader Events](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/LoggingDynamicLoaderEvents.html) and the one we can use is:
-`DYLD_PRINT_STATISTICS`
+Apple has added some logs [Logging Dynamic Loader Events](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/LoggingDynamicLoaderEvents.html) to record the timing when user starts launch your app!
+
+We can use one of them: `DYLD_PRINT_STATISTICS`
 > Logs statistical information on an application’s launch process, such as how many images were loaded, when the application finishes launching.
+
+Let's add it into your app's scheme:
 
 <img width="880" alt="Screen Shot 2019-08-06 at 1 29 16 PM" src="https://user-images.githubusercontent.com/6329656/62516115-55ebfe00-b84e-11e9-9f82-6f618dcb0e61.png">
 
@@ -106,7 +111,7 @@ So my idea is to prevent this install for all converted libraries from `Podfile`
 
 # Podfile
 
-I wrote this [gist](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658), please download it and add it into `post_install` within your **Podfile**:
+I wrote this [gist](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658), you can download it and use it from `post_install` within your **Podfile**:
 
 ```
 post_install do |installer|  
@@ -117,9 +122,10 @@ post_install do |installer|
 end
 ```
 
-With the example above, I sepecific which library will use as `staticlib`.
+With the example above, I sepecific which library will use as `staticlib`:
+`supported_staticlib_pods = ['Cartography']` means I only converted `Cartography` to `staticlib`, you can add more libs here
 
-After this step, you can do `pod install` again and do **Archive**
+After this step, you can do `pod install` again and do **Archive** ✅
 
 
 # Results
