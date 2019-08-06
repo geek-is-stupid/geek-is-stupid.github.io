@@ -132,7 +132,7 @@ After this step, you can do `pod install` again and do **Archive** ✅
 
 # Results
 
-- iPhone6s
+- iPhone 6s
 - iOS 12.0.1
 - There are 65 dependencies from the Podfile and 93 total pods installed.
 - Converted 50 dependencies to use `staticlib`
