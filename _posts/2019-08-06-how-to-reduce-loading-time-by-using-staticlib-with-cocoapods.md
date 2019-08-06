@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to reduce loading time by using `staticlib` with CocoaPods"
+title: "How to reduce loading time by using staticlib with CocoaPods"
 categories: ios
 tags: swift objective-c objc ios dynamic loading time staticlib cocoapods DYLD_PRINT_STATISTICS 
 fullview: true
@@ -67,6 +67,7 @@ Total pre-main time: 993.25 milliseconds (100.0%)
 
 
 To here you are almost done the improvements, but there is a problem when you do **Archive**
+
 <img width="251" alt="Screen Shot 2019-08-06 at 1 51 52 PM" src="https://user-images.githubusercontent.com/6329656/62517327-65b91180-b851-11e9-9aeb-cb1bc4d3de50.png">
 
 
@@ -90,9 +91,9 @@ So I guess this due to CocoaPods is treated all those converted `staticlib` libr
 
 `"${PODS_ROOT}/Target Support Files/Pods-ShopBack/Pods-ShopBack-frameworks.sh"`
 
-So I digged in to this `Script Phase`, and find out that after you run `pod install`, it will automatically added that script to your app's `Build Phases`.
+So I digged into this `Script Phase`, and find out that after you run `pod install`, it will automatically added that script to your app's `Build Phases`.
 
-Let's what is inside the script:
+Let's check what is inside the script:
 
 ```
 install_framework "${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework"
@@ -116,7 +117,7 @@ post_install do |installer|
 end
 ```
 
-I the example I sepecific which library will use as `staticlib`.
+With the example above, I sepecific which library will use as `staticlib`.
 
 After this step, you can do `pod install` again and do **Archive**
 
