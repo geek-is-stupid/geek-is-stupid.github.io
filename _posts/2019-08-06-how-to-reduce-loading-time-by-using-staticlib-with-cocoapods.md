@@ -94,7 +94,7 @@ So I guess this due to CocoaPods is treated all those converted `staticlib` libr
 
 # [CP] Embed Pods Frameworks
 
-`"${PODS_ROOT}/Target Support Files/Pods-ShopBack/Pods-ShopBack-frameworks.sh"`
+`"${PODS_ROOT}/Target Support Files/Pods-YouAppName/Pods-YouAppName-frameworks.sh"`
 
 So I digged into this `Script Phase`, and find out that after you run `pod install`, it will automatically added that script to your app's `Build Phases`.
 
@@ -111,7 +111,7 @@ So my idea is to prevent this install for all converted libraries from `Podfile`
 
 # Podfile
 
-I wrote this [gist](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658), it automatically convert your sepecific libbraries to `staticlib` and prevent `install_framework` that library from `Pods-ShopBack-frameworks.sh` 
+I wrote this [gist](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658), it automatically convert your sepecific libbraries to `staticlib` and prevent `install_framework` that library from `Pods-YouAppName-frameworks.sh` 
 
 You can [download](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658) that gist and add it in `post_install` from your **Podfile**:
 
