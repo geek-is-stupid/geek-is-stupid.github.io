@@ -139,4 +139,6 @@ After this step, you can do `pod install` again and do **Archive** ✅
 
 <img width="758" alt="Screen Shot 2019-08-06 at 2 25 40 PM" src="https://user-images.githubusercontent.com/6329656/62519789-7c159c00-b856-11e9-9210-18ef31a01663.png">
 
+### [`improve_pre_main_time_loading.rb`](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658)
 
+<script src="https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658.js"></script>
