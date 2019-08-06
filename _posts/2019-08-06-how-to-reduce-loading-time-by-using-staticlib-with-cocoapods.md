@@ -111,7 +111,9 @@ So my idea is to prevent this install for all converted libraries from `Podfile`
 
 # Podfile
 
-I wrote this [gist](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658), you can download it and use it from `post_install` within your **Podfile**:
+I wrote this [gist](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658), it automatically convert your sepecific libbraries to `staticlib` and prevent `install_framework` that library from `Pods-ShopBack-frameworks.sh` 
+
+You can [download](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658) that gist and add it in `post_install` from your **Podfile**:
 
 ```
 post_install do |installer|  
@@ -122,7 +124,7 @@ post_install do |installer|
 end
 ```
 
-With the example above, I sepecific which library will use as `staticlib`:
+I sepecific which library will use as `staticlib`:
 `supported_staticlib_pods = ['Cartography']` means I only converted `Cartography` to `staticlib`, you can add more libs here
 
 After this step, you can do `pod install` again and do **Archive** ✅
