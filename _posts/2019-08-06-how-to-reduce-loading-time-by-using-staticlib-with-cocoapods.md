@@ -118,11 +118,10 @@ I wrote this script [improve_pre_main_time_loading.rb](https://gist.github.com/l
 You can [download](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658) that [improve_pre_main_time_loading.rb](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658) and add it in `post_install` from your **Podfile**:
 
 ```
-post_install do |installer|  
-    # Improve Pre-main Time
-    require File.expand_path(File.dirname(__FILE__) + "/improve-pre-main-time-loading.rb")
-    supported_staticlib_pods = ['Cartography']
-    improve_pre_main_time_loading(installer, supported_staticlib_pods, "YourAppName")
+post_install do |installer|      
+    # Improve Pre-main Time by using static instead of dynamic libs
+      require File.expand_path(File.dirname(__FILE__) + "/scripts/improve-pre-main-time-loading.rb")
+      improve_pre_main_time_loading(installer, "YourAppName")
 end
 ```
 
