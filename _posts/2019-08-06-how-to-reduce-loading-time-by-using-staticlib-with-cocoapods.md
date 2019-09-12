@@ -70,6 +70,8 @@ Total pre-main time: 993.25 milliseconds (100.0%)
                    YourAppName : 192.47 milliseconds (19.3%)
 ```
 
+### => It's reduced from **2.0** seconds to **993.25** milliseconds, the cold-start time goes down 46.625%
+
 
 To here you are almost done the improvements, but there is a problem when you do **Archive**
 
