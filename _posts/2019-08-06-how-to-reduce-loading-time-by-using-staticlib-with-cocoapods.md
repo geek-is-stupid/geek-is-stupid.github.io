@@ -129,6 +129,10 @@ I sepecific which library will use as `staticlib`:
 
 After this step, you can do `pod install` again and do **Archive** ✅
 
+### [`improve_pre_main_time_loading.rb`](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658)
+
+<script src="https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658.js"></script>
+
 
 # Results
 
@@ -139,6 +143,10 @@ After this step, you can do `pod install` again and do **Archive** ✅
 
 <img width="758" alt="Screen Shot 2019-08-06 at 2 25 40 PM" src="https://user-images.githubusercontent.com/6329656/62519789-7c159c00-b856-11e9-9210-18ef31a01663.png">
 
-### [`improve_pre_main_time_loading.rb`](https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658)
+# Conclusion:
+- Any libs are contained resources are not supported 
 
-<script src="https://gist.github.com/levantAJ/b8eef8121573085d130fde46442e9658.js"></script>
+- Currently, Xcode does not support generating Test Coverage when we're using static-libs [https://openradar.appspot.com/41024315](https://openradar.appspot.com/41024315), so we have a workaround that we use diblib for test, so I make a script before running unit-test: ruby **use_dylibs.rb**
+
+### [`use_dylibs.rb`](https://gist.github.com/levantAJ/f467be44b88769953d3fd8fcb50bbfcf)
+<script src="https://gist.github.com/levantAJ/f467be44b88769953d3fd8fcb50bbfcf.js"></script>
