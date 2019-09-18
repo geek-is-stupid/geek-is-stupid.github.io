@@ -147,7 +147,8 @@ After this step, you can do `pod install` again and do **Archive** ✅
 # Conclusion:
 - Any libs are contained resources are not supported 
 
-- Currently, Xcode does not support generating Test Coverage when we're using static-libs [https://openradar.appspot.com/41024315](https://openradar.appspot.com/41024315), so we have a workaround that we use diblib for test, so I make a script before running unit-test: ruby **use_dylibs.rb**
+- Currently, when we do optimize `config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'`, from time to time Xcode 10 isn't able to analize Test Coverage when we're using static-libs [https://openradar.appspot.com/41024315](https://openradar.appspot.com/41024315)
+- Convert back to dynamic library: **ruby use_dylibs.rb**
 
 ### [`use_dylibs.rb`](https://gist.github.com/levantAJ/f467be44b88769953d3fd8fcb50bbfcf)
 <script src="https://gist.github.com/levantAJ/f467be44b88769953d3fd8fcb50bbfcf.js"></script>
