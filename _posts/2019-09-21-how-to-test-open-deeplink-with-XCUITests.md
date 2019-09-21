@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Open deeplink with XCUITest"
+title: "Open deeplink in iOS UI Test"
 categories: ios
 tags: swift objective-c objc ios ui test open deeplink url universal link
 fullview: true
