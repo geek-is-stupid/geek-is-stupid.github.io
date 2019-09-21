@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to get iOS app scheme URL?"
+title: "How to get an iOS application's Scheme URL?"
 categories: ios
 tags: swift objective-c objc ios scheme url extract iMazing
 fullview: true
