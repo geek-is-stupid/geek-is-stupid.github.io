@@ -70,81 +70,81 @@ Let's started:
 
 ```
 extension XCTestCase {
-	func openDeepLink(urlString: String, assertion: (XCUIApplication) -> Void) {
-		//1. Create Contacts via its bundle id
-		let contactsApp = XCUIApplication(bundleIdentifier: "com.apple.MobileAddressBook")
+    func openDeepLink(urlString: String, assertion: (XCUIApplication) -> Void) {
+        //1. Create Contacts via its bundle id
+        let contactsApp = XCUIApplication(bundleIdentifier: "com.apple.MobileAddressBook")
 
-		// 2. Launch it in the simulator
-		contactsApp.launch()
+        // 2. Launch it in the simulator
+        contactsApp.launch()
 
-		// 3. Get default contact with named: `Kate Bell`
-		let kateBellCell = contactsApp.cells.staticTexts["Kate Bell"]
+        // 3. Get default contact with named: `Kate Bell`
+        let kateBellCell = contactsApp.cells.staticTexts["Kate Bell"]
 
-		// 4. Open the contact
-		if kateBellCell.waitForExistence(timeout: ShortTimeout) {
-			kateBellCell.tap()
-		}
+        // 4. Open the contact
+        if kateBellCell.waitForExistence(timeout: ShortTimeout) {
+            kateBellCell.tap()
+        }
 
-		// 5. Check wheather the URL is added or not
-		let urlCell = contactsApp.tables.cells.element(contains: urlString)
-		if urlCell.waitForExistence(timeout: ShortTimeout) {
-			// 6. If it's added, open the URL instead of add to the contact
-			urlCell.tap() 
-		} else {
-			// 7. If the URL is not added, try to edit the contact
-			contactsApp.buttons["Edit"].tap()
+        // 5. Check wheather the URL is added or not
+        let urlCell = contactsApp.tables.cells.element(contains: urlString)
+        if urlCell.waitForExistence(timeout: ShortTimeout) {
+            // 6. If it's added, open the URL instead of add to the contact
+            urlCell.tap() 
+        } else {
+            // 7. If the URL is not added, try to edit the contact
+            contactsApp.buttons["Edit"].tap()
 
-			// 8. Add the URL to contact
-			let editTableView = contactsApp.tables.firstMatch
-			XCTAssert(editTableView.waitForExistence(timeout: 3), "No 'Edit' table view found!")
-			editTableView.swipeUp()
-			let addURLCell = editTableView.cells.element(contains: "add url")
-			XCTAssert(addURLCell.waitForExistence(timeout: 3), "No 'add url' cell found!")
-			addURLCell.tap()
-			let urlTextField = editTableView.cells.textFields["URL"]
-			XCTAssert(urlTextField.waitForExistence(timeout: 3), "No 'URL' text field found!")
-			urlTextField.tap()
-			urlTextField.typeText(urlString)
-			editTableView.swipeDown()
+            // 8. Add the URL to contact
+            let editTableView = contactsApp.tables.firstMatch
+            XCTAssert(editTableView.waitForExistence(timeout: 3), "No 'Edit' table view found!")
+            editTableView.swipeUp()
+            let addURLCell = editTableView.cells.element(contains: "add url")
+            XCTAssert(addURLCell.waitForExistence(timeout: 3), "No 'add url' cell found!")
+            addURLCell.tap()
+            let urlTextField = editTableView.cells.textFields["URL"]
+            XCTAssert(urlTextField.waitForExistence(timeout: 3), "No 'URL' text field found!")
+            urlTextField.tap()
+            urlTextField.typeText(urlString)
+            editTableView.swipeDown()
 
-			// 9. Save the editing
-			contactsApp.buttons["Done"].tap()
+            // 9. Save the editing
+            contactsApp.buttons["Done"].tap()
 
-			// 10. Try to open the URL by press on a cell which is added the URL 
-			let urlCell = contactsApp.tables.cells.element(contains: urlString)
-			XCTAssert(urlCell.waitForExistence(timeout: 3), "No '\(urlString)' cell found!")
-			urlCell.tap()
-		}
+            // 10. Try to open the URL by press on a cell which is added the URL 
+            let urlCell = contactsApp.tables.cells.element(contains: urlString)
+            XCTAssert(urlCell.waitForExistence(timeout: 3), "No '\(urlString)' cell found!")
+            urlCell.tap()
+        }
 
-		// 11. Handle an alert that iOS presented to ask user wheather allows to Open our app or not
-		let alertHandler = addUIInterruptionMonitor(withDescription: "\"Contacts\" wants to open \"YourApp\"") { alert -> Bool in
-			alert.buttons["Open"].tap()
-			return true
-		}
-		XCUIApplication().tap()
+        // 11. Handle an alert that iOS presented to ask user wheather allows to Open our app or not
+        let alertHandler = addUIInterruptionMonitor(withDescription: "\"Contacts\" wants to open \"YourApp\"") { alert -> Bool in
+            alert.buttons["Open"].tap()
+            return true
+        }
+        XCUIApplication().tap()
 
-		// 12. Waiting for iOS launches our app
-		sleep(3)
+        // 12. Waiting for iOS launches our app
+        sleep(3)
 
-		// 13. Call assertion block for testing purpose
-		assertion(XCUIApplication())
+        // 13. Call assertion block for testing purpose
+        assertion(XCUIApplication())
 
-		// 14. Clear up the URL was added to **Contacts**
-		contactsApp.activate()
-		contactsApp.buttonTap(name: "Edit")
-		let editTableView = contactsApp.tables.firstMatch
-		XCTAssert(editTableView.waitForExistence(timeout: 3), "No 'Edit' table view found!")
-		editTableView.swipeUp()
-		let urlTextField = editTableView.cells.textFields[urlString].firstMatch
-		XCTAssert(urlTextField.waitForExistence(timeout: 3), "No '\(urlString)' text field found!")
-		urlTextField.tap()
-		urlTextField.buttons["Clear text"].tap()
-		contactsApp.buttons["Done"].tap()
-		contactsApp.terminate()
+        // 14. Clear up the URL was added to **Contacts**
+        contactsApp.activate()
+        contactsApp.buttonTap(name: "Edit")
+        let editTableView = contactsApp.tables.firstMatch
+        XCTAssert(editTableView.waitForExistence(timeout: 3), "No 'Edit' table view found!")
+        editTableView.swipeUp()
+        let urlTextField = editTableView.cells.textFields[urlString].firstMatch
+        XCTAssert(urlTextField.waitForExistence(timeout: 3), "No '\(urlString)' text field found!")
+        urlTextField.tap()
+        urlTextField.buttons["Clear text"].tap()
+        contactsApp.buttons["Done"].tap()
+        contactsApp.terminate()
 
-		// 15. Remove the alert monitor
-		removeUIInterruptionMonitor(alertHandler)
-	}
+        // 15. Remove the alert monitor
+        removeUIInterruptionMonitor(alertHandler)
+    }
 }
 ```
 
@@ -152,12 +152,12 @@ extension XCTestCase {
 
 ```
 func testOpenDeepLink() {
-	let urls = ["https://geek-is-stupid.github.io"]
-	for url in urls {
-		openDeepLink(urlString: url) { app in
-		// Your assertions here
-		}
-	}
+    let urls = ["https://geek-is-stupid.github.io"]
+    for url in urls {
+        openDeepLink(urlString: url) { app in
+        // Your assertions here
+        }
+    }
 }
 ```
 
