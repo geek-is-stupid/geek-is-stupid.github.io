@@ -16,6 +16,7 @@ How to open your iOS app via an URL while you're in UI testing on a simulator?**
 All you need is [XCUIApplication](https://developer.apple.com/documentation/xctest/xcuiapplication), it allows you to launch an application based on its bundle identifier.
 
 Let's think about which iOS applications that we have on a simulator, all of them are from Apple, and here are list of their bundle id:
+
 | App name | Bundle ID |
 |----------|-----------|
 | Activity | com.apple.Fitness |
