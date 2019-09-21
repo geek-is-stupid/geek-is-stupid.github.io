@@ -68,7 +68,7 @@ From those bundle id, and there is default application on the simulator that all
 
 Let's started:
 
-```
+```swift
 extension XCTestCase {
   func openDeepLink(urlString: String, assertion: (XCUIApplication) -> Void) {
     //1. Create Contacts via its bundle id
@@ -148,9 +148,10 @@ extension XCTestCase {
 }
 ```
 
-**How to use it**
 
-```
+**Add it into the test method**
+
+```swift
 func testOpenDeepLink() {
   let urls = ["https://geek-is-stupid.github.io"]
   for url in urls {
