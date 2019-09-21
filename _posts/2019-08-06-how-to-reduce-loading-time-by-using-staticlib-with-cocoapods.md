@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to reduce loading time by using 'staticlib' with CocoaPods"
+title: "Reduce iOS app's loading time by using 'staticlib' with CocoaPods"
 categories: ios
 tags: swift objective-c objc ios dylib rebase/binding initializer slowest staticlib cocoapods DYLD_PRINT_STATISTICS pre-main time 0x72613c21 improve loading cold-start cocoapods
 fullview: true
