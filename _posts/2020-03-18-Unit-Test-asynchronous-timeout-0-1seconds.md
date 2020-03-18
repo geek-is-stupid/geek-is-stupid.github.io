@@ -5,7 +5,8 @@ categories: ios
 tags: swift objective-c objc ios Unit test asynchronous time-out expectation
 fullview: true
 ---
-## 0.1 over 1 or 3
+## 0.1 over 3 seconds!
+
 
 ### Unit! Not Integration.
 Just remind that we’re writing a UNIT test, which means test within a method, a small piece of code, we’re not trying to make an integration test to test multiple levels of code so it should not take that long.
