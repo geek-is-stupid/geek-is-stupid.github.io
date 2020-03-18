@@ -22,14 +22,14 @@ Imaging you setup the time-out for 3 seconds, and for some reason, it’s failed
 Why don’t we think to make the test to raise the result instantly to save a lot of time for us instead of increasing the time-out?
 
 ### [R for Repeatable](https://pragprog.com/magazines/2012-01/unit-tests-are-first)
-People start telling me *“If I make it as 3 seconds then the test more stable”*, or *“if the time-out is longer then it will make the percentage of successful is higher, cover 90%”*. 
+People start telling me *“If I make it as 3 seconds then the test more stable”*, or *“if the time-out is longer then it will make the percentage of successful is higher, cover 99%”*. 
 
 Then why don’t we make the time-out as 10 or 30 seconds or forever, then the test never fails 🤔
 
-So as your thoughts, it means the time-out decided a test will be succeeded or failed? No, it shouldn't be, a time-out is a way that allow us to use to execute an asynchronous test, it should not decide the result of a unit-test. 
+So as your thoughts, it means the time-out decided a test will be succeeded or failed? No, it shouldn't be, a time-out is a way that allow us to execute an asynchronous test, it should not decide the result of a unit-test. 
 
 ### [Mocking](https://geek-is-stupid.github.io/2019-04-03-mocking-for-test-in-ios-development/)
-I have got some ideas like: *“My method integrated with a lot of dependencies so I am afraid of 0.1 is not enough to execute”*.
+I have got some ideas like: *“My method integrated with a lot of dependencies so I am afraid of 0.1 is not enough to execute!”*.
 
 We're giving wrong way to mock or the dependencies are not fully mocking, then we adding a long time-out to justify that due to a lot of dependencies.
 
