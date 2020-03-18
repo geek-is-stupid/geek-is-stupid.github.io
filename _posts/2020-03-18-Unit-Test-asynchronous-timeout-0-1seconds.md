@@ -7,7 +7,7 @@ fullview: true
 ---
 ## 0.1 over 1 or 3
 
-### UNIT, not Integration
+### Unit! Not Integration.
 Just remind that we’re writing a UNIT test, which means test within a method, a small piece of code, we’re not trying to make an integration test to test multiple levels of code so it should not take that long.
 
 If your test method is executed more than 0.1 seconds then your implementation has harmed the performance 😛
@@ -42,7 +42,7 @@ Some one also telling *“It due to the CI machine, 0.1 is too short to let the 
 
 🤔 0.1 or 3 are short for us, short for human, but I don't think it's a short period for a machine nowaday, to execute a “good” unit-test I don't think it takes up to 0.1! 
 
-### Flaky Test
+### Flaky Tests
 None of us want a flaky test, because it takes a lot of effort to maintain, the short time-out (0.1) can help us to indicate which test can be a flaky test and we can apply DI to mock as much as possible to avoid it! 
 
 
