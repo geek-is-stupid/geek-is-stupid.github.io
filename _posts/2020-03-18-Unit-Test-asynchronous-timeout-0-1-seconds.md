@@ -48,7 +48,7 @@ Some one also telling *“It due to the CI machine, 0.1 is too short to let the 
 None of us want a flaky test, because it takes a lot of effort to maintain, the short time-out (0.1) can help us to indicate which test can be a flaky test and we can apply DI to mock as much as possible to avoid it! 
 
 
-### The chicken or the egg?
+### "The chicken or the egg?"
 If someone asking you why it should be 0.1 not 3. Then you ask them back why it's 3 not 0.1 😛
 
 The question be like *"Which came first, the chicken or the egg?"* 😉
