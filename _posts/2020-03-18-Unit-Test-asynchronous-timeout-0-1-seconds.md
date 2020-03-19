@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Unit Test asynchronous time-out - 0.1 seconds"
+title: "0.1 over 3 seconds for Unit Test asynchronous time-out"
 categories: ios
 tags: swift objective-c objc ios Unit test asynchronous time-out expectation
 fullview: true
