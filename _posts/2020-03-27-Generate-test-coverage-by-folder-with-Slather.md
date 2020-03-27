@@ -84,7 +84,7 @@ else
 fi
 ```
 
-Save the script as a file called test-coverage.sh the same level as Pods, YourProjectTests, …
+Save the script as a file called **test-coverage.sh** the same level as **Pods**, **YourProjectTests**, …
 
 ## Executing
 
