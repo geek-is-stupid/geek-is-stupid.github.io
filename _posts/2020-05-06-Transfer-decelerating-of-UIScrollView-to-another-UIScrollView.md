@@ -6,7 +6,6 @@ tags: swift ios UIScrollView gesture decelerate
 fullview: true
 ---
 
-## Context
 
 <img width="499" alt="Screen Shot 2020-05-06 at 17 37 05" src="https://user-images.githubusercontent.com/6329656/81168337-01ce9f80-8fc1-11ea-9816-70a55cb69f29.png">
 
