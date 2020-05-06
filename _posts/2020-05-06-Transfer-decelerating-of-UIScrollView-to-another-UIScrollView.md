@@ -59,7 +59,6 @@ When the **Nested UIScrollView** got the **outerDeceleration**, we can continue 
 
 ```swift
     nestedScrollingDecelerator.decelerate(by: outerDeceleration)
-
 ```
 
 ### Upward Decelerating: Outer UIScrollView <== Nested UIScrollView
@@ -100,7 +99,6 @@ When the **Outer UIScrollView** got the **nestedDeceleration**, we can continue 
 
 ```swift
     souterScrollingDecelerator.decelerate(by: nestedDeceleration)
-
 ```
 
 ## Ref
