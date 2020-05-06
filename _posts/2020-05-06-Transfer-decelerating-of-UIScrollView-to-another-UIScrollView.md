@@ -28,19 +28,19 @@ I create a class called **[ScrollingDecelerator](https://gist.github.com/levantA
 For the **Outer UIScrollView**:
 
 ```
-var outerDeceleration: ScrollingDeceleration?
+    var outerDeceleration: ScrollingDeceleration?
 
-func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-    outerDeceleration = ScrollingDeceleration(velocity: velocity, decelerationRate: scrollView.decelerationRate)
-}
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        outerDeceleration = ScrollingDeceleration(velocity: velocity, decelerationRate: scrollView.decelerationRate)
+    }
 
-func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-    outerDeceleration = nil
-}
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        outerDeceleration = nil
+    }
 
-func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    outerDeceleration = nil
-}
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        outerDeceleration = nil
+    }
 ```
 
 In some place where you need to pass the **outerDeceleration** into the **Nested UIScrollView**
@@ -49,17 +49,17 @@ In some place where you need to pass the **outerDeceleration** into the **Nested
 Continue downward decelerating for the **Nested UIScrollView**:
 
 ```swift
-let nestedScrollingDecelerator = ScrollingDecelerator(scrollView: nestedScrollView)
+    let nestedScrollingDecelerator = ScrollingDecelerator(scrollView: nestedScrollView)
 
-func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    nestedScrollingDecelerator.invalidateIfNeeded()
-}
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        nestedScrollingDecelerator.invalidateIfNeeded()
+    }
 ```
 
 When the **Nested UIScrollView** got the **outerDeceleration**, we can continue the downward decelerating by:
 
 ```swift
-nestedScrollingDecelerator.decelerate(by: outerDeceleration)
+    nestedScrollingDecelerator.decelerate(by: outerDeceleration)
 
 ```
 
@@ -69,19 +69,19 @@ For the **Nested UIScrollView**: We constructed the deceleration, and send it ou
  
 
 ```
-var nestedDeceleration: ScrollingDeceleration?
+    var nestedDeceleration: ScrollingDeceleration?
 
-func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-    nestedDeceleration = ScrollingDeceleration(velocity: velocity, decelerationRate: scrollView.decelerationRate)
-}
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        nestedDeceleration = ScrollingDeceleration(velocity: velocity, decelerationRate: scrollView.decelerationRate)
+    }
 
-func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-    nestedDeceleration = nil
-}
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        nestedDeceleration = nil
+    }
 
-func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    nestedDeceleration = nil
-}
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        nestedDeceleration = nil
+    }
 ```
 
 And pass the **nestedDeceleration** out to the **Outer UIScrollView**
@@ -90,17 +90,17 @@ And pass the **nestedDeceleration** out to the **Outer UIScrollView**
 And for the **Outer UIScrollView**:
 
 ```swift
-let outerScrollingDecelerator = ScrollingDecelerator(scrollView: nestedScrollView)
+    let outerScrollingDecelerator = ScrollingDecelerator(scrollView: nestedScrollView)
 
-func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    outerScrollingDecelerator.invalidateIfNeeded()
-}
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        outerScrollingDecelerator.invalidateIfNeeded()
+    }
 ```
 
 When the **Outer UIScrollView** got the **nestedDeceleration**, we can continue the upward decelerating by:
 
 ```swift
-outerScrollingDecelerator.decelerate(by: nestedDeceleration)
+    souterScrollingDecelerator.decelerate(by: nestedDeceleration)
 
 ```
 
