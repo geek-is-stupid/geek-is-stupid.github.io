@@ -18,21 +18,20 @@ I was inspired by this nice article about [Deceleration mechanics of UIScrollVie
 
 So this article will show you how to apply it to Outer/Nested UIScrollView 👆
 
-I create a class called **ScrollingDecelerator**, and it will manage the transfering decelerating between outer and nested UIScrollView.
+I create a class called **[ScrollingDecelerator](https://gist.github.com/levantAJ/7860d3053324e4fc20e12d5dd3c51fb1)**, and it will manage the transfering decelerating between outer and nested UIScrollView.
 
-[ScrollingDecelerator](https://gist.github.com/levantAJ/7860d3053324e4fc20e12d5dd3c51fb1)
 
 ## How to use
 
-### To transfer the decelerating from Outer UIScrollView to Nested UIScrollView:
+### Downward Decelerating: Outer UIScrollView ==> Nested UIScrollView
 
-For the Outer UIScrollView:
+For the **Outer UIScrollView**:
 
 ```
 var outerDeceleration: ScrollingDeceleration?
 
 func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-    deceleration = ScrollingDeceleration(velocity: velocity, decelerationRate: scrollView.decelerationRate)
+    outerDeceleration = ScrollingDeceleration(velocity: velocity, decelerationRate: scrollView.decelerationRate)
 }
 
 func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -44,27 +43,71 @@ func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate deceler
 }
 ```
 
+In some place where you need to pass the **outerDeceleration** into the **Nested UIScrollView**
 
-For the Nested UIScrollView:
 
-```
-let scrollingDecelerator = ScrollingDecelerator(scrollView: outerScrollView)
+Continue downward decelerating for the **Nested UIScrollView**:
+
+```swift
+let nestedScrollingDecelerator = ScrollingDecelerator(scrollView: nestedScrollView)
 
 func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    scrollingDecelerator.invalidateIfNeeded()
+    nestedScrollingDecelerator.invalidateIfNeeded()
 }
+```
 
-// The place where to start deceleration from the Outer UIScrollView
+When the **Nested UIScrollView** got the **outerDeceleration**, we can continue the downward decelerating by:
 
-scrollingDecelerator.decelerate(by: outerDeceleration)
+```swift
+nestedScrollingDecelerator.decelerate(by: outerDeceleration)
 
 ```
 
+### Upward Decelerating: Outer UIScrollView <== Nested UIScrollView
 
+For the **Nested UIScrollView**: We constructed the deceleration, and send it out!
+ 
+
+```
+var nestedDeceleration: ScrollingDeceleration?
+
+func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    nestedDeceleration = ScrollingDeceleration(velocity: velocity, decelerationRate: scrollView.decelerationRate)
+}
+
+func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    nestedDeceleration = nil
+}
+
+func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    nestedDeceleration = nil
+}
+```
+
+And pass the **nestedDeceleration** out to the **Outer UIScrollView**
+
+
+And for the **Outer UIScrollView**:
+
+```swift
+let outerScrollingDecelerator = ScrollingDecelerator(scrollView: nestedScrollView)
+
+func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    outerScrollingDecelerator.invalidateIfNeeded()
+}
+```
+
+When the **Outer UIScrollView** got the **nestedDeceleration**, we can continue the upward decelerating by:
+
+```swift
+outerScrollingDecelerator.decelerate(by: nestedDeceleration)
+
+```
 
 ## Ref
 
 - [https://medium.com/@esskeetit/scrolling-mechanics-of-uiscrollview-142adee1142c](https://medium.com/@esskeetit/scrolling-mechanics-of-uiscrollview-142adee1142c)
 - [https://developer.apple.com/videos/play/wwdc2018/803/](https://developer.apple.com/videos/play/wwdc2018/803/)
+- [ScrollingDecelerator.swift](https://gist.github.com/levantAJ/7860d3053324e4fc20e12d5dd3c51fb1)
 
 
