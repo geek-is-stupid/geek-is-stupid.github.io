@@ -26,7 +26,7 @@ I create a class called **[ScrollingDecelerator](https://gist.github.com/levantA
 
 For the **Outer UIScrollView**:
 
-```
+```swift
     var outerDeceleration: ScrollingDeceleration?
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -67,7 +67,7 @@ When the **Nested UIScrollView** got the **outerDeceleration**, we can continue 
 For the **Nested UIScrollView**: We constructed the deceleration, and send it out!
  
 
-```
+```swift
     var nestedDeceleration: ScrollingDeceleration?
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
