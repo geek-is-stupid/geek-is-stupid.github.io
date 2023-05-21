@@ -1,0 +1,104 @@
+---
+layout: default
+title: Universal Link / App Link Validator
+permalink: /tools/universal-link-app-link-validator.html
+---
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="text-center">
+  <h1>Universal Link / App Link Validator</h1>
+  
+  <div style="padding-top:20px;">
+    <input id="validate-url-input" type="url" placeholder="https://example.com" style="width:70%;" pattern="https.?://.*" />
+  </div>
+  
+  <div style="padding-top:20px;align-items:center;text-align:center;justify-content:center;">
+    <input id="validate-button" type="button" title="Validate" value="Validate" onclick="validate();"/>
+    <button id="validate-loading-button" class="buttonload" style="display:none;text-align:center;" disabled>
+        <i class="fa fa-refresh fa-spin"></i> Validating...
+    </button>
+  </div>
+  
+  <div id="validate-result-div" style="padding-top:20px;">
+    <div id="ios-universal-link-status-img" style="display:none;">
+        <img src="/img/success.png" style="width:50px;height:50px;"> The URL is an iOS Universal Link
+    </div>
+    <div id="android-app-link-status-img" style="display:none;">
+        <img src="/img/failed.png" style="width:50px;height:50px;"> The URL is not an Android App Link
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+    function validate() {
+        reset();
+
+        let url = getURL();
+
+        // Validate URL
+        if (url == null) {
+            window.alert("Please input valid URL");
+            return;
+        }
+
+        startLoading();
+
+        // Validate iOS Universal Link
+        validateIOSUniversalLink(url);
+
+        // Validate Android App Link
+        // TODO:
+    }
+
+    function startLoading() {
+        let validateButton = document.getElementById("validate-button")
+        validateButton.style.display = "none";
+
+        let loadingButton = document.getElementById("validate-loading-button")
+        loadingButton.style.display = "inline";
+    }
+
+    function validateIOSUniversalLink(url) {
+        let host = url.host;
+        let associationURL = "https://app-site-association.cdn-apple.com/a/v1/" + host;
+        fetchDataAsync(associationURL);
+    }
+
+    async function fetchDataAsync(url) {
+        const response = await fetch(url);
+        console.log(await response.json());
+    }
+
+    function getURL() {
+        let urlString = document.getElementById("validate-url-input").value;
+
+        try {
+            const newURL = new URL(urlString);
+            if (newURL.protocol === 'http:' || newURL.protocol === 'https:') {
+                return newURL
+            }
+            return null;
+        } catch (err) {
+            return null;
+        }
+
+    }
+
+    function reset() {
+        // Hide result div
+        let div = document.getElementById("validate-result-div");
+        div.style.display = "none";
+
+        // Show validate button
+        let validateButton = document.getElementById("validate-button");
+        validateButton.style.display = "inline";
+
+        // Hide loading button
+        let loadingButton = document.getElementById("validate-loading-button");
+        loadingButton.style.display = "none";
+    }
+
+</script>
