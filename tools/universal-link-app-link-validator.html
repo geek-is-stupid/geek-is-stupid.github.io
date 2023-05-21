@@ -10,7 +10,7 @@ permalink: /tools/universal-link-app-link-validator.html
   <h1>Universal Link / App Link Validator</h1>
   
   <div style="padding-top:20px;">
-    <input id="validate-url-input" type="url" placeholder="https://example.com" style="width:70%;" pattern="https.?://.*" />
+    <input id="validate-url-input" type="url" placeholder="https://example.com" style="width:70%;margin: 8px 0;padding: 10px 16px;" pattern="https.?://.*" />
   </div>
   
   <div style="padding-top:20px;align-items:center;text-align:center;justify-content:center;">
@@ -21,11 +21,13 @@ permalink: /tools/universal-link-app-link-validator.html
   </div>
   
   <div id="validate-result-div" style="padding-top:20px;">
-    <div id="ios-universal-link-status-img" style="display:none;">
-        <img src="/img/success.png" style="width:50px;height:50px;"> The URL is an iOS Universal Link
+    <div id="ios-universal-link-result-div" style="display:none;">
+        <img id="ios-universal-link-result-img" src="/img/success.png" style="width:50px;height:50px;">
+        <label id="ios-universal-link-result-label"></label>
     </div>
-    <div id="android-app-link-status-img" style="display:none;">
-        <img src="/img/failed.png" style="width:50px;height:50px;"> The URL is not an Android App Link
+    <div id="android-app-link-result-div" style="display:none;">
+        <img id="android-app-link-result-img" src="/img/failed.png" style="width:50px;height:50px;"> 
+        <label id="android-app-link-result-label"></label>
     </div>
   </div>
 
@@ -53,23 +55,72 @@ permalink: /tools/universal-link-app-link-validator.html
         // TODO:
     }
 
-    function startLoading() {
-        let validateButton = document.getElementById("validate-button")
-        validateButton.style.display = "none";
-
-        let loadingButton = document.getElementById("validate-loading-button")
-        loadingButton.style.display = "inline";
-    }
-
     function validateIOSUniversalLink(url) {
+        console.log(url);
         let host = url.host;
-        let associationURL = "https://app-site-association.cdn-apple.com/a/v1/" + host;
-        fetchDataAsync(associationURL);
+        let aasaURL = "https://app-site-association.cdn-apple.com/a/v1/" + host;
+        console.log(aasaURL);
+        // let aasaURL = url.origin + '/.well-known/apple-app-site-association'
+        
+        fetchAASAFile(aasaURL)
+            .then(json => {
+                console.log(json);
+                handleUniversalLink(json.applinks, url);
+            })
+            .catch(error => {
+                console.log(error);
+                showIOSError();
+            });
     }
 
-    async function fetchDataAsync(url) {
-        const response = await fetch(url);
-        console.log(await response.json());
+    function handleUniversalLink(applinks, url) {
+       if (checkUniversalLink(applinks, url)) {
+            showIOSResult("The URL is an Universal Link", true);
+       } else {
+            showIOSError();
+       }
+    }
+
+    function checkUniversalLink(applinks, url) {
+        const pathname = url.pathname;
+        for (const detail of applinks.details) {
+            for (const path of detail.paths) {
+                console.log(path);
+                if (path.startsWith('NOT ')) {
+                    let subpath = path.substring(4);
+                    if (pathname.match(subpath)) {
+                        return false;
+                    }
+                } else {
+                    if (pathname.match(path)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    async function fetchAASAFile(url) {
+        // const response = await fetch(url, {
+        //     method: 'GET',
+        //     mode: 'no-cors',
+        //     cache: "no-cache",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        // });
+
+        // Workaround to by pass `cors` issue, proxy to other server
+        const response = await fetch('https://cors-anywhere.herokuapp.com/' + url, {
+            headers: {
+                "Accept": "*/*",
+                "Origin": "null",
+            }
+        })
+
+        const data = await response.json();
+        return data;
     }
 
     function getURL() {
@@ -84,21 +135,64 @@ permalink: /tools/universal-link-app-link-validator.html
         } catch (err) {
             return null;
         }
+    }
 
+    function showIOSError() {
+        showIOSResult("The URL is not an Universal Link", false);
+    }
+
+    function showIOSResult(message, isSuccess) {
+        hideElement(document.getElementById("validate-result-div"), false);
+        hideElement(document.getElementById("ios-universal-link-result-div"), false);
+        endLoading();
+
+        let iosResultLabel =  document.getElementById("ios-universal-link-result-label");
+        iosResultLabel.innerHTML = message;
+
+        let iosResultImage = document.getElementById("ios-universal-link-result-img");
+        if (isSuccess) {
+            iosResultImage.src = "/img/success.png";
+        } else {
+            iosResultImage.src = "/img/failed.png";
+        }
+    }
+
+    function startLoading() {
+        hideValidateButton(true);
+        hideLoadingButton(false);
+    }
+
+    function endLoading() {
+        hideValidateButton(false);
+        hideLoadingButton(true);
     }
 
     function reset() {
         // Hide result div
-        let div = document.getElementById("validate-result-div");
-        div.style.display = "none";
+        let resultDiv = document.getElementById("validate-result-div");
+        resultDiv.style.display = "none";
 
         // Show validate button
-        let validateButton = document.getElementById("validate-button");
-        validateButton.style.display = "inline";
+        hideValidateButton(false);
 
         // Hide loading button
-        let loadingButton = document.getElementById("validate-loading-button");
-        loadingButton.style.display = "none";
+        hideLoadingButton(true);
+    }
+
+    function hideValidateButton(isHidden) {
+        hideElement(document.getElementById("validate-button"), isHidden);
+    }
+
+    function hideLoadingButton(isHidden) {
+        hideElement(document.getElementById("validate-loading-button"), isHidden);
+    }
+
+    function hideElement(element, isHidden) {
+        if (isHidden) {
+            element.style.display = "none";
+        } else {
+            element.style.display = "inline";
+        }
     }
 
 </script>
